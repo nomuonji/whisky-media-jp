@@ -19,8 +19,8 @@ export const REPO_ROOT = path.resolve(BOT_ROOT, '..');
 //   - 公開リポジトリの git 履歴・Actions Secrets の平文にトークンを残したくない
 const DEFAULTS = {
   BOT_SITE_URL: 'https://whisky-data.jp',
-  BOT_CONTENT_DIR: 'site/src/content',
-  BOT_OGP_DIR: 'site/public/ogp',
+  BOT_CONTENT_DIR: 'src/content',
+  BOT_OGP_DIR: 'public/ogp',
   BOT_DRY_RUN: 'true',
   BOT_DAILY_LIMIT: '2',
   BOT_HASHTAGS: '#ウイスキー #Whisky',

@@ -2,9 +2,9 @@
 """
 銘柄ページのOGP画像を生成する。
 
-  python 08-scripts/generate-ogp.py
+  python docs/08-scripts/generate-ogp.py
 
-site/src/content/whiskies/*.json を読み、site/public/ogp/*.png を書き出す。
+src/content/whiskies/*.json を読み、public/ogp/*.png を書き出す。
 銘柄データを更新したら再実行すること（ビルドには含まれない）。
 
 フォントについて:
@@ -20,9 +20,9 @@ import glob
 
 from PIL import Image, ImageDraw, ImageFont
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "site", "src", "content", "whiskies")
-OUT = os.path.join(ROOT, "site", "public", "ogp")
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+SRC = os.path.join(ROOT, "src", "content", "whiskies")
+OUT = os.path.join(ROOT, "public", "ogp")
 
 W, H = 1200, 630
 BG = (250, 249, 246)
@@ -111,7 +111,7 @@ def draw_bottle(draw, x, y, scale, color, fill_ratio=0.6):
     draw.rounded_rectangle([p(15.5, 4), p(24.5, 9)], radius=1.5 * scale, fill=color)
 
 
-PHOTO_DIR = os.path.join(ROOT, "site", "public", "images", "whiskies")
+PHOTO_DIR = os.path.join(ROOT, "public", "images", "whiskies")
 
 
 def find_photo(slug):
@@ -247,8 +247,8 @@ def render_default():
     draw.text((96, 96), "WHISKY DATA JP", font=f_site, fill=BRAND)
     draw.rectangle([96, 150, 200, 156], fill=BRAND)
 
-    os.makedirs(os.path.join(ROOT, "site", "public", "images"), exist_ok=True)
-    img.save(os.path.join(ROOT, "site", "public", "images", "ogp-default.png"), optimize=True)
+    os.makedirs(os.path.join(ROOT, "public", "images"), exist_ok=True)
+    img.save(os.path.join(ROOT, "public", "images", "ogp-default.png"), optimize=True)
 
 
 def main():
@@ -258,7 +258,7 @@ def main():
         data = json.load(io.open(path, encoding="utf-8"))
         render(data, slug)
     render_default()
-    print(f"生成: 銘柄 {len(files)}件 + デフォルト1件 -> site/public/ogp/, site/public/images/")
+    print(f"生成: 銘柄 {len(files)}件 + デフォルト1件 -> public/ogp/, public/images/")
 
 
 if __name__ == "__main__":

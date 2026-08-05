@@ -23,7 +23,7 @@
 ## 新アーキテクチャ
 
 ```
-site/src/
+src/
 │
 ├── types/                         # ★全TypeScript型定義（1箇所集約）
 │   ├── index.ts                   #   再エクスポート

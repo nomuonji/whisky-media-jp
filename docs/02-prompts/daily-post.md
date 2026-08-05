@@ -2,7 +2,7 @@
 
 ## 使い方
 このプロンプトに記事タイプとテーマを入れるだけで、AIが完全なMDXファイルを生成します。
-出力をそのまま `site/src/content/blog/` に保存すれば公開完了。
+出力をそのまま `src/content/blog/` に保存すれば公開完了。
 
 ---
 
@@ -69,7 +69,7 @@
 以下の完全なMDXファイルを生成してください。
 --- で始まるFrontmatterを含め、すべてのメタデータを埋めてください。
 
-出力ファイルは `site/src/content/blog/YYYY-MM-DD-[slug].md` にそのまま保存され、
+出力ファイルは `src/content/blog/YYYY-MM-DD-[slug].md` にそのまま保存され、
 自動でサイトに公開されます。
 
 ```

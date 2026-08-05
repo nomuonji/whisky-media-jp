@@ -2,8 +2,8 @@
 """
 銘柄データをCSVと相互変換する。表計算ソフトでまとめて編集するための道具。
 
-  python 08-scripts/whiskies-csv.py export    # JSON -> 08-scripts/whiskies.csv
-  python 08-scripts/whiskies-csv.py import    # CSV  -> site/src/content/whiskies/*.json
+  python docs/08-scripts/whiskies-csv.py export    # JSON -> docs/08-scripts/whiskies.csv
+  python docs/08-scripts/whiskies-csv.py import    # CSV  -> src/content/whiskies/*.json
 
 CSVはUTF-8 (BOM付き) で書き出すのでExcelでもそのまま開ける。
 import は既存ファイルを上書きし、CSVに無いIDは触らない（削除は手動）。
@@ -15,9 +15,9 @@ import json
 import os
 import sys
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-JSON_DIR = os.path.join(ROOT, "site", "src", "content", "whiskies")
-CSV_PATH = os.path.join(ROOT, "08-scripts", "whiskies.csv")
+ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+JSON_DIR = os.path.join(ROOT, "src", "content", "whiskies")
+CSV_PATH = os.path.join(ROOT, "docs", "08-scripts", "whiskies.csv")
 
 AXES = ["peat", "sweet", "fruity", "spicy", "oak", "smoky", "complex", "body"]
 SCALARS = [
@@ -88,7 +88,7 @@ def import_csv():
             f.write(json.dumps(d, ensure_ascii=False, indent=2) + "\n")
         written += 1
 
-    print(f"取り込み: {written}件 -> site/src/content/whiskies/")
+    print(f"取り込み: {written}件 -> src/content/whiskies/")
     print("価格を実際に確認した場合は priceSource を market に変えること。")
 
 

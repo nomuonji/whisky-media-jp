@@ -1,5 +1,5 @@
 // サイトのコンテンツ（記事・銘柄・蒸留所・OGP画像）を読み込む。
-// ネタ元: site/src/content/*（唯一の情報源。botはここしか見ない）。
+// ネタ元: src/content/*（唯一の情報源。botはここしか見ない）。
 
 import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import path from 'node:path';

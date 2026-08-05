@@ -3,7 +3,7 @@
 ## これは最重要プロンプトです
 
 すべての記事系プロンプトで、この出力フォーマットを使用してください。
-AIが出力したMarkdownは、そのまま `site/src/content/blog/[slug].mdx` に保存すれば
+AIが出力したMarkdownは、そのまま `src/content/blog/[slug].mdx` に保存すれば
 サイトに公開されます。
 
 ---
@@ -14,7 +14,7 @@ AIが出力したMarkdownは、そのまま `site/src/content/blog/[slug].mdx` �
 ## 出力形式
 
 以下の形式の完全なMDXファイルを出力してください。
-このファイルはそのまま `site/src/content/blog/YYYY-MM-DD-slug.mdx` に保存され、
+このファイルはそのまま `src/content/blog/YYYY-MM-DD-slug.mdx` に保存され、
 自動的にサイトに公開されます。
 
 ```mdx

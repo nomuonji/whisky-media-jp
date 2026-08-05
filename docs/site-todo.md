@@ -29,7 +29,7 @@
 `data/whiskies.ts`（7件・8項目）を、コレクション化して数百件に育てる。
 
 ```
-site/src/content/whiskies/yamazaki-12.md   ← またはJSON一括
+src/content/whiskies/yamazaki-12.md   ← またはJSON一括
 ```
 
 持つべき項目：
@@ -128,7 +128,7 @@ site/src/content/whiskies/yamazaki-12.md   ← またはJSON一括
 - [ ] 記事本文のMarkdown表を、データ由来のリッチな表に
 - [ ] 写真素材の方針を決める（自前撮影 / フリー素材 / 使わず図解で通す） ✅ **Wikimedia CommonsのCCライセンス写真49枚を導入済み**
   - 取得方法は `article-material-research` スキルの `commons_image.py`／カテゴリAPIでライセンス確認 → ローカル配信
-  - クレジットは `site/src/data/whisky-photos.json` と銘柄ページの `figcaption` で表示
+  - クレジットは `src/data/whisky-photos.json` と銘柄ページの `figcaption` で表示
 
 ## 3-3. サイト全体のトーン
 

@@ -155,8 +155,8 @@ Step 3 まで終われば、記事が3本のままでもサイトとしては回
 Wikimedia Commons の `Category:Whisky bottles` および各ブランドのカテゴリから、
 **ライセンス確認済み（CC0 / CC BY / CC BY-SA）のボトル写真49枚**を取得した。
 
-- 保存先：`site/public/images/whiskies/*.jpg`
-- クレジット情報：`site/src/data/whisky-photos.json`（撮影者・ライセンス・出典URL）
+- 保存先：`public/images/whiskies/*.jpg`
+- クレジット情報：`src/data/whisky-photos.json`（撮影者・ライセンス・出典URL）
 - 表示：銘柄詳細ページのヒーローに写真＋`figcaption`でクレジット、一覧カードのサムネイル
 - OGP：`08-scripts/generate-ogp.py` が写真を合成（写真がある銘柄のみ）
 - 写真が無い銘柄（51件）は従来のボトルSVGにフォールバック

@@ -39,11 +39,11 @@ noteは**メイン記事チャネル**だがbotでの自動投稿はしない（
                         ┌─────────────────────────────────────┐
   サイト(静的)           │  09-sns-bot/  (Node.js ESM, 依存なし)   │
  ┌──────────────────┐   │                                     │   ┌──────────┐
- │ site/src/content │──▶│ 1. content/load  記事・銘柄JSONを読む  │   │ X API    │◀──── 投稿
+ │ src/content │──▶│ 1. content/load  記事・銘柄JSONを読む  │   │ X API    │◀──── 投稿
  │  /blog/*.md      │   │ 2. content/pick  今日のネタを選ぶ      │──▶│ (Bearer) │
  │  /whiskies/*.json│   │ 3. generate/copy 投稿文を組み立てる    │   └──────────┘
  │  /distilleries/* │   │    └─ generate/llm (任意・有料)        │──▶ Threads API
- │ site/public/ogp/ │   │ 4. post/         各SNSに投稿          │   (Graph API)
+ │ public/ogp/ │   │ 4. post/         各SNSに投稿          │   (Graph API)
  │  whisky-*.png    │   │ 5. store/history 履歴で重複・上限管理   │   └──────────┘
  └──────────────────┘   └──────────────────────────────────────┘
                                     ▲
@@ -61,10 +61,10 @@ noteは**メイン記事チャネル**だがbotでの自動投稿はしない（
 
 | ソース | 場所 | 使うフィールド |
 |--------|------|---------------|
-| 記事 | `site/src/content/blog/*.md` | title / date / excerpt / tags / category / compare |
-| 銘柄 | `site/src/content/whiskies/*.json` | name / rating / priceYen / flavor / notes / type |
-| 蒸留所 | `site/src/content/distilleries/*.json` | name / region / history（概要） |
-| 画像 | `site/public/ogp/whisky-*.png` | 投稿に添付するアイキャッチ |
+| 記事 | `src/content/blog/*.md` | title / date / excerpt / tags / category / compare |
+| 銘柄 | `src/content/whiskies/*.json` | name / rating / priceYen / flavor / notes / type |
+| 蒸留所 | `src/content/distilleries/*.json` | name / region / history（概要） |
+| 画像 | `public/ogp/whisky-*.png` | 投稿に添付するアイキャッチ |
 
 ※記事は `draft: true` と未来日付を除外。`compare` 付き記事は「比較系」、それ以外は「告知系」に分類。
 

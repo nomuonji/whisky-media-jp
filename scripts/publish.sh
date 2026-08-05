@@ -5,11 +5,11 @@
 
 set -e
 
-SITE_DIR="$(cd "$(dirname "$0")/../site" && pwd)"
+REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "=== Whisky Data JP: 記事をビルド中 ==="
 
-cd "$SITE_DIR"
+cd "$REPO_ROOT"
 
 # 依存関係インストール（初回のみ）
 if [ ! -d "node_modules" ]; then
@@ -32,6 +32,6 @@ fi
 
 # プッシュ（Cloudflare Pagesが自動デプロイ）
 echo "🚀 デプロイ中..."
-git push origin main
+git push origin master
 
 echo "✅ 完了！数分後に https://whisky-data.jp に反映されます"

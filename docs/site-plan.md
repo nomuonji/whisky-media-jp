@@ -121,7 +121,7 @@ Whiskybaseの口コミ312件と評価データをもとに、**数値で比較**
 
 ```
 whisky-media-jp/
-├── site/                          # Astroプロジェクト（新規作成）
+(このリポジトリのルートが Astro プロジェクト本体)
 │   ├── src/
 │   │   ├── content/
 │   │   │   └── blog/             # ★AIがMarkdownを直接書き込む場所
@@ -202,7 +202,7 @@ Frontmatter（---で囲まれた部分）も含めてください。
 [上記のMarkdown記事形式をテンプレートとして提示]
 ```
 
-こうすれば、AIの出力を `site/src/content/blog/2026-08-04-title.md` に
+こうすれば、AIの出力を `src/content/blog/2026-08-04-title.md` に
 保存するだけで記事が公開される。
 
 ---
@@ -235,7 +235,7 @@ git remote add origin https://github.com/[user]/whisky-media-jp.git
 ### Step 4: Cloudflare Pages設定（15分）
 - GitHub連携
 - ビルドコマンド: `cd site && npm run build`
-- 出力ディレクトリ: `site/dist`
+- 出力ディレクトリ: `dist`
 - カスタムドメイン設定
 
 ### Step 5: ドメイン取得・設定（10分）

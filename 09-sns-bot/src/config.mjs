@@ -10,6 +10,13 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 export const BOT_ROOT = path.resolve(HERE, '..');
 export const REPO_ROOT = path.resolve(BOT_ROOT, '..');
 
+// X (dekio_g) / Threads (devil_dog_ch) の認証情報はここでは扱わない。
+// Gist で管理するトークン（gistState.mjs / threadsAuth.mjs）を index.mjs が
+// 都度取得して各 post/*.mjs に渡す。理由:
+//   - Threads の長期トークンは約60日で失効しリフレッシュが要る
+//   - GitHub Actions のランナーは使い捨てなので、リフレッシュ後のトークンを
+//     どこかに永続化しないと次回また古いトークンで失敗する
+//   - 公開リポジトリの git 履歴・Actions Secrets の平文にトークンを残したくない
 const DEFAULTS = {
   BOT_SITE_URL: 'https://whisky-data.jp',
   BOT_CONTENT_DIR: 'site/src/content',
@@ -17,11 +24,6 @@ const DEFAULTS = {
   BOT_DRY_RUN: 'true',
   BOT_DAILY_LIMIT: '2',
   BOT_HASHTAGS: '#ウイスキー #Whisky',
-  X_API_BEARER_TOKEN: '',
-  X_API_ACCESS_TOKEN: '',
-  X_API_ACCESS_SECRET: '',
-  THREADS_ACCESS_TOKEN: '',
-  THREADS_USER_ID: '',
   LLM_API_KEY: '',
   LLM_BASE_URL: 'https://api.openai.com/v1',
   LLM_MODEL: '',
@@ -57,21 +59,11 @@ export function loadConfig(env = process.env) {
     dryRun: String(merged.BOT_DRY_RUN).toLowerCase() !== 'false',
     dailyLimit: parseInt(merged.BOT_DAILY_LIMIT, 10) || 2,
     baseHashtags: String(merged.BOT_HASHTAGS).trim().split(/\s+/).filter(Boolean),
-    x: {
-      bearerToken: merged.X_API_BEARER_TOKEN.trim(),
-      accessToken: merged.X_API_ACCESS_TOKEN.trim(),
-      accessSecret: merged.X_API_ACCESS_SECRET.trim(),
-    },
-    threads: {
-      accessToken: merged.THREADS_ACCESS_TOKEN.trim(),
-      userId: merged.THREADS_USER_ID.trim(),
-    },
     llm: {
       apiKey: merged.LLM_API_KEY.trim(),
       baseUrl: String(merged.LLM_BASE_URL).replace(/\/+$/, ''),
       model: merged.LLM_MODEL.trim(),
     },
-    historyPath: path.join(BOT_ROOT, 'data', 'history.json'),
   };
 
   return cfg;

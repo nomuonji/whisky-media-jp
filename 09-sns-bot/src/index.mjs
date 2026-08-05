@@ -6,8 +6,12 @@
 //   node 09-sns-bot/src/index.mjs post --no-dry-run    # 実際に投稿（本番）
 //   node 09-sns-bot/src/index.mjs post --channel all   # X と Threads 両方
 //   node 09-sns-bot/src/index.mjs post --pattern data  # パターン指定: article|data|question|distillery|auto
-//   node 09-sns-bot/src/index.mjs history              # 投稿履歴を表示
+//   node 09-sns-bot/src/index.mjs history              # 投稿履歴を表示（Gist から取得）
 //   node 09-sns-bot/src/index.mjs test                 # 環境と設定の確認
+//
+// 認証情報（X: dekio_g / Threads: devil_dog_ch）と投稿履歴は GitHub Gist で管理する
+// （gistState.mjs）。ローカルで試す場合は GH_GIST_TOKEN + GIST_ID を設定するか、
+// LOCAL_STATE_FILE で代替のローカルJSONを指定する。
 
 import { channelsFor, loadConfig } from './config.mjs';
 import { loadAll } from './content/load.mjs';
@@ -16,7 +20,12 @@ import { buildPost } from './generate/copy.mjs';
 import { generateWithLlm } from './generate/llm.mjs';
 import { postToX } from './post/x.mjs';
 import { postToThreads } from './post/threads.mjs';
+import * as gistState from './gistState.mjs';
 import * as historyStore from './store/history.mjs';
+import { getThreadsCredentials } from './threadsAuth.mjs';
+
+// チャンネル名 → Gist 状態内のアカウントキー
+const GIST_ACCOUNT = { x: 'dekio_g', threads: 'devil_dog_ch' };
 
 function parseArgs(argv) {
   const out = { channel: ['x'], pattern: 'auto', dryRun: undefined, llm: false };
@@ -42,14 +51,35 @@ function printPost(cfg, channel, post) {
   }
 }
 
+/** チャンネルに応じた認証情報を Gist 状態から取り出す。X は静的、Threads は必要ならリフレッシュ。 */
+async function credentialsFor(channel, state, dryRun) {
+  const accountName = GIST_ACCOUNT[channel];
+  if (channel === 'x') {
+    const account = state.accounts?.[accountName];
+    if (!account) throw new Error(`アカウント ${accountName} が Gist の状態に見つかりません`);
+    return {
+      consumerKey: account.consumer_key,
+      consumerSecret: account.consumer_secret,
+      accessToken: account.access_token,
+      accessTokenSecret: account.access_token_secret,
+    };
+  }
+  if (channel === 'threads') {
+    return getThreadsCredentials(gistState, state, accountName, dryRun);
+  }
+  return null;
+}
+
 async function runPost(cfg, args, { forceDryRun = false } = {}) {
   const dryRun = forceDryRun ? true : args.dryRun === undefined ? cfg.dryRun : args.dryRun;
   const channels = channelsFor(args.channel);
-  let saved = false;
+
+  const state = await gistState.loadState();
+  const history = historyStore.ensureHistory(state);
+  let stateChanged = false;
 
   for (const channel of channels) {
     const content = loadAll(cfg);
-    const history = historyStore.loadHistory(cfg);
 
     const count = historyStore.todayCount(history, channel);
     if (count >= cfg.dailyLimit) {
@@ -73,19 +103,32 @@ async function runPost(cfg, args, { forceDryRun = false } = {}) {
     const runCfg = { ...cfg, dryRun };
     printPost(runCfg, channel, post);
 
-    if (dryRun) continue; // dry-run は履歴に記録しない（再実行で同じ文をレビューできる）
+    if (dryRun) continue; // dry-run は履歴に記録せず Gist も更新しない（再実行で同じ文をレビューできる）
 
-    const result = await POSTERS[channel](post, runCfg);
+    let credentials;
+    try {
+      credentials = await credentialsFor(channel, state, dryRun);
+    } catch (err) {
+      console.error(`[${channel}] 認証情報の取得に失敗: ${err.message}`);
+      continue;
+    }
+    // getThreadsCredentials がリフレッシュして state を書き換えた可能性があるため、
+    // dry-run でなければ常に「変更あり」として扱い、最後に保存する。
+    stateChanged = true;
+
+    const result = await POSTERS[channel](post, runCfg, credentials);
     if (result.posted) {
       historyStore.addRecord(history, { id: candidate.id, channel, text: post.text });
-      historyStore.saveHistory(cfg, history);
-      saved = true;
       console.log(`[${channel}] 履歴に記録: ${candidate.id}`);
     } else {
       console.log(`[${channel}] 投稿しませんでした（${result.reason}）`);
     }
   }
-  return { saved };
+
+  if (stateChanged && !dryRun) {
+    await gistState.saveState(state);
+    console.log('状態を Gist へ保存しました');
+  }
 }
 
 async function cmdDraft(cfg, args) {
@@ -96,15 +139,16 @@ async function cmdPost(cfg, args) {
   await runPost(cfg, args);
 }
 
-function cmdHistory(cfg) {
-  const history = historyStore.loadHistory(cfg);
+async function cmdHistory(cfg) {
+  const state = await gistState.loadState();
+  const history = historyStore.ensureHistory(state);
   console.log(`履歴 ${history.records.length}件`);
   for (const r of [...history.records].reverse().slice(0, 20)) {
     console.log(`  ${r.date} [${r.channel}] ${r.id}: ${String(r.text).slice(0, 50)}`);
   }
 }
 
-function cmdTest(cfg) {
+async function cmdTest(cfg) {
   const content = loadAll(cfg);
   console.log('== 設定 ==');
   console.log(`  サイトURL      : ${cfg.siteUrl}`);
@@ -112,13 +156,18 @@ function cmdTest(cfg) {
   console.log(`  dry-run        : ${cfg.dryRun}`);
   console.log(`  1日あたり上限  : ${cfg.dailyLimit}`);
   console.log(`  基本ハッシュタグ: ${cfg.baseHashtags.join(' ')}`);
-  console.log('== API ==');
-  console.log(`  X Bearer       : ${cfg.x.bearerToken ? '設定済み' : '未設定'}`);
-  console.log(`  Threads        : ${cfg.threads.accessToken ? '設定済み' : '未設定'}`);
   console.log(`  LLM            : ${cfg.llm.apiKey ? `設定済み（${cfg.llm.model || cfg.llm.baseUrl}）` : '未設定（テンプレ生成）'}`);
-  console.log('== 履歴 ==');
-  const history = historyStore.loadHistory(cfg);
-  console.log(`  ${history.records.length}件記録済み（${cfg.historyPath}）`);
+  console.log('== Gist 状態 ==');
+  try {
+    const state = await gistState.loadState();
+    const history = historyStore.ensureHistory(state);
+    console.log(`  接続           : OK`);
+    console.log(`  X (dekio_g)    : ${state.accounts?.dekio_g?.access_token ? '設定済み' : '未設定'}`);
+    console.log(`  Threads (devil_dog_ch): ${state.accounts?.devil_dog_ch?.token ? '設定済み' : '未設定'}`);
+    console.log(`  履歴           : ${history.records.length}件`);
+  } catch (err) {
+    console.log(`  接続           : 失敗 (${err.message})`);
+  }
 }
 
 const COMMANDS = { draft: cmdDraft, post: cmdPost, history: cmdHistory, test: cmdTest };

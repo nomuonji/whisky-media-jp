@@ -1,48 +1,79 @@
 // X（Twitter）API v2 への投稿クライアント。
-// 認証: OAuth2.0 Bearer（Write権限が必要）。画像添付は OAuth1.0a が必要になるため、
-// 未設定の場合は添付なしで投稿する（TODO: Phase 2で対応）。
+// 認証: OAuth 1.0a（署名は oauth1.mjs）。dekio_g アカウントの認証情報は
+// Consumer Key/Secret + Access Token/Secret の4点セットで、Bearer トークンではない。
+//
+// 画像添付: v1.1 media/upload に multipart でアップロードして media_id_string を取得
+// （署名対象パラメータに body は含めない。book-discovery プロジェクトの
+// bot/publish/x.ts と同一ロジック）。
 
-// 投稿結果。posted=false のとき reason に理由が入る。
-export async function postToX({ text, image }, cfg) {
+import { buildOAuthHeader } from '../oauth1.mjs';
+
+const TWEET_URL = 'https://api.twitter.com/2/tweets';
+const MEDIA_UPLOAD_URL = 'https://upload.twitter.com/1.1/media/upload.json';
+
+export async function postToX({ text, image }, cfg, credentials) {
   if (cfg.dryRun) {
     console.log(`[x] DRY-RUN: 投稿しません（BOT_DRY_RUN=true）`);
     return { posted: false, reason: 'dry-run' };
   }
-  if (!cfg.x.bearerToken) {
-    console.warn(`[x] X_API_BEARER_TOKEN 未設定のため X 投稿をスキップ`);
+  if (!credentials?.consumerKey || !credentials?.accessToken) {
+    console.warn(`[x] 認証情報未設定のため X 投稿をスキップ`);
     return { posted: false, reason: 'no-token' };
   }
 
-  const mediaId = image ? await uploadMedia(image, cfg) : null;
-  const body = {
-    text,
-    ...(mediaId ? { media: { media_ids: [mediaId] } } : {}),
-  };
+  try {
+    const mediaId = image ? await uploadMedia(image, credentials) : null;
+    const body = { text, ...(mediaId ? { media: { media_ids: [mediaId] } } : {}) };
 
-  const res = await fetch('https://api.twitter.com/2/tweets', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${cfg.x.bearerToken}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(body),
-  });
-  const json = await res.json().catch(() => ({}));
-  if (!res.ok) {
-    console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}`);
-    return { posted: false, reason: `api:${res.status}` };
+    const authHeader = buildOAuthHeader(credentials, 'POST', TWEET_URL);
+    const res = await fetch(TWEET_URL, {
+      method: 'POST',
+      headers: { Authorization: authHeader, 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok || !json.data) {
+      console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}`);
+      return { posted: false, reason: `api:${res.status}` };
+    }
+    console.log(`[x] 投稿成功 id=${json.data.id}`);
+    return { posted: true, id: json.data.id };
+  } catch (err) {
+    console.error(`[x] 投稿失敗: ${err.message}`);
+    return { posted: false, reason: 'error' };
   }
-  console.log(`[x] 投稿成功 id=${json?.data?.id}`);
-  return { posted: true, id: json?.data?.id };
 }
 
-// OAuth1.0a の署名が必要な media/upload は未実装。
-// Phase 2 で x を追加する前に、accessToken/accessSecret による署名と 3step アップロードを実装すること。
-async function uploadMedia(image, cfg) {
-  if (!image) return null;
-  if (!cfg.x.accessToken || !cfg.x.accessSecret) {
-    console.warn(`[x] 画像添付は OAuth1.0a が必要（X_API_ACCESS_TOKEN / SECRET 未設定）。画像なしで投稿します。TODO: Phase 2で media/upload を実装`);
-    return null;
+async function uploadMedia(image, credentials) {
+  const imageRes = await fetch(image);
+  if (!imageRes.ok) throw new Error(`画像の取得に失敗しました: ${imageRes.status} ${image}`);
+  const buffer = Buffer.from(await imageRes.arrayBuffer());
+
+  // OAuth1 の署名対象にmultipart bodyは含めない（book-discovery/bot/publish/x.ts と同じ）
+  const authHeader = buildOAuthHeader(credentials, 'POST', MEDIA_UPLOAD_URL);
+
+  const boundary = `----whiskybot${Date.now()}`;
+  const body = Buffer.concat([
+    Buffer.from(
+      `--${boundary}\r\n` +
+        `Content-Disposition: form-data; name="media"; filename="image.jpg"\r\n` +
+        `Content-Type: application/octet-stream\r\n\r\n`
+    ),
+    buffer,
+    Buffer.from(`\r\n--${boundary}--\r\n`),
+  ]);
+
+  const res = await fetch(MEDIA_UPLOAD_URL, {
+    method: 'POST',
+    headers: {
+      Authorization: authHeader,
+      'Content-Type': `multipart/form-data; boundary=${boundary}`,
+    },
+    body,
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || !json.media_id_string) {
+    throw new Error(`メディアアップロード失敗: ${JSON.stringify(json.errors ?? json)}`);
   }
-  throw new Error('media/upload (OAuth1.0a) は未実装。TODO を参照');
+  return json.media_id_string;
 }

@@ -1,26 +1,18 @@
-// 投稿履歴（data/history.json）の管理。
+// 投稿履歴の管理（Gist 状態内の history フィールドを操作する）。
 // - 重複防止: 同じネタIDを同じチャンネルに2度投稿しない
 // - 上限管理: 1日あたりの投稿数を SNS ごとに数える
+//
+// 以前はローカル `data/history.json` に保存していたが、GitHub Actions の
+// ランナーは実行のたびに使い捨てなのでローカルファイルは毎回空に戻ってしまい、
+// 重複防止も上限管理も機能していなかった。gistState.mjs 経由で読み書きする
+// 状態オブジェクトの一部として履歴を持たせることで永続化する。
 
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
-import path from 'node:path';
-
-export function loadHistory(cfg) {
-  if (!existsSync(cfg.historyPath)) {
-    return { records: [] };
+/** state.history が無ければ初期化して返す。state は呼び出し側が gistState.loadState() で取得したもの。 */
+export function ensureHistory(state) {
+  if (!state.history || !Array.isArray(state.history.records)) {
+    state.history = { records: [] };
   }
-  try {
-    const raw = JSON.parse(readFileSync(cfg.historyPath, 'utf8'));
-    return { records: Array.isArray(raw.records) ? raw.records : [] };
-  } catch (err) {
-    console.warn(`[history] 読み込みに失敗したため空から始めます: ${err.message}`);
-    return { records: [] };
-  }
-}
-
-// history.records: [{ id, channel, date, text }]
-export function usedIds(history) {
-  return history.records;
+  return state.history;
 }
 
 export function todayCount(history, channel, date = todayStr()) {
@@ -29,12 +21,11 @@ export function todayCount(history, channel, date = todayStr()) {
 
 export function addRecord(history, { id, channel, text }) {
   history.records.push({ id, channel, date: todayStr(), text });
+  // 無制限に増え続けないよう直近2000件に制限
+  if (history.records.length > 2000) {
+    history.records.splice(0, history.records.length - 2000);
+  }
   return history;
-}
-
-export function saveHistory(cfg, history) {
-  mkdirSync(path.dirname(cfg.historyPath), { recursive: true });
-  writeFileSync(cfg.historyPath, JSON.stringify({ records: history.records }, null, 2), 'utf8');
 }
 
 function todayStr() {

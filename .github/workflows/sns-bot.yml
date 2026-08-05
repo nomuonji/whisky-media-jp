@@ -1,0 +1,47 @@
+name: SNS Bot Post
+
+# X (dekio_g) / Threads (devil_dog_ch) へ1日2回投稿する。
+# 投稿時刻は DESIGN.md の想定（データ豆知識は通勤時間帯、記事告知は晩酌時間帯）に合わせて
+# 07:00 JST(=UTC 22:00 前日) と 20:00 JST(=UTC 11:00)。
+# トークンと投稿履歴は Gist に保存し、期限が近づくと自動でリフレッシュする。
+
+on:
+  schedule:
+    - cron: "0 22 * * *" # 07:00 JST
+    - cron: "0 11 * * *" # 20:00 JST
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "true なら実投稿せず内容だけ表示"
+        type: boolean
+        default: false
+      channel:
+        description: '対象チャンネル (x / threads / all)'
+        required: false
+        default: "all"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sns-bot # Gist 書き込み競合を防ぐため多重実行を禁止
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: 投稿
+        working-directory: 09-sns-bot
+        env:
+          GH_GIST_TOKEN: ${{ secrets.GH_GIST_TOKEN }}
+          GIST_ID: ${{ secrets.GIST_ID }}
+          BOT_DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && 'true' || 'false' }}
+        run: |
+          node src/index.mjs post --channel "${{ github.event.inputs.channel || 'all' }}"

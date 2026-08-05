@@ -1,0 +1,16 @@
+{
+  "name": "whisky-data-jp-sns-bot",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Whisky Data JP のSNS集客bot（X / Threads）。投稿文の自動生成と自動投稿。",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "post": "node src/index.mjs post",
+    "draft": "node src/index.mjs draft",
+    "history": "node src/index.mjs history",
+    "test": "node src/index.mjs test"
+  }
+}

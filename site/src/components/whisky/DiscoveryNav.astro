@@ -1,0 +1,55 @@
+---
+import { PRICE_BANDS } from '../../types/taxonomy';
+import { FLAVOR_FILTERS, RANKINGS } from '../../data/discovery';
+
+interface Props {
+  /** 現在地。自分自身はリンクにしない */
+  current?: string;
+}
+
+const { current } = Astro.props;
+
+// 生成しているのに導線が無いページ（孤立ページ）を作らないための一覧
+const groups = [
+  {
+    label: '予算で選ぶ',
+    items: PRICE_BANDS.map((b) => ({
+      href: `/budget/${b.id}/`,
+      label: b.max === Infinity ? '20,000円〜' : `〜${b.max.toLocaleString('ja-JP')}円`,
+    })),
+  },
+  {
+    label: '味で選ぶ',
+    items: Object.entries(FLAVOR_FILTERS).map(([id, def]) => ({
+      href: `/flavor/${id}/`,
+      label: def.label,
+    })),
+  },
+  {
+    label: 'ランキング',
+    items: Object.entries(RANKINGS).map(([id, def]) => ({
+      href: `/ranking/${id}/`,
+      label: def.label,
+    })),
+  },
+];
+---
+
+<nav class="discovery-nav" aria-label="他の探し方">
+  {groups.map((group) => (
+    <div class="discovery-nav-group">
+      <p class="discovery-nav-label">{group.label}</p>
+      <ul>
+        {group.items.map((item) => (
+          <li>
+            {item.href === current ? (
+              <span class="is-current" aria-current="page">{item.label}</span>
+            ) : (
+              <a href={item.href}>{item.label}</a>
+            )}
+          </li>
+        ))}
+      </ul>
+    </div>
+  ))}
+</nav>

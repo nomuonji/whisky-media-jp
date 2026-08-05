@@ -1,0 +1,121 @@
+/* ============================================
+   Design Tokens — single source of truth
+   ============================================ */
+
+:root {
+  /* === Color: Brand === */
+  --color-brand:            #D4A030;
+  --color-brand-light:      #F5E6D3;
+  --color-brand-dark:       #B8860B;
+  /* 白抜き文字を載せる面はこれを使う。白との比 6.4:1（AA以上）。
+     --color-brand は 2.4:1 しかなく、文字を載せると読めない */
+  --color-brand-strong:     #7A5A10;
+
+  /* === Color: Surface === */
+  --color-surface:          #FFFFFF;
+  --color-surface-elevated: #FAF9F6;
+  --color-surface-subdued:  #F5F0E8;
+
+  /* === Color: Text === */
+  --color-text:             #2C2416;
+  --color-text-secondary:   #6B5E4A;
+  --color-text-tertiary:    #9B8E7A;
+  --color-text-link:        #8B6914;
+  /* 淡いブランド面（--color-brand-light）に載せる文字。白背景の #8B6914 では
+     淡色面に対して 4.15:1 しか取れずAAに届かないため、専用に一段濃くする */
+  --color-on-brand-light:   #6B5210;
+
+  /* === Color: Border === */
+  --color-border:           #E0D5C1;
+  --color-border-light:     #F0EBE0;
+
+  /* === Color: Status === */
+  --color-success:          #4A7C59;
+  --color-error:            #C44D4D;
+
+  /* === Color: Chart (8色) === */
+  --color-chart-amber:      #D4A030;
+  --color-chart-teal:       #20B2AA;
+  --color-chart-red:        #C44D4D;
+  --color-chart-green:      #4A7C59;
+  --color-chart-blue:       #4A90D9;
+  --color-chart-purple:     #9B59B6;
+  --color-chart-orange:     #E67E22;
+  --color-chart-grey:       #95A5A6;
+
+  /* === Typography: Font Family === */
+  --font-sans:    'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', sans-serif;
+  --font-display: 'Noto Serif JP', 'Hiragino Mincho', 'Yu Mincho', serif;
+
+  /* === Typography: Size === */
+  --text-2xs:     0.6875rem;   /* 11px 出典マークなどの極小ラベル */
+  --text-xs:      0.75rem;     /* 12px */
+  --text-sm:      0.875rem;    /* 14px */
+  --text-base:    1.0625rem;   /* 17px */
+  --text-lg:      1.25rem;     /* 20px */
+  --text-xl:      1.5rem;      /* 24px */
+  --text-2xl:     2rem;        /* 32px */
+  --text-3xl:     4rem;        /* 64px エラーページの数字など */
+
+  /* === Typography: Leading === */
+  --leading-tight:  1.4;
+  --leading-base:   1.8;
+  --leading-loose:  2.0;
+
+  /* === Typography: 和文の字間 ===
+     欧文は見出しを詰めるが、和文は四角い字面が窮屈に見えるので逆に空ける */
+  --tracking-heading: 0.04em;
+  --tracking-label:   0.06em;
+
+  /* 行長。emで持つとフォントサイズを変えても字数が変わらない（和文40字前後） */
+  --measure:        42em;
+
+  /* === Typography: Weight === */
+  --weight-normal: 400;
+  --weight-semibold: 600;
+  --weight-bold:   700;
+
+  /* === Spacing === */
+  --space-3xs:  0.125rem;
+  --space-2xs:  0.25rem;
+  --space-xs:   0.5rem;
+  --space-sm:   0.75rem;
+  --space-md:   1rem;
+  --space-lg:   1.5rem;
+  --space-xl:   2rem;
+  --space-2xl:  3rem;
+  --space-3xl:  4rem;
+
+  /* === Layout === */
+  --content-width:   720px;
+  --content-wide:    960px;
+  --header-height:   64px;
+
+  /* === Border Radius === */
+  --radius-xs:  2px;
+  --radius-sm:  4px;
+  --radius-md:  8px;
+  --radius-lg:  12px;
+  --radius-pill: 999px;
+
+  /* === Shadows === */
+  /* 近距離と遠距離を重ねると、1本の影より自然に浮く。色は黒でなく本文色の色相 */
+  --shadow-sm:
+    0 1px 2px rgba(44, 36, 22, 0.04),
+    0 1px 3px rgba(44, 36, 22, 0.06);
+  --shadow-md:
+    0 2px 4px rgba(44, 36, 22, 0.04),
+    0 8px 16px rgba(44, 36, 22, 0.07);
+  --shadow-lg:
+    0 4px 8px rgba(44, 36, 22, 0.05),
+    0 16px 32px rgba(44, 36, 22, 0.09);
+
+  /* === Transitions === */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+
+  /* === Z-Index === */
+  --z-header:   100;
+  --z-dropdown: 200;
+  --z-modal:    300;
+}

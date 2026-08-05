@@ -1,0 +1,34 @@
+{
+  "name": "サントリー 碧",
+  "nameEn": "Suntory Ao",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 43.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー",
+    "ミズナラ"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 2,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "世界5地域の原酒をブレンドした「世界のウイスキー」。国産原酒と海外原酒が折り重なる複雑さ。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

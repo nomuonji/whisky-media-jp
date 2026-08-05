@@ -1,0 +1,127 @@
+/* ============================================
+   散布図 / 比較ツール
+   ============================================ */
+
+.scatter-container {
+  padding: var(--space-md) var(--space-lg) var(--space-lg);
+}
+
+.scatter-container canvas {
+  max-width: 100%;
+}
+
+.scatter-hint {
+  font-size: var(--text-xs);
+  margin-top: var(--space-sm);
+  margin-bottom: 0;
+}
+
+.scatter-fallback {
+  margin-top: var(--space-sm);
+  text-align: left;
+  font-size: var(--text-sm);
+}
+
+.scatter-fallback summary {
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  font-size: var(--text-xs);
+}
+
+.scatter-fallback table {
+  margin-top: var(--space-sm);
+}
+
+/* === 比較ツール === */
+.compare-picker {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-block: var(--space-lg) var(--space-md);
+}
+
+.compare-picker label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+}
+
+.compare-picker select {
+  flex: 1;
+  min-width: 12rem;
+  padding: var(--space-xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+}
+
+.compare-picker select:disabled {
+  opacity: 0.5;
+}
+
+.compare-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin-block: var(--space-sm);
+}
+
+.compare-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: var(--space-3xs) var(--space-xs) var(--space-3xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  background: color-mix(in srgb, var(--region-color, var(--color-brand)) 15%, white);
+  border: 1px solid var(--region-color, var(--color-brand));
+  color: var(--color-text);
+}
+
+.compare-chip button {
+  width: 1.4rem;
+  height: 1.4rem;
+  border-radius: var(--radius-pill);
+  line-height: 1;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}
+
+.compare-chip button:hover {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--color-text);
+}
+
+.compare-empty {
+  padding: var(--space-xl);
+  text-align: center;
+  color: var(--color-text-secondary);
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+}
+
+.compare-chart {
+  margin-block: var(--space-lg);
+}
+
+.compare-chart canvas {
+  max-width: 460px;
+  margin-inline: auto;
+}
+
+/* 残り何本追加できるか・なぜ追加できないかを常に示す */
+.compare-hint {
+  flex-basis: 100%;
+  margin: 0;
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}

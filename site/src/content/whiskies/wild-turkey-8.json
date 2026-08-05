@@ -1,0 +1,35 @@
+{
+  "name": "ワイルドターキー 8年",
+  "nameEn": "Wild Turkey 8 Year Old",
+  "distillery": "ワイルドターキー蒸溜所",
+  "distillerySlug": "wild-turkey",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 8,
+  "abv": 50.5,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 3000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 5,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "度数50.5%の力強さ。スパイスとキャラメルが濃厚に押し寄せる。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ],
+  "affiliateId": "wild-turkey-8"
+}

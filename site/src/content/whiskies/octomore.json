@@ -1,0 +1,32 @@
+{
+  "name": "オクトモア",
+  "nameEn": "Octomore",
+  "distillery": "ブルックラディ蒸溜所",
+  "distillerySlug": "bruichladdich",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 59.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 14000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 89,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "世界最高峰のピート値を誇る超ヘビーピートウイスキー。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

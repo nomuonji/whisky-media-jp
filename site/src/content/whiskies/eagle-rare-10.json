@@ -1,0 +1,34 @@
+{
+  "name": "イーグルレア10年",
+  "nameEn": "Eagle Rare 10",
+  "distillery": "バッファロートレース蒸溜所",
+  "distillerySlug": "buffalo-trace",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 10,
+  "abv": 45.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "10年熟成のシングルバレルバーボン。チェリーとオーク、長い余韻。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

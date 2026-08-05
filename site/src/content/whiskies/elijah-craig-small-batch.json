@@ -1,0 +1,34 @@
+{
+  "name": "エライジャクレイグ スモールバッチ",
+  "nameEn": "Elijah Craig Small Batch",
+  "distillery": "ヘヴンヒル蒸溜所",
+  "distillerySlug": "heaven-hill",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 47.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 3500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "バーボン評論家から高評価を得続けるコスパの良い1本。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ],
+  "affiliateId": "elijah-craig-small-batch"
+}

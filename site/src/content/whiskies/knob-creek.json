@@ -1,0 +1,33 @@
+{
+  "name": "ノブクリーク",
+  "nameEn": "Knob Creek",
+  "distillery": "ジムビーム蒸溜所",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 9,
+  "abv": 50.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 3800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "9年熟成とカスクストレングス寄りの度数で濃厚な仕上がり。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

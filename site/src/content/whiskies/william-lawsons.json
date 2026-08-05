@@ -1,0 +1,31 @@
+{
+  "name": "ウィリアムローソン",
+  "nameEn": "William Lawson's",
+  "distillery": "バカルディ",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1400,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 75,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "スペイサイドモルトを軸にした軽やかなブレンデッド。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

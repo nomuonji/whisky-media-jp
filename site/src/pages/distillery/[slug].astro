@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import WhiskyList from '../../components/whisky/WhiskyList.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import { REGION_LABELS, REGION_DESCRIPTIONS, COUNTRY_LABELS } from '../../types/taxonomy';
+import { distilleryUrl } from '../../utils/distillery';
+
+export async function getStaticPaths() {
+  const { getDistilleries, whiskiesOf } = await import('../../utils/distillery');
+  const { getWhiskies, sortWhiskies } = await import('../../utils/whisky');
+
+  const [distilleries, whiskies] = await Promise.all([getDistilleries(), getWhiskies()]);
+
+  return distilleries.map((distillery) => ({
+    params: { slug: distillery.id },
+    props: {
+      distillery,
+      whiskies: sortWhiskies(whiskiesOf(distillery, whiskies), 'rating'),
+      siblings: distilleries
+        .filter((d) => d.id !== distillery.id && d.data.region === distillery.data.region)
+        .slice(0, 6),
+    },
+  }));
+}
+
+const { distillery, whiskies, siblings } = Astro.props;
+const d = distillery.data;
+
+// official: 公式表記に基づく項目。掲載銘柄数は当サイトの掲載状況なので出典マークを付けない
+const specs: { label: string; value: string; official: boolean }[] = [
+  { label: '国・地域', value: `${COUNTRY_LABELS[d.country]}／${REGION_LABELS[d.region]}`, official: true },
+  ...(d.founded ? [{ label: '創業', value: `${d.founded}年`, official: true }] : []),
+  ...(d.owner ? [{ label: '所有', value: d.owner, official: true }] : []),
+  ...(d.waterSource ? [{ label: '仕込み水', value: d.waterSource, official: true }] : []),
+  { label: '掲載銘柄', value: `${whiskies.length}件`, official: false },
+];
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: '蒸留所', href: '/distilleries/' },
+  { label: d.name, href: distilleryUrl(distillery.id) },
+];
+---
+
+<BaseLayout
+  title={d.name}
+  description={`${d.name}（${COUNTRY_LABELS[d.country]}・${REGION_LABELS[d.region]}${d.founded ? `／${d.founded}年創業` : ''}）の基本データと、掲載中の${whiskies.length}銘柄。`}
+  {breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <article class={`distillery-detail region-${d.region}`}>
+    <header class="distillery-hero">
+      <p class="whisky-hero-tags">
+        <a class="badge badge-region" href={`/region/${d.region}/`}>{REGION_LABELS[d.region]}</a>
+        <span class="badge badge-neutral">{COUNTRY_LABELS[d.country]}</span>
+        {d.founded ? <span class="badge badge-neutral">{d.founded}年創業</span> : null}
+      </p>
+      <h1>{d.name}</h1>
+      <p class="whisky-hero-en">{d.nameEn}</p>
+      <p class="whisky-hero-notes">{d.notes}</p>
+    </header>
+
+    <section class="whisky-section">
+      <h2>基本データ</h2>
+      <table class="spec-table">
+        <tbody>
+          {specs.map((s) => (
+            <tr>
+              <th scope="row">{s.label}</th>
+              <td>
+                {s.value}
+                {s.official ? <abbr class="src-mark src-official" title="公式表記">公</abbr> : null}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p class="text-secondary text-sm">
+        {REGION_LABELS[d.region]}の特徴：{REGION_DESCRIPTIONS[d.region]}
+      </p>
+    </section>
+
+    <section class="whisky-section">
+      <h2>{d.name}の銘柄</h2>
+      <WhiskyList {whiskies} emptyMessage="この蒸留所の銘柄はまだ掲載していません。" />
+    </section>
+
+    {siblings.length > 0 ? (
+      <section class="whisky-section">
+        <h2>同じ地域の蒸留所</h2>
+        <ul class="distillery-links">
+          {siblings.map((s) => (
+            <li><a href={distilleryUrl(s.id)}>{s.data.name}</a></li>
+          ))}
+        </ul>
+      </section>
+    ) : null}
+  </article>
+
+  <SourceNote />
+
+  <p class="text-center back-link">
+    <a href="/distilleries/">← 蒸留所一覧に戻る</a>
+  </p>
+</BaseLayout>

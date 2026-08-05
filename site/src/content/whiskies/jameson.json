@@ -1,0 +1,35 @@
+{
+  "name": "ジェムソン",
+  "nameEn": "Jameson",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 2200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "3回蒸留の軽やかさ。クセがなく食中でも飲みやすい。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ],
+  "affiliateId": "jameson"
+}

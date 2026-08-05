@@ -1,0 +1,34 @@
+{
+  "name": "グレンファークラス12年",
+  "nameEn": "Glenfarclas 12",
+  "distillery": "グレンファークラス蒸溜所",
+  "distillerySlug": "glenfarclas",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "値ごろなシェリー樽モルトの定番。ドライフルーツと蜂蜜、穏やかな甘さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

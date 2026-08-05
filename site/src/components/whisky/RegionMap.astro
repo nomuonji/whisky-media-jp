@@ -1,0 +1,57 @@
+---
+import type { RegionSummary } from '../../utils/distillery';
+import { REGION_DESCRIPTIONS } from '../../types/taxonomy';
+
+interface Props {
+  summaries: RegionSummary[];
+}
+
+const { summaries } = Astro.props;
+
+/**
+ * スコットランドの6地域は、実際の位置関係に近づけたタイル配置で並べる。
+ * （海岸線を模した地図ではなく、位置関係を示す模式図）
+ */
+const SCOTLAND_LAYOUT: Record<string, string> = {
+  island: 'island',
+  highland: 'highland',
+  speyside: 'speyside',
+  islay: 'islay',
+  campbeltown: 'campbeltown',
+  lowland: 'lowland',
+};
+
+const scotland = summaries.filter((s) => s.region in SCOTLAND_LAYOUT);
+const world = summaries.filter((s) => !(s.region in SCOTLAND_LAYOUT));
+---
+
+<div class="region-map">
+  <div class="region-map-scotland" role="list" aria-label="スコットランドの地域">
+    {scotland.map((s) => (
+      <a
+        role="listitem"
+        class={`region-tile region-${s.region}`}
+        style={`grid-area:${SCOTLAND_LAYOUT[s.region]}`}
+        href={`/region/${s.region}/`}
+        title={REGION_DESCRIPTIONS[s.region]}
+      >
+        <span class="region-tile-name">{s.label}</span>
+        <span class="region-tile-counts">
+          蒸留所{s.distilleries.length}・銘柄{s.whiskyCount}
+        </span>
+      </a>
+    ))}
+    <p class="region-map-caption">スコットランド</p>
+  </div>
+
+  <div class="region-map-world" role="list" aria-label="その他の生産国">
+    {world.map((s) => (
+      <a role="listitem" class={`region-tile region-${s.region}`} href={`/region/${s.region}/`}>
+        <span class="region-tile-name">{s.label}</span>
+        <span class="region-tile-counts">
+          蒸留所{s.distilleries.length}・銘柄{s.whiskyCount}
+        </span>
+      </a>
+    ))}
+  </div>
+</div>

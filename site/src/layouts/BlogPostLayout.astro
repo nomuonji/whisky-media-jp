@@ -1,0 +1,88 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import PostMeta from '../components/blog/PostMeta.astro';
+import RelatedPosts from '../components/blog/RelatedPosts.astro';
+import WhiskyList from '../components/whisky/WhiskyList.astro';
+import RadarChart from '../components/whisky/RadarChart.astro';
+import ComparisonTable from '../components/whisky/ComparisonTable.astro';
+import AffiliateSection from '../components/affiliate/AffiliateSection.astro';
+import { categoryLabel } from '../data/categories';
+import { postUrl, categoryUrl } from '../utils/url';
+import { ja } from '../i18n/ja';
+import { getWhiskies, mentionedWhiskies, sortWhiskies } from '../utils/whisky';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  allPosts: CollectionEntry<'blog'>[];
+}
+
+const { post, allPosts } = Astro.props;
+const {
+  title, date, updated, category, tags,
+  affiliate, affiliate_ids, compare, radar_chart, seo, excerpt,
+} = post.data;
+
+// 記事で触れた銘柄を銘柄ページへ送り出す（銘柄ページ側からも記事へ戻れる）
+const allWhiskies = await getWhiskies();
+const mentioned = sortWhiskies(
+  mentionedWhiskies(post.body, title, allWhiskies, post.data.whiskies),
+  'rating'
+);
+
+const description = seo?.description || excerpt || title;
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: categoryLabel(category), href: categoryUrl(category) },
+  { label: title, href: postUrl(post.slug) },
+];
+---
+
+<BaseLayout
+  {title}
+  {description}
+  ogImage={seo?.og_image}
+  type="article"
+  publishedTime={date}
+  modifiedTime={updated ?? date}
+  {post}
+  {breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <article class="post">
+    <header class="post-header">
+      <PostMeta {date} {category} {tags} {updated} />
+      <h1>{title}</h1>
+      {excerpt ? <p class="post-lead">{excerpt}</p> : null}
+    </header>
+
+    {radar_chart ? (
+      <RadarChart labels={radar_chart.labels} datasets={radar_chart.datasets} title={ja.chart.radarTitle} />
+    ) : null}
+
+    {compare && compare.length > 0 ? <ComparisonTable ids={compare} /> : null}
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    {mentioned.length > 0 ? (
+      <section class="whisky-section">
+        <h2>この記事で紹介した銘柄</h2>
+        <p class="text-secondary text-sm">各銘柄のデータ・味の8軸・似ている銘柄はリンク先で見られます。</p>
+        <WhiskyList whiskies={mentioned} />
+      </section>
+    ) : null}
+
+    <AffiliateSection ids={affiliate_ids} inline={affiliate} />
+  </article>
+
+  <RelatedPosts current={post} posts={allPosts} />
+
+  <p class="text-center back-link">
+    <a href="/">{ja.post.backToList}</a>
+  </p>
+</BaseLayout>

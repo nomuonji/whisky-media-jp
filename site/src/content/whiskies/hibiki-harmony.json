@@ -1,0 +1,34 @@
+{
+  "name": "響 JAPANESE HARMONY",
+  "nameEn": "Hibiki Japanese Harmony",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 43.0,
+  "cask": [
+    "ミズナラ",
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 11000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "複数の原酒を重ねたブレンデッド。蜂蜜とオレンジピールの甘さがなめらかに広がる。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

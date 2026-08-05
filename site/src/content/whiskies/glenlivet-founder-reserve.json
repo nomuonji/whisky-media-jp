@@ -1,0 +1,33 @@
+{
+  "name": "グレンリベット ファウンダーズリザーブ",
+  "nameEn": "Glenlivet Founder's Reserve",
+  "distillery": "グレンリベット蒸溜所",
+  "distillerySlug": "glenlivet",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 3500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "創業200年を記念して造られた定番NAS。柑橘とバニラの爽やかな甘さで入門に最適。",
+  "recommendedFor": [
+    "ハイボール",
+    "ストレート"
+  ]
+}

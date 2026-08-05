@@ -1,0 +1,47 @@
+---
+import BuyButton from './BuyButton.astro';
+import Icon from '../ui/Icon.astro';
+import PriceDisplay from './PriceDisplay.astro';
+import { resolveAffiliateLinks, buildAffiliateLink } from '../../utils/affiliate';
+import { ja } from '../../i18n/ja';
+import type { AffiliateData } from '../../types/affiliate';
+
+interface Props {
+  /** data/affiliates.ts のID（推奨） */
+  ids?: string[];
+  /** Frontmatter直書きの旧形式（移行期のみ） */
+  inline?: AffiliateData;
+  /** 明示リンクが無いときに銘柄名から自動生成する（銘柄ページ用） */
+  productName?: string;
+}
+
+const { ids = [], inline, productName } = Astro.props;
+let links = resolveAffiliateLinks(ids, inline);
+// 登録が無い銘柄でも、銘柄名からタグ付きAmazon検索リンクを自動生成して出す
+if (links.length === 0 && productName) {
+  links = [buildAffiliateLink(productName)];
+}
+---
+
+{links.length > 0 ? (
+  <aside class="affiliate-section" aria-labelledby="affiliate-heading">
+    <h3 id="affiliate-heading"><Icon name="cart" /> {ja.affiliate.buyHere}</h3>
+    <div class="affiliate-list">
+      {links.map((link) => (
+        <div class="affiliate-item">
+          <div>
+            <span class="name">{link.name}</span>
+            <span class="store">{link.storeLabel}</span>
+          </div>
+          <div class="affiliate-actions">
+            <PriceDisplay price={link.price} store={link.store} />
+            {link.url ? (
+              <BuyButton url={link.url} productName={link.name} storeLabel={link.storeLabel} />
+            ) : null}
+          </div>
+        </div>
+      ))}
+    </div>
+    <p class="affiliate-disclaimer">{ja.affiliate.disclaimer}</p>
+  </aside>
+) : null}

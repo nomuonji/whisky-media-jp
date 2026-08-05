@@ -1,0 +1,33 @@
+{
+  "name": "ラガヴーリン8年",
+  "nameEn": "Lagavulin 8",
+  "distillery": "ラガヴーリン蒸溜所",
+  "distillerySlug": "lagavulin",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 8,
+  "abv": 48.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 1,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "16年より若い分ピートが鋭くドライ。塩気が立ち、潮とスモークが際立つ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

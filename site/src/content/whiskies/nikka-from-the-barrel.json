@@ -1,0 +1,33 @@
+{
+  "name": "ニッカ フロム・ザ・バレル",
+  "nameEn": "Nikka From The Barrel",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 51.4,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 3300,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 86,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "樽出し原酒に近い高濃度ブレンデッド。コスパの高さで海外でも評価が高い。",
+  "recommendedFor": [
+    "ロック",
+    "水割り"
+  ],
+  "affiliateId": "nikka-from-the-barrel"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "グレンドロナック12年",
+  "nameEn": "GlenDronach 12",
+  "distillery": "グレンドロナック蒸溜所",
+  "distillerySlug": "glendronach",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "濃厚なシェリー樽熟成。チョコレートとドライフルーツの甘み。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

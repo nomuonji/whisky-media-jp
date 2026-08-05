@@ -1,0 +1,34 @@
+{
+  "name": "グレンモーレンジィ オリジナル10年",
+  "nameEn": "Glenmorangie Original 10",
+  "distillery": "グレンモーレンジィ蒸溜所",
+  "distillerySlug": "glenmorangie",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 4200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "背の高いポットスチルによる軽やかさ。柑橘とバニラが前に出る。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

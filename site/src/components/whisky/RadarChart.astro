@@ -1,0 +1,83 @@
+---
+import type { RadarDataset } from '../../types/whisky';
+import { isValidRadarData } from '../../utils/whisky';
+
+interface Props {
+  labels: string[];
+  datasets: RadarDataset[];
+  /** 省略時は見出しを出さない（周囲の見出しで文脈が足りている場合） */
+  title?: string;
+  max?: number;
+}
+
+const { labels, datasets, title, max = 5 } = Astro.props;
+
+const valid = isValidRadarData({ labels, datasets });
+const config = JSON.stringify({ labels, datasets, max });
+---
+
+{valid ? (
+  <figure class="chart-container">
+    {title ? <figcaption class="chart-title">{title}</figcaption> : null}
+    <canvas class="radar-chart" data-radar={config} role="img" aria-label={title ?? "味の傾向を示すレーダーチャート"}></canvas>
+  </figure>
+) : null}
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  // ページ内に複数チャートが並ぶため、id ではなく data 属性で拾う
+  const canvases = document.querySelectorAll<HTMLCanvasElement>('canvas.radar-chart');
+
+  const gridColor =
+    getComputedStyle(document.documentElement).getPropertyValue('--color-border').trim() ||
+    '#e0d5c1';
+  const fontFamily = '"Noto Sans JP", sans-serif';
+
+  canvases.forEach((canvas) => {
+    const raw = canvas.dataset.radar;
+    if (!raw) return;
+
+    const { labels, datasets, max } = JSON.parse(raw) as {
+      labels: string[];
+      datasets: { name: string; data: number[]; color: string }[];
+      max: number;
+    };
+
+    new Chart(canvas, {
+      type: 'radar',
+      data: {
+        labels,
+        datasets: datasets.map((ds) => ({
+          label: ds.name,
+          data: ds.data,
+          backgroundColor: `${ds.color}20`,
+          borderColor: ds.color,
+          borderWidth: 2,
+          pointBackgroundColor: ds.color,
+          pointRadius: 4,
+        })),
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        scales: {
+          r: {
+            beginAtZero: true,
+            max,
+            ticks: { stepSize: 1, backdropColor: 'transparent', font: { size: 11 } },
+            pointLabels: { font: { size: 12, family: fontFamily } },
+            grid: { color: gridColor },
+            angleLines: { color: gridColor },
+          },
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { font: { size: 13, family: fontFamily }, padding: 16 },
+          },
+        },
+      },
+    });
+  });
+</script>

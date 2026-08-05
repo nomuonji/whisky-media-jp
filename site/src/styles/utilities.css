@@ -1,0 +1,164 @@
+/* ============================================
+   Utility Classes & Page-level blocks
+   ============================================ */
+
+.container {
+  /* px ではなく em 由来の値。フォントサイズを変えても和文40字前後を保つ */
+  max-width: min(var(--content-width), var(--measure));
+  margin-inline: auto;
+  padding-inline: var(--space-lg);
+  width: 100%;
+}
+
+.container-wide {
+  max-width: var(--content-wide);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* キーボード操作時のみ現れる本文へのスキップリンク */
+.skip-link {
+  position: absolute;
+  left: var(--space-md);
+  top: -3rem;
+  z-index: var(--z-modal);
+  background: var(--color-brand-strong);
+  color: #fff;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-sm);
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: var(--space-md);
+  text-decoration: none;
+}
+
+.text-center { text-align: center; }
+.text-secondary { color: var(--color-text-secondary); }
+.text-tertiary { color: var(--color-text-tertiary); }
+
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.back-link {
+  padding-block: var(--space-xl) var(--space-2xl);
+  border-top: 1px solid var(--color-border);
+  margin-top: var(--space-xl);
+}
+
+/* === Post === */
+.post-header {
+  padding-block: var(--space-xl) var(--space-md);
+}
+
+.post-header h1 {
+  margin-top: var(--space-2xs);
+}
+
+.post-lead {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  margin-top: var(--space-sm);
+}
+
+.post-tags {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+  margin-block: var(--space-xs);
+}
+
+.post-tag {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.post-tag::before {
+  content: '#';
+}
+
+.post-tag:hover {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+.post-content {
+  padding-block: var(--space-md);
+}
+
+/* === Category/Tag/About page title === */
+.page-title {
+  font-size: var(--text-xl);
+  padding-block: var(--space-lg) var(--space-xs);
+}
+
+.page-title em {
+  color: var(--color-brand);
+  font-style: normal;
+}
+
+.page-lead {
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-md);
+}
+
+/* === Hero === */
+.hero {
+  text-align: center;
+  padding: var(--space-3xl) 0 var(--space-xl);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  margin-bottom: var(--space-xs);
+}
+
+.hero p {
+  color: var(--color-text-secondary);
+  font-size: var(--text-base);
+  max-width: 560px;
+  margin-inline: auto;
+}
+
+/* === Responsive === */
+@media (max-width: 600px) {
+  .hero {
+    padding: var(--space-xl) 0 var(--space-md);
+  }
+
+  .hero h1 {
+    font-size: var(--text-xl);
+  }
+
+  /* 記事本文中のMarkdownテーブルは横スクロールさせる */
+  .post-content table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* 数値の桁を揃える（価格・点数・順位） */
+.whisky-rating,
+.whisky-price,
+.whisky-cospa,
+.whisky-hero-figures,
+.whisky-rank,
+.pagination-page {
+  font-feature-settings: "palt" 0, "tnum" 1;
+}

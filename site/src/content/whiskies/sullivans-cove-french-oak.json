@@ -1,0 +1,32 @@
+{
+  "name": "サリバンズコーヴ フレンチオーク",
+  "nameEn": "Sullivans Cove French Oak",
+  "distillery": "サリバンズコーヴ蒸溜所",
+  "distillerySlug": "sullivans-cove",
+  "country": "australia",
+  "region": "australia",
+  "type": "single-malt",
+  "abv": 47.5,
+  "cask": [
+    "フレンチオーク シェリー"
+  ],
+  "priceYen": 35000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 90,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "世界最高賞を受賞した実績を持つタスマニアの逸品。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

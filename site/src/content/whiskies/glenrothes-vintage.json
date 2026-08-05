@@ -1,0 +1,32 @@
+{
+  "name": "グレンロセス ヴィンテージ",
+  "nameEn": "The Glenrothes Vintage",
+  "distillery": "グレンロセス蒸溜所",
+  "distillerySlug": "glenrothes",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 8500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "収穫年を表記するヴィンテージボトリング。シェリー由来の厚み。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

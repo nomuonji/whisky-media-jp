@@ -1,0 +1,8 @@
+---
+const { as: Tag = 'div', width = 'default', id, class: className = '' } = Astro.props;
+const classes = ['container', width === 'wide' ? 'container-wide' : '', className]
+  .filter(Boolean)
+  .join(' ');
+---
+
+<Tag class={classes} {id}><slot /></Tag>

@@ -1,0 +1,33 @@
+{
+  "name": "響21年",
+  "nameEn": "Hibiki 21 Year Old",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "age": 21,
+  "abv": 43.0,
+  "cask": [
+    "ミズナラ",
+    "シェリー"
+  ],
+  "priceYen": 120000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 93,
+  "flavor": {
+    "peat": 1,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 5,
+    "body": 3
+  },
+  "notes": "国際的な賞を多数受賞した長期熟成ブレンデッド。芳醇で滑らか。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

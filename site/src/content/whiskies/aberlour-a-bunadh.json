@@ -1,0 +1,33 @@
+{
+  "name": "アベラワー アブーナ",
+  "nameEn": "Aberlour A'bunadh",
+  "distillery": "アベラワー蒸溜所",
+  "distillerySlug": "aberlour",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "abv": 60.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 89,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 5,
+    "body": 5
+  },
+  "notes": "カスクストレングス・ノンチルフィルタード。濃厚なシェリー感が凝縮。",
+  "recommendedFor": [
+    "ロック",
+    "水割り"
+  ]
+}

@@ -1,0 +1,40 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+import { ja } from '../../i18n/ja';
+
+interface Props {
+  current: CollectionEntry<'blog'>;
+  posts: CollectionEntry<'blog'>[];
+  limit?: number;
+}
+
+const { current, posts, limit = 3 } = Astro.props;
+
+/** 同カテゴリ +3点、共通タグ1つにつき +1点。0点は関連なしとして除外 */
+function relevance(post: CollectionEntry<'blog'>): number {
+  const sameCategory = post.data.category === current.data.category ? 3 : 0;
+  const currentTags = new Set(current.data.tags || []);
+  const shared = (post.data.tags || []).filter((t: string) => currentTags.has(t)).length;
+  return sameCategory + shared;
+}
+
+const related = posts
+  .filter((p) => p.slug !== current.slug)
+  .map((post) => ({ post, score: relevance(post) }))
+  .filter(({ score }) => score > 0)
+  .sort((a, b) =>
+    b.score - a.score || b.post.data.date.getTime() - a.post.data.date.getTime()
+  )
+  .slice(0, limit)
+  .map(({ post }) => post);
+---
+
+{related.length > 0 ? (
+  <section class="related-posts" aria-labelledby="related-heading">
+    <h2 id="related-heading">{ja.post.relatedPosts}</h2>
+    <div class="post-list">
+      {related.map((post) => <PostCard {post} headingLevel={3} />)}
+    </div>
+  </section>
+) : null}

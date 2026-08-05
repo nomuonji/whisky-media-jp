@@ -1,0 +1,33 @@
+{
+  "name": "スプリングバンク15年",
+  "nameEn": "Springbank 15",
+  "distillery": "スプリングバンク蒸溜所",
+  "distillerySlug": "springbank",
+  "country": "scotland",
+  "region": "campbeltown",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 46.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 16000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 89,
+  "flavor": {
+    "peat": 3,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 3,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "熟成が進みシェリー由来の甘さと塩気が融合した円熟の1本。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

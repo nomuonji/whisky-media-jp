@@ -1,0 +1,151 @@
+/* ============================================
+   蒸留所 / 地域マップ
+   ============================================ */
+
+.region-map {
+  display: grid;
+  gap: var(--space-lg);
+  margin-block: var(--space-lg);
+}
+
+.region-map-scotland {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    '.     island    .'
+    '.     highland  speyside'
+    'islay campbeltown lowland';
+  gap: var(--space-sm);
+  padding: var(--space-lg) var(--space-lg) var(--space-2xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.region-map-caption {
+  position: absolute;
+  right: var(--space-lg);
+  bottom: var(--space-md);
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.1em;
+}
+
+.region-map-world {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: var(--space-sm);
+}
+
+.region-tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-3xs);
+  min-height: 84px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--region-color, var(--color-border));
+  background: color-mix(in srgb, var(--region-color, var(--color-brand)) 12%, white);
+  color: var(--color-text);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.region-tile:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.region-tile-name {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  color: color-mix(in srgb, var(--region-color, var(--color-brand)) 55%, black);
+}
+
+.region-tile-counts {
+  font-size: var(--text-xs);
+  color: var(--color-text-secondary);
+}
+
+/* === 蒸留所詳細 === */
+.distillery-hero {
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.distillery-hero h1 {
+  margin: 0;
+  font-size: var(--text-2xl);
+}
+
+.distillery-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+}
+
+.distillery-links li {
+  margin: 0;
+}
+
+.distillery-links a {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+}
+
+.distillery-links a:hover {
+  border-color: var(--color-brand);
+  text-decoration: none;
+}
+
+/* === 蒸留所一覧表 === */
+.distillery-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+  min-width: 520px;
+}
+
+.distillery-table th,
+.distillery-table td {
+  border-bottom: 1px solid var(--color-border-light);
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+}
+
+.distillery-table thead th {
+  background: var(--color-surface-subdued);
+  border-bottom: 1px solid var(--color-border);
+  font-weight: var(--weight-semibold);
+}
+
+.distillery-table tbody th {
+  font-weight: var(--weight-normal);
+  white-space: nowrap;
+}
+
+.region-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--region-color, var(--color-brand));
+  margin-right: var(--space-xs);
+}
+
+@media (max-width: 600px) {
+  .region-map-scotland {
+    grid-template-areas:
+      'island  highland'
+      'speyside lowland'
+      'islay   campbeltown';
+  }
+}

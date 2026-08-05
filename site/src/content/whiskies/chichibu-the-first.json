@@ -1,0 +1,33 @@
+{
+  "name": "秩父 ザ・ファースト10年",
+  "nameEn": "Chichibu The First 10",
+  "distillery": "秩父蒸溜所",
+  "distillerySlug": "chichibu",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 50.5,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 45000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 91,
+  "flavor": {
+    "peat": 2,
+    "sweet": 4,
+    "fruity": 5,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "創業から10年を記念したボトル。フルーティさと複雑さが凝縮。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

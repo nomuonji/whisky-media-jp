@@ -1,0 +1,32 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostMeta from './PostMeta.astro';
+import PostMark from './PostMark.astro';
+import { postUrl } from '../../utils/url';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+  /** 見出しレベル。一覧は h2、関連記事など従属セクションでは h3 */
+  headingLevel?: 2 | 3;
+}
+
+const { post, headingLevel = 2 } = Astro.props;
+const { title, date, category, excerpt, tags } = post.data;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+---
+
+<!-- カード全体をaで包むとメタ内のリンクが入れ子アンカーになるため、
+     タイトルだけをリンクにして ::after でカード全面をクリック領域にする -->
+<article class={`post-card cat-${category}`}>
+  <div class="post-card-mark">
+    <PostMark {category} />
+  </div>
+
+  <div class="post-card-body">
+    <PostMeta date={date} category={category} tags={tags} />
+    <Heading class="post-card-title">
+      <a href={postUrl(post.slug)}>{title}</a>
+    </Heading>
+    {excerpt && <p class="post-excerpt">{excerpt}</p>}
+  </div>
+</article>

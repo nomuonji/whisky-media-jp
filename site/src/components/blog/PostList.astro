@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostGrid from './PostGrid.astro';
+import Pagination from './Pagination.astro';
+import { paginate, POSTS_PER_PAGE } from '../../utils/pagination';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  /** 現在のページ番号（1始まり）。省略時はページ分割しない */
+  page?: number;
+  /** ページ番号 → URL。page を渡すときは必須 */
+  hrefFor?: (page: number) => string;
+  perPage?: number;
+  headingLevel?: 2 | 3;
+  emptyMessage?: string;
+}
+
+const {
+  posts,
+  page,
+  hrefFor,
+  perPage = POSTS_PER_PAGE,
+  headingLevel = 2,
+  emptyMessage,
+} = Astro.props;
+
+const paged = page && hrefFor ? paginate(posts, page, hrefFor, perPage) : null;
+const visible = paged ? paged.items : posts;
+---
+
+<PostGrid posts={visible} {headingLevel} {emptyMessage} />
+
+{paged && hrefFor ? (
+  <Pagination current={paged.current} total={paged.total} {hrefFor} />
+) : null}

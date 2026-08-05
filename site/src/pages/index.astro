@@ -1,0 +1,76 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/layout/Hero.astro';
+import WhiskyList from '../components/whisky/WhiskyList.astro';
+import PriceScatter from '../components/whisky/PriceScatter.astro';
+import PostCard from '../components/blog/PostCard.astro';
+import SourceNote from '../components/whisky/SourceNote.astro';
+import { SITE } from '../data/site';
+import { DISCOVERY_LINKS } from '../data/navigation';
+import { getWhiskies, sortWhiskies, costPerPoint } from '../utils/whisky';
+import { getPublishedPosts } from '../utils/posts';
+import { ja } from '../i18n/ja';
+
+const whiskies = await getWhiskies();
+const posts = await getPublishedPosts();
+
+const cospaTop = sortWhiskies(whiskies.filter((w) => costPerPoint(w) !== null), 'cospa').slice(0, 5);
+const ratingTop = sortWhiskies(whiskies, 'rating').slice(0, 5);
+const latestPosts = posts.slice(0, 3);
+---
+
+<BaseLayout title={ja.site.tagline} description={SITE.description} width="wide">
+  <Hero
+    title={ja.site.tagline}
+    description={`「まろやか」「深みがある」ではなく、味の8軸・価格・コスパの数値で選ぶ。現在${whiskies.length}銘柄を掲載。`}
+  />
+
+  <nav class="discovery" aria-labelledby="discovery-heading">
+    <h2 id="discovery-heading">どう選びますか？</h2>
+    <ul class="discovery-links">
+      {DISCOVERY_LINKS.map((link) => (
+        <li><a href={link.href}>{link.label}</a></li>
+      ))}
+    </ul>
+    <p class="discovery-more">
+      <a href="/whiskies/">条件を組み合わせて探す（{whiskies.length}銘柄）→</a>
+      <a href="/compare/">2〜4本を選んで比較する →</a>
+    </p>
+  </nav>
+
+  <section class="home-section">
+    <h2>価格と評価の関係</h2>
+    <p class="text-secondary text-sm">
+      掲載中の{whiskies.length}銘柄を、参考価格（横）と編集部評価（縦）で並べた図です。
+      左上にあるほど「安いのに評価が高い」ことになります。
+    </p>
+    <PriceScatter {whiskies} />
+  </section>
+
+  <section class="home-section">
+    <h2>コスパで選ぶ TOP5</h2>
+    <p class="text-secondary text-sm">
+      1点あたりの価格（参考価格 ÷ 編集部評価）が安い順。数字が小さいほど「点数のわりに安い」。
+    </p>
+    <WhiskyList whiskies={cospaTop} ranked={true} showCospa={true} />
+    <p class="home-more"><a href="/ranking/cospa/">コスパランキングをすべて見る →</a></p>
+  </section>
+
+  <section class="home-section">
+    <h2>評価で選ぶ TOP5</h2>
+    <WhiskyList whiskies={ratingTop} ranked={true} />
+    <p class="home-more"><a href="/ranking/rating/">評価ランキングをすべて見る →</a></p>
+  </section>
+
+  {latestPosts.length > 0 ? (
+    <section class="home-section">
+      <h2>新着記事</h2>
+      <div class="post-list">
+        {latestPosts.map((post) => <PostCard {post} headingLevel={3} />)}
+      </div>
+      <p class="home-more"><a href="/articles/">記事一覧を見る →</a></p>
+    </section>
+  ) : null}
+
+  <SourceNote />
+</BaseLayout>

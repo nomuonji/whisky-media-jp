@@ -1,0 +1,241 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import WhiskyCard from '../../components/whisky/WhiskyCard.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import DiscoveryNav from '../../components/whisky/DiscoveryNav.astro';
+import { REGIONS, REGION_LABELS, WHISKY_TYPES, TYPE_LABELS, PRICE_BANDS } from '../../types/taxonomy';
+import { getWhiskies, priceBand, costPerPoint, SORT_LABELS } from '../../utils/whisky';
+
+const whiskies = await getWhiskies();
+
+// 実際に銘柄が存在する地域・タイプだけを絞り込みに出す（0件のチップを作らない）
+const usedRegions = REGIONS.filter((r) => whiskies.some((w) => w.data.region === r));
+const usedTypes = WHISKY_TYPES.filter((t) => whiskies.some((w) => w.data.type === t));
+const usedBands = PRICE_BANDS.filter((b) => whiskies.some((w) => priceBand(w.data.priceYen) === b.id));
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: '銘柄一覧', href: '/whiskies/' },
+];
+---
+
+<BaseLayout
+  title="ウイスキー銘柄一覧"
+  description={`ウイスキー${whiskies.length}銘柄を、地域・タイプ・価格帯・味で絞り込んで探せます。評価順・価格順・コスパ順に並べ替え可能。`}
+  {breadcrumbs}
+  width="wide"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">銘柄を<em>探す</em></h1>
+  <p class="page-lead">
+    地域・タイプ・価格帯で絞り込み、評価順やコスパ順に並べ替えられます。
+    現在<strong>{whiskies.length}銘柄</strong>を掲載。
+  </p>
+
+  <form class="filter-panel" id="filter-panel">
+    <fieldset>
+      <legend>地域</legend>
+      <div class="filter-chips">
+        {usedRegions.map((r) => (
+          <label class="filter-chip">
+            <input type="checkbox" name="region" value={r} />
+            <span>{REGION_LABELS[r]}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>タイプ</legend>
+      <div class="filter-chips">
+        {usedTypes.map((t) => (
+          <label class="filter-chip">
+            <input type="checkbox" name="type" value={t} />
+            <span>{TYPE_LABELS[t]}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>価格帯</legend>
+      <div class="filter-chips">
+        {usedBands.map((b) => (
+          <label class="filter-chip">
+            <input type="checkbox" name="band" value={b.id} />
+            <span>{b.label}</span>
+          </label>
+        ))}
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>味</legend>
+      <div class="filter-chips">
+        <label class="filter-chip">
+          <input type="checkbox" name="flavor" value="peaty" />
+          <span>ピーティ</span>
+        </label>
+        <label class="filter-chip">
+          <input type="checkbox" name="flavor" value="sweet" />
+          <span>甘口</span>
+        </label>
+        <label class="filter-chip">
+          <input type="checkbox" name="flavor" value="fruity" />
+          <span>フルーティ</span>
+        </label>
+        <label class="filter-chip">
+          <input type="checkbox" name="flavor" value="mild" />
+          <span>クセが少ない</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <div class="filter-actions">
+      <label class="filter-sort">
+        並び替え
+        <select name="sort" id="sort-select">
+          {Object.entries(SORT_LABELS).map(([key, label]) => (
+            <option value={key}>{label}</option>
+          ))}
+        </select>
+      </label>
+      <button type="reset" class="btn btn-secondary btn-sm">条件をリセット</button>
+    </div>
+  </form>
+
+  <p class="filter-count" id="filter-count" aria-live="polite">{whiskies.length}銘柄</p>
+
+  <p class="filter-empty" id="filter-empty" hidden>
+    条件に合う銘柄がありません。
+    <button type="button" class="btn btn-secondary btn-sm" id="filter-empty-reset">条件をリセット</button>
+  </p>
+
+  <div class="whisky-list" id="whisky-list">
+    {whiskies.map((whisky) => {
+      const w = whisky.data;
+      const cpp = costPerPoint(whisky);
+      return (
+        <div
+          class="whisky-filter-item"
+          data-region={w.region}
+          data-type={w.type}
+          data-band={priceBand(w.priceYen) ?? ''}
+          data-peat={w.flavor.peat}
+          data-sweet={w.flavor.sweet}
+          data-fruity={w.flavor.fruity}
+          data-rating={w.rating}
+          data-price={w.priceYen ?? 999999}
+          data-cospa={cpp ?? 999999}
+          data-name={w.name}
+        >
+          <WhiskyCard {whisky} showCospa={true} />
+        </div>
+      );
+    })}
+  </div>
+
+  <DiscoveryNav />
+
+  <SourceNote />
+</BaseLayout>
+
+<script>
+  const panel = document.getElementById('filter-panel') as HTMLFormElement | null;
+  const list = document.getElementById('whisky-list');
+  const count = document.getElementById('filter-count');
+  const empty = document.getElementById('filter-empty');
+  const emptyReset = document.getElementById('filter-empty-reset');
+
+  if (panel && list && count && empty && emptyReset) {
+    const items = Array.from(list.querySelectorAll<HTMLElement>('.whisky-filter-item'));
+
+    const checkedValues = (name: string): string[] =>
+      Array.from(panel.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`))
+        .map((el) => el.value);
+
+    /** 味のチップは8軸の閾値に読み替える */
+    function matchesFlavor(el: HTMLElement, flavors: string[]): boolean {
+      const peat = Number(el.dataset.peat);
+      const sweet = Number(el.dataset.sweet);
+      const fruity = Number(el.dataset.fruity);
+      return flavors.every((f) => {
+        if (f === 'peaty') return peat >= 3;
+        if (f === 'sweet') return sweet >= 4;
+        if (f === 'fruity') return fruity >= 4;
+        if (f === 'mild') return peat <= 1;
+        return true;
+      });
+    }
+
+    function apply(): void {
+      const regions = checkedValues('region');
+      const types = checkedValues('type');
+      const bands = checkedValues('band');
+      const flavors = checkedValues('flavor');
+      const sort = (panel!.querySelector('#sort-select') as HTMLSelectElement).value;
+
+      let visible = 0;
+      for (const el of items) {
+        const ok =
+          (regions.length === 0 || regions.includes(el.dataset.region!)) &&
+          (types.length === 0 || types.includes(el.dataset.type!)) &&
+          (bands.length === 0 || bands.includes(el.dataset.band!)) &&
+          matchesFlavor(el, flavors);
+        el.hidden = !ok;
+        if (ok) visible++;
+      }
+
+      const sorted = [...items].sort((a, b) => {
+        switch (sort) {
+          case 'price-asc': return Number(a.dataset.price) - Number(b.dataset.price);
+          case 'price-desc': return Number(b.dataset.price) - Number(a.dataset.price);
+          case 'cospa': return Number(a.dataset.cospa) - Number(b.dataset.cospa);
+          case 'name': return a.dataset.name!.localeCompare(b.dataset.name!, 'ja');
+          default: return Number(b.dataset.rating) - Number(a.dataset.rating);
+        }
+      });
+      for (const el of sorted) list!.appendChild(el);
+
+      count!.textContent = visible === items.length
+        ? `${items.length}銘柄`
+        : `${visible}銘柄（全${items.length}銘柄中）`;
+
+      // 0件のときに空白だけを見せない。理由と次の操作を必ず出す
+      empty!.hidden = visible > 0;
+
+      // 絞り込み条件をURLに残して共有・再訪できるようにする
+      const params = new URLSearchParams();
+      for (const [key, values] of [['region', regions], ['type', types], ['band', bands], ['flavor', flavors]] as const) {
+        if (values.length) params.set(key, values.join(','));
+      }
+      if (sort !== 'rating') params.set('sort', sort);
+      const qs = params.toString();
+      history.replaceState(null, '', qs ? `?${qs}` : location.pathname);
+    }
+
+    function restore(): void {
+      const params = new URLSearchParams(location.search);
+      for (const name of ['region', 'type', 'band', 'flavor']) {
+        const values = (params.get(name) || '').split(',').filter(Boolean);
+        for (const input of panel!.querySelectorAll<HTMLInputElement>(`input[name="${name}"]`)) {
+          input.checked = values.includes(input.value);
+        }
+      }
+      const sort = params.get('sort');
+      if (sort) (panel!.querySelector('#sort-select') as HTMLSelectElement).value = sort;
+    }
+
+    emptyReset.addEventListener('click', () => {
+      panel!.reset();
+      apply();
+    });
+
+    panel.addEventListener('change', apply);
+    panel.addEventListener('reset', () => setTimeout(apply, 0));
+    restore();
+    apply();
+  }
+</script>

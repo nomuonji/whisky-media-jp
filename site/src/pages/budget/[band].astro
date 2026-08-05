@@ -1,0 +1,48 @@
+---
+import ListLayout from '../../layouts/ListLayout.astro';
+import WhiskyList from '../../components/whisky/WhiskyList.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import DiscoveryNav from '../../components/whisky/DiscoveryNav.astro';
+import { PRICE_BANDS } from '../../types/taxonomy';
+import { getWhiskies, sortWhiskies, priceBand } from '../../utils/whisky';
+
+export async function getStaticPaths() {
+  const whiskies = await getWhiskies();
+
+  return PRICE_BANDS.map((band) => ({
+    params: { band: band.id },
+    props: {
+      label: band.label,
+      // 予算ページは「その価格帯に収まる」ではなく「予算内で買える」で見せる
+      whiskies: whiskies.filter((w) => w.data.priceYen && w.data.priceYen <= band.max),
+      bandLabel: PRICE_BANDS.find((b) => b.id === band.id)!.label,
+      exact: whiskies.filter((w) => priceBand(w.data.priceYen) === band.id).length,
+    },
+  }));
+}
+
+const { band } = Astro.params;
+const { whiskies, bandLabel } = Astro.props;
+const max = PRICE_BANDS.find((b) => b.id === band)!.max;
+const budgetLabel = max === Infinity ? '20,000円以上' : `${max.toLocaleString('ja-JP')}円以内`;
+
+// 予算内では「コスパが良い順」が最も知りたい並び
+const sorted = sortWhiskies(whiskies, 'cospa');
+---
+
+<ListLayout
+  title={`予算${budgetLabel}で買えるウイスキー${whiskies.length}銘柄`}
+  description={`${budgetLabel}で買えるウイスキーを、1点あたりの価格が安い順（コスパ順）に並べています。${bandLabel}の銘柄を探している方向け。`}
+  heading="予算"
+  headingAccent={budgetLabel}
+  lead={`${budgetLabel}で買える銘柄を、コスパ（1点あたりの価格）が良い順に並べています。`}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: '銘柄一覧', href: '/whiskies/' },
+    { label: `予算${budgetLabel}`, href: `/budget/${band}/` },
+  ]}
+>
+  <WhiskyList whiskies={sorted} headingLevel={2} showCospa={true} />
+  <DiscoveryNav current={`/budget/${band}/`} />
+  <SourceNote />
+</ListLayout>

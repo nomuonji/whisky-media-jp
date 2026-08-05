@@ -1,0 +1,31 @@
+{
+  "name": "パスポート スコッチ",
+  "nameEn": "Passport Scotch",
+  "distillery": "バカルディ",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1300,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 74,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 1,
+    "body": 2
+  },
+  "notes": "軽快な飲み口で知られる、価格重視のブレンデッド。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

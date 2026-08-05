@@ -1,0 +1,32 @@
+{
+  "name": "カバラン ソリスト シェリー",
+  "nameEn": "Kavalan Solist Sherry Cask",
+  "distillery": "カバラン蒸溜所",
+  "distillerySlug": "kavalan",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 58.6,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 18000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 90,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 5,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 5,
+    "body": 5
+  },
+  "notes": "シェリー樽シングルカスク。数々の国際コンペで最高賞を獲得。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

@@ -1,0 +1,35 @@
+---
+import Tag from '../ui/Tag.astro';
+import { categoryLabel } from '../../data/categories';
+import { formatDate, toDateAttr } from '../../utils/date';
+import { categoryUrl } from '../../utils/url';
+import type { Category } from '../../types/content';
+
+interface Props {
+  date: Date;
+  category: Category;
+  tags?: string[];
+  updated?: Date;
+}
+
+const { date, category, tags = [], updated } = Astro.props;
+---
+
+<p class="post-meta">
+  <a href={categoryUrl(category)} class="post-category">
+    {categoryLabel(category)}
+  </a>
+  {' '}
+  <time datetime={toDateAttr(date)}>{formatDate(date)}</time>
+  {updated ? (
+    <span class="text-tertiary">
+      {' '}（更新 <time datetime={toDateAttr(updated)}>{formatDate(updated)}</time>）
+    </span>
+  ) : null}
+</p>
+
+{tags.length > 0 ? (
+  <div class="post-tags">
+    {tags.map((tag: string) => <Tag label={tag} />)}
+  </div>
+) : null}

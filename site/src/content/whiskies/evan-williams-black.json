@@ -1,0 +1,33 @@
+{
+  "name": "エヴァン・ウィリアムス ブラックラベル",
+  "nameEn": "Evan Williams Black Label",
+  "distillery": "ヘヴンヒル蒸溜所",
+  "distillerySlug": "heaven-hill",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 43.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 1800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "価格を超えた品質と評されるスタンダードバーボン。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

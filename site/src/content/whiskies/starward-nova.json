@@ -1,0 +1,33 @@
+{
+  "name": "スターワード ノヴァ",
+  "nameEn": "Starward Nova",
+  "distillery": "スターワード蒸溜所",
+  "distillerySlug": "starward",
+  "country": "australia",
+  "region": "australia",
+  "type": "single-malt",
+  "abv": 41.0,
+  "cask": [
+    "赤ワイン樽"
+  ],
+  "priceYen": 7500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 5,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "赤ワイン樽熟成によるベリー系の濃い果実味が特徴。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

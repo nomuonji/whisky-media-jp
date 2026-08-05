@@ -1,0 +1,35 @@
+{
+  "name": "マッカラン ダブルカスク12年",
+  "nameEn": "Macallan Double Cask 12",
+  "distillery": "マッカラン蒸溜所",
+  "distillerySlug": "macallan",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "アメリカンオークとシェリー樽の2系統で熟成。バニラとオレンジの皮、クリーミーな甘さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "フォアローゼス イエローラベル",
+  "nameEn": "Four Roses Yellow Label",
+  "distillery": "フォアローゼス蒸溜所",
+  "distillerySlug": "four-roses",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 40.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 2600,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "10種類のレシピをブレンド。軽やかでフルーティなバーボン。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

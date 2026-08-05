@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/ui/Button.astro';
+import Icon from '../components/ui/Icon.astro';
+import { MAIN_NAV } from '../data/navigation';
+import { ja } from '../i18n/ja';
+---
+
+<BaseLayout
+  title={ja.errors.notFound}
+  description="お探しのページは見つかりませんでした。"
+  noindex={true}
+>
+  <div class="error-page">
+    <p class="error-code">404</p>
+    <h1>{ja.errors.notFound}</h1>
+    <p class="text-secondary">{ja.errors.notFoundMessage}</p>
+
+    <Button href="/" label={ja.errors.backToTop} size="lg" />
+
+    <div class="error-suggestions">
+      <h2><Icon name="bulb" /> カテゴリから探す</h2>
+      <ul>
+        {MAIN_NAV.map((item) => (
+          <li><a href={item.href}>{item.label}の記事を見る</a></li>
+        ))}
+        <li><a href="/search/">{ja.search.title}</a></li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

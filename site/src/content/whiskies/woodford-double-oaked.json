@@ -1,0 +1,33 @@
+{
+  "name": "ウッドフォード ダブルオークド",
+  "nameEn": "Woodford Reserve Double Oaked",
+  "distillery": "ウッドフォードリザーブ蒸溜所",
+  "distillerySlug": "woodford",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45.2,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 6000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "2度の樽熟成でダークチョコレートと糖蜜の甘さが濃い。まろやかなコク。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "アベラワー12年 ダブルカスク",
+  "nameEn": "Aberlour 12 Double Cask",
+  "distillery": "アベラワー蒸溜所",
+  "distillerySlug": "aberlour",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "シェリー樽とバーボン樽の原酒をバッティング。バランスの良い甘み。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

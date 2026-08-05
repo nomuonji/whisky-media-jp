@@ -1,0 +1,79 @@
+---
+import { getCollection } from 'astro:content';
+import { REGION_LABELS, COUNTRY_LABELS, TYPE_LABELS, AVAILABILITY_LABELS } from '../../types/taxonomy';
+import { ageLabel, priceLabel, costPerPoint, type Whisky } from '../../utils/whisky';
+
+interface Props {
+  whisky: Whisky;
+}
+
+const { whisky } = Astro.props;
+const w = whisky.data;
+const cpp = costPerPoint(whisky);
+
+// 蒸留所ページが実在するときだけリンクする（データの綴り違いで404を作らない）
+const distilleries = await getCollection('distilleries');
+const distilleryHref =
+  w.distillerySlug && distilleries.some((d) => d.id === w.distillerySlug)
+    ? `/distillery/${w.distillerySlug}/`
+    : undefined;
+
+/** src: 公式表記か、編集部の推定か */
+const rows: { label: string; value: string; href?: string; src: 'official' | 'editorial' | 'market' }[] = [
+  {
+    label: '蒸留所',
+    value: w.distillery,
+    href: distilleryHref,
+    src: 'official',
+  },
+  { label: '国・地域', value: `${COUNTRY_LABELS[w.country]}／${REGION_LABELS[w.region]}`, src: 'official' },
+  { label: 'タイプ', value: TYPE_LABELS[w.type], src: 'official' },
+  { label: '熟成年数', value: ageLabel(w.age), src: 'official' },
+  { label: 'アルコール度数', value: `${w.abv}%`, src: 'official' },
+  { label: '樽', value: w.cask.join('・') || '—', src: 'official' },
+  {
+    label: '参考価格',
+    value: w.priceYen ? `${priceLabel(w.priceYen)}（${w.priceAsOf}時点）` : '—',
+    src: w.priceSource,
+  },
+  { label: '入手しやすさ', value: AVAILABILITY_LABELS[w.availability], src: 'editorial' },
+  { label: '編集部評価', value: `${w.rating} / 100`, src: 'editorial' },
+  {
+    label: '1点あたり価格',
+    value: cpp ? `${cpp.toLocaleString('ja-JP')}円` : '—',
+    src: 'editorial',
+  },
+  ...(w.recommendedFor.length
+    ? [{ label: 'おすすめの飲み方', value: w.recommendedFor.join('・'), src: 'editorial' as const }]
+    : []),
+  ...(w.whiskybase
+    ? [{
+        label: 'Whiskybase',
+        value: `${w.whiskybase.score}点（${w.whiskybase.votes}件・${w.whiskybase.checkedAt}確認）`,
+        src: 'market' as const,
+      }]
+    : []),
+];
+
+const SRC_MARK = { official: '公', market: '市', editorial: '推' };
+const SRC_TITLE = {
+  official: '公式表記',
+  market: '市場価格の実測',
+  editorial: '編集部推定',
+};
+---
+
+<table class="spec-table">
+  <caption class="sr-only">{w.name}の基本情報</caption>
+  <tbody>
+    {rows.map((row) => (
+      <tr>
+        <th scope="row">{row.label}</th>
+        <td>
+          {row.href ? <a href={row.href}>{row.value}</a> : row.value}
+          <abbr class={`src-mark src-${row.src}`} title={SRC_TITLE[row.src]}>{SRC_MARK[row.src]}</abbr>
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>

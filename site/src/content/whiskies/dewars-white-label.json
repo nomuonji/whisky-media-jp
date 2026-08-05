@@ -1,0 +1,31 @@
+{
+  "name": "デュワーズ ホワイトラベル",
+  "nameEn": "Dewar's White Label",
+  "distillery": "バカルディ",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1600,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 78,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "二重熟成製法（ダブルエイジド）で滑らかさを高めたブレンデッド。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

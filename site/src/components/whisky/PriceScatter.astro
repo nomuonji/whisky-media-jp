@@ -1,0 +1,175 @@
+---
+import { REGION_LABELS, type Region } from '../../types/taxonomy';
+import { whiskyUrl, type Whisky } from '../../utils/whisky';
+
+interface Props {
+  whiskies: Whisky[];
+  title?: string;
+  /** 凡例に出す地域のまとめ方 */
+  height?: number;
+}
+
+const { whiskies, title, height = 380 } = Astro.props;
+
+// 価格が無い銘柄はプロットできない
+const points = whiskies
+  .filter((w) => w.data.priceYen)
+  .map((w) => ({
+    x: w.data.priceYen!,
+    y: w.data.rating,
+    label: w.data.name,
+    url: whiskyUrl(w.id),
+    region: w.data.region,
+    regionLabel: REGION_LABELS[w.data.region as Region],
+  }));
+
+const config = JSON.stringify({ points });
+---
+
+<figure class="chart-container scatter-container">
+  {title ? <figcaption class="chart-title">{title}</figcaption> : null}
+  <div class="chart-canvas-box" style={`height:${height}px`}>
+    <canvas
+      class="price-scatter"
+      data-scatter={config}
+      role="img"
+      aria-label="価格と編集部評価の散布図。左上にあるほど安くて評価が高い"
+    ></canvas>
+  </div>
+  <p class="scatter-hint text-tertiary">
+    左上にあるほど「安くて評価が高い」。点をクリックすると銘柄ページへ移動します。
+  </p>
+
+  <!-- チャートが読めない環境（JS無効・スクリーンリーダー）向けの同内容のテキスト -->
+  <details class="scatter-fallback">
+    <summary>データを表で見る</summary>
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr><th scope="col">銘柄</th><th scope="col">地域</th><th scope="col">参考価格</th><th scope="col">評価</th></tr>
+        </thead>
+        <tbody>
+          {points.map((p) => (
+            <tr>
+              <th scope="row"><a href={p.url}>{p.label}</a></th>
+              <td>{p.regionLabel}</td>
+              <td>{p.x.toLocaleString('ja-JP')}円</td>
+              <td>{p.y}点</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </details>
+</figure>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  interface Point {
+    x: number;
+    y: number;
+    label: string;
+    url: string;
+    region: string;
+    regionLabel: string;
+  }
+
+  // 地域ごとに色を変える（CSSの地域カラーと合わせる）
+  const REGION_COLORS: Record<string, string> = {
+    islay: '#4A7C8C',
+    speyside: '#C9A227',
+    highland: '#7A9A5B',
+    lowland: '#A8C0A0',
+    campbeltown: '#6B8E9E',
+    island: '#5B7FA6',
+    japan: '#C0603F',
+    kentucky: '#B8763A',
+    tennessee: '#A0632F',
+    ireland: '#4A8C6A',
+    taiwan: '#C98A3A',
+    india: '#B5603F',
+  };
+
+  const canvases = document.querySelectorAll<HTMLCanvasElement>('canvas.price-scatter');
+  const fontFamily = '"Noto Sans JP", sans-serif';
+
+  canvases.forEach((canvas) => {
+    const raw = canvas.dataset.scatter;
+    if (!raw) return;
+    const { points } = JSON.parse(raw) as { points: Point[] };
+
+    // 地域ごとにデータセットを分けると凡例で絞り込めるようになる
+    const byRegion = new Map<string, Point[]>();
+    for (const p of points) {
+      const list = byRegion.get(p.region) ?? [];
+      list.push(p);
+      byRegion.set(p.region, list);
+    }
+
+    const chart = new Chart(canvas, {
+      type: 'scatter',
+      data: {
+        datasets: [...byRegion.entries()].map(([region, list]) => ({
+          label: list[0].regionLabel,
+          data: list,
+          backgroundColor: `${REGION_COLORS[region] ?? '#D4A030'}CC`,
+          borderColor: REGION_COLORS[region] ?? '#D4A030',
+          pointRadius: 6,
+          pointHoverRadius: 9,
+        })),
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          x: {
+            type: 'logarithmic',
+            title: { display: true, text: '参考価格（円・対数）', font: { family: fontFamily } },
+            ticks: {
+              font: { family: fontFamily, size: 11 },
+              callback: (value) => {
+                const n = Number(value);
+                // 対数軸は目盛りが多くなるので代表的な価格だけ出す
+                return [1000, 2000, 3000, 5000, 10000, 20000].includes(n)
+                  ? `${n.toLocaleString('ja-JP')}`
+                  : '';
+              },
+            },
+          },
+          y: {
+            title: { display: true, text: '編集部評価', font: { family: fontFamily } },
+            suggestedMin: 75,
+            suggestedMax: 92,
+            ticks: { font: { family: fontFamily, size: 11 } },
+          },
+        },
+        plugins: {
+          legend: {
+            position: 'bottom',
+            labels: { font: { family: fontFamily, size: 12 }, boxWidth: 12, padding: 12 },
+          },
+          tooltip: {
+            callbacks: {
+              label: (ctx) => {
+                const p = ctx.raw as Point;
+                return `${p.label}：${p.x.toLocaleString('ja-JP')}円 / ${p.y}点`;
+              },
+            },
+            bodyFont: { family: fontFamily },
+          },
+        },
+        onClick: (_event, elements) => {
+          if (!elements.length) return;
+          const el = elements[0];
+          const point = chart.data.datasets[el.datasetIndex].data[el.index] as unknown as Point;
+          if (point?.url) location.href = point.url;
+        },
+        onHover: (event, elements) => {
+          const target = event.native?.target as HTMLElement | undefined;
+          if (target) target.style.cursor = elements.length ? 'pointer' : 'default';
+        },
+      },
+    });
+  });
+</script>

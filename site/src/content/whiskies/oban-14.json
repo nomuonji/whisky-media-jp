@@ -1,0 +1,33 @@
+{
+  "name": "オーバン14年",
+  "nameEn": "Oban 14 Year Old",
+  "distillery": "オーバン蒸溜所",
+  "distillerySlug": "oban",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 14,
+  "abv": 43.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "ハイランドとアイランズの中間的な酒質。ほのかな潮とスモーク。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

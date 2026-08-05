@@ -1,0 +1,37 @@
+{
+  "name": "山崎12年",
+  "nameEn": "Yamazaki 12 Year Old",
+  "distillery": "山崎蒸溜所",
+  "distillerySlug": "yamazaki",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー",
+    "ミズナラ"
+  ],
+  "priceYen": 16800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 88,
+  "flavor": {
+    "peat": 2,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "ミズナラ樽由来の白檀のような香りが特徴。熟した果実と蜂蜜の甘みが層になって続く。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ],
+  "affiliateId": "yamazaki-12"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "シーバスリーガル12年",
+  "nameEn": "Chivas Regal 12",
+  "distillery": "シーバスブラザーズ",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "blended",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 3000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "スペイサイドのモルトを軸にした滑らかなブレンデッド。",
+  "recommendedFor": [
+    "ロック",
+    "水割り"
+  ]
+}

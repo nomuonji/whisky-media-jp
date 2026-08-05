@@ -1,0 +1,32 @@
+{
+  "name": "フェイマス グラウス",
+  "nameEn": "The Famous Grouse",
+  "distillery": "エドリントン",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 79,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 1,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "スコットランドで最も飲まれているブレンデッドのひとつ。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

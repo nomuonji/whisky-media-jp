@@ -1,0 +1,159 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import { ja } from '../i18n/ja';
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: ja.search.title, href: '/search/' },
+];
+---
+
+<BaseLayout
+  title={ja.search.title}
+  description="Whisky Data JPの銘柄・蒸留所・記事をキーワードで横断検索できます。"
+  noindex={true}
+>
+  <Breadcrumb items={breadcrumbs} />
+  <h1 class="page-title">銘柄・蒸留所・記事を<em>検索</em></h1>
+
+  <form class="search-form" role="search" id="search-form">
+    <label class="sr-only" for="search-input">{ja.search.label}</label>
+    <input
+      type="search"
+      id="search-input"
+      name="q"
+      placeholder="山崎、ピート、アイラ、コスパ…"
+      autocomplete="off"
+    />
+    <button type="submit" class="btn btn-primary">検索</button>
+  </form>
+
+  <p class="search-status text-secondary" id="search-status">{ja.search.prompt}</p>
+  <ul class="search-results" id="search-results"></ul>
+</BaseLayout>
+
+<script>
+  interface Item {
+    kind: 'whisky' | 'distillery' | 'post';
+    kindLabel: string;
+    title: string;
+    url: string;
+    excerpt: string;
+    meta: string;
+    keywords: string[];
+  }
+
+  const form = document.getElementById('search-form') as HTMLFormElement | null;
+  const input = document.getElementById('search-input') as HTMLInputElement | null;
+  const status = document.getElementById('search-status');
+  const results = document.getElementById('search-results');
+
+  if (form && input && status && results) {
+    let index: Item[] | null = null;
+
+    async function loadIndex(): Promise<Item[]> {
+      if (!index) {
+        const res = await fetch('/search-index.json');
+        if (!res.ok) throw new Error(`索引の取得に失敗しました（${res.status}）`);
+        index = (await res.json()) as Item[];
+      }
+      return index;
+    }
+
+    // 全角英数を半角にして空白を落とす（「ｱｲﾗ」「山崎 12年」を吸収する）
+    function normalize(value: string): string {
+      return value
+        .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+        .replace(/[\s　]/g, '')
+        .toLowerCase();
+    }
+
+    function score(item: Item, terms: string[]): number {
+      const title = normalize(item.title);
+      const body = normalize(`${item.excerpt}${item.meta}${item.keywords.join('')}`);
+      let total = 0;
+      for (const term of terms) {
+        if (title.includes(term)) total += 3;
+        else if (body.includes(term)) total += 1;
+        else return 0; // 全語を含むものだけをヒットとする
+      }
+      // 同点なら銘柄を上に出す（読者が探しているのはたいてい銘柄）
+      if (item.kind === 'whisky') total += 0.5;
+      return total;
+    }
+
+    function escapeHtml(value: string): string {
+      const div = document.createElement('div');
+      div.textContent = value;
+      return div.innerHTML;
+    }
+
+    function render(matches: Item[], query: string): void {
+      results!.innerHTML = matches
+        .map(
+          (item) => `
+            <li class="search-item kind-${item.kind}">
+              <span class="search-kind">${escapeHtml(item.kindLabel)}</span>
+              <a class="search-title" href="${item.url}">${escapeHtml(item.title)}</a>
+              <span class="search-meta">${escapeHtml(item.meta)}</span>
+              ${item.excerpt ? `<p class="search-excerpt">${escapeHtml(item.excerpt)}</p>` : ''}
+            </li>`
+        )
+        .join('');
+
+      status!.textContent = matches.length
+        ? `${matches.length}件が見つかりました`
+        : `「${query}」に一致するものは見つかりませんでした。`;
+    }
+
+    async function search(query: string): Promise<void> {
+      const trimmed = normalize(query);
+      if (!trimmed) {
+        results!.innerHTML = '';
+        status!.textContent = 'キーワードを入力すると銘柄・蒸留所・記事をまとめて検索します。';
+        return;
+      }
+
+      // 索引の取得には時間がかかることがある。無反応に見せない
+      if (!index) status!.textContent = '検索中…';
+
+      let items: Item[];
+      try {
+        items = await loadIndex();
+      } catch (error) {
+        results!.innerHTML = '';
+        status!.textContent =
+          '検索できませんでした。通信状況を確認して、ページを再読み込みしてください。';
+        return;
+      }
+      const terms = normalize(query).split(/\s+/).filter(Boolean);
+      const matches = items
+        .map((item) => ({ item, s: score(item, terms) }))
+        .filter(({ s }) => s > 0)
+        .sort((a, b) => b.s - a.s)
+        .map(({ item }) => item);
+
+      render(matches, query.trim());
+    }
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const q = input.value.trim();
+      history.replaceState(null, '', q ? `?q=${encodeURIComponent(q)}` : location.pathname);
+      void search(input.value);
+    });
+
+    let timer: number;
+    input.addEventListener('input', () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(() => void search(input.value), 200);
+    });
+
+    const initial = new URLSearchParams(location.search).get('q');
+    if (initial) {
+      input.value = initial;
+      void search(initial);
+    }
+  }
+</script>

@@ -1,0 +1,65 @@
+---
+import BottleMark from './BottleMark.astro';
+import FlavorBars from './FlavorBars.astro';
+import { REGION_LABELS, TYPE_LABELS } from '../../types/taxonomy';
+import { whiskyUrl, ageLabel, priceLabel, costPerPoint, type Whisky } from '../../utils/whisky';
+import { getWhiskyPhoto } from '../../utils/photos';
+
+interface Props {
+  whisky: Whisky;
+  headingLevel?: 2 | 3;
+  /** ランキング等で順位を出す */
+  rank?: number;
+  showCospa?: boolean;
+}
+
+const { whisky, headingLevel = 3, rank, showCospa = false } = Astro.props;
+const w = whisky.data;
+const Heading = `h${headingLevel}` as 'h2' | 'h3';
+const cpp = costPerPoint(whisky);
+const photo = getWhiskyPhoto(whisky.id);
+---
+
+<article class={`whisky-card region-${w.region}`}>
+  {rank ? <span class="whisky-rank" aria-label={`${rank}位`}>{rank}</span> : null}
+
+  <div class="whisky-card-mark">
+    {photo ? (
+      <img
+        class="whisky-card-photo"
+        src={photo.image}
+        alt={`${w.name}のボトル写真`}
+        loading="lazy"
+        decoding="async"
+        width={photo.thumbWidth ?? photo.width}
+        height="auto"
+      />
+    ) : (
+      <BottleMark region={w.region} rating={w.rating} />
+    )}
+  </div>
+
+  <div class="whisky-card-body">
+    <p class="whisky-card-tags">
+      <span class="badge badge-region">{REGION_LABELS[w.region]}</span>
+      <span class="badge badge-neutral">{TYPE_LABELS[w.type]}</span>
+      <span class="badge badge-neutral">{ageLabel(w.age)}</span>
+    </p>
+
+    <Heading class="whisky-card-title">
+      <a href={whiskyUrl(whisky.id)}>{w.name}</a>
+    </Heading>
+
+    <p class="whisky-card-notes">{w.notes}</p>
+
+    <FlavorBars flavor={w.flavor} variant="compact" />
+  </div>
+
+  <div class="whisky-card-figures">
+    <span class="whisky-rating" title="編集部評価（100点満点）">
+      <strong>{w.rating}</strong><span class="unit">点</span>
+    </span>
+    <span class="whisky-price">{priceLabel(w.priceYen)}</span>
+    {showCospa && cpp ? <span class="whisky-cospa">1点あたり {cpp.toLocaleString('ja-JP')}円</span> : null}
+  </div>
+</article>

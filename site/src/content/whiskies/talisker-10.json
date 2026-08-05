@@ -1,0 +1,34 @@
+{
+  "name": "タリスカー10年",
+  "nameEn": "Talisker 10 Year Old",
+  "distillery": "タリスカー蒸溜所",
+  "distillerySlug": "talisker",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 45.8,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 4800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 87,
+  "flavor": {
+    "peat": 3,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "黒胡椒のような刺激と潮の香り。スカイ島の海を思わせる。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

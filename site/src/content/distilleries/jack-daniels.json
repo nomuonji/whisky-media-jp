@@ -1,0 +1,12 @@
+{
+  "name": "ジャックダニエル蒸溜所",
+  "nameEn": "Jack Daniel's Distillery",
+  "country": "usa",
+  "region": "tennessee",
+  "founded": 1866,
+  "owner": "ブラウン・フォーマン",
+  "lat": 35.283,
+  "lon": -86.371,
+  "waterSource": "洞窟の泉",
+  "notes": "メイプル炭で濾過するチャコール・メロウイング製法を用いる。"
+}

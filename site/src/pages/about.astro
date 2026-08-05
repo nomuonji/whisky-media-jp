@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import { SITE } from '../data/site';
+import { ja } from '../i18n/ja';
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: 'このサイトについて', href: '/about/' },
+];
+---
+
+<BaseLayout
+  title={`${SITE.name} について`}
+  description="Whisky Data JPは、Whiskybaseの20万本のデータを日本語で整理・可視化するウイスキーメディアです。"
+  {breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">{SITE.name} <em>について</em></h1>
+
+  <div class="post-content">
+    <h2>このメディアの目的</h2>
+    <p>
+      Whiskybaseには世界中のウイスキー20万本以上のデータがあります。
+      しかし、そのほとんどは英語。日本語で体系的に整理された情報は
+      ほとんどありません。
+    </p>
+    <p>
+      このサイトでは、Whiskybaseのデータを日本語に翻訳し、
+      レーダーチャートや比較表で<strong>視覚的にわかりやすく</strong>お届けします。
+    </p>
+
+    <h2>情報の出典</h2>
+    <p>
+      テイスティングノートや評価点は <a href="https://www.whiskybase.com" target="_blank" rel="noopener">Whiskybase</a> の
+      ユーザーレビューをもとにしています。
+      海外ニュースは Reddit r/whisky や Whisky Advocate などのソースを参照しています。
+    </p>
+
+    <h2>アフィリエイトについて</h2>
+    <p>
+      当サイトには、Amazonアソシエイト・楽天アフィリエイトのリンクが含まれています。
+      リンク経由の購入でサイト運営を支援いただけます（購入価格は変わりません）。
+    </p>
+
+    <h2>飲酒に関する注意</h2>
+    <p>
+      20歳未満の飲酒は法律で禁止されています。
+      妊娠中・授乳期の飲酒、および飲酒後の運転は絶対におやめください。
+      お酒は適量を楽しみましょう。
+    </p>
+
+    <h2>運営者</h2>
+    <p>
+      AIとデータを駆使して、ウイスキーの「知る楽しさ」を広げるメディアです。
+      お問い合わせは X（Twitter）のDMまで。
+    </p>
+  </div>
+
+  <p class="text-center back-link">
+    <a href="/">{ja.post.backToHome}</a>
+  </p>
+</BaseLayout>

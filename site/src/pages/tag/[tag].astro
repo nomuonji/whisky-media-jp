@@ -1,0 +1,31 @@
+---
+import ListLayout from '../../layouts/ListLayout.astro';
+import PostList from '../../components/blog/PostList.astro';
+import { getPublishedPosts, byTag, collectTags } from '../../utils/posts';
+import { tagUrl } from '../../utils/url';
+
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+
+  return collectTags(posts).map(({ tag }) => ({
+    params: { tag },
+    props: { posts: byTag(posts, tag) },
+  }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<ListLayout
+  title={`#${tag} の記事一覧`}
+  description={`#${tag} タグのウイスキー記事一覧。Whiskybaseデータをもとにしたレビュー・比較・ガイド。`}
+  heading="タグ"
+  headingAccent={`#${tag}`}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: `#${tag}`, href: tagUrl(tag!) },
+  ]}
+>
+  <PostList {posts} />
+</ListLayout>

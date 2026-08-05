@@ -1,0 +1,36 @@
+---
+import ListLayout from '../../../layouts/ListLayout.astro';
+import PostList from '../../../components/blog/PostList.astro';
+import { getPublishedPosts } from '../../../utils/posts';
+import { articlesUrl } from '../../../utils/url';
+import { totalPages, POSTS_PER_PAGE } from '../../../utils/pagination';
+
+// 1ページ目は /articles/ が担当するので2ページ目以降のみ生成する
+export async function getStaticPaths() {
+  const posts = await getPublishedPosts();
+  const total = totalPages(posts.length, POSTS_PER_PAGE);
+
+  return Array.from({ length: Math.max(0, total - 1) }, (_, i) => ({
+    params: { page: String(i + 2) },
+    props: { posts, current: i + 2, total },
+  }));
+}
+
+const { posts, current, total } = Astro.props;
+---
+
+<ListLayout
+  title={`記事一覧（${current}ページ目）`}
+  description="ウイスキーの比較・ランキング・初心者ガイドなど、データをもとにした記事の一覧です。"
+  heading="記事"
+  headingAccent={`一覧 ${current}/${total}`}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: '記事一覧', href: '/articles/' },
+  ]}
+  prevUrl={articlesUrl(current - 1)}
+  nextUrl={current < total ? articlesUrl(current + 1) : undefined}
+  noindex={true}
+>
+  <PostList {posts} page={current} hrefFor={articlesUrl} />
+</ListLayout>

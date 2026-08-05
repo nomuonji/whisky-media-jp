@@ -1,0 +1,77 @@
+/* ============================================
+   UI Atoms — Card / Badge / Tag
+   ============================================ */
+
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  color: inherit;
+  display: block;
+}
+
+a.card {
+  transition: box-shadow var(--transition-fast);
+}
+
+a.card:hover {
+  box-shadow: var(--shadow-md);
+  text-decoration: none;
+}
+
+.badge {
+  display: inline-block;
+  padding: 0.15rem var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.badge-brand {
+  background: var(--color-brand-light);
+  color: var(--color-on-brand-light);
+}
+
+.badge-neutral {
+  background: var(--color-surface-subdued);
+  color: var(--color-text-secondary);
+}
+
+.badge-success {
+  background: var(--color-success);
+  color: #fff;
+}
+
+.badge-error {
+  background: var(--color-error);
+  color: #fff;
+}
+
+a.badge:hover {
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+/* ============================================
+   アイコン（絵文字を使わないための共通指定）
+   ============================================ */
+
+.icon {
+  display: inline-block;
+  vertical-align: -0.18em;
+  flex-shrink: 0;
+}
+
+.site-title-mark {
+  color: var(--color-brand-dark);
+  vertical-align: -0.22em;
+  margin-right: 0.1em;
+}
+
+/* 見出しに添えるアイコンは文字より一段落ち着いた色にする */
+h2 > .icon,
+h3 > .icon {
+  color: var(--color-brand-dark);
+}

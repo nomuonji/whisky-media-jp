@@ -1,0 +1,33 @@
+{
+  "name": "グリーンスポット",
+  "nameEn": "Green Spot",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "シングルポットスチルの代表格。フルーティで爽やかな酸味。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

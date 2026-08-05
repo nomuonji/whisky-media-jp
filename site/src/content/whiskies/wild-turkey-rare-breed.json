@@ -1,0 +1,33 @@
+{
+  "name": "ワイルドターキー レアブリード",
+  "nameEn": "Wild Turkey Rare Breed",
+  "distillery": "ワイルドターキー蒸溜所",
+  "distillerySlug": "wild-turkey",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 58.4,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 5,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "カスクストレングスに近い高度数。複数熟成年数の原酒をブレンドした濃厚な仕上がり。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

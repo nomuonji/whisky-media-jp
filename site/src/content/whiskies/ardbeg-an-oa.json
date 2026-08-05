@@ -1,0 +1,35 @@
+{
+  "name": "アードベッグ アン・オア",
+  "nameEn": "Ardbeg An Oa",
+  "distillery": "アードベッグ蒸溜所",
+  "distillerySlug": "ardbeg",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 46.6,
+  "cask": [
+    "バーボン",
+    "シェリー",
+    "ワイン樽"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 86,
+  "flavor": {
+    "peat": 5,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "複数の樽を組み合わせた、アードベッグの中ではまろやかなピート。スモークとバニラ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

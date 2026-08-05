@@ -1,0 +1,33 @@
+{
+  "name": "ニッカ デイズ",
+  "nameEn": "Nikka Days",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 2500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 79,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "グレーンとモルトの軽快なブレンド。毎日飲める定番NASとして親しまれる。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

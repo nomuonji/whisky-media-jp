@@ -1,0 +1,34 @@
+{
+  "name": "余市",
+  "nameEn": "Nikka Yoichi Single Malt",
+  "distillery": "余市蒸溜所",
+  "distillerySlug": "yoichi",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 45.0,
+  "cask": [
+    "リメイド",
+    "シェリー"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "石炭直火蒸留による力強さ。焦げた樽とわずかな潮の香りがある。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

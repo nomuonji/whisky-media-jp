@@ -1,0 +1,34 @@
+{
+  "name": "カーデュ12年",
+  "nameEn": "Cardhu 12 Year Old",
+  "distillery": "カーデュ蒸溜所",
+  "distillerySlug": "cardhu",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "軽やかで蜂蜜のような甘さ。ジョニーウォーカーの心臓部でもある。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "ハンキー バニスター",
+  "nameEn": "Hankey Bannister",
+  "distillery": "インバー・ハウス",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 78,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "18世紀創業の老舗ブランドによる飲みやすいブレンデッド。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

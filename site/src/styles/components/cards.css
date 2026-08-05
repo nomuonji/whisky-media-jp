@@ -1,0 +1,145 @@
+/* ============================================
+   Post Cards
+   ============================================ */
+
+.post-list {
+  display: grid;
+  gap: var(--space-lg);
+  padding-block: var(--space-xl);
+}
+
+.post-list-empty {
+  padding-block: var(--space-3xl);
+  text-align: center;
+}
+
+/* === カテゴリカラー（記事マークと左罫線に使う） === */
+.cat-scotch   { --cat-color: #7A9A5B; }
+.cat-japanese { --cat-color: #C0603F; }
+.cat-bourbon  { --cat-color: #B8763A; }
+.cat-irish    { --cat-color: #4A8C6A; }
+.cat-world    { --cat-color: #5B7FA6; }
+.cat-guide    { --cat-color: #D4A030; }
+.cat-news     { --cat-color: #6B8E9E; }
+
+.post-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-md);
+  align-items: start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--cat-color, var(--color-brand));
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+/* === 記事マーク === */
+.post-mark {
+  display: block;
+  line-height: 0;
+}
+
+.post-mark-bg {
+  fill: color-mix(in srgb, var(--cat-color, var(--color-brand)) 16%, white);
+}
+
+.post-mark-wave {
+  fill: color-mix(in srgb, var(--cat-color, var(--color-brand)) 55%, white);
+}
+
+.post-mark-glyph {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: var(--weight-bold);
+  fill: color-mix(in srgb, var(--cat-color, var(--color-brand)) 55%, black);
+}
+
+.post-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.post-card-title {
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-2xs);
+  border: none;
+  padding: 0;
+}
+
+.post-card-title a {
+  color: var(--color-text);
+}
+
+.post-card-title a:hover {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+/* タイトルのリンク領域をカード全面へ広げる。
+   メタ・タグ内のリンクは z-index で上に載せてクリック可能にする */
+.post-card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.post-card .post-meta a,
+.post-card .post-tags a {
+  position: relative;
+  z-index: 1;
+}
+
+.post-meta {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+.post-excerpt {
+  font-size: var(--text-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 0;
+}
+
+/* === Category badge on card === */
+.post-category {
+  display: inline-block;
+  background: var(--color-brand-light);
+  color: var(--color-on-brand-light);
+  padding: 0.15rem var(--space-sm);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  text-decoration: none;
+  margin-bottom: var(--space-xs);
+}
+
+.post-category:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* === Related posts === */
+.related-posts {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+.related-posts h2 {
+  font-size: var(--text-lg);
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-top: 0;
+}
+
+.related-posts .post-list {
+  padding-block: var(--space-md);
+}
+
+.related-posts .post-card-title {
+  font-size: var(--text-base);
+}

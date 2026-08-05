@@ -1,0 +1,33 @@
+{
+  "name": "グレンファークラス15年",
+  "nameEn": "Glenfarclas 15 Year Old",
+  "distillery": "グレンファークラス蒸溜所",
+  "distillerySlug": "glenfarclas",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 46.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 9000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "家族経営蒸留所の看板ボトル。ナッツとドライフルーツの厚み。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

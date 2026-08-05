@@ -1,0 +1,32 @@
+{
+  "name": "アムルット ピーテッド",
+  "nameEn": "Amrut Peated",
+  "distillery": "アムルット蒸溜所",
+  "distillerySlug": "amrut",
+  "country": "india",
+  "region": "india",
+  "type": "single-malt",
+  "abv": 46.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 8500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 4,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 4,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "スコットランド産ピーテッド麦芽を使用。高温熟成で凝縮感が強い。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

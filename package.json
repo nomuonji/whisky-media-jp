@@ -1,0 +1,10 @@
+{
+  "name": "whisky-data-jp-root",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd site && npm run dev",
+    "build": "cd site && npm run build",
+    "preview": "cd site && npm run preview"
+  }
+}

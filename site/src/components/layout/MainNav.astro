@@ -1,0 +1,24 @@
+---
+import { isCurrentPath } from '../../utils/url';
+import type { NavItem } from '../../types/navigation';
+
+interface Props {
+  items: NavItem[];
+}
+
+const { items } = Astro.props;
+const currentPath = Astro.url?.pathname || '';
+---
+
+<nav class="site-nav" aria-label="メインナビゲーション">
+  {items.map((item) => (
+    <a
+      href={item.href}
+      aria-current={isCurrentPath(item.href, currentPath) ? 'page' : undefined}
+      rel={item.external ? 'noopener' : undefined}
+      target={item.external ? '_blank' : undefined}
+    >
+      {item.label}
+    </a>
+  ))}
+</nav>

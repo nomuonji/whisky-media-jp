@@ -1,0 +1,23 @@
+---
+import { categoryLabel } from '../../data/categories';
+import type { Category } from '../../types/content';
+
+interface Props {
+  category: Category;
+  size?: number;
+}
+
+const { category, size = 56 } = Astro.props;
+
+// 文字だけのカードを避けるための記事マーク。カテゴリ名の先頭1文字を図案として使う
+const label = categoryLabel(category);
+const glyph = label.slice(0, 1);
+---
+
+<span class={`post-mark cat-${category}`} style={`--mark-size:${size}px`} aria-hidden="true">
+  <svg viewBox="0 0 56 56" width={size} height={size} focusable="false">
+    <rect x="0" y="0" width="56" height="56" rx="12" class="post-mark-bg" />
+    <path d="M0 40 Q14 32 28 40 T56 40 L56 56 L0 56 Z" class="post-mark-wave" />
+    <text x="28" y="27" text-anchor="middle" dominant-baseline="middle" class="post-mark-glyph">{glyph}</text>
+  </svg>
+</span>

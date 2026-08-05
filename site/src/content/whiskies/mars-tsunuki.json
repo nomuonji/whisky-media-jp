@@ -1,0 +1,33 @@
+{
+  "name": "マルス 津貫",
+  "nameEn": "Mars Tsunuki Single Malt",
+  "distillery": "マルス津貫蒸溜所",
+  "distillerySlug": "mars-tsunuki",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 50.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "亜熱帯の津貫で急速熟成したモルト。樽由来の濃い甘さと柑橘の香りが折り重なる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

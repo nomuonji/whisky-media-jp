@@ -1,0 +1,43 @@
+---
+import { pageRange } from '../../utils/pagination';
+import { ja } from '../../i18n/ja';
+
+interface Props {
+  current: number;
+  total: number;
+  hrefFor: (page: number) => string;
+}
+
+const { current, total, hrefFor } = Astro.props;
+const pages = pageRange(current, total);
+---
+
+{total > 1 ? (
+  <nav class="pagination" aria-label={ja.pagination.page}>
+    {current > 1 ? (
+      <a href={hrefFor(current - 1)} class="pagination-arrow" rel="prev">← {ja.pagination.prev}</a>
+    ) : (
+      <span class="pagination-arrow is-disabled" aria-hidden="true">← {ja.pagination.prev}</span>
+    )}
+
+    <ol class="pagination-pages">
+      {pages.map((p) => (
+        <li>
+          {p === null ? (
+            <span class="pagination-gap" aria-hidden="true">…</span>
+          ) : p === current ? (
+            <span class="pagination-page is-current" aria-current="page">{p}</span>
+          ) : (
+            <a href={hrefFor(p)} class="pagination-page">{p}</a>
+          )}
+        </li>
+      ))}
+    </ol>
+
+    {current < total ? (
+      <a href={hrefFor(current + 1)} class="pagination-arrow" rel="next">{ja.pagination.next} →</a>
+    ) : (
+      <span class="pagination-arrow is-disabled" aria-hidden="true">{ja.pagination.next} →</span>
+    )}
+  </nav>
+) : null}

@@ -1,0 +1,32 @@
+{
+  "name": "ニッカ カフェグレーン",
+  "nameEn": "Nikka Coffey Grain",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "grain",
+  "abv": 45.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "連続式蒸留機「カフェスチル」で造られるグレーンウイスキー。バナナやココナッツのようなトロピカルな甘さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

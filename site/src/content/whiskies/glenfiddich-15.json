@@ -1,0 +1,36 @@
+{
+  "name": "グレンフィディック15年 ソレラリザーブ",
+  "nameEn": "Glenfiddich 15 Solera",
+  "distillery": "グレンフィディック蒸溜所",
+  "distillerySlug": "glenfiddich",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー",
+    "ニューオーク"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ソレラシステムで熟成した3種の樽のブレンド。蜂蜜とスパイス、滑らかな口当たり。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "バレット バーボン",
+  "nameEn": "Bulleit Bourbon",
+  "distillery": "フォアローゼス蒸溜所（委託）",
+  "distillerySlug": "four-roses",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 3200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "高ライ麦比率のマッシュビル。スパイシーでドライな味わい。",
+  "recommendedFor": [
+    "ロック",
+    "カクテル"
+  ]
+}

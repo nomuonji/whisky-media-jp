@@ -1,0 +1,67 @@
+/* ============================================
+   トップページ — 探す入口
+   ============================================ */
+
+.discovery {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-block: var(--space-lg);
+}
+
+.discovery h2 {
+  margin-top: 0;
+  font-size: var(--text-lg);
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.discovery-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+  gap: var(--space-xs);
+  list-style: none;
+  padding: 0;
+  margin-block: var(--space-md) var(--space-sm);
+}
+
+.discovery-links li {
+  margin: 0;
+}
+
+.discovery-links a {
+  display: block;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  transition: background var(--transition-fast), transform var(--transition-fast);
+}
+
+.discovery-links a:hover {
+  background: var(--color-brand-light);
+  text-decoration: none;
+  transform: translateX(2px);
+}
+
+.discovery-more {
+  margin-bottom: 0;
+  font-size: var(--text-sm);
+}
+
+.home-section {
+  margin-block: var(--space-2xl);
+}
+
+.home-section > h2 {
+  font-size: var(--text-xl);
+}
+
+.home-more {
+  font-size: var(--text-sm);
+  text-align: right;
+  margin-top: var(--space-xs);
+}

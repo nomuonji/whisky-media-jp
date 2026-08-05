@@ -1,0 +1,33 @@
+{
+  "name": "オーヘントッシャン アメリカンオーク",
+  "nameEn": "Auchentoshan American Oak",
+  "distillery": "オーヘントッシャン蒸溜所",
+  "distillerySlug": "auchentoshan",
+  "country": "scotland",
+  "region": "lowland",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 3800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "バーボン樽のみで熟成。軽やかでバニラの甘さが際立つ。",
+  "recommendedFor": [
+    "ロック",
+    "水割り"
+  ]
+}

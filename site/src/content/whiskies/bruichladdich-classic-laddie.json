@@ -1,0 +1,33 @@
+{
+  "name": "ブルックラディ クラシックラディ",
+  "nameEn": "Bruichladdich Classic Laddie",
+  "distillery": "ブルックラディ蒸溜所",
+  "distillerySlug": "bruichladdich",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 50.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "ノンピート方針の看板ボトル。フルーティで軽やかな酒質。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

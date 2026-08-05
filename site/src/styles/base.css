@@ -1,0 +1,74 @@
+/* ============================================
+   Base — 素のHTML要素の基本スタイル
+   ============================================ */
+
+html {
+  font-size: var(--text-base);
+  line-height: var(--leading-base);
+  color: var(--color-text);
+  background: var(--color-surface-elevated);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* === 和文組版 ===
+     palt: 「」（）、。などの約物が持つ余分なアキを詰める。見出しで特に効く
+     line-break: 行頭に句読点や閉じ括弧が来ないようにする（禁則）
+     break-word: anywhere だと英単語を不自然な位置で割るのでこちらを使う */
+  font-feature-settings: "palt" 1;
+  line-break: strict;
+  overflow-wrap: break-word;
+}
+
+/* フッターを常に最下部へ押し下げる */
+.site-main {
+  flex: 1 0 auto;
+  width: 100%;
+}
+
+img {
+  border-radius: var(--radius-md);
+}
+
+a {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+:where(a, button, input, summary):focus-visible {
+  outline: 2px solid var(--color-brand-dark);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+ul,
+ol {
+  padding-left: var(--space-lg);
+  margin-block: var(--space-sm);
+}
+
+li {
+  margin-block: var(--space-2xs);
+}
+
+/* 記事本文以外のリストはマーカーなし（ナビ・ページネーション等） */
+.pagination-pages,
+.breadcrumb-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+::selection {
+  background: var(--color-brand-light);
+}

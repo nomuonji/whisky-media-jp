@@ -1,0 +1,41 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+  variant?: 'primary' | 'secondary' | 'outline';
+  size?: 'sm' | 'md' | 'lg';
+  external?: boolean;
+  sponsored?: boolean;
+  class?: string;
+}
+
+const {
+  href,
+  label,
+  variant = 'primary',
+  size = 'md',
+  external = false,
+  sponsored = false,
+  class: className = '',
+} = Astro.props;
+
+const classes = [
+  'btn',
+  `btn-${variant}`,
+  size !== 'md' ? `btn-${size}` : '',
+  className,
+].filter(Boolean).join(' ');
+
+const rel = sponsored ? 'nofollow noopener sponsored' : external ? 'noopener' : undefined;
+const target = external || sponsored ? '_blank' : undefined;
+---
+
+{href ? (
+  <a href={href} class={classes} {rel} {target}>
+    {label}<slot />
+  </a>
+) : (
+  <button type="button" class={classes}>
+    {label}<slot />
+  </button>
+)}

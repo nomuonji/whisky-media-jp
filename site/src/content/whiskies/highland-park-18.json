@@ -1,0 +1,33 @@
+{
+  "name": "ハイランドパーク18年",
+  "nameEn": "Highland Park 18",
+  "distillery": "ハイランドパーク蒸溜所",
+  "distillerySlug": "highland-park",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 43.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 20000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 91,
+  "flavor": {
+    "peat": 3,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 3,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "「世界最高のオールラウンダー」と評されることもある名品。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

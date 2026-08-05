@@ -1,0 +1,30 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Hero from '../components/layout/Hero.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  heroTitle: string;
+  heroDescription: string;
+  prevUrl?: string;
+  nextUrl?: string;
+  /** 2ページ目以降は重複コンテンツ扱いを避けて noindex */
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  heroTitle,
+  heroDescription,
+  prevUrl,
+  nextUrl,
+  noindex = false,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {prevUrl} {nextUrl} {noindex}>
+  <Hero title={heroTitle} description={heroDescription} />
+  <slot />
+</BaseLayout>

@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import PostCard from './PostCard.astro';
+import { ja } from '../../i18n/ja';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+  headingLevel?: 2 | 3;
+  emptyMessage?: string;
+}
+
+const { posts, headingLevel = 2, emptyMessage = ja.empty.noPosts } = Astro.props;
+---
+
+{posts.length === 0 ? (
+  <p class="post-list-empty text-secondary">{emptyMessage}</p>
+) : (
+  <div class="post-list">
+    {posts.map((post) => <PostCard {post} {headingLevel} />)}
+  </div>
+)}

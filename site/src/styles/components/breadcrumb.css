@@ -1,0 +1,42 @@
+/* ============================================
+   Breadcrumb
+   ============================================ */
+
+.breadcrumb {
+  padding-block: var(--space-md);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+}
+
+.breadcrumb-list li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+  min-width: 0;
+}
+
+.breadcrumb-list a {
+  color: var(--color-text-secondary);
+}
+
+.breadcrumb-separator {
+  color: var(--color-text-tertiary);
+}
+
+/* 最終要素（現在地）は長いタイトルを省略する */
+.breadcrumb-current {
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 22ch;
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ジムビーム ホワイト",
+  "nameEn": "Jim Beam White Label",
+  "distillery": "ジムビーム蒸溜所",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 4,
+  "abv": 40.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 1600,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 76,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "世界で最も売れているバーボンのひとつ。手頃で軽やか。",
+  "recommendedFor": [
+    "ハイボール",
+    "カクテル"
+  ]
+}

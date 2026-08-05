@@ -1,0 +1,82 @@
+---
+import { REGION_LABELS, TYPE_LABELS, AVAILABILITY_LABELS } from '../../types/taxonomy';
+import {
+  getWhiskiesByIds, whiskyUrl, ageLabel, priceLabel, costPerPoint, type Whisky,
+} from '../../utils/whisky';
+
+interface Props {
+  /** src/content/whiskies/ のID */
+  ids: string[];
+  caption?: string;
+}
+
+const { ids, caption } = Astro.props;
+const whiskies = await getWhiskiesByIds(ids);
+
+const rows: { label: string; value: (w: Whisky) => string; highlight?: 'min' | 'max' }[] = [
+  { label: '蒸留所', value: (w) => w.data.distillery },
+  { label: '地域', value: (w) => REGION_LABELS[w.data.region] },
+  { label: 'タイプ', value: (w) => TYPE_LABELS[w.data.type] },
+  { label: '熟成年数', value: (w) => ageLabel(w.data.age) },
+  { label: '度数', value: (w) => `${w.data.abv}%` },
+  { label: '樽', value: (w) => w.data.cask.join('・') || '—' },
+  { label: '参考価格', value: (w) => priceLabel(w.data.priceYen), highlight: 'min' },
+  { label: '編集部評価', value: (w) => `${w.data.rating}点`, highlight: 'max' },
+  {
+    label: '1点あたり価格',
+    value: (w) => {
+      const cpp = costPerPoint(w);
+      return cpp ? `${cpp.toLocaleString('ja-JP')}円` : '—';
+    },
+    highlight: 'min',
+  },
+  { label: '入手しやすさ', value: (w) => AVAILABILITY_LABELS[w.data.availability] },
+];
+
+/** 行ごとに「最安」「最高評価」を強調するためのインデックス */
+function bestIndex(row: (typeof rows)[number]): number | null {
+  if (!row.highlight) return null;
+  const nums = whiskies.map((w) => {
+    if (row.label === '参考価格') return w.data.priceYen ?? null;
+    if (row.label === '編集部評価') return w.data.rating;
+    return costPerPoint(w);
+  });
+  let best: number | null = null;
+  nums.forEach((n, i) => {
+    if (n === null) return;
+    if (best === null) { best = i; return; }
+    const cur = nums[best]!;
+    if (row.highlight === 'min' ? n < cur : n > cur) best = i;
+  });
+  return best;
+}
+---
+
+{whiskies.length > 0 ? (
+  <div class="table-scroll">
+    <table class="comparison-table">
+      {caption ? <caption>{caption}</caption> : null}
+      <thead>
+        <tr>
+          <th scope="col">項目</th>
+          {whiskies.map((w) => (
+            <th scope="col"><a href={whiskyUrl(w.id)}>{w.data.name}</a></th>
+          ))}
+        </tr>
+      </thead>
+      <tbody>
+        {rows.map((row) => {
+          const best = bestIndex(row);
+          return (
+            <tr>
+              <th scope="row">{row.label}</th>
+              {whiskies.map((w, i) => (
+                <td class={best === i ? 'is-best' : undefined}>{row.value(w)}</td>
+              ))}
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+) : null}

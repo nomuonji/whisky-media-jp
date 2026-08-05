@@ -1,0 +1,13 @@
+---
+import { formatPrice } from '../../utils/affiliate';
+import type { AffiliateStore } from '../../types/affiliate';
+
+interface Props {
+  price?: number;
+  store: AffiliateStore;
+}
+
+const { price, store } = Astro.props;
+---
+
+{price ? <span class="price">{formatPrice(price, store)}</span> : null}

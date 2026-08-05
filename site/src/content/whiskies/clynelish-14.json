@@ -1,0 +1,33 @@
+{
+  "name": "クライヌリッシュ14年",
+  "nameEn": "Clynelish 14",
+  "distillery": "クライヌリッシュ蒸溜所",
+  "distillerySlug": "clynelish",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 14,
+  "abv": 46.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 9000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ワックスのような独特の質感と蜂蜜の甘さ。玄人に人気。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

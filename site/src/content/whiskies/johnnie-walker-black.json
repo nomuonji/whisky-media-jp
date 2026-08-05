@@ -1,0 +1,33 @@
+{
+  "name": "ジョニーウォーカー ブラックラベル12年",
+  "nameEn": "Johnnie Walker Black Label 12",
+  "distillery": "ディアジオ",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 3200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "40種以上の原酒をブレンド。ほのかなスモークが全体を引き締める。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

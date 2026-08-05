@@ -1,0 +1,32 @@
+{
+  "name": "アムルット フュージョン",
+  "nameEn": "Amrut Fusion",
+  "distillery": "アムルット蒸溜所",
+  "distillerySlug": "amrut",
+  "country": "india",
+  "region": "india",
+  "type": "single-malt",
+  "abv": 50.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 2,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 2,
+    "complex": 5,
+    "body": 5
+  },
+  "notes": "インド産大麦とスコットランド産ピーテッド麦芽を組み合わせた1本。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

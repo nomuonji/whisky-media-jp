@@ -1,0 +1,33 @@
+{
+  "name": "クライゲラヒ13年",
+  "nameEn": "Craigellachie 13 Year Old",
+  "distillery": "クライゲラヒ蒸溜所",
+  "distillerySlug": "craigellachie",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 13,
+  "abv": 46.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 7500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ワームタブ由来の硫黄香とオイリーな質感が個性的。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

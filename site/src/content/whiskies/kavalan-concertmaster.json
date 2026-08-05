@@ -1,0 +1,32 @@
+{
+  "name": "カバラン コンサートマスター",
+  "nameEn": "Kavalan Concertmaster",
+  "distillery": "カバラン蒸溜所",
+  "distillerySlug": "kavalan",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "ポートワイン樽"
+  ],
+  "priceYen": 7500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 5,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "ポートワイン樽で追加熟成。ベリー系の甘い香りが特徴。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

@@ -1,0 +1,43 @@
+---
+import { FLAVOR_AXES, FLAVOR_LABELS, type Flavor } from '../../types/taxonomy';
+
+interface Props {
+  flavor: Flavor;
+  /** compact は一覧カード用。ラベルを出さず細いバーだけ並べる */
+  variant?: 'full' | 'compact';
+  max?: number;
+}
+
+const { flavor, variant = 'full', max = 5 } = Astro.props;
+const axes = FLAVOR_AXES.map((axis) => ({
+  axis,
+  label: FLAVOR_LABELS[axis],
+  value: flavor[axis],
+  pct: Math.round((flavor[axis] / max) * 100),
+}));
+---
+
+{variant === 'compact' ? (
+  <div class="flavor-bars flavor-bars-compact" role="img"
+       aria-label={axes.map((a) => `${a.label}${a.value}`).join('、')}>
+    {axes.map((a) => (
+      <span class="flavor-chip" title={`${a.label} ${a.value}/${max}`}>
+        <span class="flavor-chip-fill" style={`height:${a.pct}%`}></span>
+      </span>
+    ))}
+  </div>
+) : (
+  <dl class="flavor-bars">
+    {axes.map((a) => (
+      <div class="flavor-row">
+        <dt>{a.label}</dt>
+        <dd>
+          <span class="flavor-track">
+            <span class="flavor-fill" style={`width:${a.pct}%`}></span>
+          </span>
+          <span class="flavor-value">{a.value}</span>
+        </dd>
+      </div>
+    ))}
+  </dl>
+)}

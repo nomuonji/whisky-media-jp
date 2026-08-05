@@ -1,0 +1,34 @@
+{
+  "name": "レッドブレスト12年",
+  "nameEn": "Redbreast 12 Year Old",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 7500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 88,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 5,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "シングルポットスチル製法。ドライフルーツとスパイスが濃密に重なる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

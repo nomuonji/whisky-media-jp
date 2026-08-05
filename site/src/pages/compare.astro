@@ -1,0 +1,269 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import SourceNote from '../components/whisky/SourceNote.astro';
+import { FLAVOR_AXES, FLAVOR_LABELS, REGION_LABELS, TYPE_LABELS } from '../types/taxonomy';
+import { getWhiskies, sortWhiskies, costPerPoint, ageLabel } from '../utils/whisky';
+
+const whiskies = sortWhiskies(await getWhiskies(), 'name');
+
+// クライアント側で組み替えるため、必要な項目だけをJSONで埋め込む
+const dataset = whiskies.map((w) => ({
+  id: w.id,
+  name: w.data.name,
+  region: w.data.region,
+  regionLabel: REGION_LABELS[w.data.region],
+  type: TYPE_LABELS[w.data.type],
+  age: ageLabel(w.data.age),
+  abv: w.data.abv,
+  cask: w.data.cask.join('・') || '—',
+  price: w.data.priceYen ?? null,
+  rating: w.data.rating,
+  cospa: costPerPoint(w),
+  flavor: FLAVOR_AXES.map((axis) => w.data.flavor[axis]),
+}));
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: '銘柄を比較', href: '/compare/' },
+];
+---
+
+<BaseLayout
+  title="ウイスキーを比較する"
+  description="任意のウイスキーを最大4本まで選んで、味の8軸レーダーと価格・評価・コスパを並べて比較できます。比較結果はURLで共有できます。"
+  {breadcrumbs}
+  width="wide"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">銘柄を<em>比較する</em></h1>
+  <p class="page-lead">
+    最大4本まで選ぶと、味の8軸が重なったレーダーチャートと比較表が出ます。
+    選んだ状態はURLに残るので、そのまま共有できます。
+  </p>
+
+  <div class="compare-picker">
+    <label for="compare-select">銘柄を追加</label>
+    <select id="compare-select">
+      <option value="">選択してください</option>
+      {whiskies.map((w) => (
+        <option value={w.id}>{w.data.name}（{REGION_LABELS[w.data.region]}）</option>
+      ))}
+    </select>
+    <button type="button" class="btn btn-secondary btn-sm" id="compare-clear">すべて外す</button>
+    <p class="compare-hint" id="compare-hint" role="status"></p>
+  </div>
+
+  <ul class="compare-chips" id="compare-chips" aria-live="polite"></ul>
+
+  <p class="compare-empty" id="compare-empty">
+    まだ選ばれていません。上のリストから2本以上選ぶと比較できます。
+  </p>
+
+  <figure class="chart-container compare-chart" id="compare-chart-wrap" hidden>
+    <canvas id="compare-radar" role="img" aria-label="選んだ銘柄の味の8軸を重ねたレーダーチャート"></canvas>
+  </figure>
+
+  <div class="table-scroll" id="compare-table-wrap" hidden>
+    <table class="comparison-table" id="compare-table"></table>
+  </div>
+
+  <SourceNote />
+
+  <script is:inline type="application/json" id="compare-data" set:html={JSON.stringify({
+    whiskies: dataset,
+    axes: FLAVOR_AXES.map((a) => FLAVOR_LABELS[a]),
+  })} />
+</BaseLayout>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  interface Row {
+    id: string; name: string; region: string; regionLabel: string; type: string;
+    age: string; abv: number; cask: string; price: number | null; rating: number;
+    cospa: number | null; flavor: number[];
+  }
+
+  const REGION_COLORS: Record<string, string> = {
+    islay: '#4A7C8C', speyside: '#C9A227', highland: '#7A9A5B', lowland: '#A8C0A0',
+    campbeltown: '#6B8E9E', island: '#5B7FA6', japan: '#C0603F', kentucky: '#B8763A',
+    tennessee: '#A0632F', ireland: '#4A8C6A', taiwan: '#C98A3A', india: '#B5603F',
+  };
+  const SERIES_COLORS = ['#D4A030', '#20B2AA', '#C44D4D', '#4A7C59'];
+  const MAX = 4;
+
+  const dataEl = document.getElementById('compare-data');
+  const select = document.getElementById('compare-select') as HTMLSelectElement | null;
+  const chips = document.getElementById('compare-chips');
+  const empty = document.getElementById('compare-empty');
+  const chartWrap = document.getElementById('compare-chart-wrap');
+  const tableWrap = document.getElementById('compare-table-wrap');
+  const table = document.getElementById('compare-table');
+  const clearBtn = document.getElementById('compare-clear');
+  const hint = document.getElementById('compare-hint');
+
+  if (dataEl && select && chips && empty && chartWrap && tableWrap && table && clearBtn && hint) {
+    const { whiskies, axes } = JSON.parse(dataEl.textContent || '{}') as {
+      whiskies: Row[]; axes: string[];
+    };
+    const byId = new Map(whiskies.map((w) => [w.id, w]));
+    let selected: string[] = [];
+    let chart: Chart | null = null;
+
+    const fmtPrice = (n: number | null) => (n ? `${n.toLocaleString('ja-JP')}円` : '—');
+
+    function renderChips(): void {
+      chips!.innerHTML = selected
+        .map((id) => {
+          const w = byId.get(id)!;
+          return `<li class="compare-chip region-${w.region}">
+            <span>${w.name}</span>
+            <button type="button" data-remove="${id}" aria-label="${w.name}を外す">×</button>
+          </li>`;
+        })
+        .join('');
+    }
+
+    function renderTable(rows: Row[]): void {
+      // 行ごとに「最安」「最高評価」「最良コスパ」を強調する
+      const best = (values: (number | null)[], mode: 'min' | 'max') => {
+        let idx = -1;
+        values.forEach((v, i) => {
+          if (v === null) return;
+          if (idx === -1 || (mode === 'min' ? v < values[idx]! : v > values[idx]!)) idx = i;
+        });
+        return idx;
+      };
+
+      const defs: { label: string; cell: (w: Row) => string; best?: number }[] = [
+        { label: '地域', cell: (w) => w.regionLabel },
+        { label: 'タイプ', cell: (w) => w.type },
+        { label: '熟成年数', cell: (w) => w.age },
+        { label: '度数', cell: (w) => `${w.abv}%` },
+        { label: '樽', cell: (w) => w.cask },
+        { label: '参考価格', cell: (w) => fmtPrice(w.price), best: best(rows.map((r) => r.price), 'min') },
+        { label: '編集部評価', cell: (w) => `${w.rating}点`, best: best(rows.map((r) => r.rating), 'max') },
+        {
+          label: '1点あたり価格',
+          cell: (w) => (w.cospa ? `${w.cospa.toLocaleString('ja-JP')}円` : '—'),
+          best: best(rows.map((r) => r.cospa), 'min'),
+        },
+        ...axes.map((axis, i) => ({
+          label: axis,
+          cell: (w: Row) => String(w.flavor[i]),
+          best: best(rows.map((r) => r.flavor[i]), 'max'),
+        })),
+      ];
+
+      table!.innerHTML =
+        `<thead><tr><th scope="col">項目</th>${rows
+          .map((w) => `<th scope="col"><a href="/whisky/${w.id}/">${w.name}</a></th>`)
+          .join('')}</tr></thead><tbody>${defs
+          .map(
+            (d) =>
+              `<tr><th scope="row">${d.label}</th>${rows
+                .map((w, i) => `<td class="${d.best === i ? 'is-best' : ''}">${d.cell(w)}</td>`)
+                .join('')}</tr>`
+          )
+          .join('')}</tbody>`;
+    }
+
+    function renderChart(rows: Row[]): void {
+      const canvas = document.getElementById('compare-radar') as HTMLCanvasElement;
+      chart?.destroy();
+      chart = new Chart(canvas, {
+        type: 'radar',
+        data: {
+          labels: axes,
+          datasets: rows.map((w, i) => {
+            const color = rows.length > 1 ? SERIES_COLORS[i] : (REGION_COLORS[w.region] ?? SERIES_COLORS[0]);
+            return {
+              label: w.name,
+              data: w.flavor,
+              backgroundColor: `${color}20`,
+              borderColor: color,
+              borderWidth: 2,
+              pointBackgroundColor: color,
+              pointRadius: 4,
+            };
+          }),
+        },
+        options: {
+          responsive: true,
+          scales: {
+            r: {
+              beginAtZero: true, max: 5,
+              ticks: { stepSize: 1, backdropColor: 'transparent', font: { size: 11 } },
+              pointLabels: { font: { size: 12, family: '"Noto Sans JP", sans-serif' } },
+              grid: { color: '#e0d5c1' },
+              angleLines: { color: '#e0d5c1' },
+            },
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { font: { size: 13, family: '"Noto Sans JP", sans-serif' }, padding: 16 } },
+          },
+        },
+      });
+    }
+
+    function render(): void {
+      const rows = selected.map((id) => byId.get(id)!).filter(Boolean);
+      renderChips();
+
+      const enough = rows.length >= 1;
+      empty!.hidden = enough;
+      chartWrap!.hidden = !enough;
+      tableWrap!.hidden = !enough;
+
+      if (enough) {
+        renderChart(rows);
+        renderTable(rows);
+      }
+
+      // 選択済みの銘柄はリストから隠す
+      for (const option of Array.from(select!.options)) {
+        if (option.value) option.hidden = selected.includes(option.value);
+      }
+      select!.value = '';
+
+      // 上限に達したときは、選択欄を無効にするだけでなく理由を書く
+      const atMax = selected.length >= MAX;
+      select!.disabled = atMax;
+      hint!.textContent = atMax
+        ? `比較できるのは${MAX}本までです。入れ替えるには、どれかを外してください。`
+        : `あと${MAX - selected.length}本まで追加できます。`;
+
+      const qs = selected.length ? `?w=${selected.join(',')}` : location.pathname;
+      history.replaceState(null, '', qs);
+    }
+
+    select.addEventListener('change', () => {
+      const id = select.value;
+      if (id && !selected.includes(id) && selected.length < MAX) {
+        selected.push(id);
+        render();
+      }
+    });
+
+    chips.addEventListener('click', (event) => {
+      const btn = (event.target as HTMLElement).closest<HTMLButtonElement>('[data-remove]');
+      if (!btn) return;
+      selected = selected.filter((id) => id !== btn.dataset.remove);
+      render();
+    });
+
+    clearBtn.addEventListener('click', () => {
+      selected = [];
+      render();
+    });
+
+    // ?w=a,b で共有されたURLを復元する
+    const initial = new URLSearchParams(location.search).get('w');
+    if (initial) {
+      selected = initial.split(',').filter((id) => byId.has(id)).slice(0, MAX);
+    }
+    render();
+  }
+</script>

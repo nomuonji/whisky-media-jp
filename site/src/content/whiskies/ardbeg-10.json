@@ -1,0 +1,33 @@
+{
+  "name": "アードベッグ10年",
+  "nameEn": "Ardbeg 10 Year Old",
+  "distillery": "アードベッグ蒸溜所",
+  "distillerySlug": "ardbeg",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 46.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 88,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "強いピートの奥にレモンのような酸。度数46%で味が濃い。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

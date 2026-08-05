@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import RegionMap from '../../components/whisky/RegionMap.astro';
+import { REGION_LABELS } from '../../types/taxonomy';
+import { getDistilleries, getRegionSummaries, distilleryUrl } from '../../utils/distillery';
+
+const distilleries = await getDistilleries();
+const summaries = await getRegionSummaries();
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: '蒸留所', href: '/distilleries/' },
+];
+---
+
+<BaseLayout
+  title="蒸留所を地域から探す"
+  description={`ウイスキー蒸留所${distilleries.length}件を地域別に掲載。スコットランドの6地域と日本・アメリカ・アイルランドなどの生産地から探せます。`}
+  {breadcrumbs}
+  width="wide"
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">蒸留所を<em>地域から探す</em></h1>
+  <p class="page-lead">
+    地域をクリックするとその地域の銘柄一覧へ移動します。現在{distilleries.length}蒸留所を掲載。
+  </p>
+
+  <RegionMap {summaries} />
+
+  <section class="home-section">
+    <h2>蒸留所一覧（創業の古い順）</h2>
+    <div class="table-scroll">
+      <table class="distillery-table">
+        <thead>
+          <tr>
+            <th scope="col">蒸留所</th>
+            <th scope="col">地域</th>
+            <th scope="col">創業</th>
+            <th scope="col">所有</th>
+          </tr>
+        </thead>
+        <tbody>
+          {distilleries.map((d) => (
+            <tr class={`region-${d.data.region}`}>
+              <th scope="row">
+                <span class="region-dot" aria-hidden="true"></span>
+                <a href={distilleryUrl(d.id)}>{d.data.name}</a>
+              </th>
+              <td>{REGION_LABELS[d.data.region]}</td>
+              <td>{d.data.founded ?? '—'}</td>
+              <td>{d.data.owner ?? '—'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>

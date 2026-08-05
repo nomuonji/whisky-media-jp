@@ -1,0 +1,24 @@
+---
+import Container from './Container.astro';
+import { SITE } from '../../data/site';
+import { FOOTER_LINKS } from '../../data/navigation';
+import { ja } from '../../i18n/ja';
+
+const currentYear = new Date().getFullYear();
+const years = currentYear > SITE.startYear ? `${SITE.startYear}-${currentYear}` : `${SITE.startYear}`;
+---
+
+<footer class="site-footer">
+  <Container>
+    <p>{ja.site.tagline} —— {ja.site.description}</p>
+    <nav aria-label="フッターナビゲーション">
+      {FOOTER_LINKS.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <p class="footer-note">
+      20歳未満の飲酒は法律で禁止されています。妊娠中・授乳期の飲酒、飲酒運転はおやめください。
+    </p>
+    <p class="copyright">© {years} {SITE.copyright}</p>
+  </Container>
+</footer>

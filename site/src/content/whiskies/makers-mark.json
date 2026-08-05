@@ -1,0 +1,34 @@
+{
+  "name": "メーカーズマーク",
+  "nameEn": "Makers Mark",
+  "distillery": "メーカーズマーク蒸溜所",
+  "distillerySlug": "makers-mark",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 2800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "小麦を使ったソフトなバーボン。バニラと蜂蜜の甘さが強い。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ],
+  "affiliateId": "makers-mark"
+}

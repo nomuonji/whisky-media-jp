@@ -1,0 +1,32 @@
+{
+  "name": "ジョニーウォーカー ダブルブラック",
+  "nameEn": "Johnnie Walker Double Black",
+  "distillery": "ディアジオ",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 3800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 3,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "ブラックラベルよりピート感を強めた濃厚な仕上がり。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

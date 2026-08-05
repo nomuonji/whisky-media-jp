@@ -1,0 +1,34 @@
+{
+  "name": "ザ・バルヴェニー ダブルウッド12年",
+  "nameEn": "Balvenie DoubleWood 12",
+  "distillery": "バルヴェニー蒸溜所",
+  "distillerySlug": "balvenie",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "2種類の樽で熟成させる製法。蜂蜜とシナモンが重なる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

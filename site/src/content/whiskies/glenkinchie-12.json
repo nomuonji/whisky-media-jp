@@ -1,0 +1,34 @@
+{
+  "name": "グレンキンチー12年",
+  "nameEn": "Glenkinchie 12",
+  "distillery": "グレンキンチー蒸溜所",
+  "distillerySlug": "glenkinchie",
+  "country": "scotland",
+  "region": "lowland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "麦芽の甘みが前に出る、ローランドらしい端正な味わい。",
+  "recommendedFor": [
+    "ストレート",
+    "水割り"
+  ]
+}

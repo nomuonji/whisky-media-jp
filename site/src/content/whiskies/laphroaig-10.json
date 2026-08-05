@@ -1,0 +1,34 @@
+{
+  "name": "ラフロイグ10年",
+  "nameEn": "Laphroaig 10 Year Old",
+  "distillery": "ラフロイグ蒸溜所",
+  "distillerySlug": "laphroaig",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 86,
+  "flavor": {
+    "peat": 5,
+    "sweet": 1,
+    "fruity": 1,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "強烈なピート香で知られる。好き嫌いが最も分かれる1本。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "フォアローゼス スモールバッチ",
+  "nameEn": "Four Roses Small Batch",
+  "distillery": "フォアローゼス蒸溜所",
+  "distillerySlug": "four-roses",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "4種のレシピを組み合わせたスモールバッチ。フローラルでまろやかな口当たり。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

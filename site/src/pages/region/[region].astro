@@ -1,0 +1,39 @@
+---
+import ListLayout from '../../layouts/ListLayout.astro';
+import WhiskyList from '../../components/whisky/WhiskyList.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import { REGION_LABELS, REGION_DESCRIPTIONS, type Region } from '../../types/taxonomy';
+import { getWhiskies, sortWhiskies } from '../../utils/whisky';
+
+export async function getStaticPaths() {
+  const whiskies = await getWhiskies();
+  const regions = [...new Set(whiskies.map((w) => w.data.region))];
+
+  return regions.map((region) => ({
+    params: { region },
+    props: { whiskies: whiskies.filter((w) => w.data.region === region) },
+  }));
+}
+
+const { region } = Astro.params;
+const { whiskies } = Astro.props;
+const label = REGION_LABELS[region as Region];
+const description = REGION_DESCRIPTIONS[region as Region];
+const sorted = sortWhiskies(whiskies, 'rating');
+---
+
+<ListLayout
+  title={`${label}のウイスキー${whiskies.length}銘柄`}
+  description={`${label}のウイスキー一覧。${description}`}
+  heading="地域"
+  headingAccent={label}
+  lead={description}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: '銘柄一覧', href: '/whiskies/' },
+    { label, href: `/region/${region}/` },
+  ]}
+>
+  <WhiskyList whiskies={sorted} headingLevel={2} />
+  <SourceNote />
+</ListLayout>

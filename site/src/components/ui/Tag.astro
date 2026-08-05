@@ -1,0 +1,12 @@
+---
+import { tagUrl } from '../../utils/url';
+
+interface Props {
+  label: string;
+  href?: string;
+}
+
+const { label, href } = Astro.props;
+---
+
+<a href={href ?? tagUrl(label)} class="post-tag">{label}</a>

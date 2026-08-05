@@ -1,0 +1,34 @@
+{
+  "name": "バルヴェニー14年 カリビアンカスク",
+  "nameEn": "Balvenie 14 Caribbean Cask",
+  "distillery": "バルヴェニー蒸溜所",
+  "distillerySlug": "balvenie",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 14,
+  "abv": 43.0,
+  "cask": [
+    "ラム樽"
+  ],
+  "priceYen": 10000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "カリブのラム樽でフィニッシュ。バナナや砂糖きびのトロピカルな甘さが広がる。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

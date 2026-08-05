@@ -1,0 +1,31 @@
+{
+  "name": "ブラックニッカ クリアブレンド",
+  "nameEn": "Black Nikka Clear Blend",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 37.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 74,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 1,
+    "body": 2
+  },
+  "notes": "国産ブレンデッドの中でも特に手頃な価格帯。ハイボール向け。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ボウモア15年",
+  "nameEn": "Bowmore 15",
+  "distillery": "ボウモア蒸溜所",
+  "distillerySlug": "bowmore",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 43.0,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 3,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 3,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "シェリー樽で追加熟成。ピートと甘さのバランスが円熟している。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

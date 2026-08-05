@@ -1,0 +1,34 @@
+{
+  "name": "スプリングバンク10年",
+  "nameEn": "Springbank 10 Year Old",
+  "distillery": "スプリングバンク蒸溜所",
+  "distillerySlug": "springbank",
+  "country": "scotland",
+  "region": "campbeltown",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 46.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 88,
+  "flavor": {
+    "peat": 3,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "オイリーな質感と塩気。同じ蒸留所内で全工程を行う稀少な造り。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

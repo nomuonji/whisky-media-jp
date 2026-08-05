@@ -1,0 +1,7 @@
+# 秘密情報
+.env
+
+# botの実行時データ（投稿履歴）
+09-sns-bot/data/
+
+node_modules/

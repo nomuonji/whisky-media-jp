@@ -1,0 +1,32 @@
+{
+  "name": "白州 ディスティラーズリザーブ",
+  "nameEn": "Hakushu Distiller's Reserve",
+  "distillery": "白州蒸溜所",
+  "distillerySlug": "hakushu",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 43.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 1,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "熟成年数非表記ながら白州らしい爽やかさを手頃に楽しめる定番。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

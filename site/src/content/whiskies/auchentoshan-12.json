@@ -1,0 +1,35 @@
+{
+  "name": "オーヘントッシャン12年",
+  "nameEn": "Auchentoshan 12 Year Old",
+  "distillery": "オーヘントッシャン蒸溜所",
+  "distillerySlug": "auchentoshan",
+  "country": "scotland",
+  "region": "lowland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "3回蒸留による軽やかさ。ローランドらしい穏やかな飲み口。",
+  "recommendedFor": [
+    "ストレート",
+    "水割り"
+  ]
+}

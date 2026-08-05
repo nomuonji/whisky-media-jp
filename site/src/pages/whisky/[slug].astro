@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/layout/Breadcrumb.astro';
+import BottleMark from '../../components/whisky/BottleMark.astro';
+import FlavorBars from '../../components/whisky/FlavorBars.astro';
+import SpecTable from '../../components/whisky/SpecTable.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import RadarChart from '../../components/whisky/RadarChart.astro';
+import ScoreDistribution from '../../components/whisky/ScoreDistribution.astro';
+import WhiskyCard from '../../components/whisky/WhiskyCard.astro';
+import PostCard from '../../components/blog/PostCard.astro';
+import AffiliateSection from '../../components/affiliate/AffiliateSection.astro';
+import { REGION_LABELS, REGION_DESCRIPTIONS, TYPE_LABELS } from '../../types/taxonomy';
+import { getWhiskies, similarWhiskies, toRadarData, ageLabel, priceLabel, costPerPoint } from '../../utils/whisky';
+import { getPublishedPosts } from '../../utils/posts';
+import { getWhiskyPhoto } from '../../utils/photos';
+
+export async function getStaticPaths() {
+  const whiskies = await getWhiskies();
+  const posts = await getPublishedPosts();
+
+  return whiskies.map((whisky) => ({
+    params: { slug: whisky.id },
+    props: {
+      whisky,
+      allWhiskies: whiskies,
+      similar: similarWhiskies(whisky, whiskies, 4),
+      // 銘柄名が本文か抜粋に出てくる記事を関連として拾う
+      relatedPosts: posts.filter((p) =>
+        `${p.data.title}${p.data.excerpt ?? ''}${p.body}`.includes(whisky.data.name)
+      ).slice(0, 3),
+    },
+  }));
+}
+
+const { whisky, allWhiskies, similar, relatedPosts } = Astro.props;
+const w = whisky.data;
+const cpp = costPerPoint(whisky);
+const radar = toRadarData([whisky]);
+const photo = getWhiskyPhoto(whisky.id);
+
+const description =
+  `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）のデータ。` +
+  `味の8軸レーダー、参考価格${priceLabel(w.priceYen)}、似ている銘柄を掲載。`;
+
+// 08-scripts/generate-ogp.py で生成した銘柄別OGP
+const ogImage = `/ogp/whisky-${whisky.id}.png`;
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: '銘柄一覧', href: '/whiskies/' },
+  { label: w.name, href: `/whisky/${whisky.id}/` },
+];
+---
+
+<BaseLayout title={w.name} {description} {ogImage} {breadcrumbs}>
+  <Breadcrumb items={breadcrumbs} />
+
+  <article class={`whisky-detail region-${w.region}`}>
+    <header class="whisky-hero">
+      {photo ? (
+        <figure class="whisky-hero-photo">
+          <img
+            src={photo.image}
+            alt={`${w.name}のボトル写真`}
+            width={photo.thumbWidth ?? photo.width}
+            height="auto"
+            loading="eager"
+          />
+          <figcaption>
+            写真: {photo.artist}
+            <a href={photo.sourceUrl} rel="nofollow">Wikimedia Commons</a>
+            （{photo.license}）
+          </figcaption>
+        </figure>
+      ) : (
+        <div class="whisky-hero-mark">
+          <BottleMark region={w.region} rating={w.rating} size={80} />
+        </div>
+      )}
+
+      <div class="whisky-hero-body">
+        <p class="whisky-hero-tags">
+          <a class="badge badge-region" href={`/region/${w.region}/`}>{REGION_LABELS[w.region]}</a>
+          <span class="badge badge-neutral">{TYPE_LABELS[w.type]}</span>
+          <span class="badge badge-neutral">{ageLabel(w.age)}</span>
+          <span class="badge badge-neutral">{w.abv}%</span>
+        </p>
+        <h1>{w.name}</h1>
+        <p class="whisky-hero-en">{w.nameEn}</p>
+        <p class="whisky-hero-notes">{w.notes}</p>
+      </div>
+
+      <dl class="whisky-hero-figures">
+        <div>
+          <dt>編集部評価</dt>
+          <dd><strong>{w.rating}</strong><span class="unit">/100</span></dd>
+        </div>
+        <div>
+          <dt>参考価格</dt>
+          <dd><strong>{priceLabel(w.priceYen)}</strong></dd>
+        </div>
+        {cpp ? (
+          <div>
+            <dt>1点あたり</dt>
+            <dd><strong>{cpp.toLocaleString('ja-JP')}</strong><span class="unit">円</span></dd>
+          </div>
+        ) : null}
+      </dl>
+    </header>
+
+    <section class="whisky-section">
+      <h2>味の傾向</h2>
+      <div class="flavor-layout">
+        <RadarChart labels={radar.labels} datasets={radar.datasets} title={undefined} />
+        <FlavorBars flavor={w.flavor} />
+      </div>
+      <p class="text-secondary text-sm">
+        {REGION_LABELS[w.region]}の特徴：{REGION_DESCRIPTIONS[w.region]}
+      </p>
+    </section>
+
+    <section class="whisky-section">
+      <h2>この評価は上位何%？</h2>
+      <p class="text-secondary text-sm">
+        掲載中{allWhiskies.length}銘柄の編集部評価の分布。右肩の線が累積割合です。
+      </p>
+      <ScoreDistribution whiskies={allWhiskies} markerRating={w.rating} markerLabel={w.name} />
+    </section>
+
+    <section class="whisky-section">
+      <h2>基本データ</h2>
+      <SpecTable {whisky} />
+      <SourceNote priceAsOf={w.priceAsOf} />
+    </section>
+
+    <AffiliateSection ids={w.affiliateId ? [w.affiliateId] : []} productName={w.name} />
+
+    {similar.length > 0 ? (
+      <section class="whisky-section">
+        <h2>{w.name}が好きならこれ</h2>
+        <p class="text-secondary text-sm">味の8軸が近く、価格帯も離れていない銘柄を並べています。</p>
+        <div class="whisky-list">
+          {similar.map((s) => <WhiskyCard whisky={s} />)}
+        </div>
+      </section>
+    ) : null}
+
+    {relatedPosts.length > 0 ? (
+      <section class="whisky-section">
+        <h2>この銘柄を扱った記事</h2>
+        <div class="post-list">
+          {relatedPosts.map((post) => <PostCard {post} headingLevel={3} />)}
+        </div>
+      </section>
+    ) : null}
+  </article>
+
+  <p class="text-center back-link">
+    <a href="/whiskies/">← 銘柄一覧に戻る</a>
+  </p>
+</BaseLayout>

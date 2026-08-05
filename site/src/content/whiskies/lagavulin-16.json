@@ -1,0 +1,34 @@
+{
+  "name": "ラガヴーリン16年",
+  "nameEn": "Lagavulin 16 Year Old",
+  "distillery": "ラガヴーリン蒸溜所",
+  "distillerySlug": "lagavulin",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 16,
+  "abv": 43.0,
+  "cask": [
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 9000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 90,
+  "flavor": {
+    "peat": 5,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 5,
+    "complex": 5,
+    "body": 5
+  },
+  "notes": "16年の熟成でピートが丸くなり、甘みと一体化する。アイラの完成形。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

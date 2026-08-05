@@ -1,0 +1,33 @@
+{
+  "name": "タリスカー ストーム",
+  "nameEn": "Talisker Storm",
+  "distillery": "タリスカー蒸溜所",
+  "distillerySlug": "talisker",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "abv": 45.8,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 3,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "荒々しい海を思わせる潮と黒胡椒の刺激。タリスカーらしい力強いスパイス。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

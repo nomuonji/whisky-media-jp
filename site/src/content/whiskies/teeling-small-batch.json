@@ -1,0 +1,33 @@
+{
+  "name": "ティーリング スモールバッチ",
+  "nameEn": "Teeling Small Batch",
+  "distillery": "ティーリング蒸溜所",
+  "distillerySlug": "teeling",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "blended",
+  "abv": 46.0,
+  "cask": [
+    "ラム樽"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "ダブリン発の若いブレンデッド。ラム樽仕上げの甘いスパイスとバニラ。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

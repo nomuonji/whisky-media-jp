@@ -1,0 +1,37 @@
+{
+  "name": "グレンフィディック12年",
+  "nameEn": "Glenfiddich 12 Year Old",
+  "distillery": "グレンフィディック蒸溜所",
+  "distillerySlug": "glenfiddich",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク",
+    "スパニッシュオーク"
+  ],
+  "priceYen": 3500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "洋梨と蜂蜜のわかりやすい甘み。シングルモルト入門の定番。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック",
+    "ハイボール"
+  ],
+  "affiliateId": "glenfiddich-12"
+}

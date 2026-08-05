@@ -1,0 +1,49 @@
+---
+import ListLayout from '../../layouts/ListLayout.astro';
+import WhiskyList from '../../components/whisky/WhiskyList.astro';
+import ScoreDistribution from '../../components/whisky/ScoreDistribution.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import DiscoveryNav from '../../components/whisky/DiscoveryNav.astro';
+import { RANKINGS } from '../../data/discovery';
+
+export async function getStaticPaths() {
+  const { RANKINGS } = await import('../../data/discovery');
+  const { getWhiskies, sortWhiskies } = await import('../../utils/whisky');
+  const whiskies = await getWhiskies();
+
+  return Object.entries(RANKINGS).map(([kind, def]) => ({
+    params: { kind },
+    props: {
+      whiskies: sortWhiskies(whiskies.filter(def.filter), def.sort).slice(0, 20),
+      all: whiskies,
+    },
+  }));
+}
+
+const { kind } = Astro.params;
+const { whiskies, all } = Astro.props;
+const def = RANKINGS[kind!];
+---
+
+<ListLayout
+  title={`${def.label}ランキング TOP${whiskies.length}`}
+  description={`ウイスキーの${def.label}ランキング。${def.lead}`}
+  heading="ランキング"
+  headingAccent={def.label}
+  lead={def.lead}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: `${def.label}ランキング`, href: `/ranking/${kind}/` },
+  ]}
+>
+  <section class="whisky-section">
+    <h2>評価の分布（全{all.length}銘柄）</h2>
+    <p class="text-secondary text-sm">
+      このランキングの評価が、掲載全体の中でどの位置にあるかが分かります。
+    </p>
+    <ScoreDistribution whiskies={all} />
+  </section>
+  <WhiskyList {whiskies} headingLevel={2} ranked={true} showCospa={def.showCospa} />
+  <DiscoveryNav current={`/ranking/${kind}/`} />
+  <SourceNote />
+</ListLayout>

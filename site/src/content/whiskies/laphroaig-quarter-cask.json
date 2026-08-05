@@ -1,0 +1,33 @@
+{
+  "name": "ラフロイグ クォーターカスク",
+  "nameEn": "Laphroaig Quarter Cask",
+  "distillery": "ラフロイグ蒸溜所",
+  "distillerySlug": "laphroaig",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 48.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 87,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 5,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "小樽で熟成させ樽との接触を増やした濃厚な仕上がり。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

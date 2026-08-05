@@ -1,0 +1,33 @@
+{
+  "name": "フォアローゼス シングルバレル",
+  "nameEn": "Four Roses Single Barrel",
+  "distillery": "フォアローゼス蒸溜所",
+  "distillerySlug": "four-roses",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 50.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 4800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "単一樽から瓶詰め。スパイシーで厚みのある味わい。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

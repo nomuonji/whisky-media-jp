@@ -1,0 +1,33 @@
+{
+  "name": "ジャックダニエル Old No.7",
+  "nameEn": "Jack Daniels Old No.7",
+  "distillery": "ジャックダニエル蒸溜所",
+  "distillerySlug": "jack-daniels",
+  "country": "usa",
+  "region": "tennessee",
+  "type": "tennessee",
+  "abv": 40.0,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 2600,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 79,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 2,
+    "body": 3
+  },
+  "notes": "メイプル炭で濾過する製法。バナナのような甘い香り。",
+  "recommendedFor": [
+    "コーラ割り",
+    "ハイボール"
+  ]
+}

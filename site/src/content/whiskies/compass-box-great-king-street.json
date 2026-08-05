@@ -1,0 +1,32 @@
+{
+  "name": "コンパスボックス グレートキングストリート",
+  "nameEn": "Compass Box Great King Street",
+  "distillery": "コンパスボックス",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 43.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "インディペンデントボトラーによる高品質ブレンデッド。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

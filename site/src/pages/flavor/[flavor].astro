@@ -1,0 +1,39 @@
+---
+import ListLayout from '../../layouts/ListLayout.astro';
+import WhiskyList from '../../components/whisky/WhiskyList.astro';
+import SourceNote from '../../components/whisky/SourceNote.astro';
+import DiscoveryNav from '../../components/whisky/DiscoveryNav.astro';
+import { FLAVOR_FILTERS } from '../../data/discovery';
+
+export async function getStaticPaths() {
+  const { FLAVOR_FILTERS } = await import('../../data/discovery');
+  const { getWhiskies, sortWhiskies } = await import('../../utils/whisky');
+  const whiskies = await getWhiskies();
+
+  return Object.entries(FLAVOR_FILTERS).map(([flavor, def]) => ({
+    params: { flavor },
+    props: { whiskies: sortWhiskies(whiskies.filter(def.match), def.sort) },
+  }));
+}
+
+const { flavor } = Astro.params;
+const { whiskies } = Astro.props;
+const def = FLAVOR_FILTERS[flavor!];
+---
+
+<ListLayout
+  title={`${def.label}のウイスキー${whiskies.length}銘柄`}
+  description={`${def.label}のウイスキー一覧。${def.lead}味の8軸データから該当する銘柄を抽出しています。`}
+  heading="味"
+  headingAccent={def.label}
+  lead={def.lead}
+  breadcrumbs={[
+    { label: 'ホーム', href: '/' },
+    { label: '銘柄一覧', href: '/whiskies/' },
+    { label: def.label, href: `/flavor/${flavor}/` },
+  ]}
+>
+  <WhiskyList {whiskies} headingLevel={2} />
+  <DiscoveryNav current={`/flavor/${flavor}/`} />
+  <SourceNote />
+</ListLayout>

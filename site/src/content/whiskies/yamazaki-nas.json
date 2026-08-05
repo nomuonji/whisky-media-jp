@@ -1,0 +1,35 @@
+{
+  "name": "山崎 ディスティラーズリザーブ",
+  "nameEn": "Yamazaki Distiller's Reserve",
+  "distillery": "山崎蒸溜所",
+  "distillerySlug": "yamazaki",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 43.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー",
+    "ミズナラ"
+  ],
+  "priceYen": 11000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "山崎の中では手に入りやすい定番のNAS。ミズナラ由来の華やかな香りと、ハイボールでも立つ果実感が魅力。",
+  "recommendedFor": [
+    "ハイボール",
+    "ストレート"
+  ]
+}

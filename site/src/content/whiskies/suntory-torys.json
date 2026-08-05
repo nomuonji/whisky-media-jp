@@ -1,0 +1,31 @@
+{
+  "name": "サントリー トリス",
+  "nameEn": "Suntory Torys Classic",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 37.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 900,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 73,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 1,
+    "body": 2
+  },
+  "notes": "戦後日本のウイスキー文化を支えた最も手頃な国産ブレンデッド。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

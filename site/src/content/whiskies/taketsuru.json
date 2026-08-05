@@ -1,0 +1,33 @@
+{
+  "name": "竹鶴ピュアモルト",
+  "nameEn": "Taketsuru Pure Malt",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended-malt",
+  "abv": 43.0,
+  "cask": [
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "余市と宮城峡のモルトを組み合わせたブレンデッドモルト。バランス型。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

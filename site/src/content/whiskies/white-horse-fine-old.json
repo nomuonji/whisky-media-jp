@@ -1,0 +1,31 @@
+{
+  "name": "ホワイトホース ファインオールド",
+  "nameEn": "White Horse Fine Old",
+  "distillery": "ディアジオ",
+  "country": "scotland",
+  "region": "islay",
+  "type": "blended",
+  "abv": 43.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 2200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 80,
+  "flavor": {
+    "peat": 3,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "43%版はピート感がやや強めで、ロックでも飲みごたえがある。",
+  "recommendedFor": [
+    "ロック"
+  ]
+}

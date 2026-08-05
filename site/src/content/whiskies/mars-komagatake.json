@@ -1,0 +1,32 @@
+{
+  "name": "駒ヶ岳 シングルモルト",
+  "nameEn": "Mars Komagatake Single Malt",
+  "distillery": "マルス信州蒸溜所",
+  "distillerySlug": "mars-shinshu",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 50.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 8000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "標高800mの蒸留所で造られる高地熟成モルト。フルーティで複雑。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

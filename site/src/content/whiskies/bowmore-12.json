@@ -1,0 +1,35 @@
+{
+  "name": "ボウモア12年",
+  "nameEn": "Bowmore 12 Year Old",
+  "distillery": "ボウモア蒸溜所",
+  "distillerySlug": "bowmore",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 3,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 3,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "アイラの中では穏やかなピート。レモンと蜂蜜が寄り添う。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

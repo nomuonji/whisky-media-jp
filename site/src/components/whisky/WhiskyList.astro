@@ -1,0 +1,30 @@
+---
+import WhiskyCard from './WhiskyCard.astro';
+import type { Whisky } from '../../utils/whisky';
+
+interface Props {
+  whiskies: Whisky[];
+  headingLevel?: 2 | 3;
+  ranked?: boolean;
+  showCospa?: boolean;
+  emptyMessage?: string;
+}
+
+const {
+  whiskies,
+  headingLevel = 3,
+  ranked = false,
+  showCospa = false,
+  emptyMessage = '条件に合う銘柄が見つかりませんでした。',
+} = Astro.props;
+---
+
+{whiskies.length === 0 ? (
+  <p class="post-list-empty text-secondary">{emptyMessage}</p>
+) : (
+  <div class="whisky-list">
+    {whiskies.map((whisky, i) => (
+      <WhiskyCard {whisky} {headingLevel} {showCospa} rank={ranked ? i + 1 : undefined} />
+    ))}
+  </div>
+)}

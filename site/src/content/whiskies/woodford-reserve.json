@@ -1,0 +1,33 @@
+{
+  "name": "ウッドフォードリザーブ",
+  "nameEn": "Woodford Reserve",
+  "distillery": "ウッドフォードリザーブ蒸溜所",
+  "distillerySlug": "woodford",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 43.2,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ポットスチルを併用した厚みのある味。バーボンの中では複雑。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

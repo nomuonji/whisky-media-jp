@@ -1,0 +1,467 @@
+/* ============================================
+   Whisky — カード / 詳細 / 味の可視化
+   ============================================ */
+
+/* === 地域カラー（データを色で識別できるようにする） === */
+.region-islay        { --region-color: #4A7C8C; }
+.region-speyside     { --region-color: #C9A227; }
+.region-highland     { --region-color: #7A9A5B; }
+.region-lowland      { --region-color: #A8C0A0; }
+.region-campbeltown  { --region-color: #6B8E9E; }
+.region-island       { --region-color: #5B7FA6; }
+.region-japan        { --region-color: #C0603F; }
+.region-kentucky     { --region-color: #B8763A; }
+.region-tennessee    { --region-color: #A0632F; }
+.region-ireland      { --region-color: #4A8C6A; }
+.region-taiwan       { --region-color: #C98A3A; }
+.region-india        { --region-color: #B5603F; }
+.region-australia    { --region-color: #8A6FA8; }
+
+/* 地域色は明度がまちまち（淡いローランドから濃いアイラまで）。
+   面を薄く・文字を濃くして、全地域で 4.5:1 以上を確保する（最小5.3:1） */
+.badge-region {
+  background: color-mix(in srgb, var(--region-color, var(--color-brand)) 14%, white);
+  color: color-mix(in srgb, var(--region-color, var(--color-brand)) 55%, black);
+}
+
+/* === ボトルマーク === */
+.bottle-mark .bottle-outline {
+  fill: none;
+  stroke: var(--color-text-tertiary);
+  stroke-width: 1.5;
+}
+
+.bottle-mark .bottle-liquid {
+  fill: var(--region-color, var(--color-brand));
+  opacity: 0.85;
+}
+
+.bottle-mark .bottle-cap {
+  fill: var(--color-text-secondary);
+}
+
+/* === 銘柄カードの写真 === */
+.whisky-card-mark {
+  align-self: start;
+}
+
+.whisky-card-photo {
+  display: block;
+  width: 64px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-subdued);
+}
+
+/* === 銘柄詳細の写真 === */
+.whisky-hero-photo {
+  margin: 0;
+  width: 200px;
+}
+
+.whisky-hero-photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface-subdued);
+}
+
+.whisky-hero-photo figcaption {
+  margin-top: var(--space-2xs);
+  font-size: var(--text-2xs);
+  line-height: var(--leading-base);
+  color: var(--color-text-tertiary);
+}
+
+.whisky-hero-photo figcaption a {
+  color: var(--color-text-tertiary);
+  text-decoration: underline;
+  margin-inline: 2px;
+}
+
+/* === 銘柄カード === */
+.whisky-list {
+  display: grid;
+  gap: var(--space-md);
+  padding-block: var(--space-md);
+}
+
+.whisky-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: var(--space-md);
+  align-items: start;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-left: 4px solid var(--region-color, var(--color-brand));
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  transition: box-shadow var(--transition-fast);
+}
+
+.whisky-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.whisky-rank {
+  position: absolute;
+  top: -0.6rem;
+  left: -0.6rem;
+  width: 1.9rem;
+  height: 1.9rem;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-pill);
+  background: var(--color-brand-strong);
+  color: #fff;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  font-family: var(--font-display);
+}
+
+.whisky-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0 0 var(--space-2xs);
+}
+
+.whisky-card-title {
+  font-size: var(--text-lg);
+  margin: 0 0 var(--space-2xs);
+  border: none;
+  padding: 0;
+}
+
+.whisky-card-title a {
+  color: var(--color-text);
+}
+
+.whisky-card-title a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.whisky-card-title a:hover {
+  color: var(--color-text-link);
+  text-decoration: none;
+}
+
+.whisky-card-notes {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xs);
+}
+
+.whisky-card-figures {
+  text-align: right;
+  display: grid;
+  gap: 2px;
+  white-space: nowrap;
+}
+
+.whisky-rating strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--region-color, var(--color-brand));
+  line-height: 1;
+}
+
+.whisky-rating .unit,
+.whisky-hero-figures .unit {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  margin-left: 2px;
+}
+
+.whisky-price {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.whisky-cospa {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* === 味のバー === */
+.flavor-bars {
+  margin: 0;
+}
+
+.flavor-row {
+  display: grid;
+  grid-template-columns: 5.5em 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-block: var(--space-2xs);
+}
+
+.flavor-row dt {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.flavor-row dd {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin: 0;
+}
+
+.flavor-track {
+  flex: 1;
+  height: 8px;
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.flavor-fill {
+  display: block;
+  height: 100%;
+  background: var(--region-color, var(--color-brand));
+  border-radius: var(--radius-pill);
+}
+
+.flavor-value {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+  width: 1em;
+  text-align: right;
+}
+
+/* コンパクト版：カード内のミニ棒グラフ */
+.flavor-bars-compact {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 24px;
+}
+
+.flavor-chip {
+  position: relative;
+  display: block;
+  width: 8px;
+  height: 100%;
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-xs);
+  overflow: hidden;
+}
+
+.flavor-chip-fill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: var(--region-color, var(--color-brand));
+  border-radius: var(--radius-xs);
+}
+
+/* === 銘柄詳細 === */
+.whisky-hero {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: var(--space-lg);
+  align-items: start;
+  padding-block: var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.whisky-hero-mark {
+  padding-top: var(--space-xs);
+}
+
+.whisky-hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+  margin: 0 0 var(--space-xs);
+}
+
+.whisky-hero h1 {
+  margin: 0;
+  font-size: var(--text-2xl);
+}
+
+.whisky-hero-en {
+  color: var(--color-text-tertiary);
+  font-size: var(--text-sm);
+  margin: var(--space-3xs) 0 var(--space-sm);
+}
+
+.whisky-hero-notes {
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.whisky-hero-figures {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xl);
+  margin: var(--space-md) 0 0;
+  padding-top: var(--space-md);
+  border-top: 1px dashed var(--color-border);
+}
+
+.whisky-hero-figures dt {
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+.whisky-hero-figures dd {
+  margin: 0;
+}
+
+.whisky-hero-figures strong {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  color: var(--region-color, var(--color-brand));
+}
+
+.whisky-section {
+  margin-block: var(--space-xl);
+}
+
+.whisky-section > h2 {
+  font-size: var(--text-lg);
+}
+
+.flavor-layout {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+}
+
+/* グリッド項目は既定で min-width:auto のため、中身の最小幅で横に溢れる */
+.flavor-layout > * {
+  min-width: 0;
+}
+
+@media (min-width: 720px) {
+  .flavor-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.flavor-layout .chart-container {
+  margin: 0;
+}
+
+.whisky-nolink {
+  font-size: var(--text-sm);
+  padding: var(--space-md);
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+/* === スペック表 === */
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+.spec-table th[scope='row'] {
+  width: 34%;
+  background: var(--color-surface-subdued);
+  text-align: left;
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+.spec-table th,
+.spec-table td {
+  border: 1px solid var(--color-border);
+  padding: 0.6rem var(--space-sm);
+}
+
+/* === 出典マーク === */
+.src-mark {
+  display: inline-block;
+  margin-left: var(--space-xs);
+  padding: 0 0.35em;
+  border-radius: var(--radius-sm);
+  font-size: var(--text-2xs);
+  line-height: 1.5;
+  text-decoration: none;
+  border-bottom: none;
+  cursor: help;
+  vertical-align: 1px;
+}
+
+.src-official {
+  background: var(--color-surface-subdued);
+  color: var(--color-text-secondary);
+}
+
+.src-market {
+  background: color-mix(in srgb, var(--color-success) 15%, white);
+  color: var(--color-success);
+}
+
+.src-editorial {
+  background: color-mix(in srgb, var(--color-error) 12%, white);
+  color: var(--color-error);
+}
+
+.source-note {
+  font-size: var(--text-xs);
+  line-height: var(--leading-base);
+  color: var(--color-text-secondary);
+  background: var(--color-surface-subdued);
+  border-left: 3px solid var(--color-border);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  padding: var(--space-sm) var(--space-md);
+  margin-block: var(--space-md);
+}
+
+.source-note p {
+  margin: 0;
+}
+
+/* 比較表で最安・最高評価を強調 */
+.comparison-table td.is-best {
+  background: color-mix(in srgb, var(--color-brand) 12%, white);
+  font-weight: var(--weight-semibold);
+}
+
+@media (max-width: 600px) {
+  .whisky-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .whisky-card-figures {
+    grid-column: 2;
+    text-align: left;
+    display: flex;
+    gap: var(--space-md);
+    align-items: baseline;
+  }
+
+  .whisky-hero {
+    grid-template-columns: auto 1fr;
+  }
+
+  .whisky-hero h1 {
+    font-size: var(--text-xl);
+  }
+
+  .whisky-hero-photo {
+    width: 120px;
+  }
+
+  .whisky-hero-figures {
+    gap: var(--space-lg);
+  }
+}

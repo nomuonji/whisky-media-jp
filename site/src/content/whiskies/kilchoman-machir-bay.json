@@ -1,0 +1,33 @@
+{
+  "name": "キルホーマン マッキルベイ",
+  "nameEn": "Kilchoman Machir Bay",
+  "distillery": "キルホーマン蒸溜所",
+  "distillerySlug": "kilchoman",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 46.0,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ファーム蒸留所の若いピートモルト。柑橘と海藻の香りがフレッシュに広がる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

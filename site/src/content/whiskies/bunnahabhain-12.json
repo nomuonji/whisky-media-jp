@@ -1,0 +1,35 @@
+{
+  "name": "ブナハーブン12年",
+  "nameEn": "Bunnahabhain 12",
+  "distillery": "ブナハーブン蒸溜所",
+  "distillerySlug": "bunnahabhain",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46.3,
+  "cask": [
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "アイラ島にあってピートが控えめなモルト。ナッツとシェリー、麦の甘みが中心。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

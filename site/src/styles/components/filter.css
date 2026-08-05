@@ -1,0 +1,188 @@
+/* ============================================
+   絞り込みパネル
+   ============================================ */
+
+.filter-panel {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  margin-block: var(--space-lg);
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.filter-panel fieldset {
+  border: none;
+  display: grid;
+  grid-template-columns: 4.5em 1fr;
+  align-items: baseline;
+  gap: var(--space-sm);
+}
+
+.filter-panel legend {
+  /* grid内でlegendを配置するため float 表示にしない */
+  float: left;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  padding: 0;
+}
+
+.filter-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.filter-chip {
+  cursor: pointer;
+}
+
+.filter-chip input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.filter-chip span {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  background: var(--color-surface);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+  user-select: none;
+}
+
+.filter-chip:hover span {
+  border-color: var(--color-brand);
+}
+
+.filter-chip input:checked + span {
+  background: var(--color-brand-strong);
+  border-color: var(--color-brand-strong);
+  color: #fff;
+}
+
+.filter-chip input:focus-visible + span {
+  outline: 2px solid var(--color-brand-dark);
+  outline-offset: 2px;
+}
+
+.filter-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  border-top: 1px solid var(--color-border-light);
+  padding-top: var(--space-sm);
+}
+
+.filter-sort {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.filter-sort select {
+  padding: var(--space-3xs) var(--space-xs);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  font-size: var(--text-sm);
+}
+
+.filter-count {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin-block: var(--space-sm);
+}
+
+.whisky-filter-item[hidden] {
+  display: none;
+}
+
+@media (max-width: 600px) {
+  .filter-panel fieldset {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xs);
+  }
+}
+
+/* ============================================
+   他の探し方（孤立ページを作らないための網羅リンク）
+   ============================================ */
+
+.discovery-nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-lg);
+  padding: var(--space-lg);
+  margin-block: var(--space-xl);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+}
+
+.discovery-nav-label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: var(--color-text-secondary);
+  margin: 0 0 var(--space-xs);
+}
+
+.discovery-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2xs);
+}
+
+.discovery-nav li {
+  margin: 0;
+}
+
+.discovery-nav a,
+.discovery-nav .is-current {
+  display: inline-block;
+  padding: var(--space-3xs) var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+.discovery-nav a:hover {
+  border-color: var(--color-brand);
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.discovery-nav .is-current {
+  background: var(--color-brand-strong);
+  border-color: var(--color-brand-strong);
+  color: #fff;
+}
+
+/* 0件のときに空白を見せず、理由と次の操作を出す */
+.filter-empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+  padding: var(--space-2xl) var(--space-lg);
+  background: var(--color-surface-subdued);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+}

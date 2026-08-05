@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import { SITE } from '../data/site';
+import { ja } from '../i18n/ja';
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: 'お問い合わせ', href: '/contact/' },
+];
+---
+
+<BaseLayout
+  title={`お問い合わせ｜${SITE.name}`}
+  description="Whisky Data JPへのお問い合わせ。誤りの指摘・データのご要望・掲載のお問い合わせはこちらから。"
+  {breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">お問い合わせ</h1>
+
+  <div class="post-content">
+    <p>当サイトへのご質問・ご意見は、下記のいずれかでお願いします。</p>
+
+    <h2>X（Twitter）でのお問い合わせ</h2>
+    <p>
+      当サイトの公式アカウント
+      <a href="https://x.com/whisky_data_jp" target="_blank" rel="noopener">{SITE.twitter ?? 'whisky_data_jp'}</a>
+      へのDM・リプライでお問い合わせください。返信まで数日いただく場合があります。
+    </p>
+
+    <h2>こんなご連絡も歓迎します</h2>
+    <ul>
+      <li>掲載データの誤り・更新のご指摘</li>
+      <li>価格の変動が大きい銘柄のご連絡</li>
+      <li>掲載してほしい銘柄・蒸留所のご要望</li>
+      <li>サイトの不具合のご報告</li>
+    </ul>
+
+    <h2>広告・掲載に関するお問い合わせ</h2>
+    <p>
+      メーカー・輸入元・販売店の皆様からの、商品情報の提供や掲載のご相談も受け付けています。
+      上記のDMまでご連絡ください。
+    </p>
+
+    <h2>注意事項</h2>
+    <p>
+      内容の確認のため、ご返信までに時間をいただく場合があります。
+      すべてのご連絡にご返信できるとは限らないことをご了承ください。
+    </p>
+  </div>
+
+  <p class="text-center back-link">
+    <a href="/">{ja.post.backToHome}</a>
+  </p>
+</BaseLayout>

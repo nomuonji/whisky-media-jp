@@ -1,0 +1,33 @@
+{
+  "name": "カバラン クラシック",
+  "nameEn": "Kavalan Classic",
+  "distillery": "カバラン蒸溜所",
+  "distillerySlug": "kavalan",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 6000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 5,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "亜熱帯の急速熟成。マンゴーやバナナのトロピカルな甘さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

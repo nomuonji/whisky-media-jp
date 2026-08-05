@@ -1,0 +1,31 @@
+{
+  "name": "クランキャンベル",
+  "nameEn": "Clan Campbell",
+  "distillery": "ペルノ・リカール",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "各種"
+  ],
+  "priceYen": 1300,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 74,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 2,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 1,
+    "body": 2
+  },
+  "notes": "フランスで特に人気のあるライトなブレンデッド。",
+  "recommendedFor": [
+    "ハイボール"
+  ]
+}

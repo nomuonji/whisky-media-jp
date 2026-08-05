@@ -1,0 +1,180 @@
+---
+import type { Whisky } from '../../utils/whisky';
+
+interface Props {
+  whiskies: Whisky[];
+  /** この評価値の位置を縦線で示す（銘柄ページ用） */
+  markerRating?: number;
+  markerLabel?: string;
+}
+
+const { whiskies, markerRating, markerLabel } = Astro.props;
+
+// 実データから分布を計算する（推定値は一切含まない）
+const ratings = whiskies.map((w) => w.data.rating).sort((a, b) => a - b);
+const minRating = Math.min(...ratings);
+const maxRating = Math.max(...ratings);
+
+const binStart = Math.max(60, Math.floor(minRating / 2) * 2);
+const binEnd = Math.ceil(maxRating / 2) * 2;
+
+const bins: { label: string; count: number }[] = [];
+const cumulative: number[] = [];
+let acc = 0;
+for (let v = binStart; v < binEnd; v += 2) {
+  const count = ratings.filter((r) => r >= v && r < v + 2).length;
+  bins.push({ label: `${v}`, count });
+  acc += count;
+  cumulative.push(Math.round((acc / ratings.length) * 100));
+}
+
+/** その評価値以上の銘柄の割合（上位何%） */
+function percentileAt(r: number): number {
+  return Math.round((ratings.filter((x) => x >= r).length / ratings.length) * 100);
+}
+
+const pct = markerRating ? percentileAt(markerRating) : null;
+const config = JSON.stringify({ bins, cumulative, markerRating, markerLabel, total: ratings.length });
+---
+
+<figure class="chart-container score-dist-container">
+  <figcaption class="chart-title">編集部評価の分布</figcaption>
+  <div class="chart-canvas-box score-dist-box">
+    <canvas
+      class="score-distribution"
+      data-scores={config}
+      role="img"
+      aria-label={`編集部評価の分布。棒は評価帯ごとの銘柄数、線は累積割合。`}
+    ></canvas>
+  </div>
+  {pct ? (
+    <p class="score-percentile">
+      {markerLabel}（{markerRating}点）は掲載中の{ratings.length}銘柄のうち、上位
+      <strong>{pct}%</strong>に位置します。
+    </p>
+  ) : null}
+</figure>
+
+<script>
+  import Chart from 'chart.js/auto';
+
+  const canvases = document.querySelectorAll<HTMLCanvasElement>('canvas.score-distribution');
+  const fontFamily = '"Noto Sans JP", sans-serif';
+  const BRAND = '#D4A030';
+  const TEXT = getComputedStyle(document.documentElement).getPropertyValue('--color-text').trim() || '#2c2416';
+
+  canvases.forEach((canvas) => {
+    const raw = canvas.dataset.scores;
+    if (!raw) return;
+    const { bins, cumulative, markerRating, markerLabel } = JSON.parse(raw) as {
+      bins: { label: string; count: number }[];
+      cumulative: number[];
+      markerRating?: number;
+      markerLabel?: string;
+    };
+
+    // 対象のスコアに縦線を引く
+    const markerLine = {
+      id: 'markerLine',
+      afterDatasetsDraw(chart: Chart) {
+        if (markerRating == null) return;
+        const x = chart.scales.x;
+        const y = chart.scales.y;
+        const idx = bins.findIndex((b) => Number(b.label) === markerRating);
+        if (idx < 0) return;
+        const xp = x.getPixelForValue(idx);
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.strokeStyle = TEXT;
+        ctx.lineWidth = 2;
+        ctx.setLineDash([4, 4]);
+        ctx.beginPath();
+        ctx.moveTo(xp, y.top);
+        ctx.lineTo(xp, y.bottom);
+        ctx.stroke();
+        if (markerLabel) {
+          ctx.setLineDash([]);
+          ctx.font = `600 11px ${fontFamily}`;
+          ctx.fillStyle = TEXT;
+          const w = ctx.measureText(markerLabel).width;
+          ctx.fillText(markerLabel, Math.min(xp - w / 2, x.right - w), y.top - 8);
+        }
+        ctx.restore();
+      },
+    };
+
+    new Chart(canvas, {
+      type: 'bar',
+      data: {
+        labels: bins.map((b) => b.label),
+        datasets: [
+          {
+            type: 'bar',
+            label: '銘柄数',
+            data: bins.map((b) => b.count),
+            backgroundColor: `${BRAND}55`,
+            borderColor: BRAND,
+            borderWidth: 1,
+            yAxisID: 'y',
+            order: 2,
+          },
+          {
+            type: 'line',
+            label: '累積割合',
+            data: cumulative,
+            borderColor: '#C0603F',
+            backgroundColor: 'transparent',
+            tension: 0.3,
+            pointRadius: 0,
+            borderWidth: 2,
+            yAxisID: 'y1',
+            order: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+          x: {
+            title: { display: true, text: '編集部評価', font: { family: fontFamily, size: 11 } },
+            ticks: { font: { family: fontFamily, size: 11 } },
+            grid: { display: false },
+          },
+          y: {
+            beginAtZero: true,
+            ticks: {
+              precision: 0,
+              font: { family: fontFamily, size: 11 },
+              callback: (v) => (Number(v) > 0 ? `${v}本` : ''),
+            },
+            title: { display: true, text: '銘柄数', font: { family: fontFamily, size: 11 } },
+          },
+          y1: {
+            beginAtZero: true,
+            max: 100,
+            position: 'right',
+            grid: { drawOnChartArea: false },
+            ticks: { font: { family: fontFamily, size: 11 }, callback: (v) => `${v}%` },
+          },
+        },
+        plugins: {
+          legend: { position: 'bottom', labels: { font: { family: fontFamily, size: 12 }, boxWidth: 12, padding: 12 } },
+          tooltip: {
+            bodyFont: { family: fontFamily },
+            callbacks: {
+              label: (ctx) => {
+                if (ctx.dataset.type === 'bar') return `銘柄数: ${ctx.raw}本`;
+                const x = ctx.label ?? '';
+                const cum = ctx.raw as number;
+                return `累積: ${cum}%（評価${x}点まで）`;
+              },
+            },
+          },
+        },
+      },
+      plugins: [markerLine],
+    });
+  });
+</script>

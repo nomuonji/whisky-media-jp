@@ -1,0 +1,51 @@
+---
+import type { Region } from '../../types/taxonomy';
+
+interface Props {
+  region: Region;
+  /** 液面の高さに評価を反映する（0-100） */
+  rating?: number;
+  size?: number;
+}
+
+const { region, rating = 80, size = 44 } = Astro.props;
+
+// 評価75〜95を液面35%〜85%に対応させる
+const fillRatio = Math.min(0.85, Math.max(0.35, ((rating - 75) / 20) * 0.5 + 0.35));
+const bodyTop = 26;
+const bodyBottom = 60;
+const bodyHeight = bodyBottom - bodyTop;
+const liquidTop = bodyBottom - bodyHeight * fillRatio;
+---
+
+<svg
+  class={`bottle-mark region-${region}`}
+  width={size}
+  height={size * 1.5}
+  viewBox="0 0 40 64"
+  aria-hidden="true"
+  focusable="false"
+>
+  <defs>
+    <clipPath id={`bottle-clip-${region}`}>
+      <path d="M13 26 Q13 22 15 20 L15 8 L25 8 L25 20 Q27 22 27 26 L27 58 Q27 61 24 61 L16 61 Q13 61 13 58 Z" />
+    </clipPath>
+  </defs>
+
+  <!-- 中身（地域カラー） -->
+  <rect
+    x="12"
+    y={liquidTop}
+    width="16"
+    height={61 - liquidTop}
+    clip-path={`url(#bottle-clip-${region})`}
+    class="bottle-liquid"
+  />
+
+  <!-- 瓶の輪郭 -->
+  <path
+    d="M13 26 Q13 22 15 20 L15 8 L25 8 L25 20 Q27 22 27 26 L27 58 Q27 61 24 61 L16 61 Q13 61 13 58 Z"
+    class="bottle-outline"
+  />
+  <rect x="14" y="5" width="12" height="4" rx="1" class="bottle-cap" />
+</svg>

@@ -1,0 +1,33 @@
+{
+  "name": "ジョニーウォーカー ブルーラベル",
+  "nameEn": "Johnnie Walker Blue Label",
+  "distillery": "ディアジオ",
+  "country": "scotland",
+  "region": "highland",
+  "type": "blended",
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 25000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 88,
+  "flavor": {
+    "peat": 2,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 2,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "稀少原酒をブレンドした頂点。スモーキーで滑らか、蜂蜜とドライフルーツの深い甘さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

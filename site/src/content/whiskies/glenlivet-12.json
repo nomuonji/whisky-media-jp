@@ -1,0 +1,34 @@
+{
+  "name": "ザ・グレンリベット12年",
+  "nameEn": "The Glenlivet 12 Year Old",
+  "distillery": "グレンリベット蒸溜所",
+  "distillerySlug": "glenlivet",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "パイナップルを思わせる明るい果実感。スペイサイドの教科書的な1本。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

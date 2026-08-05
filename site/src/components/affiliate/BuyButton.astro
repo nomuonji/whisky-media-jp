@@ -1,0 +1,22 @@
+---
+import { ja } from '../../i18n/ja';
+
+interface Props {
+  url: string;
+  /** スクリーンリーダー向けの補足（「購入 →」だけでは何の購入か分からないため） */
+  productName: string;
+  storeLabel: string;
+}
+
+const { url, productName, storeLabel } = Astro.props;
+---
+
+<a
+  href={url}
+  class="affiliate-btn"
+  target="_blank"
+  rel="nofollow noopener sponsored"
+  aria-label={`${productName}を${storeLabel}で購入（外部サイト）`}
+>
+  {ja.affiliate.buyButton}
+</a>

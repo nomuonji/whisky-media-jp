@@ -1,0 +1,68 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { SITE } from '../../data/site';
+import { categoryLabel } from '../../data/categories';
+import { absoluteUrl, postUrl } from '../../utils/url';
+import type { BreadcrumbItem } from '../../types/navigation';
+
+interface Props {
+  /** 記事ページなら渡す。省略時は WebSite のみ出力 */
+  post?: CollectionEntry<'blog'>;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const { post, breadcrumbs } = Astro.props;
+
+const organization = {
+  '@type': 'Organization',
+  name: SITE.name,
+  url: SITE.url,
+  logo: absoluteUrl(SITE.ogImage),
+};
+
+const graph: Record<string, unknown>[] = [
+  {
+    '@type': 'WebSite',
+    name: SITE.name,
+    url: SITE.url,
+    description: SITE.description,
+    inLanguage: 'ja',
+    publisher: organization,
+  },
+];
+
+if (post) {
+  const { title, date, updated, category, tags, excerpt, seo } = post.data;
+  graph.push({
+    '@type': 'Article',
+    headline: title,
+    description: seo?.description || excerpt || title,
+    datePublished: date.toISOString(),
+    dateModified: (updated ?? date).toISOString(),
+    inLanguage: 'ja',
+    mainEntityOfPage: { '@type': 'WebPage', '@id': absoluteUrl(postUrl(post.slug)) },
+    url: absoluteUrl(postUrl(post.slug)),
+    image: absoluteUrl(seo?.og_image || SITE.ogImage),
+    articleSection: categoryLabel(category),
+    keywords: (tags || []).join(', '),
+    author: organization,
+    publisher: organization,
+  });
+}
+
+if (breadcrumbs && breadcrumbs.length > 0) {
+  graph.push({
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((item, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: item.label,
+      item: absoluteUrl(item.href),
+    })),
+  });
+}
+
+const jsonLd = { '@context': 'https://schema.org', '@graph': graph };
+---
+
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

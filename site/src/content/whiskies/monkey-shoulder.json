@@ -1,0 +1,33 @@
+{
+  "name": "モンキーショルダー",
+  "nameEn": "Monkey Shoulder",
+  "distillery": "ウィリアム・グラント&サンズ",
+  "distillerySlug": "glenfiddich",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "blended-malt",
+  "abv": 40.0,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 3300,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "3つのモルト原酒のみをブレンドしたブレンデッドモルト。カクテル向け。",
+  "recommendedFor": [
+    "ロック",
+    "カクテル"
+  ]
+}

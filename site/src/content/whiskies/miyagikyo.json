@@ -1,0 +1,34 @@
+{
+  "name": "宮城峡",
+  "nameEn": "Nikka Miyagikyo Single Malt",
+  "distillery": "宮城峡蒸溜所",
+  "distillerySlug": "miyagikyo",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 45.0,
+  "cask": [
+    "シェリー",
+    "アメリカンオーク"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "余市と対をなす華やかさ。レーズンや洋梨のような果実感が中心。",
+  "recommendedFor": [
+    "ストレート",
+    "水割り"
+  ]
+}

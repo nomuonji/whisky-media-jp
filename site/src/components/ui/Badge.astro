@@ -1,0 +1,16 @@
+---
+interface Props {
+  label: string;
+  href?: string;
+  tone?: 'brand' | 'neutral' | 'success' | 'error';
+}
+
+const { label, href, tone = 'brand' } = Astro.props;
+const classes = `badge badge-${tone}`;
+---
+
+{href ? (
+  <a href={href} class={classes}>{label}</a>
+) : (
+  <span class={classes}>{label}</span>
+)}

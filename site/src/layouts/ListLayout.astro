@@ -1,0 +1,45 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import { ja } from '../i18n/ja';
+import type { BreadcrumbItem } from '../types/navigation';
+
+interface Props {
+  title: string;
+  description: string;
+  /** 見出しの接頭辞（例：「カテゴリ」「タグ」） */
+  heading: string;
+  /** 強調表示される部分（例：「スコッチ」「#比較」） */
+  headingAccent: string;
+  lead?: string;
+  breadcrumbs: BreadcrumbItem[];
+  prevUrl?: string;
+  nextUrl?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  heading,
+  headingAccent,
+  lead,
+  breadcrumbs,
+  prevUrl,
+  nextUrl,
+  noindex = false,
+} = Astro.props;
+---
+
+<BaseLayout {title} {description} {breadcrumbs} {prevUrl} {nextUrl} {noindex}>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">{heading}：<em>{headingAccent}</em></h1>
+  {lead ? <p class="page-lead text-secondary">{lead}</p> : null}
+
+  <slot />
+
+  <p class="text-center back-link">
+    <a href="/">{ja.post.backToHome}</a>
+  </p>
+</BaseLayout>

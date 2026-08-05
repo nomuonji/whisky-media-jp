@@ -1,0 +1,67 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/layout/SiteHeader.astro';
+import SiteFooter from '../components/layout/SiteFooter.astro';
+import Container from '../components/layout/Container.astro';
+import BaseHead from '../components/seo/BaseHead.astro';
+import JsonLd from '../components/seo/JsonLd.astro';
+import type { CollectionEntry } from 'astro:content';
+import type { BreadcrumbItem } from '../types/navigation';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  prevUrl?: string;
+  nextUrl?: string;
+  width?: 'default' | 'wide';
+  /** JSON-LD 用 */
+  post?: CollectionEntry<'blog'>;
+  breadcrumbs?: BreadcrumbItem[];
+}
+
+const {
+  title,
+  description,
+  ogImage,
+  type = 'website',
+  noindex = false,
+  publishedTime,
+  modifiedTime,
+  prevUrl,
+  nextUrl,
+  width = 'default',
+  post,
+  breadcrumbs,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <BaseHead
+    {title}
+    {description}
+    {ogImage}
+    {type}
+    {noindex}
+    {publishedTime}
+    {modifiedTime}
+    {prevUrl}
+    {nextUrl}
+  />
+  <JsonLd {post} {breadcrumbs} />
+</head>
+<body>
+  <a href="#main" class="skip-link">本文へスキップ</a>
+  <SiteHeader />
+  <Container as="main" id="main" {width} class="site-main">
+    <slot />
+  </Container>
+  <SiteFooter />
+</body>
+</html>

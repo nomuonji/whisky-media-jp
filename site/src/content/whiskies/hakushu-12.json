@@ -1,0 +1,35 @@
+{
+  "name": "白州12年",
+  "nameEn": "Hakushu 12 Year Old",
+  "distillery": "白州蒸溜所",
+  "distillerySlug": "hakushu",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43.0,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 14800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "青りんごとミントを思わせる爽やかさ。ごく軽いスモークが後ろに隠れている。",
+  "recommendedFor": [
+    "ハイボール",
+    "水割り"
+  ],
+  "affiliateId": "hakushu-12"
+}

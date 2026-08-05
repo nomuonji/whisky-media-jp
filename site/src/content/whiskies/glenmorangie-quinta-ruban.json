@@ -1,0 +1,34 @@
+{
+  "name": "グレンモーレンジィ キンタルーベン",
+  "nameEn": "Glenmorangie Quinta Ruban 14",
+  "distillery": "グレンモーレンジィ蒸溜所",
+  "distillerySlug": "glenmorangie",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 14,
+  "abv": 46.0,
+  "cask": [
+    "ポートワイン樽"
+  ],
+  "priceYen": 8000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ポート樽で追加熟成したリッチな甘さ。ダークチョコレートとラズベリーの果実感。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

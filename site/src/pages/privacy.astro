@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumb from '../components/layout/Breadcrumb.astro';
+import { SITE } from '../data/site';
+import { ja } from '../i18n/ja';
+
+const breadcrumbs = [
+  { label: 'ホーム', href: '/' },
+  { label: 'プライバシーポリシー', href: '/privacy/' },
+];
+---
+
+<BaseLayout
+  title={`プライバシーポリシー｜${SITE.name}`}
+  description="Whisky Data JPのプライバシーポリシー。収集する情報、Cookieの利用、第三者提供について説明しています。"
+  {breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <h1 class="page-title">プライバシーポリシー</h1>
+
+  <div class="post-content">
+    <p>当サイト（{SITE.name}）は、以下のとおり個人情報の取扱いについて定めます。</p>
+
+    <h2>1. 収集する情報</h2>
+    <p>
+      当サイトでは、訪問履歴の分析とサイト改善のために、以下の情報を自動的に取得することがあります。
+    </p>
+    <ul>
+      <li>アクセス日時・閲覧したページ</li>
+      <li>ブラウザの種類・OS・画面サイズ</li>
+      <li>参照元サイトのURL</li>
+      <li>IPアドレス（個人を特定する用途では利用しません）</li>
+    </ul>
+
+    <h2>2. Cookieの利用について</h2>
+    <p>
+      当サイトでは、アクセス解析（Google Analytics）とアフィリエイト広告の成果確認のために
+      Cookieを利用することがあります。Cookieはブラウザの設定からいつでも無効化できます。
+      無効化しても当サイトの閲覧に支障はありません。
+    </p>
+
+    <h2>3. 取得した情報の利用目的</h2>
+    <ul>
+      <li>サイトの品質向上および表示内容の最適化</li>
+      <li>アクセス状況の分析</li>
+      <li>アフィリエイトプログラムの成果確認</li>
+    </ul>
+
+    <h2>4. 第三者提供</h2>
+    <p>
+      当サイトは、法令に基づく場合を除き、取得した情報を本人の同意なく第三者に提供しません。
+      アクセス解析・広告配信の委託先（Google LLC等）には、その目的の範囲で情報が送信されることがあります。
+    </p>
+
+    <h2>5. 広告配信について</h2>
+    <p>
+      当サイトは第三者配信の広告サービス（Amazonアソシエイト、楽天アフィリエイト等）を利用しています。
+      広告配信事業者は、ユーザーの興味に応じた広告を表示するため、Cookieを使用することがあります。
+    </p>
+
+    <h2>6. 免責事項</h2>
+    <p>
+      当サイトに掲載する情報は、正確性に努めていますが、その完全性・正確性を保証するものではありません。
+      当サイトの情報を利用した結果生じたいかなる損害についても、当サイトは責任を負いません。
+    </p>
+
+    <h2>7. プライバシーポリシーの変更</h2>
+    <p>
+      当サイトは、法令の変更や運用の変更に伴い、本ポリシーを予告なく変更することがあります。
+    </p>
+
+    <h2>8. お問い合わせ</h2>
+    <p>
+      本ポリシーに関するお問い合わせは、<a href="/contact/">お問い合わせページ</a>をご覧ください。
+    </p>
+  </div>
+
+  <p class="text-center back-link">
+    <a href="/">{ja.post.backToHome}</a>
+  </p>
+</BaseLayout>

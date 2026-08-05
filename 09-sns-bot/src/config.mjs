@@ -18,7 +18,9 @@ export const REPO_ROOT = path.resolve(BOT_ROOT, '..');
 //     どこかに永続化しないと次回また古いトークンで失敗する
 //   - 公開リポジトリの git 履歴・Actions Secrets の平文にトークンを残したくない
 const DEFAULTS = {
-  BOT_SITE_URL: 'https://whisky-data.jp',
+  // 暫定: カスタムドメイン取得までは Cloudflare Pages の URL。
+  // 取得後は https://whisky-data.jp に戻すこと（astro.config.mjs / src/data/site.ts も同様）。
+  BOT_SITE_URL: 'https://whisky-media-jp.pages.dev',
   BOT_CONTENT_DIR: 'src/content',
   BOT_OGP_DIR: 'public/ogp',
   BOT_DRY_RUN: 'true',

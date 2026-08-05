@@ -2,7 +2,9 @@ import type { SiteConfig } from '../types/site';
 
 export const SITE: SiteConfig = {
   name: 'Whisky Data JP',
-  url: 'https://whisky-data.jp',
+  // 暫定: カスタムドメイン取得までは Cloudflare Pages の URL を使う。
+  // 取得後は https://whisky-data.jp に戻すこと（astro.config.mjs / 09-sns-bot/src/config.mjs も同様）。
+  url: 'https://whisky-media-jp.pages.dev',
   description: 'Whiskybase 20万本のデータを日本語で整理・可視化。レーダーチャートで味の傾向比較、価格推移グラフ、蒸留所系統図。',
   locale: 'ja_JP',
   ogImage: '/images/ogp-default.png',

@@ -33,7 +33,7 @@ export async function postToThreads({ text }, cfg, credentials) {
     {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ media_id: created.id }),
+      body: JSON.stringify({ creation_id: created.id }),
     }
   );
   const published = await pubRes.json().catch(() => ({}));

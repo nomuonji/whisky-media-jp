@@ -1,0 +1,33 @@
+{
+  "name": "ウェラー スペシャルリザーブ",
+  "nameEn": "Weller Special Reserve",
+  "distillery": "バッファロートレース蒸溜所",
+  "distillerySlug": "buffalo-trace",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 82,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "小麦を使うウイートバーボンの定番。キャラメルとフルーツの滑らかな甘さ。",
+  "recommendedFor": [
+    "ロック",
+    "ストレート"
+  ]
+}

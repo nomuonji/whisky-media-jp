@@ -1,0 +1,33 @@
+{
+  "name": "ラガヴーリン12年 カスクストレングス",
+  "nameEn": "Lagavulin 12 Year Old Cask Strength",
+  "distillery": "ラガヴーリン蒸溜所",
+  "distillerySlug": "lagavulin",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 57.7,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 15000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 90,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 5,
+    "complex": 5,
+    "body": 5
+  },
+  "notes": "毎年人気のカスクストレングス。深いピートと甘い香ばしさ、塩気が濃密。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

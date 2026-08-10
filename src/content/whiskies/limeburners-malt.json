@@ -1,0 +1,33 @@
+{
+  "name": "ライムバーナーズ モルト",
+  "nameEn": "Limeburners Single Malt",
+  "distillery": "ライムバーナーズ蒸溜所",
+  "distillerySlug": "limeburners",
+  "country": "australia",
+  "region": "australia",
+  "type": "single-malt",
+  "abv": 46,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "西オーストラリアのクラフトモルト。フルーツケーキとオークのリッチさ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

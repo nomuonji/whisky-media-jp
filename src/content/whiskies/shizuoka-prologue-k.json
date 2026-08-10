@@ -1,0 +1,32 @@
+{
+  "name": "静岡 プロローグK",
+  "nameEn": "Shizuoka Prologue K",
+  "distillery": "静岡蒸溜所",
+  "distillerySlug": "shizuoka",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 55.5,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 18000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 86,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "軽井沢の直火式スチルを受け継いだ初の公式ボトル。リッチな果実とスパイスが厚みを作る。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "ポールジョン クラシックセレクト",
+  "nameEn": "Paul John Classic Select",
+  "distillery": "ポールジョン蒸溜所",
+  "distillerySlug": "paul-john",
+  "country": "india",
+  "region": "india",
+  "type": "single-malt",
+  "abv": 42.8,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "ゴア州のモルト。バニラとバナナ、クリーミーな甘さがソフト。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

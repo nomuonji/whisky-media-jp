@@ -1,55 +1,92 @@
 ﻿id,name,nameEn,distillery,distillerySlug,country,region,type,age,abv,priceYen,priceAsOf,priceSource,availability,rating,notes,affiliateId,cask,recommendedFor,flavor.peat,flavor.sweet,flavor.fruity,flavor.spicy,flavor.oak,flavor.smoky,flavor.complex,flavor.body
 aberfeldy-12,アバフェルディ12年,Aberfeldy 12,アバフェルディ蒸溜所,aberfeldy,scotland,highland,single-malt,12,40.0,4800,2026-08,editorial,common,82,デュワーズの主要原酒。蜂蜜とヘザーの穏やかな甘さ。,,バーボン,ハイボール,0,4,3,1,3,0,3,2
 aberlour-12,アベラワー12年 ダブルカスク,Aberlour 12 Double Cask,アベラワー蒸溜所,aberlour,scotland,speyside,single-malt,12,40.0,5500,2026-08,editorial,common,84,シェリー樽とバーボン樽の原酒をバッティング。バランスの良い甘み。,,シェリー|バーボン,ストレート|ロック,0,4,4,2,4,0,4,3
+aberlour-16,アベラワー16年,Aberlour 16 Year Old,アベラワー蒸溜所,aberlour,scotland,speyside,single-malt,16,43,9500,2026-08,editorial,limited,86,シェリー樽主体の濃厚なアベラワー。プルーンとチョコレートの深い甘み。,,シェリー|バーボン,ストレート,0,4,4,3,4,0,4,4
 aberlour-a-bunadh,アベラワー アブーナ,Aberlour A'bunadh,アベラワー蒸溜所,aberlour,scotland,speyside,single-malt,,60.0,9500,2026-08,editorial,limited,89,カスクストレングス・ノンチルフィルタード。濃厚なシェリー感が凝縮。,,シェリー,ロック|水割り,0,5,4,3,5,0,5,5
+akkeshi-white,厚岸 ニューボーン ホワイト,Akkeshi New Born White,厚岸蒸溜所,akkeshi,japan,japan,single-malt,,55,12000,2026-08,editorial,rare,83,海の潮風が吹く北海道の蒸溜所による若いモルト。ほのかなピートと柑橘が個性的。,,バーボン|シェリー,ストレート,2,3,3,2,3,2,3,3
+amrut-cask-strength,アムルット カスクストレングス,Amrut Cask Strength,アムルット蒸溜所,amrut,india,india,single-malt,,61.5,8500,2026-08,editorial,limited,86,標高910mの高温熟成が生む凝縮感。蜂蜜とスパイス、力強いボディ。,,バーボン,ストレート,1,4,4,4,4,1,4,5
 amrut-fusion,アムルット フュージョン,Amrut Fusion,アムルット蒸溜所,amrut,india,india,single-malt,,50.0,7000,2026-08,editorial,limited,87,インド産大麦とスコットランド産ピーテッド麦芽を組み合わせた1本。,,アメリカンオーク,ストレート,2,4,4,4,4,2,5,5
 amrut-peated,アムルット ピーテッド,Amrut Peated,アムルット蒸溜所,amrut,india,india,single-malt,,46.0,8500,2026-08,editorial,limited,86,スコットランド産ピーテッド麦芽を使用。高温熟成で凝縮感が強い。,,アメリカンオーク,ストレート,4,3,3,4,4,4,4,5
+ancnoc-12,アノック12年,anCnoc 12 Year Old,アノック蒸溜所（ノックドゥ）,ancnoc,scotland,highland,single-malt,12,46,5500,2026-08,editorial,common,83,ライトで飲みやすく、ハチミツと柑橘の香り。初心者にも優しいバランス。,,バーボン|シェリー,ストレート|ハイボール,0,4,4,2,3,0,3,3
 ardbeg-10,アードベッグ10年,Ardbeg 10 Year Old,アードベッグ蒸溜所,ardbeg,scotland,islay,single-malt,10,46.0,5500,2026-08,editorial,common,88,強いピートの奥にレモンのような酸。度数46%で味が濃い。,,アメリカンオーク,ストレート,5,2,2,3,3,5,5,4
+ardbeg-5-wee-beastie,アードベッグ5年 ウィービースティ,Ardbeg Wee Beastie,アードベッグ蒸溜所,ardbeg,scotland,islay,single-malt,5,47.4,6000,2026-08,editorial,common,83,若いアードベッグらしい鋭いピートと塩気。胡椒と黒糖が荒々しくも旨い。,,バーボン|シェリー,ロック|ハイボール,5,2,1,3,3,5,3,4
 ardbeg-an-oa,アードベッグ アン・オア,Ardbeg An Oa,アードベッグ蒸溜所,ardbeg,scotland,islay,single-malt,,46.6,7000,2026-08,editorial,common,86,複数の樽を組み合わせた、アードベッグの中ではまろやかなピート。スモークとバニラ。,,バーボン|シェリー|ワイン樽,ストレート|ロック,5,3,2,3,3,5,4,4
+ardbeg-corryvreckan,アードベッグ コリヴレッカン,Ardbeg Corryvreckan,アードベッグ蒸溜所,ardbeg,scotland,islay,single-malt,,57.1,13000,2026-08,editorial,limited,89,世界で最も深い渦潮にちなむ濃厚なピート。チョコレートと胡椒、森の火の香り。,,バーボン|シェリー,ストレート|ロック,5,2,2,4,4,5,4,5
 ardbeg-uigeadail,アードベッグ ウーガダール,Ardbeg Uigeadail,アードベッグ蒸溜所,ardbeg,scotland,islay,single-malt,,54.2,8500,2026-08,editorial,limited,90,シェリー樽原酒をヴァッティング。ピートと甘さが濃厚に共存。,,シェリー|バーボン,ストレート,5,3,2,3,4,5,5,5
+arran-10,アラン10年,Arran 10 Year Old,アラン蒸溜所,arran,scotland,island,single-malt,10,46,5200,2026-08,editorial,common,83,島の清冽な空気で育ったフルーティなモルト。シトラスとハーブ、ミント。,,バーボン|シェリー,ストレート|ハイボール,0,4,4,2,3,0,3,3
 auchentoshan-12,オーヘントッシャン12年,Auchentoshan 12 Year Old,オーヘントッシャン蒸溜所,auchentoshan,scotland,lowland,single-malt,12,40.0,4500,2026-08,editorial,common,81,3回蒸留による軽やかさ。ローランドらしい穏やかな飲み口。,,バーボン|シェリー,ストレート|水割り,0,3,4,1,3,0,2,2
 auchentoshan-american-oak,オーヘントッシャン アメリカンオーク,Auchentoshan American Oak,オーヘントッシャン蒸溜所,auchentoshan,scotland,lowland,single-malt,,40.0,3800,2026-08,editorial,common,80,バーボン樽のみで熟成。軽やかでバニラの甘さが際立つ。,,バーボン,ロック|水割り,0,3,3,1,3,0,2,2
+auchentoshan-three-wood,オーヘントッシャン スリーウッド,Auchentoshan Three Wood,オーヘントッシャン蒸溜所,auchentoshan,scotland,lowland,single-malt,,43,8000,2026-08,editorial,limited,84,3種類の樽で仕上げる滑らかなモルト。レーズンとダークチョコレートの甘さ。,,バーボン|オロロソシェリー|ペドロヒメネス,ストレート,0,5,4,3,3,0,3,3
+aultmore-12,オルトモア12年,Aultmore 12 Year Old,オルトモア蒸溜所,aultmore,scotland,speyside,single-malt,12,46,6000,2026-08,editorial,common,84,フローラルでハーブ香。ミントとレモンの爽やかさが後半に広がる。,,バーボン|シェリー,ストレート,0,3,4,2,3,0,3,3
+balblair-12,バルブレア12年,Balblair 12 Year Old,バルブレア蒸溜所,balblair,scotland,highland,single-malt,12,46,6200,2026-08,editorial,common,84,オレンジピールと白胡椒のスパイス。華やかな果実香でハイボールにも強い。,,バーボン,ストレート|ハイボール,0,4,4,3,3,0,3,3
 ballantines-finest,バランタイン ファイネスト,Ballantine's Finest,バランタイン,,scotland,highland,blended,,40.0,1500,2026-08,editorial,common,78,"40種以上の原酒を使いながら1,500円前後。ハイボールの定番。",,各種,ハイボール,1,3,3,1,2,1,2,2
 balvenie-12-doublewood,ザ・バルヴェニー ダブルウッド12年,Balvenie DoubleWood 12,バルヴェニー蒸溜所,balvenie,scotland,speyside,single-malt,12,40.0,7000,2026-08,editorial,common,86,2種類の樽で熟成させる製法。蜂蜜とシナモンが重なる。,,アメリカンオーク|シェリー,ストレート,0,4,4,2,4,0,4,3
 balvenie-14-caribbean-cask,バルヴェニー14年 カリビアンカスク,Balvenie 14 Caribbean Cask,バルヴェニー蒸溜所,balvenie,scotland,speyside,single-malt,14,43.0,10000,2026-08,editorial,limited,86,カリブのラム樽でフィニッシュ。バナナや砂糖きびのトロピカルな甘さが広がる。,,ラム樽,ストレート|ロック,0,5,4,2,3,0,3,4
+basil-hayden,ベイシルヘイデン,Basil Hayden's,ジムビーム蒸溜所,jim-beam,usa,kentucky,bourbon,,40,4000,2026-08,editorial,common,82,スモールバッチの先駆け。ライ麦の胡椒感と蜂蜜の甘さの軽快なバランス。,,新樽,ロック|ストレート,0,3,3,4,4,0,3,3
+benriach-10,ベンリアック10年,Benriach 10 Year Old,ベンリアック蒸溜所,benriach,scotland,speyside,single-malt,10,43,5500,2026-08,editorial,common,83,トリプルディスティルドの滑らかさ。洋梨やメロン、スパイスのバランス。,,バーボン|シェリー,ストレート|ハイボール,0,4,4,2,3,0,3,3
+benromach-10,ベンロマック10年,Benromach 10 Year Old,ベンロマック蒸溜所,benromach,scotland,speyside,single-malt,10,43,5800,2026-08,editorial,common,83,ほのかなピートと麦芽の甘み。昔ながらのスモーキーなスペイサイド。,,バーボン|シェリー,ストレート|ロック,2,3,3,2,3,2,4,3
 black-nikka-clear,ブラックニッカ クリアブレンド,Black Nikka Clear Blend,ニッカウヰスキー,,japan,japan,blended,,37.0,1000,2026-08,editorial,common,74,国産ブレンデッドの中でも特に手頃な価格帯。ハイボール向け。,,各種,ハイボール,0,3,2,1,2,0,1,2
 black-white,ブラック&ホワイト,Black & White,ディアジオ,,scotland,highland,blended,,40.0,1600,2026-08,editorial,common,76,犬のラベルで知られる歴史あるブレンデッド。飲みやすい。,,各種,ハイボール,1,3,2,1,2,1,2,2
+bladnoch-10,ブラドノック10年,Bladnoch 10 Year Old,ブラドノック蒸溜所,bladnoch,scotland,lowland,single-malt,10,46.7,8500,2026-08,editorial,limited,83,ローランドらしい軽やかさと花の香り。リンゴとクリーム、蜂蜜の優しさ。,,バーボン,ストレート,0,3,3,2,3,0,3,2
+blantons,ブラントン シングルバレル,Blanton's Single Barrel,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,,46.5,9500,2026-08,editorial,rare,86,世界初のシングルバレルバーボン。バニラとオレンジ、スパイスの濃厚な味わい。,,新樽,ストレート|ロック,0,4,3,4,5,0,4,4
 bowmore-12,ボウモア12年,Bowmore 12 Year Old,ボウモア蒸溜所,bowmore,scotland,islay,single-malt,12,40.0,4500,2026-08,editorial,common,84,アイラの中では穏やかなピート。レモンと蜂蜜が寄り添う。,,シェリー|アメリカンオーク,ストレート|ハイボール,3,3,3,2,3,3,4,3
 bowmore-15,ボウモア15年,Bowmore 15,ボウモア蒸溜所,bowmore,scotland,islay,single-malt,15,43.0,9500,2026-08,editorial,limited,86,シェリー樽で追加熟成。ピートと甘さのバランスが円熟している。,,シェリー,ストレート,3,4,3,2,4,3,4,4
 bruichladdich-classic-laddie,ブルックラディ クラシックラディ,Bruichladdich Classic Laddie,ブルックラディ蒸溜所,bruichladdich,scotland,islay,single-malt,,50.0,6500,2026-08,editorial,common,83,ノンピート方針の看板ボトル。フルーティで軽やかな酒質。,,バーボン,ストレート|ロック,0,4,4,1,3,0,3,3
 buffalo-trace,バッファロートレース,Buffalo Trace,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,,45.0,3800,2026-08,editorial,limited,85,バランスの良さで評価が高い。バニラとオレンジピール。,,新樽,ストレート|ロック,0,4,3,3,4,0,4,4
 bulleit-bourbon,バレット バーボン,Bulleit Bourbon,フォアローゼス蒸溜所（委託）,four-roses,usa,kentucky,bourbon,,45.0,3200,2026-08,editorial,common,83,高ライ麦比率のマッシュビル。スパイシーでドライな味わい。,,新樽,ロック|カクテル,0,3,2,4,4,0,3,4
 bunnahabhain-12,ブナハーブン12年,Bunnahabhain 12,ブナハーブン蒸溜所,bunnahabhain,scotland,islay,single-malt,12,46.3,6500,2026-08,editorial,common,85,アイラ島にあってピートが控えめなモルト。ナッツとシェリー、麦の甘みが中心。,,シェリー|アメリカンオーク,ストレート|ロック,1,4,4,2,3,1,4,3
+bunnahabhain-18,ブナハーブン18年,Bunnahabhain 18 Year Old,ブナハーブン蒸溜所,bunnahabhain,scotland,islay,single-malt,18,46.3,17000,2026-08,editorial,rare,89,アイラとは思えないノンピートの深いモルト。シェリーの甘さと海塩が繊細。,,シェリー|バーボン,ストレート,0,4,4,3,4,0,5,4
+bushmills-10,ブッシュミルズ10年,Bushmills 10 Year Old,ブッシュミルズ蒸溜所,bushmills,ireland,ireland,single-malt,10,40,4800,2026-08,editorial,common,82,1784年創業の歴史ある蒸溜所。蜂蜜とバニラ、フルーティな甘さ。,,バーボン|シェリー,ストレート|ハイボール,0,4,4,2,3,0,3,3
 bushmills-black-bush,ブッシュミルズ ブラックブッシュ,Bushmills Black Bush,ブッシュミルズ蒸溜所,bushmills,ireland,ireland,blended,,40.0,3200,2026-08,editorial,common,83,モルト比率を高めシェリー樽熟成を加えた上位グレード。,,シェリー|バーボン,ストレート|ロック,0,4,3,1,3,0,3,3
 bushmills-original,ブッシュミルズ オリジナル,Bushmills Original,ブッシュミルズ蒸溜所,bushmills,ireland,ireland,blended,,40.0,2400,2026-08,editorial,common,79,北アイルランドの老舗。軽やかで飲みやすいブレンデッド。,,バーボン,ハイボール|ロック,0,3,3,1,2,0,2,2
 caol-ila-12,カリラ12年,Caol Ila 12,カリラ蒸溜所,caol-ila,scotland,islay,single-malt,12,43.0,6000,2026-08,editorial,common,84,アイラの中では軽やかな部類。オイリーで穏やかなスモーク。,,バーボン,ストレート|ハイボール,3,2,2,2,3,3,3,3
+caol-ila-18,カリラ18年,Caol Ila 18 Year Old,カリラ蒸溜所,caol-ila,scotland,islay,single-malt,18,43,13000,2026-08,editorial,limited,87,18年熟成で丸みを帯びたカリラ。レモンと潮、スモークが上品に溶け合う。,,バーボン|シェリー,ストレート,4,3,3,2,4,4,4,4
 cardhu-12,カーデュ12年,Cardhu 12 Year Old,カーデュ蒸溜所,cardhu,scotland,speyside,single-malt,12,40.0,5000,2026-08,editorial,common,83,軽やかで蜂蜜のような甘さ。ジョニーウォーカーの心臓部でもある。,,アメリカンオーク,ハイボール|ロック,0,4,3,1,3,0,3,2
 chichibu-the-first,秩父 ザ・ファースト10年,Chichibu The First 10,秩父蒸溜所,chichibu,japan,japan,single-malt,10,50.5,45000,2026-08,editorial,rare,91,創業から10年を記念したボトル。フルーティさと複雑さが凝縮。,,各種,ストレート,2,4,5,3,4,1,5,4
 chivas-12,シーバスリーガル12年,Chivas Regal 12,シーバスブラザーズ,,scotland,speyside,blended,12,40.0,3000,2026-08,editorial,common,81,スペイサイドのモルトを軸にした滑らかなブレンデッド。,,各種,ロック|水割り,0,4,3,1,3,0,3,2
 chivas-18,シーバスリーガル18年,Chivas Regal 18,シーバスブラザーズ,,scotland,speyside,blended,18,40.0,11000,2026-08,editorial,limited,85,18年熟成のブレンデッド。チョコレートとドライフルーツの深い甘さ、滑らかな余韻。,,シェリー|アメリカンオーク,ストレート|ロック,0,4,4,2,4,0,4,3
 clan-campbell,クランキャンベル,Clan Campbell,ペルノ・リカール,,scotland,speyside,blended,,40.0,1300,2026-08,editorial,common,74,フランスで特に人気のあるライトなブレンデッド。,,各種,ハイボール,0,3,2,1,2,0,1,2
 clynelish-14,クライヌリッシュ14年,Clynelish 14,クライヌリッシュ蒸溜所,clynelish,scotland,highland,single-malt,14,46.0,9000,2026-08,editorial,limited,87,ワックスのような独特の質感と蜂蜜の甘さ。玄人に人気。,,バーボン,ストレート,1,3,4,2,3,1,4,4
+colonel-eh-taylor,カーネル・E・H・テイラー スモールバッチ,Colonel E.H. Taylor Small Batch,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,,50,9000,2026-08,editorial,rare,86,歴史的蒸溜所の復刻ブランド。バニラとキャラメル、胡椒の力強いバランス。,,新樽,ストレート|ロック,0,4,3,4,5,0,4,4
 compass-box-great-king-street,コンパスボックス グレートキングストリート,Compass Box Great King Street,コンパスボックス,,scotland,highland,blended,,43.0,4500,2026-08,editorial,limited,84,インディペンデントボトラーによる高品質ブレンデッド。,,各種,ストレート|ロック,1,4,3,2,3,1,3,3
+connemara-12,コネマーラ12年,Connemara 12 Year Old,クーリー蒸溜所,cooley,ireland,ireland,single-malt,12,40,7000,2026-08,editorial,limited,83,アイリッシュで唯一のピーテッドモルト。穏やかなスモークと草の香り。,,バーボン,ストレート|ロック,3,3,2,3,3,3,3,3
 craigellachie-13,クライゲラヒ13年,Craigellachie 13 Year Old,クライゲラヒ蒸溜所,craigellachie,scotland,speyside,single-malt,13,46.0,7500,2026-08,editorial,limited,85,ワームタブ由来の硫黄香とオイリーな質感が個性的。,,バーボン,ストレート,1,3,3,3,3,1,4,4
 cutty-sark,カティサーク,Cutty Sark,エドリントン,,scotland,lowland,blended,,40.0,1600,2026-08,editorial,common,77,軽やかでクセの少ないブレンデッド。カクテルベースにも。,,各種,ハイボール|カクテル,0,3,3,1,2,0,2,2
 dalmore-12,ダルモア12年,The Dalmore 12,ダルモア蒸溜所,dalmore,scotland,highland,single-malt,12,40.0,7500,2026-08,editorial,common,85,オレンジピールとチョコレートを思わせる濃厚な甘さ。,,シェリー|バーボン,ストレート,0,4,3,2,4,0,4,3
+dalmore-15,ダルモア15年,Dalmore 15 Year Old,ダルモア蒸溜所,dalmore,scotland,highland,single-malt,15,40,12000,2026-08,editorial,limited,86,シェリー樽熟成のリッチな甘さ。オレンジマーマレードとシナモンの香り。,,シェリー|バーボン,ストレート|ロック,0,4,4,3,4,0,4,4
+deanston-12,ディーンストン12年,Deanston 12 Year Old,ディーンストン蒸溜所,deanston,scotland,highland,single-malt,12,46.3,5500,2026-08,editorial,common,84,無濾過・無着色のバーボン樽熟成。蜂蜜漬けレモンとバニラの香り。,,バーボン,ストレート|ロック,0,4,4,2,3,0,3,3
 dewars-white-label,デュワーズ ホワイトラベル,Dewar's White Label,バカルディ,,scotland,highland,blended,,40.0,1600,2026-08,editorial,common,78,二重熟成製法（ダブルエイジド）で滑らかさを高めたブレンデッド。,,各種,ハイボール,0,3,3,1,2,0,2,2
 eagle-rare-10,イーグルレア10年,Eagle Rare 10,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,10,45.0,7000,2026-08,editorial,limited,86,10年熟成のシングルバレルバーボン。チェリーとオーク、長い余韻。,,新樽,ストレート|ロック,0,5,3,3,4,0,4,4
+edradour-10,エドラダワー10年,Edradour 10 Year Old,エドラダワー蒸溜所,edradour,scotland,highland,single-malt,10,40,6200,2026-08,editorial,common,83,最小規模の蒸溜所らしい濃厚な味わい。フルーツケーキとスパイスの香りが豊か。,,シェリー|バーボン,ストレート,0,4,4,2,3,0,4,3
 elijah-craig-small-batch,エライジャクレイグ スモールバッチ,Elijah Craig Small Batch,ヘヴンヒル蒸溜所,heaven-hill,usa,kentucky,bourbon,,47.0,3500,2026-08,editorial,common,85,バーボン評論家から高評価を得続けるコスパの良い1本。,elijah-craig-small-batch,新樽,ストレート|ロック,0,4,3,3,4,0,4,4
+elmer-t-lee,エルマー・T・リー,Elmer T. Lee Single Barrel,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,,45,8000,2026-08,editorial,rare,85,バッファロートレースの伝説的人物に捧げる単一樽。バニラとトフィーの甘さ。,,新樽,ストレート,0,4,3,3,5,0,4,4
 evan-williams-black,エヴァン・ウィリアムス ブラックラベル,Evan Williams Black Label,ヘヴンヒル蒸溜所,heaven-hill,usa,kentucky,bourbon,,43.0,1800,2026-08,editorial,common,80,価格を超えた品質と評されるスタンダードバーボン。,,新樽,ロック|ハイボール,0,4,2,2,3,0,3,3
 famous-grouse-smoky-black,フェイマス グラウス スモーキーブラック,Famous Grouse Smoky Black,エドリントン,,scotland,highland,blended,,40.0,2000,2026-08,editorial,common,79,アイラモルトをブレンドし軽いスモーク香を加えたバリエーション。,,各種,ハイボール,3,3,3,1,2,2,2,2
 famous-grouse,フェイマス グラウス,The Famous Grouse,エドリントン,,scotland,highland,blended,,40.0,1800,2026-08,editorial,common,79,スコットランドで最も飲まれているブレンデッドのひとつ。,,各種,ハイボール|ロック,1,3,3,1,2,1,2,2
 four-roses-single-barrel,フォアローゼス シングルバレル,Four Roses Single Barrel,フォアローゼス蒸溜所,four-roses,usa,kentucky,bourbon,,50.0,4800,2026-08,editorial,limited,86,単一樽から瓶詰め。スパイシーで厚みのある味わい。,,新樽,ストレート|ロック,0,4,3,4,4,0,4,4
 four-roses-small-batch,フォアローゼス スモールバッチ,Four Roses Small Batch,フォアローゼス蒸溜所,four-roses,usa,kentucky,bourbon,,45.0,4000,2026-08,editorial,common,84,4種のレシピを組み合わせたスモールバッチ。フローラルでまろやかな口当たり。,,新樽,ロック|ハイボール,0,4,4,3,3,0,3,3
 four-roses-yellow,フォアローゼス イエローラベル,Four Roses Yellow Label,フォアローゼス蒸溜所,four-roses,usa,kentucky,bourbon,,40.0,2600,2026-08,editorial,common,81,10種類のレシピをブレンド。軽やかでフルーティなバーボン。,,新樽,ロック|ハイボール,0,4,3,2,3,0,3,3
+fuji-sanroku,富士山麓 樽熟成50°,Fuji Sanroku,富士御殿場蒸溜所,fuji-gotemba,japan,japan,blended,,50,1800,2026-08,editorial,common,76,50度の力強い飲みごたえと樽由来のコク。価格を考えれば驚異的なコスパの国産ブレンド。,,アメリカンオーク,ハイボール|ロック,0,3,2,3,3,0,2,3
+george-dickel-12,ジョージディッケル12年,George Dickel 12 Year Old,ジョージディッケル蒸溜所,george-dickel,usa,tennessee,tennessee,12,45,5000,2026-08,editorial,limited,85,低温でのチャコール濾過が特徴。クリーミーなバニラとココア、オーク。,,新樽,ストレート|ロック,0,4,3,3,5,0,4,4
+glen-garioch-founder,グレンガリオ ファウンダーズ,Glen Garioch Founders Reserve,グレンガリオ蒸溜所,glen-garioch,scotland,highland,single-malt,,48,7000,2026-08,editorial,limited,83,エステティカルな造りの復活を記念したNAS。バターのような濃厚さと果実。,,バーボン|シェリー,ストレート,1,3,4,3,3,1,4,3
+glen-grant-10,グレングラント10年,Glen Grant 10 Year Old,グレングラント蒸溜所,glen-grant,scotland,speyside,single-malt,10,40,4000,2026-08,editorial,common,81,ライトでクリーンな飲み口。青リンゴと花の香りで食事にも合う。,,バーボン|シェリー,ストレート|ハイボール,0,3,4,1,2,0,2,2
+glen-moray-12,グレンモーレイ12年,Glen Moray 12 Year Old,グレンモーレイ蒸溜所,glen-moray,scotland,speyside,single-malt,12,40,4000,2026-08,editorial,common,81,バーボン樽熟成の素直な味わい。バニラと柑橘の清潔感。コスパ良好。,,バーボン,ハイボール|ストレート,0,3,3,2,3,0,2,3
+glenallachie-12,グレンアラヒー12年,Glenallachie 12 Year Old,グレンアラヒー蒸溜所,glenallachie,scotland,speyside,single-malt,12,46,6200,2026-08,editorial,common,85,シェリー樽比率が高く濃厚。トフィーとオレンジ、スパイスの密度が高い。,,シェリー,ストレート,0,5,4,2,4,0,4,4
+glenallachie-15,グレンアラヒー15年,Glenallachie 15 Year Old,グレンアラヒー蒸溜所,glenallachie,scotland,speyside,single-malt,15,46,11000,2026-08,editorial,limited,87,シェリー樽熟成の深い甘さ。ブラックチェリーとモカ、シナモンの複雑さ。,,シェリー|バーボン,ストレート,0,5,4,3,4,0,4,4
+glencadam-10,グレンカダム10年,Glencadam 10 Year Old,グレンカダム蒸溜所,glencadam,scotland,highland,single-malt,10,46,5000,2026-08,editorial,common,82,バーボン樽熟成のクリーンなモルト。青リンゴの酸味とハーブの爽やかさ。,,バーボン,ストレート|ハイボール,0,3,4,2,3,0,3,3
 glendronach-12,グレンドロナック12年,GlenDronach 12,グレンドロナック蒸溜所,glendronach,scotland,highland,single-malt,12,43.0,7000,2026-08,editorial,common,85,濃厚なシェリー樽熟成。チョコレートとドライフルーツの甘み。,,シェリー,ストレート,0,5,4,2,4,0,4,3
 glendronach-15,グレンドロナック15年 リバイバル,GlenDronach 15 Revival,グレンドロナック蒸溜所,glendronach,scotland,highland,single-malt,15,46.0,16000,2026-08,editorial,limited,89,シェリー樽熟成の代表格。ブラックチェリーとダークチョコレート、深い果実の甘さ。,,シェリー,ストレート,0,5,5,3,4,0,5,5
 glenfarclas-12,グレンファークラス12年,Glenfarclas 12,グレンファークラス蒸溜所,glenfarclas,scotland,speyside,single-malt,12,43.0,4500,2026-08,editorial,common,83,値ごろなシェリー樽モルトの定番。ドライフルーツと蜂蜜、穏やかな甘さ。,,シェリー,ストレート|ロック,0,4,4,2,3,0,3,3
 glenfarclas-15,グレンファークラス15年,Glenfarclas 15 Year Old,グレンファークラス蒸溜所,glenfarclas,scotland,speyside,single-malt,15,46.0,9000,2026-08,editorial,limited,87,家族経営蒸留所の看板ボトル。ナッツとドライフルーツの厚み。,,シェリー,ストレート,0,4,4,2,4,0,4,4
 glenfiddich-12,グレンフィディック12年,Glenfiddich 12 Year Old,グレンフィディック蒸溜所,glenfiddich,scotland,speyside,single-malt,12,40.0,3500,2026-08,editorial,common,83,洋梨と蜂蜜のわかりやすい甘み。シングルモルト入門の定番。,glenfiddich-12,アメリカンオーク|スパニッシュオーク,ストレート|ロック|ハイボール,0,3,4,1,3,0,2,2
 glenfiddich-15,グレンフィディック15年 ソレラリザーブ,Glenfiddich 15 Solera,グレンフィディック蒸溜所,glenfiddich,scotland,speyside,single-malt,15,40.0,9500,2026-08,editorial,common,86,ソレラシステムで熟成した3種の樽のブレンド。蜂蜜とスパイス、滑らかな口当たり。,,アメリカンオーク|シェリー|ニューオーク,ストレート|ロック,0,4,4,3,4,0,4,4
+glenfiddich-18,グレンフィディック18年,Glenfiddich 18 Year Old,グレンフィディック蒸溜所,glenfiddich,scotland,speyside,single-malt,18,40,12000,2026-08,editorial,limited,87,少量のオロロソシェリー樽を加えた18年。熟したリンゴとスパイスの複雑な余韻。,,アメリカンオーク|シェリー,ストレート,0,4,4,3,4,0,4,4
+glengoyne-10,グレンゴイン10年,Glengoyne 10 Year Old,グレンゴイン蒸溜所,glengoyne,scotland,highland,single-malt,10,40,6000,2026-08,editorial,common,83,ゆっくり蒸溜されることで丸みを帯びた口当たり。バタースコッチと赤い果実の甘さ。,,バーボン|シェリー,ストレート|ロック,0,4,4,2,3,0,3,3
+glengoyne-18,グレンゴイン18年,Glengoyne 18 Year Old,グレンゴイン蒸溜所,glengoyne,scotland,highland,single-malt,18,43,16000,2026-08,editorial,limited,88,ファーストフィルシェリー樽で熟成。干し柿やチョコレート、スパイスが深く溶け合う。,,シェリー,ストレート,0,5,4,3,4,0,4,4
 glenkinchie-12,グレンキンチー12年,Glenkinchie 12,グレンキンチー蒸溜所,glenkinchie,scotland,lowland,single-malt,12,43.0,5500,2026-08,editorial,common,81,麦芽の甘みが前に出る、ローランドらしい端正な味わい。,,バーボン,ストレート|水割り,0,3,3,1,2,0,3,2
 glenlivet-12,ザ・グレンリベット12年,The Glenlivet 12 Year Old,グレンリベット蒸溜所,glenlivet,scotland,speyside,single-malt,12,40.0,4000,2026-08,editorial,common,83,パイナップルを思わせる明るい果実感。スペイサイドの教科書的な1本。,,アメリカンオーク,ストレート|ロック,0,3,4,1,3,0,2,2
+glenlivet-15,グレンリベット15年 フレンチオーク,The Glenlivet 15 French Oak Reserve,グレンリベット蒸溜所,glenlivet,scotland,speyside,single-malt,15,40,7000,2026-08,editorial,common,84,フレンチオーク樽仕上げによる独特のスパイスとジンジャーの香り。,,フレンチオーク,ストレート|ロック,0,4,4,3,3,0,3,3
+glenlivet-18,グレンリベット18年,The Glenlivet 18 Year Old,グレンリベット蒸溜所,glenlivet,scotland,speyside,single-malt,18,43,14000,2026-08,editorial,limited,87,オーク樽との長い対話で生まれる芳醇さ。リンゴとバタースコッチの甘い香り。,,アメリカンオーク|シェリー,ストレート,0,4,4,3,4,0,4,4
 glenlivet-founder-reserve,グレンリベット ファウンダーズリザーブ,Glenlivet Founder's Reserve,グレンリベット蒸溜所,glenlivet,scotland,speyside,single-malt,,40.0,3500,2026-08,editorial,common,80,創業200年を記念して造られた定番NAS。柑橘とバニラの爽やかな甘さで入門に最適。,,アメリカンオーク,ハイボール|ストレート,0,4,4,1,2,0,2,2
 glenmorangie-10,グレンモーレンジィ オリジナル10年,Glenmorangie Original 10,グレンモーレンジィ蒸溜所,glenmorangie,scotland,highland,single-malt,10,40.0,4200,2026-08,editorial,common,84,背の高いポットスチルによる軽やかさ。柑橘とバニラが前に出る。,,アメリカンオーク,ストレート|ハイボール,0,3,4,1,3,0,3,2
 glenmorangie-lasanta,グレンモーレンジィ ラサンタ,Glenmorangie Lasanta,グレンモーレンジィ蒸溜所,glenmorangie,scotland,highland,single-malt,12,43.0,6500,2026-08,editorial,common,85,シェリー樽で追加熟成（フィニッシュ）。レーズンのような甘さ。,,シェリー|バーボン,ストレート,0,4,4,2,3,0,4,3
@@ -58,61 +95,100 @@ glenrothes-vintage,グレンロセス ヴィンテージ,The Glenrothes Vintage,
 grants-triple-wood,グランツ トリプルウッド,Grant's Triple Wood,ウィリアム・グラント&サンズ,glenfiddich,scotland,speyside,blended,,40.0,1800,2026-08,editorial,common,80,3種の樽で個別熟成した原酒をブレンド。バニラの甘さが立つ。,,バーボン|シェリー|新樽,ハイボール|ロック,0,4,3,1,3,0,3,2
 green-spot,グリーンスポット,Green Spot,ミドルトン蒸溜所,midleton,ireland,ireland,single-malt,,40.0,6500,2026-08,editorial,limited,87,シングルポットスチルの代表格。フルーティで爽やかな酸味。,,シェリー|バーボン,ストレート,0,4,4,2,3,0,4,3
 hakushu-12,白州12年,Hakushu 12 Year Old,白州蒸溜所,hakushu,japan,japan,single-malt,12,43.0,14800,2026-08,editorial,limited,86,青りんごとミントを思わせる爽やかさ。ごく軽いスモークが後ろに隠れている。,hakushu-12,アメリカンオーク,ハイボール|水割り,1,3,4,1,2,0,3,2
+hakushu-18,白州18年,Hakushu 18 Year Old,白州蒸溜所,hakushu,japan,japan,single-malt,18,43,48000,2026-08,editorial,rare,91,緑に包まれた山梨の森のなかで熟成される繊細なモルト。林檎やハーブ、ほのかなスモークが調和する。,,アメリカンオーク|シェリー,ストレート|ロック,1,4,5,2,3,1,5,3
 hakushu-distillers-reserve,白州 ディスティラーズリザーブ,Hakushu Distiller's Reserve,白州蒸溜所,hakushu,japan,japan,single-malt,,43.0,5500,2026-08,editorial,common,83,熟成年数非表記ながら白州らしい爽やかさを手頃に楽しめる定番。,,アメリカンオーク,ハイボール,1,3,4,1,2,1,3,2
 hankey-bannister,ハンキー バニスター,Hankey Bannister,インバー・ハウス,,scotland,highland,blended,,40.0,1800,2026-08,editorial,common,78,18世紀創業の老舗ブランドによる飲みやすいブレンデッド。,,各種,ハイボール|ロック,0,3,3,1,2,0,2,2
+hibiki-17,響17年,Hibiki 17 Year Old,サントリー,,japan,japan,blended,17,43,55000,2026-08,editorial,rare,90,24面の調和を表現した響の17年。オレンジピールや白檀、甘いハチミツが幾重にも重なる。,,アメリカンオーク|シェリー|ミズナラ,ストレート|ロック,0,5,4,2,4,0,5,3
 hibiki-21,響21年,Hibiki 21 Year Old,サントリー,,japan,japan,blended,21,43.0,120000,2026-08,editorial,rare,93,国際的な賞を多数受賞した長期熟成ブレンデッド。芳醇で滑らか。,,ミズナラ|シェリー,ストレート,1,5,4,3,4,1,5,3
 hibiki-harmony,響 JAPANESE HARMONY,Hibiki Japanese Harmony,サントリー,,japan,japan,blended,,43.0,11000,2026-08,editorial,limited,85,複数の原酒を重ねたブレンデッド。蜂蜜とオレンジピールの甘さがなめらかに広がる。,,ミズナラ|シェリー|アメリカンオーク,ストレート|ハイボール,1,4,4,2,3,1,4,3
 highland-park-12,ハイランドパーク12年,Highland Park 12 Viking Honour,ハイランドパーク蒸溜所,highland-park,scotland,island,single-malt,12,40.0,5000,2026-08,editorial,common,86,ヘザーハニーの甘さとほのかなピート。甘さとスモークの均衡が絶妙。,,シェリー,ストレート|ロック,2,4,3,2,3,2,4,3
+highland-park-15,ハイランドパーク15年,Highland Park 15 Year Old,ハイランドパーク蒸溜所,highland-park,scotland,island,single-malt,15,43,10000,2026-08,editorial,limited,86,オークニー諸島のヘザーピート。蜂蜜と石楠花、燻煙のバランスが絶妙。,,アメリカンオーク|シェリー,ストレート,2,4,4,3,4,2,4,4
 highland-park-18,ハイランドパーク18年,Highland Park 18,ハイランドパーク蒸溜所,highland-park,scotland,island,single-malt,18,43.0,20000,2026-08,editorial,rare,91,「世界最高のオールラウンダー」と評されることもある名品。,,シェリー,ストレート,3,4,3,2,4,3,5,4
 indri-trini,インドリ トリニ,Indri Trini,インドリ蒸溜所,,india,india,single-malt,,46.0,7000,2026-08,editorial,limited,87,3種の樽をブレンドした近年評価急上昇中のインド産モルト。,,バーボン|シェリー|ワイン樽,ストレート,0,4,4,3,4,0,4,4
+jack-daniels-single-barrel,ジャックダニエル シングルバレル,Jack Daniel's Single Barrel,ジャックダニエル蒸溜所,jack-daniels,usa,tennessee,tennessee,,47,5500,2026-08,editorial,limited,84,単一樽の濃厚なジャック。バナナとキャラメル、スモークの香ばしさ。,,新樽,ロック|ストレート,0,4,3,3,4,1,3,4
 jack-daniels,ジャックダニエル Old No.7,Jack Daniels Old No.7,ジャックダニエル蒸溜所,jack-daniels,usa,tennessee,tennessee,,40.0,2600,2026-08,editorial,common,79,メイプル炭で濾過する製法。バナナのような甘い香り。,,新樽,コーラ割り|ハイボール,0,4,2,2,4,1,2,3
+jameson-black-barrel,ジェムソン ブラックバレル,Jameson Black Barrel,ミドルトン蒸溜所,midleton,ireland,ireland,blended,,40,3200,2026-08,editorial,common,82,焦がしバーボン樽で仕上げたダークな甘さ。キャラメルとバニラ、スパイス。,,バーボン,ロック|ハイボール,0,4,3,3,4,0,3,3
 jameson,ジェムソン,Jameson,ミドルトン蒸溜所,midleton,ireland,ireland,blended,,40.0,2200,2026-08,editorial,common,80,3回蒸留の軽やかさ。クセがなく食中でも飲みやすい。,jameson,バーボン|シェリー,ハイボール|ロック,0,3,3,1,2,0,2,2
+jim-beam-black,ジムビーム ブラック,Jim Beam Black Label,ジムビーム蒸溜所,jim-beam,usa,kentucky,bourbon,8,43,2500,2026-08,editorial,common,82,8年以上熟成のスモールバッチ。バニラとオーク、滑らかな飲み口。,,新樽,ロック|ハイボール,0,4,3,3,4,0,3,3
 jim-beam-white,ジムビーム ホワイト,Jim Beam White Label,ジムビーム蒸溜所,,usa,kentucky,bourbon,4,40.0,1600,2026-08,editorial,common,76,世界で最も売れているバーボンのひとつ。手頃で軽やか。,,新樽,ハイボール|カクテル,0,3,2,2,3,0,2,2
 johnnie-walker-black,ジョニーウォーカー ブラックラベル12年,Johnnie Walker Black Label 12,ディアジオ,,scotland,highland,blended,12,40.0,3200,2026-08,editorial,common,83,40種以上の原酒をブレンド。ほのかなスモークが全体を引き締める。,,各種,ハイボール|ロック,2,3,3,2,3,2,3,3
 johnnie-walker-blue,ジョニーウォーカー ブルーラベル,Johnnie Walker Blue Label,ディアジオ,,scotland,highland,blended,,40.0,25000,2026-08,editorial,rare,88,稀少原酒をブレンドした頂点。スモーキーで滑らか、蜂蜜とドライフルーツの深い甘さ。,,アメリカンオーク|シェリー,ストレート|ロック,2,4,3,3,4,2,5,4
 johnnie-walker-double-black,ジョニーウォーカー ダブルブラック,Johnnie Walker Double Black,ディアジオ,,scotland,highland,blended,,40.0,3800,2026-08,editorial,common,83,ブラックラベルよりピート感を強めた濃厚な仕上がり。,,各種,ハイボール|ロック,3,3,3,2,3,3,3,3
 johnnie-walker-red,ジョニーウォーカー レッドラベル,Johnnie Walker Red Label,ディアジオ,,scotland,highland,blended,,40.0,1800,2026-08,editorial,common,76,世界で最も売れているスコッチのひとつ。スパイシーで力強い。,,各種,ハイボール,1,2,2,2,2,1,2,2
 jura-10,ジュラ10年,Jura 10,ジュラ蒸溜所,jura,scotland,island,single-malt,10,40.0,4500,2026-08,editorial,common,81,軽やかで穏やかな酒質。塩気とほのかな甘さ。,,バーボン,ストレート|ハイボール,1,3,3,1,3,1,3,2
+jura-12,ジュラ12年,Jura 12 Year Old,ジュラ蒸溜所,jura,scotland,island,single-malt,12,40,5500,2026-08,editorial,common,80,果実と蜂蜜のやさしい味わい。シェリー樽の甘みが加わり万人向け。,,バーボン|シェリー,ストレート|ハイボール,0,4,3,2,3,0,2,3
 kakubin,サントリー角瓶,Suntory Kakubin,サントリー,,japan,japan,blended,,40.0,1500,2026-08,editorial,common,78,ハイボールの定番として不動の地位を築くブレンデッド。,kakubin,各種,ハイボール,0,3,2,1,2,0,2,2
+kanosuke-malt,嘉之助,Kanosuke Japanese Single Malt,嘉之助蒸溜所,kanosuke,japan,japan,single-malt,,58,15000,2026-08,editorial,rare,85,鹿児島の海辺で急速熟成されたモルト。トロピカルな果実と樽由来のスパイスが強い。,,バーボン|シェリー,ストレート|ロック,1,3,4,3,4,1,4,4
 kavalan-classic,カバラン クラシック,Kavalan Classic,カバラン蒸溜所,kavalan,taiwan,taiwan,single-malt,,40.0,6000,2026-08,editorial,common,84,亜熱帯の急速熟成。マンゴーやバナナのトロピカルな甘さ。,,アメリカンオーク,ストレート|ロック,0,5,5,2,4,0,3,3
 kavalan-concertmaster,カバラン コンサートマスター,Kavalan Concertmaster,カバラン蒸溜所,kavalan,taiwan,taiwan,single-malt,,40.0,7500,2026-08,editorial,limited,85,ポートワイン樽で追加熟成。ベリー系の甘い香りが特徴。,,ポートワイン樽,ストレート,0,5,5,2,3,0,4,3
+kavalan-distillers-select,カバラン ディスティラーズセレクト,Kavalan Distillers Select,カバラン蒸溜所,kavalan,taiwan,taiwan,single-malt,,40,7800,2026-08,editorial,limited,85,亜熱帯の急速熟成で生まれる濃厚さ。トロピカルフルーツとマンゴー。,,バーボン|シェリー|ワイン樽,ストレート|ロック,0,4,4,3,3,0,4,4
+kavalan-solist-ex-bourbon,カバラン ソリスト バーボン,Kavalan Solist Ex-Bourbon,カバラン蒸溜所,kavalan,taiwan,taiwan,single-malt,,57.1,11000,2026-08,editorial,rare,87,カスクストレングスの濃密な果実味。バニラとパイナップル、オークの強さ。,,バーボン,ストレート|ロック,0,4,4,4,4,0,4,5
 kavalan-solist-sherry,カバラン ソリスト シェリー,Kavalan Solist Sherry Cask,カバラン蒸溜所,kavalan,taiwan,taiwan,single-malt,,58.6,18000,2026-08,editorial,rare,90,シェリー樽シングルカスク。数々の国際コンペで最高賞を獲得。,,シェリー,ストレート,0,5,5,3,4,0,5,5
 kilchoman-machir-bay,キルホーマン マッキルベイ,Kilchoman Machir Bay,キルホーマン蒸溜所,kilchoman,scotland,islay,single-malt,,46.0,7000,2026-08,editorial,common,85,ファーム蒸留所の若いピートモルト。柑橘と海藻の香りがフレッシュに広がる。,,バーボン|シェリー,ストレート,5,2,2,3,3,5,4,4
+kilchoman-sanaig,キルホーマン サナイグ,Kilchoman Sanaig,キルホーマン蒸溜所,kilchoman,scotland,islay,single-malt,,46,7000,2026-08,editorial,limited,84,シェリー樽の甘さとピートが同居。ラズベリーとスモークの若々しい魅力。,,シェリー|バーボン,ストレート|ロック,4,3,3,2,4,4,3,4
+kilkerran-12,キルケラン12年,Kilkerran 12 Year Old,グレンガイル蒸溜所,glengyle,scotland,campbeltown,single-malt,12,46,7500,2026-08,editorial,limited,85,キャンベルタウン復活の象徴。塩気とレモン、麦芽の甘みが折衷する。,,バーボン|シェリー,ストレート|ロック,2,3,3,3,3,2,4,4
+knob-creek-9,ノブクリーク9年,Knob Creek 9 Year Old,ジムビーム蒸溜所,jim-beam,usa,kentucky,bourbon,9,50,4000,2026-08,editorial,common,85,9年熟成の高密度バーボン。キャラメルとクルミ、濃いオークの力強さ。,,新樽,ストレート|ロック,0,4,3,5,5,0,4,5
 knob-creek,ノブクリーク,Knob Creek,ジムビーム蒸溜所,,usa,kentucky,bourbon,9,50.0,3800,2026-08,editorial,common,85,9年熟成とカスクストレングス寄りの度数で濃厚な仕上がり。,,新樽,ストレート|ロック,0,4,2,4,4,0,4,4
+lagavulin-12,ラガヴーリン12年 カスクストレングス,Lagavulin 12 Year Old Cask Strength,ラガヴーリン蒸溜所,lagavulin,scotland,islay,single-malt,12,57.7,15000,2026-08,editorial,rare,90,毎年人気のカスクストレングス。深いピートと甘い香ばしさ、塩気が濃密。,,バーボン,ストレート,5,2,2,3,4,5,5,5
 lagavulin-16,ラガヴーリン16年,Lagavulin 16 Year Old,ラガヴーリン蒸溜所,lagavulin,scotland,islay,single-malt,16,43.0,9000,2026-08,editorial,limited,90,16年の熟成でピートが丸くなり、甘みと一体化する。アイラの完成形。,,シェリー|アメリカンオーク,ストレート,5,3,2,3,4,5,5,5
 lagavulin-8,ラガヴーリン8年,Lagavulin 8,ラガヴーリン蒸溜所,lagavulin,scotland,islay,single-malt,8,48.0,6500,2026-08,editorial,common,85,16年より若い分ピートが鋭くドライ。塩気が立ち、潮とスモークが際立つ。,,バーボン,ストレート,5,2,1,3,3,5,4,4
+laphroaig-10-cs,ラフロイグ10年 カスクストレングス,Laphroaig 10 Year Old Cask Strength,ラフロイグ蒸溜所,laphroaig,scotland,islay,single-malt,10,58.6,9000,2026-08,editorial,limited,89,カスクストレングスの迫力。薬品のようなピート、海藻、バニラが激しく交差。,,バーボン,ストレート|ロック,5,1,1,4,4,5,4,5
 laphroaig-10,ラフロイグ10年,Laphroaig 10 Year Old,ラフロイグ蒸溜所,laphroaig,scotland,islay,single-malt,10,40.0,4500,2026-08,editorial,common,86,強烈なピート香で知られる。好き嫌いが最も分かれる1本。,,アメリカンオーク,ストレート|ロック,5,1,1,3,3,5,4,4
 laphroaig-quarter-cask,ラフロイグ クォーターカスク,Laphroaig Quarter Cask,ラフロイグ蒸溜所,laphroaig,scotland,islay,single-malt,,48.0,5500,2026-08,editorial,common,87,小樽で熟成させ樽との接触を増やした濃厚な仕上がり。,,アメリカンオーク,ストレート|ロック,5,2,2,3,4,5,4,4
+ledaig-10,レダイグ10年,Ledaig 10 Year Old,トバモリー蒸溜所,tobermory,scotland,island,single-malt,10,46.3,6500,2026-08,editorial,common,84,トバモリーのピーテッド版。海藻のピートとスモーキーな塩気が個性的。,,バーボン|シェリー,ストレート|ロック,4,2,2,3,3,4,4,4
+limeburners-malt,ライムバーナーズ モルト,Limeburners Single Malt,ライムバーナーズ蒸溜所,limeburners,australia,australia,single-malt,,46,12000,2026-08,editorial,rare,85,西オーストラリアのクラフトモルト。フルーツケーキとオークのリッチさ。,,シェリー|バーボン,ストレート,0,4,4,3,4,0,4,4
+loch-lomond-12,ロッホローモンド12年,Loch Lomond 12 Year Old,ロッホローモンド蒸溜所,loch-lomond,scotland,highland,single-malt,12,46,4800,2026-08,editorial,common,80,湖畔の蒸溜所による素直なモルト。ハーブと柑橘、ほのかな土っぽさ。,,バーボン,ストレート|ハイボール,1,3,3,2,3,1,3,3
 macallan-12,ザ・マッカラン12年 シェリーオーク,The Macallan 12 Sherry Oak,マッカラン蒸溜所,macallan,scotland,speyside,single-malt,12,40.0,11000,2026-08,editorial,limited,88,シェリー樽100%熟成。ドライフルーツとチョコレートの濃厚な甘さ。,,シェリー,ストレート,0,5,4,2,4,0,4,4
+macallan-18,ザ・マッカラン18年 シェリーオーク,The Macallan 18 Sherry Oak,マッカラン蒸溜所,macallan,scotland,speyside,single-malt,18,43,48000,2026-08,editorial,rare,92,ファーストフィルシェリー樽18年。干し果実とオーク、スパイスが幾重にも重なる完成度。,,シェリー,ストレート,0,5,4,3,5,0,5,4
 macallan-double-cask-12,マッカラン ダブルカスク12年,Macallan Double Cask 12,マッカラン蒸溜所,macallan,scotland,speyside,single-malt,12,40.0,12000,2026-08,editorial,limited,87,アメリカンオークとシェリー樽の2系統で熟成。バニラとオレンジの皮、クリーミーな甘さ。,,アメリカンオーク|シェリー,ストレート|ロック,0,5,4,2,4,0,4,4
 makers-mark,メーカーズマーク,Makers Mark,メーカーズマーク蒸溜所,makers-mark,usa,kentucky,bourbon,,45.0,2800,2026-08,editorial,common,83,小麦を使ったソフトなバーボン。バニラと蜂蜜の甘さが強い。,makers-mark,新樽,ロック|ハイボール,0,5,3,2,4,0,3,3
 mars-iwai,マルス iwai,Mars Iwai,マルス信州蒸溜所,mars-shinshu,japan,japan,blended,,40.0,1800,2026-08,editorial,common,79,手頃な価格ながら樽由来の甘みがしっかりある家庭向けブレンデッド。,,各種,ハイボール,0,4,3,2,3,0,2,2
 mars-komagatake,駒ヶ岳 シングルモルト,Mars Komagatake Single Malt,マルス信州蒸溜所,mars-shinshu,japan,japan,single-malt,,50.0,8000,2026-08,editorial,limited,84,標高800mの蒸留所で造られる高地熟成モルト。フルーティで複雑。,,各種,ストレート,1,4,4,2,3,1,3,3
+mars-lucky-cat,マルス ラッキーキャット,Mars Lucky Cat,マルス信州蒸溜所,mars-shinshu,japan,japan,blended-malt,,42,4200,2026-08,editorial,common,81,招き猫がラベルの愛らしいブレンデッドモルト。ミルクチョコレートのような甘い香り。,,シェリー|ミズナラ,ストレート|ハイボール,0,4,3,2,3,0,3,2
 mars-tsunuki,マルス 津貫,Mars Tsunuki Single Malt,マルス津貫蒸溜所,mars-tsunuki,japan,japan,single-malt,,50.0,12000,2026-08,editorial,limited,86,亜熱帯の津貫で急速熟成したモルト。樽由来の濃い甘さと柑橘の香りが折り重なる。,,バーボン|シェリー,ストレート,0,4,4,3,4,0,4,4
 miyagikyo,宮城峡,Nikka Miyagikyo Single Malt,宮城峡蒸溜所,miyagikyo,japan,japan,single-malt,,45.0,5500,2026-08,editorial,common,84,余市と対をなす華やかさ。レーズンや洋梨のような果実感が中心。,,シェリー|アメリカンオーク,ストレート|水割り,0,4,4,2,3,0,3,3
 monkey-shoulder,モンキーショルダー,Monkey Shoulder,ウィリアム・グラント&サンズ,glenfiddich,scotland,speyside,blended-malt,,40.0,3300,2026-08,editorial,common,83,3つのモルト原酒のみをブレンドしたブレンデッドモルト。カクテル向け。,,バーボン,ロック|カクテル,0,4,3,1,3,0,3,3
+nantou-omar,南投 オマー,Nantou Omar Single Malt,南投蒸溜所,nantou,taiwan,taiwan,single-malt,,46,6800,2026-08,editorial,limited,84,台湾国営によるクラフトモルト。パイナップルと蜂蜜のフルーティな個性。,,バーボン|シェリー,ストレート,0,4,4,3,3,0,4,3
 nikka-coffey-grain,ニッカ カフェグレーン,Nikka Coffey Grain,ニッカウヰスキー,,japan,japan,grain,,45.0,5000,2026-08,editorial,common,83,連続式蒸留機「カフェスチル」で造られるグレーンウイスキー。バナナやココナッツのようなトロピカルな甘さ。,,アメリカンオーク,ストレート|ロック,0,5,4,1,3,0,3,4
+nikka-coffey-malt,ニッカ カフェモルト,Nikka Coffey Malt,ニッカウヰスキー,,japan,japan,single-malt,,45,5500,2026-08,editorial,common,83,連続式蒸留機カフェスチルで造るモルト。バナナやメロンのようなトロピカルな果実味。,,アメリカンオーク|シェリー,ストレート|ロック|ハイボール,0,4,4,2,3,0,3,3
 nikka-days,ニッカ デイズ,Nikka Days,ニッカウヰスキー,,japan,japan,blended,,40.0,2500,2026-08,editorial,common,79,グレーンとモルトの軽快なブレンド。毎日飲める定番NASとして親しまれる。,,バーボン|シェリー,ハイボール|ロック,0,4,3,1,2,0,2,2
 nikka-from-the-barrel,ニッカ フロム・ザ・バレル,Nikka From The Barrel,ニッカウヰスキー,,japan,japan,blended,,51.4,3300,2026-08,editorial,common,86,樽出し原酒に近い高濃度ブレンデッド。コスパの高さで海外でも評価が高い。,nikka-from-the-barrel,各種,ロック|水割り,1,4,3,3,4,1,4,4
 oban-14,オーバン14年,Oban 14 Year Old,オーバン蒸溜所,oban,scotland,highland,single-malt,14,43.0,9500,2026-08,editorial,limited,86,ハイランドとアイランズの中間的な酒質。ほのかな潮とスモーク。,,バーボン,ストレート,2,3,3,2,3,2,4,3
 octomore,オクトモア,Octomore,ブルックラディ蒸溜所,bruichladdich,scotland,islay,single-malt,,59.0,14000,2026-08,editorial,rare,89,世界最高峰のピート値を誇る超ヘビーピートウイスキー。,,バーボン,ストレート,5,2,2,4,3,5,4,5
+old-forester-100,オールドフォレスター100,Old Forester 100 Proof,オールドフォレスター蒸溜所,old-forester,usa,kentucky,bourbon,,50,3200,2026-08,editorial,common,84,1870年から続くバーボンの老舗。糖蜜とベリー、オークの厚みある味わい。,,新樽,ロック|ハイボール,0,4,3,4,4,0,3,4
 old-pulteney-12,オールドプルトニー12年,Old Pulteney 12,オールドプルトニー蒸溜所,old-pulteney,scotland,highland,single-malt,12,40.0,5000,2026-08,editorial,common,83,本土最北の蒸留所らしい塩気とりんごのような爽やかさ。,,バーボン,ストレート|ハイボール,1,3,3,2,3,1,3,3
+old-pulteney-17,オールドプルトニー17年,Old Pulteney 17 Year Old,オールドプルトニー蒸溜所,old-pulteney,scotland,highland,single-malt,17,46,11000,2026-08,editorial,limited,86,潮風の街ウィックで熟成。柑橘と海塩、蜂蜜が交差する複雑な味わい。,,バーボン|シェリー,ストレート,1,3,4,3,4,1,4,3
 passport-scotch,パスポート スコッチ,Passport Scotch,バカルディ,,scotland,highland,blended,,40.0,1300,2026-08,editorial,common,74,軽快な飲み口で知られる、価格重視のブレンデッド。,,各種,ハイボール,0,3,2,1,2,0,1,2
+paul-john-classic,ポールジョン クラシックセレクト,Paul John Classic Select,ポールジョン蒸溜所,paul-john,india,india,single-malt,,42.8,5000,2026-08,editorial,limited,83,ゴア州のモルト。バニラとバナナ、クリーミーな甘さがソフト。,,バーボン,ストレート|ロック,0,4,4,3,3,0,3,4
+powers-gold-label,パワーズ ゴールドラベル,Power's Gold Label,ミドルトン蒸溜所,midleton,ireland,ireland,blended,,43.2,2500,2026-08,editorial,common,80,シングルポットスチル主体のコクあるアイリッシュ。ジンジャーとオーク。,,バーボン,ロック|ハイボール,0,3,3,3,3,0,2,3
+rampur-asava,ラムプール アサヴァ,Rampur Asava,ラムプール蒸溜所,rampur,india,india,single-malt,,45,7500,2026-08,editorial,limited,84,インドモルトとシェリー樽の融合。ブドウと蜂蜜、スパイスの甘やかさ。,,シェリー|バーボン,ストレート,0,4,5,3,3,0,4,4
 redbreast-12,レッドブレスト12年,Redbreast 12 Year Old,ミドルトン蒸溜所,midleton,ireland,ireland,single-malt,12,40.0,7500,2026-08,editorial,limited,88,シングルポットスチル製法。ドライフルーツとスパイスが濃密に重なる。,,シェリー|バーボン,ストレート,0,4,5,3,3,0,4,4
+redbreast-15,レッドブレスト15年,Redbreast 15 Year Old,ミドルトン蒸溜所,midleton,ireland,ireland,single-malt,15,46,13000,2026-08,editorial,limited,88,シングルポットスチルの15年。トフィーとベリー、スパイスが豊かに広がる。,,シェリー|バーボン,ストレート,0,5,4,3,4,0,4,4
+shizuoka-prologue-k,静岡 プロローグK,Shizuoka Prologue K,静岡蒸溜所,shizuoka,japan,japan,single-malt,,55.5,18000,2026-08,editorial,rare,86,軽井沢の直火式スチルを受け継いだ初の公式ボトル。リッチな果実とスパイスが厚みを作る。,,バーボン,ストレート,1,4,4,3,4,1,4,4
 springbank-10,スプリングバンク10年,Springbank 10 Year Old,スプリングバンク蒸溜所,springbank,scotland,campbeltown,single-malt,10,46.0,9500,2026-08,editorial,rare,88,オイリーな質感と塩気。同じ蒸留所内で全工程を行う稀少な造り。,,バーボン|シェリー,ストレート,3,3,3,3,3,3,5,4
+springbank-12-cs,スプリングバンク12年 カスクストレングス,Springbank 12 Year Old Cask Strength,スプリングバンク蒸溜所,springbank,scotland,campbeltown,single-malt,12,54.4,14000,2026-08,editorial,rare,89,全工程手作業で造られる稀少なカスクストレングス。塩気とスモーク、オイリーな厚み。,,バーボン|シェリー,ストレート,3,3,3,3,4,3,5,5
 springbank-15,スプリングバンク15年,Springbank 15,スプリングバンク蒸溜所,springbank,scotland,campbeltown,single-malt,15,46.0,16000,2026-08,editorial,rare,89,熟成が進みシェリー由来の甘さと塩気が融合した円熟の1本。,,シェリー,ストレート,3,4,3,3,4,3,5,4
 starward-nova,スターワード ノヴァ,Starward Nova,スターワード蒸溜所,starward,australia,australia,single-malt,,41.0,7500,2026-08,editorial,limited,84,赤ワイン樽熟成によるベリー系の濃い果実味が特徴。,,赤ワイン樽,ストレート|ロック,0,4,5,2,3,0,3,3
+starward-two-fold,スターワード ツーフォールド,Starward Two-Fold,スターワード蒸溜所,starward,australia,australia,single-malt,,41,4500,2026-08,editorial,common,82,赤ワイン樽熟成のカクテル向けモルト。ベリーとバニラ、オレンジ。,,赤ワイン樽,ロック|ハイボール,0,4,5,2,3,0,3,3
 sullivans-cove-french-oak,サリバンズコーヴ フレンチオーク,Sullivans Cove French Oak,サリバンズコーヴ蒸溜所,sullivans-cove,australia,australia,single-malt,,47.5,35000,2026-08,editorial,rare,90,世界最高賞を受賞した実績を持つタスマニアの逸品。,,フレンチオーク シェリー,ストレート,0,5,4,3,5,0,5,4
 suntory-ao,サントリー 碧,Suntory Ao,サントリー,,japan,japan,blended,,43.0,5000,2026-08,editorial,common,82,世界5地域の原酒をブレンドした「世界のウイスキー」。国産原酒と海外原酒が折り重なる複雑さ。,,アメリカンオーク|シェリー|ミズナラ,ロック|ハイボール,2,4,4,2,3,1,4,3
+suntory-toki,サントリー 翠（トキ）,Suntory Toki,サントリー,,japan,japan,blended,,43,3200,2026-08,editorial,common,78,ライトでクリーンなハイボール向きブレンド。白州の爽やかさと山崎の甘みを合わせた。,,アメリカンオーク,ハイボール|ロック,0,4,3,1,2,0,2,2
 suntory-torys,サントリー トリス,Suntory Torys Classic,サントリー,,japan,japan,blended,,37.0,900,2026-08,editorial,common,73,戦後日本のウイスキー文化を支えた最も手頃な国産ブレンデッド。,,各種,ハイボール,0,3,2,1,2,0,1,2
 taketsuru,竹鶴ピュアモルト,Taketsuru Pure Malt,ニッカウヰスキー,,japan,japan,blended-malt,,43.0,7000,2026-08,editorial,limited,84,余市と宮城峡のモルトを組み合わせたブレンデッドモルト。バランス型。,,シェリー|アメリカンオーク,ストレート|ハイボール,1,4,3,2,3,1,4,3
 talisker-10,タリスカー10年,Talisker 10 Year Old,タリスカー蒸溜所,talisker,scotland,island,single-malt,10,45.8,4800,2026-08,editorial,common,87,黒胡椒のような刺激と潮の香り。スカイ島の海を思わせる。,,アメリカンオーク,ストレート|ハイボール,3,2,2,4,3,3,4,4
+talisker-18,タリスカー18年,Talisker 18 Year Old,タリスカー蒸溜所,talisker,scotland,island,single-malt,18,45.8,17000,2026-08,editorial,limited,88,スカイ島の海と黒胡椒。熟成でピートが柔らかくなり、シェリーの甘さが加わる。,,アメリカンオーク,ストレート,3,3,3,4,4,3,5,4
 talisker-storm,タリスカー ストーム,Talisker Storm,タリスカー蒸溜所,talisker,scotland,island,single-malt,,45.8,4500,2026-08,editorial,common,82,荒々しい海を思わせる潮と黒胡椒の刺激。タリスカーらしい力強いスパイス。,,バーボン,ストレート|ロック,3,2,2,4,3,3,3,4
+tamdhu-12,タムドゥ12年,Tamdhu 12 Year Old,タムドゥ蒸溜所,tamdhu,scotland,speyside,single-malt,12,43,6500,2026-08,editorial,common,84,オロロソシェリー樽100%熟成。レーズンとバタースコッチの濃厚な甘さ。,,シェリー,ストレート,0,5,4,2,4,0,3,4
 teachers-highland-cream,ティーチャーズ ハイランドクリーム,Teacher's Highland Cream,ビーム サントリー,,scotland,highland,blended,,40.0,1700,2026-08,editorial,common,78,モルト比率が高めでしっかりした味わいのブレンデッド。,,各種,ハイボール|ロック,1,3,3,1,2,1,2,2
 teeling-small-batch,ティーリング スモールバッチ,Teeling Small Batch,ティーリング蒸溜所,teeling,ireland,ireland,blended,,46.0,4000,2026-08,editorial,common,82,ダブリン発の若いブレンデッド。ラム樽仕上げの甘いスパイスとバニラ。,,ラム樽,ロック|ハイボール,0,4,4,2,3,0,3,3
+tobermory-12,トバモリー12年,Tobermory 12 Year Old,トバモリー蒸溜所,tobermory,scotland,island,single-malt,12,46.3,7500,2026-08,editorial,limited,84,ノンピートのマル島モルト。柑橘と花、海塩が上品に調和する。,,バーボン|シェリー,ストレート,0,4,3,2,3,0,4,3
+tomatin-12,トマーティン12年,Tomatin 12 Year Old,トマーティン蒸溜所,tomatin,scotland,highland,single-malt,12,43,4500,2026-08,editorial,common,82,高地らしい清らかな飲み口。蜂蜜と青リンゴ、クリームのやさしい味わい。,,バーボン|シェリー,ストレート|ロック,0,4,3,2,3,0,3,3
+tomatin-18,トマーティン18年,Tomatin 18 Year Old,トマーティン蒸溜所,tomatin,scotland,highland,single-malt,18,46,12000,2026-08,editorial,limited,85,シェリー樽熟成の深みと高地の清冽さが共存。ドライフルーツとオークの余韻。,,シェリー|バーボン,ストレート,0,4,4,3,4,0,4,3
 tullamore-dew,タラモアデュー,Tullamore D.E.W.,タラモアデュー蒸溜所,,ireland,ireland,blended,,40.0,2200,2026-08,editorial,common,78,3種の原酒をブレンドする軽やかなアイリッシュブレンデッド。,,バーボン,ハイボール,0,3,3,1,2,0,2,2
+weller-special-reserve,ウェラー スペシャルリザーブ,Weller Special Reserve,バッファロートレース蒸溜所,buffalo-trace,usa,kentucky,bourbon,,45,5000,2026-08,editorial,rare,82,小麦を使うウイートバーボンの定番。キャラメルとフルーツの滑らかな甘さ。,,新樽,ロック|ストレート,0,5,3,2,4,0,3,3
 white-horse-fine-old,ホワイトホース ファインオールド,White Horse Fine Old,ディアジオ,,scotland,islay,blended,,43.0,2200,2026-08,editorial,limited,80,43%版はピート感がやや強めで、ロックでも飲みごたえがある。,,各種,ロック,3,3,2,2,3,3,3,3
 white-horse,ホワイトホース,White Horse,ディアジオ,,scotland,islay,blended,,40.0,1400,2026-08,editorial,common,78,ラガヴーリンを含むためピートがほのかに残る。価格を考えると驚異的。,white-horse,各種,ハイボール,2,3,2,1,2,2,2,2
+wild-turkey-101,ワイルドターキー101,Wild Turkey 101,ワイルドターキー蒸溜所,wild-turkey,usa,kentucky,bourbon,,50.5,2800,2026-08,editorial,common,84,50.5度の力強い定番。バニラと胡椒、オークが荒々しくもバランス良好。,,新樽,ロック|ハイボール,0,4,2,5,5,0,4,5
 wild-turkey-8,ワイルドターキー 8年,Wild Turkey 8 Year Old,ワイルドターキー蒸溜所,wild-turkey,usa,kentucky,bourbon,8,50.5,3000,2026-08,editorial,common,85,度数50.5%の力強さ。スパイスとキャラメルが濃厚に押し寄せる。,wild-turkey-8,新樽,ストレート|ロック,0,4,2,5,5,0,4,5
 wild-turkey-rare-breed,ワイルドターキー レアブリード,Wild Turkey Rare Breed,ワイルドターキー蒸溜所,wild-turkey,usa,kentucky,bourbon,,58.4,5500,2026-08,editorial,limited,87,カスクストレングスに近い高度数。複数熟成年数の原酒をブレンドした濃厚な仕上がり。,,新樽,ストレート|ロック,0,4,2,5,5,0,4,5
 william-lawsons,ウィリアムローソン,William Lawson's,バカルディ,,scotland,speyside,blended,,40.0,1400,2026-08,editorial,common,75,スペイサイドモルトを軸にした軽やかなブレンデッド。,,各種,ハイボール,0,3,2,1,2,0,2,2
@@ -121,4 +197,5 @@ woodford-reserve,ウッドフォードリザーブ,Woodford Reserve,ウッドフ
 yamazaki-12,山崎12年,Yamazaki 12 Year Old,山崎蒸溜所,yamazaki,japan,japan,single-malt,12,43.0,16800,2026-08,editorial,limited,88,ミズナラ樽由来の白檀のような香りが特徴。熟した果実と蜂蜜の甘みが層になって続く。,yamazaki-12,アメリカンオーク|シェリー|ミズナラ,ストレート|ロック,2,4,4,2,3,1,4,3
 yamazaki-18,山崎18年,Yamazaki 18 Year Old,山崎蒸溜所,yamazaki,japan,japan,single-malt,18,43.0,55000,2026-08,editorial,rare,92,18年熟成でミズナラの香りが極まった1本。ドライフルーツと白檀が複雑に絡む。,,シェリー|ミズナラ,ストレート,2,5,4,3,4,1,5,3
 yamazaki-nas,山崎 ディスティラーズリザーブ,Yamazaki Distiller's Reserve,山崎蒸溜所,yamazaki,japan,japan,single-malt,,43.0,11000,2026-08,editorial,common,85,山崎の中では手に入りやすい定番のNAS。ミズナラ由来の華やかな香りと、ハイボールでも立つ果実感が魅力。,,アメリカンオーク|シェリー|ミズナラ,ハイボール|ストレート,1,4,4,2,3,0,4,3
+yellow-spot,イエロースポット12年,Yellow Spot 12 Year Old,ミドルトン蒸溜所,midleton,ireland,ireland,single-malt,12,46,11000,2026-08,editorial,limited,86,マラガワイン樽が独特の甘みを生む。オレンジピールとスパイスの深い味わい。,,バーボン|シェリー|マラガ,ストレート,0,4,4,3,4,0,4,3
 yoichi,余市,Nikka Yoichi Single Malt,余市蒸溜所,yoichi,japan,japan,single-malt,,45.0,5500,2026-08,editorial,common,85,石炭直火蒸留による力強さ。焦げた樽とわずかな潮の香りがある。,,リメイド|シェリー,ストレート|ロック,2,3,3,3,3,2,4,4

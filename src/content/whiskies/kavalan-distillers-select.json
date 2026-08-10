@@ -1,0 +1,35 @@
+{
+  "name": "カバラン ディスティラーズセレクト",
+  "nameEn": "Kavalan Distillers Select",
+  "distillery": "カバラン蒸溜所",
+  "distillerySlug": "kavalan",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 40,
+  "cask": [
+    "バーボン",
+    "シェリー",
+    "ワイン樽"
+  ],
+  "priceYen": 7800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "亜熱帯の急速熟成で生まれる濃厚さ。トロピカルフルーツとマンゴー。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

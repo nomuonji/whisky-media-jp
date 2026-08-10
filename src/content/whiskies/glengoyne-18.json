@@ -1,0 +1,33 @@
+{
+  "name": "グレンゴイン18年",
+  "nameEn": "Glengoyne 18 Year Old",
+  "distillery": "グレンゴイン蒸溜所",
+  "distillerySlug": "glengoyne",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 43,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 16000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 88,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "ファーストフィルシェリー樽で熟成。干し柿やチョコレート、スパイスが深く溶け合う。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

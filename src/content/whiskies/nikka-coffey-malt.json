@@ -1,0 +1,34 @@
+{
+  "name": "ニッカ カフェモルト",
+  "nameEn": "Nikka Coffey Malt",
+  "distillery": "ニッカウヰスキー",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 45,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "連続式蒸留機カフェスチルで造るモルト。バナナやメロンのようなトロピカルな果実味。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック",
+    "ハイボール"
+  ]
+}

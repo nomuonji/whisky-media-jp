@@ -1,0 +1,35 @@
+{
+  "name": "レダイグ10年",
+  "nameEn": "Ledaig 10 Year Old",
+  "distillery": "トバモリー蒸溜所",
+  "distillerySlug": "tobermory",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 46.3,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 4,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 4,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "トバモリーのピーテッド版。海藻のピートとスモーキーな塩気が個性的。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

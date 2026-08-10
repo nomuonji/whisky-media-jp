@@ -1,0 +1,32 @@
+{
+  "name": "エルマー・T・リー",
+  "nameEn": "Elmer T. Lee Single Barrel",
+  "distillery": "バッファロートレース蒸溜所",
+  "distillerySlug": "buffalo-trace",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 45,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 8000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "バッファロートレースの伝説的人物に捧げる単一樽。バニラとトフィーの甘さ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

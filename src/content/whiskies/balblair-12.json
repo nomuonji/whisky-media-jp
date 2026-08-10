@@ -1,0 +1,34 @@
+{
+  "name": "バルブレア12年",
+  "nameEn": "Balblair 12 Year Old",
+  "distillery": "バルブレア蒸溜所",
+  "distillerySlug": "balblair",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 6200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "オレンジピールと白胡椒のスパイス。華やかな果実香でハイボールにも強い。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

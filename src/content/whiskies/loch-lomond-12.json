@@ -1,0 +1,34 @@
+{
+  "name": "ロッホローモンド12年",
+  "nameEn": "Loch Lomond 12 Year Old",
+  "distillery": "ロッホローモンド蒸溜所",
+  "distillerySlug": "loch-lomond",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 4800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "湖畔の蒸溜所による素直なモルト。ハーブと柑橘、ほのかな土っぽさ。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

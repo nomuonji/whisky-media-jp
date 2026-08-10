@@ -1,0 +1,33 @@
+{
+  "name": "ブラドノック10年",
+  "nameEn": "Bladnoch 10 Year Old",
+  "distillery": "ブラドノック蒸溜所",
+  "distillerySlug": "bladnoch",
+  "country": "scotland",
+  "region": "lowland",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 46.7,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 8500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "ローランドらしい軽やかさと花の香り。リンゴとクリーム、蜂蜜の優しさ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

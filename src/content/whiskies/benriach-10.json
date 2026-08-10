@@ -1,0 +1,35 @@
+{
+  "name": "ベンリアック10年",
+  "nameEn": "Benriach 10 Year Old",
+  "distillery": "ベンリアック蒸溜所",
+  "distillerySlug": "benriach",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 43,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "トリプルディスティルドの滑らかさ。洋梨やメロン、スパイスのバランス。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

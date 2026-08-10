@@ -1,0 +1,34 @@
+{
+  "name": "トマーティン18年",
+  "nameEn": "Tomatin 18 Year Old",
+  "distillery": "トマーティン蒸溜所",
+  "distillerySlug": "tomatin",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 46,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "シェリー樽熟成の深みと高地の清冽さが共存。ドライフルーツとオークの余韻。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

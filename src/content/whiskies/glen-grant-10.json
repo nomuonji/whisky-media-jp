@@ -1,0 +1,35 @@
+{
+  "name": "グレングラント10年",
+  "nameEn": "Glen Grant 10 Year Old",
+  "distillery": "グレングラント蒸溜所",
+  "distillerySlug": "glen-grant",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 40,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "ライトでクリーンな飲み口。青リンゴと花の香りで食事にも合う。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "カバラン ソリスト バーボン",
+  "nameEn": "Kavalan Solist Ex-Bourbon",
+  "distillery": "カバラン蒸溜所",
+  "distillerySlug": "kavalan",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 57.1,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 11000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "カスクストレングスの濃密な果実味。バニラとパイナップル、オークの強さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

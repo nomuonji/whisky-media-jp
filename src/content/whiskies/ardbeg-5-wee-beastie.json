@@ -1,0 +1,35 @@
+{
+  "name": "アードベッグ5年 ウィービースティ",
+  "nameEn": "Ardbeg Wee Beastie",
+  "distillery": "アードベッグ蒸溜所",
+  "distillerySlug": "ardbeg",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 5,
+  "abv": 47.4,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 6000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 1,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 5,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "若いアードベッグらしい鋭いピートと塩気。胡椒と黒糖が荒々しくも旨い。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "キルケラン12年",
+  "nameEn": "Kilkerran 12 Year Old",
+  "distillery": "グレンガイル蒸溜所",
+  "distillerySlug": "glengyle",
+  "country": "scotland",
+  "region": "campbeltown",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 7500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "キャンベルタウン復活の象徴。塩気とレモン、麦芽の甘みが折衷する。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

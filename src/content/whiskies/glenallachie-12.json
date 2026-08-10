@@ -1,0 +1,33 @@
+{
+  "name": "グレンアラヒー12年",
+  "nameEn": "Glenallachie 12 Year Old",
+  "distillery": "グレンアラヒー蒸溜所",
+  "distillerySlug": "glenallachie",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 6200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "シェリー樽比率が高く濃厚。トフィーとオレンジ、スパイスの密度が高い。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

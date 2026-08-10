@@ -1,0 +1,33 @@
+{
+  "name": "南投 オマー",
+  "nameEn": "Nantou Omar Single Malt",
+  "distillery": "南投蒸溜所",
+  "distillerySlug": "nantou",
+  "country": "taiwan",
+  "region": "taiwan",
+  "type": "single-malt",
+  "abv": 46,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 6800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "台湾国営によるクラフトモルト。パイナップルと蜂蜜のフルーティな個性。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

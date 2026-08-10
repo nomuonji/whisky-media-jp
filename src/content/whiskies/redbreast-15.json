@@ -1,0 +1,34 @@
+{
+  "name": "レッドブレスト15年",
+  "nameEn": "Redbreast 15 Year Old",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 46,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 13000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 88,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "シングルポットスチルの15年。トフィーとベリー、スパイスが豊かに広がる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

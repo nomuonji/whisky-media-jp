@@ -1,0 +1,34 @@
+{
+  "name": "グレンカダム10年",
+  "nameEn": "Glencadam 10 Year Old",
+  "distillery": "グレンカダム蒸溜所",
+  "distillerySlug": "glencadam",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 46,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "バーボン樽熟成のクリーンなモルト。青リンゴの酸味とハーブの爽やかさ。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

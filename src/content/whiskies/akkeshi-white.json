@@ -1,0 +1,33 @@
+{
+  "name": "厚岸 ニューボーン ホワイト",
+  "nameEn": "Akkeshi New Born White",
+  "distillery": "厚岸蒸溜所",
+  "distillerySlug": "akkeshi",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "abv": 55,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 83,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "海の潮風が吹く北海道の蒸溜所による若いモルト。ほのかなピートと柑橘が個性的。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

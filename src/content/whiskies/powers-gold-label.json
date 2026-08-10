@@ -1,0 +1,33 @@
+{
+  "name": "パワーズ ゴールドラベル",
+  "nameEn": "Power's Gold Label",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "blended",
+  "abv": 43.2,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 2500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 3
+  },
+  "notes": "シングルポットスチル主体のコクあるアイリッシュ。ジンジャーとオーク。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

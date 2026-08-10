@@ -1,0 +1,33 @@
+{
+  "name": "グレンガリオ ファウンダーズ",
+  "nameEn": "Glen Garioch Founders Reserve",
+  "distillery": "グレンガリオ蒸溜所",
+  "distillerySlug": "glen-garioch",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "abv": 48,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 83,
+  "flavor": {
+    "peat": 1,
+    "sweet": 3,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "エステティカルな造りの復活を記念したNAS。バターのような濃厚さと果実。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "name": "イエロースポット12年",
+  "nameEn": "Yellow Spot 12 Year Old",
+  "distillery": "ミドルトン蒸溜所",
+  "distillerySlug": "midleton",
+  "country": "ireland",
+  "region": "ireland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 46,
+  "cask": [
+    "バーボン",
+    "シェリー",
+    "マラガ"
+  ],
+  "priceYen": 11000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "マラガワイン樽が独特の甘みを生む。オレンジピールとスパイスの深い味わい。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

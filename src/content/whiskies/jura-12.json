@@ -1,0 +1,35 @@
+{
+  "name": "ジュラ12年",
+  "nameEn": "Jura 12 Year Old",
+  "distillery": "ジュラ蒸溜所",
+  "distillerySlug": "jura",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 40,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 80,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 2,
+    "body": 3
+  },
+  "notes": "果実と蜂蜜のやさしい味わい。シェリー樽の甘みが加わり万人向け。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "グレンフィディック18年",
+  "nameEn": "Glenfiddich 18 Year Old",
+  "distillery": "グレンフィディック蒸溜所",
+  "distillerySlug": "glenfiddich",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 40,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 87,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "少量のオロロソシェリー樽を加えた18年。熟したリンゴとスパイスの複雑な余韻。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

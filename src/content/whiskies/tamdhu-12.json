@@ -1,0 +1,33 @@
+{
+  "name": "タムドゥ12年",
+  "nameEn": "Tamdhu 12 Year Old",
+  "distillery": "タムドゥ蒸溜所",
+  "distillerySlug": "tamdhu",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 6500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "オロロソシェリー樽100%熟成。レーズンとバタースコッチの濃厚な甘さ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

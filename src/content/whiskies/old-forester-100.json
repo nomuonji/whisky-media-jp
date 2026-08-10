@@ -1,0 +1,33 @@
+{
+  "name": "オールドフォレスター100",
+  "nameEn": "Old Forester 100 Proof",
+  "distillery": "オールドフォレスター蒸溜所",
+  "distillerySlug": "old-forester",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 50,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 3200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "1870年から続くバーボンの老舗。糖蜜とベリー、オークの厚みある味わい。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

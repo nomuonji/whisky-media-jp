@@ -1,0 +1,34 @@
+{
+  "name": "ジムビーム ブラック",
+  "nameEn": "Jim Beam Black Label",
+  "distillery": "ジムビーム蒸溜所",
+  "distillerySlug": "jim-beam",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 8,
+  "abv": 43,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 2500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "8年以上熟成のスモールバッチ。バニラとオーク、滑らかな飲み口。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "name": "エドラダワー10年",
+  "nameEn": "Edradour 10 Year Old",
+  "distillery": "エドラダワー蒸溜所",
+  "distillerySlug": "edradour",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 40,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 6200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "最小規模の蒸溜所らしい濃厚な味わい。フルーツケーキとスパイスの香りが豊か。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

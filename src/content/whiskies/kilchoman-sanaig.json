@@ -1,0 +1,34 @@
+{
+  "name": "キルホーマン サナイグ",
+  "nameEn": "Kilchoman Sanaig",
+  "distillery": "キルホーマン蒸溜所",
+  "distillerySlug": "kilchoman",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 46,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 4,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 4,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "シェリー樽の甘さとピートが同居。ラズベリーとスモークの若々しい魅力。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

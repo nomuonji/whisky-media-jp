@@ -1,0 +1,34 @@
+{
+  "name": "ノブクリーク9年",
+  "nameEn": "Knob Creek 9 Year Old",
+  "distillery": "ジムビーム蒸溜所",
+  "distillerySlug": "jim-beam",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "age": 9,
+  "abv": 50,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 4000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 5,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "9年熟成の高密度バーボン。キャラメルとクルミ、濃いオークの力強さ。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

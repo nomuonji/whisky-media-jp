@@ -1,0 +1,32 @@
+{
+  "name": "アムルット カスクストレングス",
+  "nameEn": "Amrut Cask Strength",
+  "distillery": "アムルット蒸溜所",
+  "distillerySlug": "amrut",
+  "country": "india",
+  "region": "india",
+  "type": "single-malt",
+  "abv": 61.5,
+  "cask": [
+    "バーボン"
+  ],
+  "priceYen": 8500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "標高910mの高温熟成が生む凝縮感。蜂蜜とスパイス、力強いボディ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

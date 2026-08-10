@@ -1,0 +1,34 @@
+{
+  "name": "アードベッグ コリヴレッカン",
+  "nameEn": "Ardbeg Corryvreckan",
+  "distillery": "アードベッグ蒸溜所",
+  "distillerySlug": "ardbeg",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "abv": 57.1,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 13000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 89,
+  "flavor": {
+    "peat": 5,
+    "sweet": 2,
+    "fruity": 2,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 5,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "世界で最も深い渦潮にちなむ濃厚なピート。チョコレートと胡椒、森の火の香り。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

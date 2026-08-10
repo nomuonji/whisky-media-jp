@@ -1,0 +1,34 @@
+{
+  "name": "オーヘントッシャン スリーウッド",
+  "nameEn": "Auchentoshan Three Wood",
+  "distillery": "オーヘントッシャン蒸溜所",
+  "distillerySlug": "auchentoshan",
+  "country": "scotland",
+  "region": "lowland",
+  "type": "single-malt",
+  "abv": 43,
+  "cask": [
+    "バーボン",
+    "オロロソシェリー",
+    "ペドロヒメネス"
+  ],
+  "priceYen": 8000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "3種類の樽で仕上げる滑らかなモルト。レーズンとダークチョコレートの甘さ。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

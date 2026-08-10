@@ -1,0 +1,35 @@
+{
+  "name": "響17年",
+  "nameEn": "Hibiki 17 Year Old",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "age": 17,
+  "abv": 43,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー",
+    "ミズナラ"
+  ],
+  "priceYen": 55000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 90,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 2,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 5,
+    "body": 3
+  },
+  "notes": "24面の調和を表現した響の17年。オレンジピールや白檀、甘いハチミツが幾重にも重なる。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

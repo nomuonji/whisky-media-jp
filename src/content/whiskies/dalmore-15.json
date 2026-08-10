@@ -1,0 +1,35 @@
+{
+  "name": "ダルモア15年",
+  "nameEn": "Dalmore 15 Year Old",
+  "distillery": "ダルモア蒸溜所",
+  "distillerySlug": "dalmore",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 40,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 12000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "シェリー樽熟成のリッチな甘さ。オレンジマーマレードとシナモンの香り。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

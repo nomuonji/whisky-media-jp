@@ -1,0 +1,33 @@
+{
+  "name": "ジャックダニエル シングルバレル",
+  "nameEn": "Jack Daniel's Single Barrel",
+  "distillery": "ジャックダニエル蒸溜所",
+  "distillerySlug": "jack-daniels",
+  "country": "usa",
+  "region": "tennessee",
+  "type": "tennessee",
+  "abv": 47,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 5500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 1,
+    "complex": 3,
+    "body": 4
+  },
+  "notes": "単一樽の濃厚なジャック。バナナとキャラメル、スモークの香ばしさ。",
+  "recommendedFor": [
+    "ロック",
+    "ストレート"
+  ]
+}

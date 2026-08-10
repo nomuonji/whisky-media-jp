@@ -1,0 +1,34 @@
+{
+  "name": "グレンリベット15年 フレンチオーク",
+  "nameEn": "The Glenlivet 15 French Oak Reserve",
+  "distillery": "グレンリベット蒸溜所",
+  "distillerySlug": "glenlivet",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 15,
+  "abv": 40,
+  "cask": [
+    "フレンチオーク"
+  ],
+  "priceYen": 7000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "フレンチオーク樽仕上げによる独特のスパイスとジンジャーの香り。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

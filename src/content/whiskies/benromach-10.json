@@ -1,0 +1,35 @@
+{
+  "name": "ベンロマック10年",
+  "nameEn": "Benromach 10 Year Old",
+  "distillery": "ベンロマック蒸溜所",
+  "distillerySlug": "benromach",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 10,
+  "abv": 43,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 5800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 83,
+  "flavor": {
+    "peat": 2,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 2,
+    "complex": 4,
+    "body": 3
+  },
+  "notes": "ほのかなピートと麦芽の甘み。昔ながらのスモーキーなスペイサイド。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

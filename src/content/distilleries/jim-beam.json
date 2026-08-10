@@ -1,0 +1,12 @@
+{
+  "name": "ジムビーム蒸溜所",
+  "nameEn": "Jim Beam Distillery",
+  "country": "usa",
+  "region": "kentucky",
+  "founded": 1795,
+  "owner": "ビームサントリー",
+  "lat": 37.88,
+  "lon": -85.127,
+  "waterSource": "バレンタイン・ブランチ",
+  "notes": "世界で最も売れているバーボンの蒸溜所。ノブクリークやベイシルヘイデンもここで生産。"
+}

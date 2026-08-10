@@ -1,0 +1,35 @@
+{
+  "name": "白州18年",
+  "nameEn": "Hakushu 18 Year Old",
+  "distillery": "白州蒸溜所",
+  "distillerySlug": "hakushu",
+  "country": "japan",
+  "region": "japan",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 43,
+  "cask": [
+    "アメリカンオーク",
+    "シェリー"
+  ],
+  "priceYen": 48000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 91,
+  "flavor": {
+    "peat": 1,
+    "sweet": 4,
+    "fruity": 5,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 1,
+    "complex": 5,
+    "body": 3
+  },
+  "notes": "緑に包まれた山梨の森のなかで熟成される繊細なモルト。林檎やハーブ、ほのかなスモークが調和する。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

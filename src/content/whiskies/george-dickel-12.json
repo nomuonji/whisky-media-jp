@@ -1,0 +1,34 @@
+{
+  "name": "ジョージディッケル12年",
+  "nameEn": "George Dickel 12 Year Old",
+  "distillery": "ジョージディッケル蒸溜所",
+  "distillerySlug": "george-dickel",
+  "country": "usa",
+  "region": "tennessee",
+  "type": "tennessee",
+  "age": 12,
+  "abv": 45,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 5000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 85,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "低温でのチャコール濾過が特徴。クリーミーなバニラとココア、オーク。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

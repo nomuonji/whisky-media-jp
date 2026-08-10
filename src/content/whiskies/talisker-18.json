@@ -1,0 +1,33 @@
+{
+  "name": "タリスカー18年",
+  "nameEn": "Talisker 18 Year Old",
+  "distillery": "タリスカー蒸溜所",
+  "distillerySlug": "talisker",
+  "country": "scotland",
+  "region": "island",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 45.8,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 17000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "limited",
+  "rating": 88,
+  "flavor": {
+    "peat": 3,
+    "sweet": 3,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 4,
+    "smoky": 3,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "スカイ島の海と黒胡椒。熟成でピートが柔らかくなり、シェリーの甘さが加わる。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

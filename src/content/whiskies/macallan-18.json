@@ -1,0 +1,33 @@
+{
+  "name": "ザ・マッカラン18年 シェリーオーク",
+  "nameEn": "The Macallan 18 Sherry Oak",
+  "distillery": "マッカラン蒸溜所",
+  "distillerySlug": "macallan",
+  "country": "scotland",
+  "region": "speyside",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 43,
+  "cask": [
+    "シェリー"
+  ],
+  "priceYen": 48000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 92,
+  "flavor": {
+    "peat": 0,
+    "sweet": 5,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "ファーストフィルシェリー樽18年。干し果実とオーク、スパイスが幾重にも重なる完成度。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

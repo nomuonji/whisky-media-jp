@@ -1,0 +1,34 @@
+{
+  "name": "ブナハーブン18年",
+  "nameEn": "Bunnahabhain 18 Year Old",
+  "distillery": "ブナハーブン蒸溜所",
+  "distillerySlug": "bunnahabhain",
+  "country": "scotland",
+  "region": "islay",
+  "type": "single-malt",
+  "age": 18,
+  "abv": 46.3,
+  "cask": [
+    "シェリー",
+    "バーボン"
+  ],
+  "priceYen": 17000,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 89,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 4,
+    "spicy": 3,
+    "oak": 4,
+    "smoky": 0,
+    "complex": 5,
+    "body": 4
+  },
+  "notes": "アイラとは思えないノンピートの深いモルト。シェリーの甘さと海塩が繊細。",
+  "recommendedFor": [
+    "ストレート"
+  ]
+}

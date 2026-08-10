@@ -1,0 +1,33 @@
+{
+  "name": "ブラントン シングルバレル",
+  "nameEn": "Blanton's Single Barrel",
+  "distillery": "バッファロートレース蒸溜所",
+  "distillerySlug": "buffalo-trace",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 46.5,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 9500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "rare",
+  "rating": 86,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 4,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 4
+  },
+  "notes": "世界初のシングルバレルバーボン。バニラとオレンジ、スパイスの濃厚な味わい。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

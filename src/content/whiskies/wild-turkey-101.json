@@ -1,0 +1,33 @@
+{
+  "name": "ワイルドターキー101",
+  "nameEn": "Wild Turkey 101",
+  "distillery": "ワイルドターキー蒸溜所",
+  "distillerySlug": "wild-turkey",
+  "country": "usa",
+  "region": "kentucky",
+  "type": "bourbon",
+  "abv": 50.5,
+  "cask": [
+    "新樽"
+  ],
+  "priceYen": 2800,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 84,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 2,
+    "spicy": 5,
+    "oak": 5,
+    "smoky": 0,
+    "complex": 4,
+    "body": 5
+  },
+  "notes": "50.5度の力強い定番。バニラと胡椒、オークが荒々しくもバランス良好。",
+  "recommendedFor": [
+    "ロック",
+    "ハイボール"
+  ]
+}

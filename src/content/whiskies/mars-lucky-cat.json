@@ -1,0 +1,34 @@
+{
+  "name": "マルス ラッキーキャット",
+  "nameEn": "Mars Lucky Cat",
+  "distillery": "マルス信州蒸溜所",
+  "distillerySlug": "mars-shinshu",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended-malt",
+  "abv": 42,
+  "cask": [
+    "シェリー",
+    "ミズナラ"
+  ],
+  "priceYen": 4200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 81,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 2
+  },
+  "notes": "招き猫がラベルの愛らしいブレンデッドモルト。ミルクチョコレートのような甘い香り。",
+  "recommendedFor": [
+    "ストレート",
+    "ハイボール"
+  ]
+}

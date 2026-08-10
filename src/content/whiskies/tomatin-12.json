@@ -1,0 +1,35 @@
+{
+  "name": "トマーティン12年",
+  "nameEn": "Tomatin 12 Year Old",
+  "distillery": "トマーティン蒸溜所",
+  "distillerySlug": "tomatin",
+  "country": "scotland",
+  "region": "highland",
+  "type": "single-malt",
+  "age": 12,
+  "abv": 43,
+  "cask": [
+    "バーボン",
+    "シェリー"
+  ],
+  "priceYen": 4500,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 82,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 2,
+    "oak": 3,
+    "smoky": 0,
+    "complex": 3,
+    "body": 3
+  },
+  "notes": "高地らしい清らかな飲み口。蜂蜜と青リンゴ、クリームのやさしい味わい。",
+  "recommendedFor": [
+    "ストレート",
+    "ロック"
+  ]
+}

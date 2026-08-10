@@ -1,0 +1,32 @@
+{
+  "name": "サントリー 翠（トキ）",
+  "nameEn": "Suntory Toki",
+  "distillery": "サントリー",
+  "country": "japan",
+  "region": "japan",
+  "type": "blended",
+  "abv": 43,
+  "cask": [
+    "アメリカンオーク"
+  ],
+  "priceYen": 3200,
+  "priceAsOf": "2026-08",
+  "priceSource": "editorial",
+  "availability": "common",
+  "rating": 78,
+  "flavor": {
+    "peat": 0,
+    "sweet": 4,
+    "fruity": 3,
+    "spicy": 1,
+    "oak": 2,
+    "smoky": 0,
+    "complex": 2,
+    "body": 2
+  },
+  "notes": "ライトでクリーンなハイボール向きブレンド。白州の爽やかさと山崎の甘みを合わせた。",
+  "recommendedFor": [
+    "ハイボール",
+    "ロック"
+  ]
+}

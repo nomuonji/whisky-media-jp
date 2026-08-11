@@ -26,3 +26,45 @@
 @import './components/affiliate.css';
 @import './components/search.css';
 @import './components/error.css';
+
+/* ============================================
+   Dark mode — 部品の補正（トークン反転は tokens.css）
+   color-mix(...white) で作る淡色チップはダーク面上で文字が消えるため、
+   面のミックス先を暗い面（--color-surface）に張り替えて文字色を保つ。
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  /* 比較チップ */
+  .compare-chip {
+    background: color-mix(in srgb, var(--region-color, var(--color-brand)) 22%, var(--color-surface));
+    border-color: color-mix(in srgb, var(--region-color, var(--color-brand)) 55%, var(--color-surface));
+  }
+
+  .compare-chip button:hover {
+    background: rgba(255, 255, 255, 0.12);
+  }
+
+  /* 地域タイル */
+  .region-tile {
+    background: color-mix(in srgb, var(--region-color, var(--color-brand)) 16%, var(--color-surface));
+  }
+
+  .region-tile-name {
+    color: color-mix(in srgb, var(--region-color, var(--color-brand)) 55%, white);
+  }
+
+  /* 比較表の強調セル：金の淡色面を暗い琥珀に */
+  .comparison-table td.is-best {
+    background: color-mix(in srgb, var(--color-brand) 26%, var(--color-surface));
+  }
+
+  /* 上位%の強調数字は濃い琥珀（--color-brand-strong）だと読めない */
+  .score-percentile strong {
+    color: var(--color-brand);
+  }
+
+  /* コードブロックは常に暗い面に（トークン反転でライト面に逆転するのを防ぐ） */
+  pre {
+    background: #17140E;
+    color: #C2B49C;
+  }
+}

@@ -47,6 +47,8 @@
 .text-center { text-align: center; }
 .text-secondary { color: var(--color-text-secondary); }
 .text-tertiary { color: var(--color-text-tertiary); }
+/* 補足説明などで本文より一段控えめにする */
+.text-sm { font-size: var(--text-sm); }
 
 .mt-0 { margin-top: 0; }
 .mb-0 { margin-bottom: 0; }

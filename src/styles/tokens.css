@@ -19,7 +19,8 @@
   /* === Color: Text === */
   --color-text:             #2C2416;
   --color-text-secondary:   #6B5E4A;
-  --color-text-tertiary:    #9B8E7A;
+  /* 極小ラベルにも使うため 4.5:1 を満たす濃さにする（#9B8E7A は 3.2:1 でAAに届かない） */
+  --color-text-tertiary:    #7D6F5A;
   --color-text-link:        #8B6914;
   /* 淡いブランド面（--color-brand-light）に載せる文字。白背景の #8B6914 では
      淡色面に対して 4.15:1 しか取れずAAに届かないため、専用に一段濃くする */
@@ -118,4 +119,35 @@
   --z-header:   100;
   --z-dropdown: 200;
   --z-modal:    300;
+
+  /* OSの設定に合わせてネイティブ部品（select・スクロールバー等）も切り替える */
+  color-scheme: light dark;
+}
+
+/* ============================================
+   Dark mode — prefers-color-scheme
+   トークンのみ反転する。金色と暖色のアイデンティティは保ち、
+   color-mix(...white) で淡色面を作る部品の調整は global.css 末尾に集約。
+   ============================================ */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Surface：面が浮く順序（body < card）はライトと同じ向きに保つ */
+    --color-surface:          #262119;
+    --color-surface-elevated: #1E1A13;
+    --color-surface-subdued:  #30291E;
+
+    /* Text：白ではなく紙の色味に寄せた暖かいオフホワイト（各面で4.5:1以上） */
+    --color-text:             #EDE4D2;
+    --color-text-secondary:   #C2B49C;
+    --color-text-tertiary:    #A08E72;
+    --color-text-link:        #D9B24C;
+    --color-on-brand-light:   #E4C98C;
+
+    /* Brand：th・blockquote・badge の淡色面は暗い琥珀に張り替え */
+    --color-brand-light:      #3A2E1A;
+
+    /* Border */
+    --color-border:           #40382A;
+    --color-border-light:     #2C261C;
+  }
 }

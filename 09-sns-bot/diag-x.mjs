@@ -12,11 +12,10 @@ const ip = await (await fetch('https://api.ipify.org?format=json')).json();
 console.log('=== Runner IP:', ip.ip, '===');
 
 const tests = {
-  '1-日本語のみ': 'スコッチ・バーボンだけじゃない世界のウイスキーを4地域でデータ比較しました',
-  '2-日本語+URL': 'スコッチ・バーボンだけじゃない。世界のウイスキー4地域をデータで比較 https://whisky-jp.antonbase.com/2026-08-06-world-whisky/',
-  '3-日本語+URL+絵文字': 'スコッチ・バーボンだけじゃない。世界のウイスキー4地域をデータで比較👇\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/',
-  '4-日本語+URL+ハッシュタグ': 'スコッチ・バーボンだけじゃない。世界のウイスキー4地域をデータで比較\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/\n\n#ウイスキー #Whisky #ワールドウイスキー',
-  '5-英語+絵文字+URL': 'World whisky in 4 regions, compared with data👇\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/',
+  'A-実文面(4tag+emoji+2行)': 'スコッチ・バーボンだけじゃない——世界のウイスキー4地域をデータで比較\n台湾・インド・オーストラリアの注目ウイスキーを味の8軸で比較。カバラン、アムルット、スターワードなど、世界を代表するワールドウイスキーの個性を解説。👇\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/\n\n#ウイスキー #Whisky #ワールドウイスキー #ウイスキー好きと繋がりたい',
+  'B-絵文字なし': 'スコッチ・バーボンだけじゃない——世界のウイスキー4地域をデータで比較\n台湾・インド・オーストラリアの注目ウイスキーを味の8軸で比較。カバラン、アムルット、スターワードなど、世界を代表するワールドウイスキーの個性を解説。\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/\n\n#ウイスキー #Whisky #ワールドウイスキー #ウイスキー好きと繋がりたい',
+  'C-ハッシュタグ3個': 'スコッチ・バーボンだけじゃない——世界のウイスキー4地域をデータで比較\n台湾・インド・オーストラリアの注目ウイスキーを味の8軸で比較。カバラン、アムルット、スターワードなど、世界を代表するワールドウイスキーの個性を解説。👇\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/\n\n#ウイスキー #Whisky #ワールドウイスキー',
+  'D-1行文+4tag': 'スコッチ・バーボンだけじゃない。世界のウイスキー4地域をデータで比較👇\nhttps://whisky-jp.antonbase.com/2026-08-06-world-whisky/\n\n#ウイスキー #Whisky #ワールドウイスキー #ウイスキー好きと繋がりたい',
 };
 
 for (const [name, text] of Object.entries(tests)) {
@@ -30,5 +29,5 @@ for (const [name, text] of Object.entries(tests)) {
     await fetch(delUrl, { method: 'DELETE', headers: { Authorization: buildOAuthHeader(cred, 'DELETE', delUrl) } });
     console.log('  DELETED:', json.data.id);
   }
-  await new Promise((r) => setTimeout(r, 1200));
+  await new Promise((r) => setTimeout(r, 1500));
 }

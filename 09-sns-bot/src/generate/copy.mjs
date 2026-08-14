@@ -6,6 +6,10 @@ import { resolveOgp } from '../content/pick.mjs';
 
 const MAX_LEN = 280; // X の1投稿上限
 
+// 記事告知のフック文の上限。Xのスパム判定は「長文+URL+複数ハッシュタグ」の
+// 組み合わせを拒否する（2026-08-15の実測で確認）。本文を短く保つ。
+const HOOK_MAX_LEN = 40;
+
 const TYPE_JA = {
   'single malt scotch': 'シングルモルト',
   scotch: 'シングルモルト',
@@ -89,9 +93,10 @@ function bodyArticle(c, cfg) {
   const a = c.data;
   const url = `${cfg.siteUrl}/${a.slug}/`;
   const hook = (a.excerpt || '').replace(/\s+/g, ' ').trim();
+  const short = [...hook].length > HOOK_MAX_LEN ? [...hook].slice(0, HOOK_MAX_LEN).join('').trimEnd() + '…' : hook;
   return [
     `${a.title}`,
-    hook ? `${hook}👇` : '',
+    short ? `${short}👇` : '',
     '',
     url,
   ]

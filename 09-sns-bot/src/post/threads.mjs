@@ -16,7 +16,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 /** コンテナの status_code を取得する（FINISHED 待ちに使う）。 */
 async function containerStatus(credentials, containerId) {
-  const url = `${API}/${credentials.userId}/threads/${containerId}?fields=status_code,error_message&access_token=${encodeURIComponent(credentials.accessToken)}`;
+  const url = `${API}/${credentials.userId}/media/${containerId}?fields=status_code,error_message&access_token=${encodeURIComponent(credentials.accessToken)}`;
   const res = await fetch(url);
   const json = await res.json().catch(() => ({}));
   if (!res.ok) {

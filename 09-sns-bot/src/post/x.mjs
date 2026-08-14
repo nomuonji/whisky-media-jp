@@ -22,27 +22,48 @@ export async function postToX({ text, image }, cfg, credentials) {
     return { posted: false, reason: 'no-token' };
   }
 
+  // 画像付き投稿を試す。X Freeプランでは画像メディアの投稿が権限エラー(403)になることがあるため、
+  // 失敗したらテキストのみで再試行する（URLのOGPカード展開で画像は補える。DESIGN.md §4-3）。
   try {
     const mediaId = image ? await uploadMedia(image, credentials) : null;
     const body = { text, ...(mediaId ? { media: { media_ids: [mediaId] } } : {}) };
+    const result = await postTweet(credentials, body);
+    if (result.posted) return result;
 
-    const authHeader = buildOAuthHeader(credentials, 'POST', TWEET_URL);
-    const res = await fetch(TWEET_URL, {
-      method: 'POST',
-      headers: { Authorization: authHeader, 'Content-Type': 'application/json' },
-      body: JSON.stringify(body),
-    });
-    const json = await res.json().catch(() => ({}));
-    if (!res.ok || !json.data) {
-      console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}`);
-      return { posted: false, reason: `api:${res.status}` };
+    if (image) {
+      console.log(`[x] 画像付き投稿が失敗（${result.reason}）→ テキストのみで再試行`);
+      const fallback = await postTweet(credentials, { text });
+      return fallback;
     }
-    console.log(`[x] 投稿成功 id=${json.data.id}`);
-    return { posted: true, id: json.data.id };
+    return result;
   } catch (err) {
     console.error(`[x] 投稿失敗: ${err.message}`);
+    if (image) {
+      console.log(`[x] 画像処理エラー → テキストのみで再試行`);
+      try {
+        return await postTweet(credentials, { text });
+      } catch (fallbackErr) {
+        console.error(`[x] テキスト投稿も失敗: ${fallbackErr.message}`);
+      }
+    }
     return { posted: false, reason: 'error' };
   }
+}
+
+async function postTweet(credentials, body) {
+  const authHeader = buildOAuthHeader(credentials, 'POST', TWEET_URL);
+  const res = await fetch(TWEET_URL, {
+    method: 'POST',
+    headers: { Authorization: authHeader, 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok || !json.data) {
+    console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}`);
+    return { posted: false, reason: `api:${res.status}` };
+  }
+  console.log(`[x] 投稿成功 id=${json.data.id}`);
+  return { posted: true, id: json.data.id };
 }
 
 async function uploadMedia(image, credentials) {

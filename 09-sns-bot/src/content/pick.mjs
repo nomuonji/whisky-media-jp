@@ -78,6 +78,9 @@ export function resolveOgp(cfg, candidate) {
   if (!candidate) return null;
   if (candidate.kind === 'whisky') return findOgp(cfg.ogpDir, candidate.data.id);
   if (candidate.kind === 'article') {
+    // 記事専用OGP（article-<slug>.png）を最優先。なければ比較/紹介銘柄の画像にフォールバック
+    const articleOgp = findOgp(cfg.ogpDir, `article-${candidate.data.slug}`);
+    if (articleOgp) return articleOgp;
     const ids = [...(candidate.data.compare || []), ...(candidate.data.affiliateIds || [])];
     for (const id of ids) {
       const p = findOgp(cfg.ogpDir, id);
@@ -88,6 +91,10 @@ export function resolveOgp(cfg, candidate) {
 }
 
 function findOgp(ogpDir, id) {
+  if (id.startsWith('article-')) {
+    const p = path.join(ogpDir, `${id}.png`);
+    return existsSync(p) ? p : null;
+  }
   const p = path.join(ogpDir, `whisky-${id}.png`);
   return existsSync(p) ? p : null;
 }

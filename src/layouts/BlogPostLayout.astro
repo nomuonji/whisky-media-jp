@@ -43,7 +43,7 @@ const breadcrumbs = [
 <BaseLayout
   {title}
   {description}
-  ogImage={seo?.og_image}
+  ogImage={seo?.og_image || `/ogp/article-${post.slug}.png`}
   type="article"
   publishedTime={date}
   modifiedTime={updated ?? date}

@@ -1,13 +1,18 @@
 // 投稿文の生成（テンプレート方式・無料）。
 // パターン: A記事告知 / Bデータ豆知識 / C質問 / D蒸留所紹介。
 // 文の単調さが気になったら generate/llm.mjs を有効にする（Phase 4）。
+//
+// 方針（2026-08-15）:
+//   - Xのスパム判定は「長文+URL+複数ハッシュタグ」の組み合わせを拒否する
+//     （実測で確認。短文+URLだけ、長文+URLのみは通る）
+//   - そのため投稿は「短いキャッチ文+OGP画像」だけにし、リンク・ハッシュタグは
+//     付けない。サイトへの誘導はプロフィールの固定リンクに任せる（認知に振り切る）。
 
 import { resolveOgp } from '../content/pick.mjs';
 
 const MAX_LEN = 280; // X の1投稿上限
 
-// 記事告知のフック文の上限。Xのスパム判定は「長文+URL+複数ハッシュタグ」の
-// 組み合わせを拒否する（2026-08-15の実測で確認）。本文を短く保つ。
+// 記事告知のフック文の上限。本文を短く保つ。
 const HOOK_MAX_LEN = 40;
 
 const TYPE_JA = {
@@ -69,39 +74,17 @@ function flavorSummary(flavor) {
   return parts.join('｜');
 }
 
-// 長い本文を末尾（ハッシュタグ）を壊さずに280字以内へ切る。
+// 長い本文を280字以内へ切る。
 function clip(text) {
   if ([...text].length <= MAX_LEN) return text;
   return [...text].slice(0, MAX_LEN - 1).join('').trimEnd() + '…';
 }
 
-function buildHashtags(candidate, cfg) {
-  const tags = [...cfg.baseHashtags];
-  if (candidate.kind === 'article') {
-    const ht = CATEGORY_HASHTAGS[candidate.data.category];
-    if (ht) tags.push(ht);
-    if (candidate.data.tags?.includes('比較')) tags.push('#ウイスキー好きと繋がりたい');
-  }
-  if (candidate.kind === 'whisky') {
-    const ht = CATEGORY_HASHTAGS[candidate.data.type] || CATEGORY_HASHTAGS[candidate.data.country];
-    if (ht) tags.push(ht);
-  }
-  return [...new Set(tags)].slice(0, 4); // ハッシュタグは4個まで（規約対策）
-}
-
-function bodyArticle(c, cfg) {
+function bodyArticle(c) {
   const a = c.data;
-  const url = `${cfg.siteUrl}/${a.slug}/`;
   const hook = (a.excerpt || '').replace(/\s+/g, ' ').trim();
   const short = [...hook].length > HOOK_MAX_LEN ? [...hook].slice(0, HOOK_MAX_LEN).join('').trimEnd() + '…' : hook;
-  return [
-    `${a.title}`,
-    short ? `${short}👇` : '',
-    '',
-    url,
-  ]
-    .filter(Boolean)
-    .join('\n');
+  return [a.title, short ? `\n${short}` : ''].filter(Boolean).join('');
 }
 
 function bodyWhisky(c) {
@@ -127,10 +110,10 @@ function bodyDistillery(c) {
 function bodyQuestion(c) {
   const { left, right } = c.data;
   return [
-    '【アンケート】あなたならどっちを選ぶ？',
+    'あなたならどっちを選ぶ？',
     `A：${left.name}（評価${left.rating}/100）`,
     `B：${right.name}（評価${right.rating}/100）`,
-    '理由をリプライで教えてください',
+    '理由をコメントで教えてください',
   ].join('\n');
 }
 
@@ -142,10 +125,10 @@ const BODY = {
 };
 
 // 投稿本文 + 添付画像の絶対パスを生成する。
+// リンク・ハッシュタグは付けない（スパム判定回避。誘導はプロフィールの固定リンク）。
 export function buildPost(candidate, cfg) {
   const body = (BODY[candidate.kind]?.(candidate, cfg)) || '';
-  const hashtags = buildHashtags(candidate, cfg);
-  const text = clip(`${body}\n\n${hashtags.join(' ')}`);
+  const text = clip(body);
   const image = resolveOgp(cfg, candidate);
-  return { text, hashtags, image };
+  return { text, hashtags: [], image };
 }

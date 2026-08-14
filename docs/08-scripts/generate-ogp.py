@@ -227,6 +227,106 @@ def render(data, slug):
     img.save(os.path.join(OUT, f"whisky-{slug}.png"), optimize=True)
 
 
+BLOG_DIR = os.path.join(ROOT, "src", "content", "blog")
+
+CATEGORY_LABELS = {
+    "scotch": "スコッチ", "japanese": "ジャパニーズ", "bourbon": "バーボン",
+    "irish": "アイリッシュ", "world": "ワールド", "guide": "ウイスキー入門",
+    "news": "Whiskybase データ",
+}
+
+
+def parse_frontmatter(md_path):
+    """記事の frontmatter（--- で囲まれた部分）を簡易パースして dict を返す"""
+    with io.open(md_path, encoding="utf-8") as f:
+        content = f.read()
+    if not content.startswith("---"):
+        return None
+    body = content.split("---", 2)[1]
+    data = {}
+    seo_indent = None
+    current_key = None
+    for raw in body.splitlines():
+        line = raw.strip()
+        if not line or line.startswith("#"):
+            continue
+        indent = len(raw) - len(raw.lstrip())
+        if line.startswith("- ") and current_key in ("tags", "whiskies", "compare", "affiliate_ids"):
+            data.setdefault(current_key, []).append(line[2:].strip().strip('"\''))
+            continue
+        if ":" in line:
+            key, val = line.split(":", 1)
+            key = key.strip()
+            val = val.strip()
+            if indent > 0 and current_key == "seo":
+                data["seo_" + key] = val.strip('"\'')
+                continue
+            if key == "seo":
+                current_key = "seo"
+                continue
+            current_key = key
+            val = val.strip('"\'')
+            if key in ("tags", "whiskies", "compare", "affiliate_ids"):
+                if val.startswith("["):
+                    items = [x.strip().strip('"\'' ) for x in val.strip("[]").split(",") if x.strip()]
+                    data[key] = items
+                else:
+                    data[key] = [val] if val else []
+            else:
+                data[key] = val
+    return data
+
+
+def render_article(data, slug):
+    """ブログ記事のOGP画像（タイトル＋カテゴリ＋hook）を生成する"""
+    img = Image.new("RGB", (W, H), (44, 36, 22))
+    draw = ImageDraw.Draw(img, "RGBA")
+
+    for i in range(H):
+        ratio = i / H
+        draw.line([(0, i), (W, i)],
+                  fill=(int(44 + 40 * ratio), int(36 + 28 * ratio), int(22 + 10 * ratio)))
+
+    # 左下のアクセント帯
+    cat = data.get("category", "guide")
+    color = REGION_COLORS.get(cat, BRAND)
+    draw.rectangle([0, H - 14, W, H], fill=color)
+
+    f_site = load_font(26)
+    f_title = load_font(58, bold=True)
+    f_cat = load_font(28)
+    f_hook = load_font(24)
+    f_meta = load_font(20)
+
+    draw.text((96, 96), "WHISKY DATA JP", font=f_site, fill=BRAND)
+    draw.rectangle([96, 148, 200, 154], fill=BRAND)
+
+    cat_label = CATEGORY_LABELS.get(cat, cat)
+    draw.text((96, 190), f"{cat_label} ｜ データで読む", font=f_cat, fill=(200, 185, 165))
+
+    # タイトル（最大3行）
+    title = data.get("title", "")
+    title_lines = wrap(draw, title, f_title, 940)[:3]
+    y = 250
+    for line in title_lines:
+        draw.text((96, y), line, font=f_title, fill=(245, 230, 211))
+        y += 82
+
+    # hook（省略表記）
+    hook = (data.get("excerpt") or data.get("seo_description") or "").replace("。", "。 ")
+    hook_lines = wrap(draw, hook, f_hook, 880)[:2]
+    y = 440
+    for line in hook_lines:
+        draw.text((96, y), line, font=f_hook, fill=(200, 185, 165))
+        y += 40
+
+    draw.text((96, H - 150), "味の8軸・価格・コスパの数値で選ぶウイスキーデータメディア",
+              font=f_meta, fill=(140, 128, 108))
+
+    os.makedirs(OUT, exist_ok=True)
+    img.save(os.path.join(OUT, f"article-{slug}.png"), optimize=True)
+
+
 def render_default():
     """サイト共通のOGP画像"""
     img = Image.new("RGB", (W, H), (44, 36, 22))
@@ -257,8 +357,16 @@ def main():
         slug = os.path.splitext(os.path.basename(path))[0]
         data = json.load(io.open(path, encoding="utf-8"))
         render(data, slug)
+
+    article_files = sorted(glob.glob(os.path.join(BLOG_DIR, "*.md")))
+    for path in article_files:
+        slug = os.path.splitext(os.path.basename(path))[0]
+        data = parse_frontmatter(path)
+        if data:
+            render_article(data, slug)
+
     render_default()
-    print(f"生成: 銘柄 {len(files)}件 + デフォルト1件 -> public/ogp/, public/images/")
+    print(f"生成: 銘柄 {len(files)}件 + 記事 {len(article_files)}件 + デフォルト1件 -> public/ogp/, public/images/")
 
 
 if __name__ == "__main__":

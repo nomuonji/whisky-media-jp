@@ -14,13 +14,15 @@ const PUBLISH_RETRIES = 2;
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/** コンテナの status_code を取得する（FINISHED 待ちに使う）。 */
-async function containerStatus(credentials, containerId) {
+/** コンテナの status_code を取得する（FINISHED 待ちに使う）。失敗しても警告は1回だけ出す。 */
+async function containerStatus(credentials, containerId, logFirstFailure) {
   const url = `${API}/${credentials.userId}/media/${containerId}?fields=status_code,error_message&access_token=${encodeURIComponent(credentials.accessToken)}`;
   const res = await fetch(url);
   const json = await res.json().catch(() => ({}));
   if (!res.ok) {
-    console.warn(`[threads] ステータス取得失敗 ${res.status}: ${JSON.stringify(json)}`);
+    if (logFirstFailure) {
+      console.warn(`[threads] ステータス取得不可（${res.status}）。ポーリングは続けます`);
+    }
     return null;
   }
   return json.status_code || null;
@@ -29,8 +31,10 @@ async function containerStatus(credentials, containerId) {
 /** コンテナが FINISHED になるまでポーリングする。 */
 async function waitForContainer(credentials, containerId) {
   const deadline = Date.now() + POLL_TIMEOUT_MS;
+  let warned = false;
   while (Date.now() < deadline) {
-    const status = await containerStatus(credentials, containerId);
+    const status = await containerStatus(credentials, containerId, !warned);
+    warned = true;
     if (status === 'FINISHED') return true;
     if (status === 'ERROR') {
       console.error(`[threads] コンテナが ERROR 状態になりました`);

@@ -59,7 +59,10 @@ async function postTweet(credentials, body) {
   });
   const json = await res.json().catch(() => ({}));
   if (!res.ok || !json.data) {
-    console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}`);
+    // 403 の原因調査用に x-access-level ヘッダーを出す（OAuthトークンの権限を表す）
+    const accessLevel = res.headers.get('x-access-level');
+    const rateLimit = res.headers.get('x-rate-limit-remaining');
+    console.error(`[x] API error ${res.status}: ${JSON.stringify(json)}${accessLevel ? ` | x-access-level=${accessLevel}` : ''}${rateLimit != null ? ` | x-rate-limit-remaining=${rateLimit}` : ''}`);
     return { posted: false, reason: `api:${res.status}` };
   }
   console.log(`[x] 投稿成功 id=${json.data.id}`);

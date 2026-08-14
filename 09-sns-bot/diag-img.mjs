@@ -13,7 +13,7 @@ const MEDIA_UPLOAD_URL = 'https://upload.twitter.com/1.1/media/upload.json';
 const ip = await (await fetch('https://api.ipify.org?format=json')).json();
 console.log('=== Runner IP:', ip.ip, '===');
 
-const buffer = await readFile('public/ogp/article-2026-08-06-world-whisky.png');
+const buffer = await readFile('../public/ogp/article-2026-08-06-world-whisky.png');
 console.log('image bytes:', buffer.length);
 
 const authHeader = buildOAuthHeader(cred, 'POST', MEDIA_UPLOAD_URL);

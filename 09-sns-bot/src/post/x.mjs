@@ -6,6 +6,7 @@
 // （署名対象パラメータに body は含めない。book-discovery プロジェクトの
 // bot/publish/x.ts と同一ロジック）。
 
+import { readFile } from 'node:fs/promises';
 import { buildOAuthHeader } from '../oauth1.mjs';
 
 const TWEET_URL = 'https://api.twitter.com/2/tweets';
@@ -45,9 +46,9 @@ export async function postToX({ text, image }, cfg, credentials) {
 }
 
 async function uploadMedia(image, credentials) {
-  const imageRes = await fetch(image);
-  if (!imageRes.ok) throw new Error(`画像の取得に失敗しました: ${imageRes.status} ${image}`);
-  const buffer = Buffer.from(await imageRes.arrayBuffer());
+  // image はローカルファイルの絶対パス（resolveOgp の返却値）か、URL のどちらか。
+  // GitHub Actions ランナーではファイルパスなので fs で読み、ローカル検証でも同じ経路を使う。
+  const buffer = /^https?:\/\//i.test(image) ? await fetchImage(image) : await readFile(image);
 
   // OAuth1 の署名対象にmultipart bodyは含めない（book-discovery/bot/publish/x.ts と同じ）
   const authHeader = buildOAuthHeader(credentials, 'POST', MEDIA_UPLOAD_URL);
@@ -76,4 +77,10 @@ async function uploadMedia(image, credentials) {
     throw new Error(`メディアアップロード失敗: ${JSON.stringify(json.errors ?? json)}`);
   }
   return json.media_id_string;
+}
+
+async function fetchImage(url) {
+  const imageRes = await fetch(url);
+  if (!imageRes.ok) throw new Error(`画像の取得に失敗しました: ${imageRes.status} ${url}`);
+  return Buffer.from(await imageRes.arrayBuffer());
 }

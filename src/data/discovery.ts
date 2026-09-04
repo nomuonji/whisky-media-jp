@@ -22,7 +22,7 @@ export const FLAVOR_FILTERS: Record<string, FlavorFilter> = {
   },
   sweet: {
     label: '甘口',
-    lead: '蜂蜜やバニラのような甘さが前に出るタイプ。ウイスキーの入口として選びやすい。',
+    lead: '蜂蜜やバニラのような甘さが前に出るタイプ。ウイスキーの入口として選びやすい。バーボン樽熟成やシェリー樽熟成の銘柄に甘口が多く、ハイボールにすると甘さが引き締まる。価格帯の目安は2026年9月確認の実勢で、店舗・時期により変動する。',
     match: (w) => w.data.flavor.sweet >= 4,
     sort: 'rating',
   },

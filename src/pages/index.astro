@@ -5,7 +5,6 @@ import WhiskyList from '../components/whisky/WhiskyList.astro';
 import PriceScatter from '../components/whisky/PriceScatter.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import SourceNote from '../components/whisky/SourceNote.astro';
-import { SITE } from '../data/site';
 import { DISCOVERY_LINKS } from '../data/navigation';
 import { getWhiskies, sortWhiskies, costPerPoint } from '../utils/whisky';
 import { getPublishedPosts } from '../utils/posts';
@@ -19,7 +18,7 @@ const ratingTop = sortWhiskies(whiskies, 'rating').slice(0, 5);
 const latestPosts = posts.slice(0, 3);
 ---
 
-<BaseLayout title={ja.site.tagline} description={SITE.description} width="wide">
+<BaseLayout title="ウイスキーデータで銘柄を選ぶ｜価格・評価・味を数値比較" description="Whisky Data JPはWhiskybase 20万本のデータを日本語で整理したウイスキーデータサイト。レーダーチャートで味を比較し、価格推移とコスパで選べます。" width="wide">
   <Hero
     title={ja.site.tagline}
     description={`「まろやか」「深みがある」ではなく、味の8軸・価格・コスパの数値で選ぶ。現在${whiskies.length}銘柄を掲載。`}

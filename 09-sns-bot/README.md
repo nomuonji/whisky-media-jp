@@ -50,10 +50,12 @@ node 09-sns-bot/src/index.mjs post --no-dry-run
 
 ## 自動実行（スケジュール）
 
-毎日決まった時間に走らせる。2択:
+**現在は自動投稿を停止中**（X は無料枠枯渇、Threads も運用停止）。手動投稿は `.github/workflows/sns-bot.yml` の workflow_dispatch から、または下記コマンドで実行する。
+
+再開する場合は2択:
 
 1. **opencodeのscheduleスキル**: 朝7時/昼12時/夜20時の投稿枠で
-   `node 09-sns-bot/src/index.mjs post --channel x --pattern <パターン>` を定期実行
+   `node 09-sns-bot/src/index.mjs post --channel threads --pattern <パターン>` を定期実行
 2. **Windows タスクスケジューラ**: 同じコマンドを.bat経由で毎日実行
 
 詳細は `DESIGN.md` §7 を参照。

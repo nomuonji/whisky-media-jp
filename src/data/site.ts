@@ -10,7 +10,7 @@ export const SITE: SiteConfig = {
   twitter: '@dekio_g',
   copyright: 'Whisky Data JP',
   startYear: 2026,
-  // AmazonアソシエイトのトラッキングIDに置き換えること。
+  // AmazonアソシエイトのトラッキングID。
   // この値は全アフィリエイトURLの ?tag= に自動で付与される。
-  amazonTag: 'your-associates-tag-22',
+  amazonTag: 'whiskey-ja-22',
 };

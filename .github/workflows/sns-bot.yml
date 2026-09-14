@@ -1,14 +1,10 @@
 name: SNS Bot Post
 
-# X (dekio_g) / Threads (devil_dog_ch) へ1日2回投稿する。
-# 投稿時刻は DESIGN.md の想定（データ豆知識は通勤時間帯、記事告知は晩酌時間帯）に合わせて
-# 07:00 JST(=UTC 22:00 前日) と 20:00 JST(=UTC 11:00)。
+# 自動投稿は停止中（X は無料枠枯渇、Threads も運用停止）。
+# 手動で動かしたいときは workflow_dispatch から channel を指定して実行する。
 # トークンと投稿履歴は Gist に保存し、期限が近づくと自動でリフレッシュする。
 
 on:
-  schedule:
-    - cron: "0 22 * * *" # 07:00 JST
-    - cron: "0 11 * * *" # 20:00 JST
   workflow_dispatch:
     inputs:
       dry_run:
@@ -16,9 +12,9 @@ on:
         type: boolean
         default: false
       channel:
-        description: '対象チャンネル (x / threads / all)'
+        description: '対象チャンネル (threads / x / all)'
         required: false
-        default: "all"
+        default: "threads"
 
 permissions:
   contents: read
@@ -44,4 +40,4 @@ jobs:
           GIST_ID: ${{ secrets.GIST_ID }}
           BOT_DRY_RUN: ${{ github.event.inputs.dry_run == 'true' && 'true' || 'false' }}
         run: |
-          node src/index.mjs post --channel "${{ github.event.inputs.channel || 'all' }}"
+          node src/index.mjs post --channel "${{ github.event.inputs.channel || 'threads' }}"

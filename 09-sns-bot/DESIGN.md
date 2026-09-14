@@ -129,7 +129,7 @@ OpenAI互換API（Claude / GPT など）にデータを渡してバリエーシ�
 
 | 方式 | 内容 | 対象 |
 |------|------|------|
-| opencode schedule | スキルで「毎朝9時: `node 09-sns-bot/src/index.mjs post --channel all`」を定期タスク登録 | 開発PCを普段つけている場合 |
+| opencode schedule | スキルで「毎朝9時: `node 09-sns-bot/src/index.mjs post --channel threads`」を定期タスク登録 | 開発PCを普段つけている場合 |
 | Windows タスクスケジューラ | 同じコマンドをbat経由で毎日実行 | 常時起動のPC / サーバー |
 
 **時間帯（`03-templates/x-post.md` より）**:

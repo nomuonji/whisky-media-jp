@@ -15,6 +15,7 @@
   "priceAsOf": "2026-08",
   "priceSource": "editorial",
   "availability": "common",
+  "officialSourceUrl": "https://www.jamesonwhiskey.com/en/our-whiskey/jameson-irish-whiskey/",
   "rating": 80,
   "flavor": {
     "peat": 0,
@@ -26,7 +27,7 @@
     "complex": 2,
     "body": 2
   },
-  "notes": "3回蒸留の軽やかさ。クセがなく食中でも飲みやすい。",
+  "notes": "公式製品情報では、ブレンデッド・アイリッシュウイスキーを3回蒸溜し、オーク樽で最低4年熟成。公式テイスティングノートにはバニラやシェリー由来の香味表現がある。味の8軸と80点は編集部評価。",
   "recommendedFor": [
     "ハイボール",
     "ロック"

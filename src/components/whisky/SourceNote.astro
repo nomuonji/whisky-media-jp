@@ -1,19 +1,25 @@
 ---
 interface Props {
-  /** 価格の基準日を出す場合 */
   priceAsOf?: string;
+  priceSource?: 'official' | 'market' | 'editorial';
+  priceBasis?: string;
   compact?: boolean;
 }
 
-const { priceAsOf, compact = false } = Astro.props;
+const { priceAsOf, priceSource, priceBasis, compact = false } = Astro.props;
 ---
 
 <aside class={`source-note${compact ? ' is-compact' : ''}`}>
   <p>
     <strong>データの扱いについて。</strong>
-    <abbr class="src-mark src-official" title="公式表記">公</abbr>を付けた項目——蒸留所・タイプ・熟成年数・度数・樽——は公式表記に基づきます。
-    <abbr class="src-mark src-editorial" title="編集部推定">推</abbr>を付けた項目——味の8軸と編集部評価——は、
-    公開された数値データが存在しないため<strong>編集部の推定値</strong>です。
-    参考価格{priceAsOf ? `（${priceAsOf}時点）` : ''}は変動します。購入時は必ず販売ページでご確認ください。
+    <abbr class="src-mark src-official" title="公式表記">公</abbr>はメーカー・公的機関などの公式表記、
+    <abbr class="src-mark src-market" title="市場価格の実測">市</abbr>は市場で確認した値、
+    <abbr class="src-mark src-editorial" title="編集部推定">推</abbr>は編集部の推定・評価です。
+    味の8軸と編集部評価は公式の成分値やメーカー評価ではありません。
+    {priceSource === 'official' ? (
+      <> 価格は公式の{priceBasis ?? '価格'}{priceAsOf ? `（${priceAsOf}確認）` : ''}で、店舗の実売価格とは異なる場合があります。</>
+    ) : (
+      <> 参考価格{priceAsOf ? `（${priceAsOf}時点）` : ''}は変動します。購入時は販売ページで確認してください。</>
+    )}
   </p>
 </aside>

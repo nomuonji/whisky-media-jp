@@ -3,7 +3,20 @@ import type { Category } from '../types/content';
 
 export const postUrl = (slug: string) => `/${slug}/`;
 export const categoryUrl = (cat: Category | string) => `/category/${cat}/`;
-export const tagUrl = (tag: string) => `/tag/${encodeURIComponent(tag)}/`;
+
+const FLAVOR_TAG_URLS: Record<string, string> = {
+  'スモーキー': '/flavor/peaty/',
+  'ピーティ': '/flavor/peaty/',
+  '甘口': '/flavor/sweet/',
+  'フルーティ': '/flavor/fruity/',
+  'クセが少ない': '/flavor/mild/',
+  'コクが強い': '/flavor/rich/',
+};
+
+/** 味わいtaxonomyと同じ意図のタグは正式な /flavor/ ページへ寄せる。 */
+export const tagUrl = (tag: string) =>
+  FLAVOR_TAG_URLS[tag] ?? `/tag/${encodeURIComponent(tag)}/`;
+
 export const articlesUrl = (page = 1) => (page <= 1 ? '/articles/' : `/articles/page/${page}/`);
 export const whiskyUrl = (id: string) => `/whisky/${id}/`;
 export const regionUrl = (region: string) => `/region/${region}/`;

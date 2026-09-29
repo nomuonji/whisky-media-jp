@@ -9,12 +9,17 @@
   "age": 12,
   "abv": 40.0,
   "cask": [
-    "アメリカンオーク",
-    "シェリー"
+    "ヨーロピアンオーク・シェリー樽",
+    "アメリカンオーク・シェリー樽"
   ],
-  "priceYen": 12000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "priceYen": 9900,
+  "priceAsOf": "2026-09-28",
+  "priceSource": "official",
+  "priceBasis": "希望小売価格",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
+  "officialSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
   "availability": "limited",
   "rating": 87,
   "flavor": {
@@ -27,7 +32,7 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "アメリカンオークとシェリー樽の2系統で熟成。バニラとオレンジの皮、クリーミーな甘さ。",
+  "notes": "公式商品情報では、ヨーロピアンオークとアメリカンオークのシェリー樽原酒を組み合わせた12年熟成。公式のテイスティング表現にはバニラ、柑橘、蜂蜜を連想する要素が含まれる。味の8軸と87点は編集部評価。",
   "recommendedFor": [
     "ストレート",
     "ロック"

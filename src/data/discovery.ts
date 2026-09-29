@@ -3,12 +3,13 @@ import type { SortKey } from '../utils/whisky';
 
 /**
  * 「味で選ぶ」の入口。
- * 8軸の閾値を読者の言葉に翻訳する定義で、`/flavor/[flavor]` が生成される。
- * （getStaticPaths はコンポーネント外に巻き上げられるため、定義はこのファイルに置く）
+ * flavor 0〜5 は糖分量・化学分析値ではなく編集部の官能評価。
+ * 閾値は一覧を作るための相対基準であり、万人共通の味覚を示さない。
  */
 export interface FlavorFilter {
   label: string;
   lead: string;
+  criteria: string;
   match: (w: Whisky) => boolean;
   sort: SortKey;
 }
@@ -16,31 +17,36 @@ export interface FlavorFilter {
 export const FLAVOR_FILTERS: Record<string, FlavorFilter> = {
   peaty: {
     label: 'ピーティ・スモーキー',
-    lead: 'ピートの効いた煙たい味わい。好みは分かれますが、ハマると抜け出せません。',
+    lead: 'ピート由来の煙・土・薬品などを連想する香味を感じやすい銘柄を探す入口です。',
+    criteria: '編集部の peat スコアが3/5以上。化学分析値ではありません。',
     match: (w) => w.data.flavor.peat >= 3,
     sort: 'rating',
   },
   sweet: {
     label: '甘口',
-    lead: '蜂蜜やバニラのような甘さが前に出るタイプ。ウイスキーの入口として選びやすい。バーボン樽熟成やシェリー樽熟成の銘柄に甘口が多く、ハイボールにすると甘さが引き締まる。価格帯の目安は2026年9月確認の実勢で、店舗・時期により変動する。',
+    lead: '編集部が味覚として甘さを比較的強く感じた銘柄の一覧です。バニラ香など「甘い香り」と、舌で感じる甘味は同じものとして扱いません。',
+    criteria: '編集部の sweet スコアが4/5以上。糖分量の測定値ではなく、掲載銘柄内での相対的な官能評価です。',
     match: (w) => w.data.flavor.sweet >= 4,
     sort: 'rating',
   },
   fruity: {
     label: 'フルーティ',
-    lead: '果実感が主役。華やかな香りを楽しみたいときに。',
+    lead: '果実を連想する香味を編集部が比較的強く感じた銘柄です。',
+    criteria: '編集部の fruity スコアが4/5以上。香気成分の分析値ではありません。',
     match: (w) => w.data.flavor.fruity >= 4,
     sort: 'rating',
   },
   mild: {
     label: 'クセが少ない',
-    lead: 'ピートがほとんど無く、飲みやすいタイプ。最初の1本や贈り物に。',
+    lead: '編集部評価でピート感が弱い銘柄を探す入口です。「誰にとっても飲みやすい」という意味ではありません。',
+    criteria: '編集部の peat スコアが1/5以下。',
     match: (w) => w.data.flavor.peat <= 1,
     sort: 'cospa',
   },
   rich: {
     label: 'コクが強い',
-    lead: 'ボディが厚く、飲みごたえがあるタイプ。ストレートでじっくり。',
+    lead: '編集部がボディの厚みを比較的強く感じた銘柄です。',
+    criteria: '編集部の body スコアが4/5以上。',
     match: (w) => w.data.flavor.body >= 4,
     sort: 'rating',
   },

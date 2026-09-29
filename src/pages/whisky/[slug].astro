@@ -25,7 +25,6 @@ export async function getStaticPaths() {
       whisky,
       allWhiskies: whiskies,
       similar: similarWhiskies(whisky, whiskies, 4),
-      // 銘柄名が本文か抜粋に出てくる記事を関連として拾う
       relatedPosts: posts.filter((p) =>
         `${p.data.title}${p.data.excerpt ?? ''}${p.body}`.includes(whisky.data.name)
       ).slice(0, 3),
@@ -38,12 +37,12 @@ const w = whisky.data;
 const cpp = costPerPoint(whisky);
 const radar = toRadarData([whisky]);
 const photo = getWhiskyPhoto(whisky.id);
+const priceHeading = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '参考価格';
 
 const description =
   `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）のデータ。` +
-  `味の8軸レーダー、参考価格${priceLabel(w.priceYen)}、似ている銘柄を掲載。`;
+  `味の8軸レーダー、${priceHeading}${priceLabel(w.priceYen)}、似ている銘柄を掲載。`;
 
-// 08-scripts/generate-ogp.py で生成した銘柄別OGP
 const ogImage = `/ogp/whisky-${whisky.id}.png`;
 
 const breadcrumbs = [
@@ -97,7 +96,7 @@ const breadcrumbs = [
           <dd><strong>{w.rating}</strong><span class="unit">/100</span></dd>
         </div>
         <div>
-          <dt>参考価格</dt>
+          <dt>{priceHeading}</dt>
           <dd><strong>{priceLabel(w.priceYen)}</strong></dd>
         </div>
         {cpp ? (
@@ -131,7 +130,7 @@ const breadcrumbs = [
     <section class="whisky-section">
       <h2>基本データ</h2>
       <SpecTable {whisky} />
-      <SourceNote priceAsOf={w.priceAsOf} />
+      <SourceNote priceAsOf={w.priceAsOf} priceSource={w.priceSource} priceBasis={w.priceBasis} />
     </section>
 
     <AffiliateSection ids={w.affiliateId ? [w.affiliateId] : []} productName={w.name} />

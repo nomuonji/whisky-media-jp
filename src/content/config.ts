@@ -52,8 +52,8 @@ const blogCollection = defineCollection({
 
 /**
  * 銘柄コレクション。
- * 数値には必ず出典区分を持たせる（site-requirements.md §5）。
- *   official   … 公式表記（度数・熟成年数・タイプなど）
+ * 数値には出典区分を持たせる（site-requirements.md §5）。
+ *   official   … メーカー・公的機関などの公式表記
  *   market     … 市場価格の実測
  *   editorial  … 編集部の推定・評価
  */
@@ -72,11 +72,18 @@ const whiskyCollection = defineCollection({
     abv: z.number(),
     cask: z.array(z.string()).default([]),
 
-    /** 参考価格（円・700ml換算）。基準日と出典区分を必ず持つ */
+    /** 価格。基準日と出典区分を持ち、公式価格なら価格条件も保存する */
     priceYen: z.number().optional(),
     priceAsOf: z.string().optional(),
-    priceSource: z.enum(['market', 'editorial']).default('editorial'),
+    priceSource: z.enum(['official', 'market', 'editorial']).default('editorial'),
+    priceBasis: z.string().optional(),
+    priceCapacityMl: z.number().int().positive().optional(),
+    priceTax: z.enum(['税込', '税別', '不明']).optional(),
+    priceSourceUrl: z.string().url().optional(),
     availability: z.enum(['common', 'limited', 'rare']).default('common'),
+
+    /** 仕様・製法・公式テイスティングノート等の一次情報 */
+    officialSourceUrl: z.string().url().optional(),
 
     /** 編集部評価（100点）。Whiskybaseのスコアとは別物 */
     rating: z.number().min(0).max(100),

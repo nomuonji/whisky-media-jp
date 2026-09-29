@@ -23,7 +23,7 @@ const def = FLAVOR_FILTERS[flavor!];
 
 <ListLayout
   title={`${def.label}のウイスキー${whiskies.length}銘柄`}
-  description={`${def.label}のウイスキー一覧。${def.lead}味の8軸データから該当する銘柄を抽出しています。`}
+  description={`${def.label}のウイスキー一覧。${def.lead} ${def.criteria}`}
   heading="味"
   headingAccent={def.label}
   lead={def.lead}
@@ -33,6 +33,19 @@ const def = FLAVOR_FILTERS[flavor!];
     { label: def.label, href: `/flavor/${flavor}/` },
   ]}
 >
+  <aside class="source-note is-compact">
+    <p>
+      <strong>この一覧の抽出基準：</strong>{def.criteria}
+      味の感じ方には個人差があり、公式の成分値やメーカーの格付けではありません。
+    </p>
+    {flavor === 'sweet' ? (
+      <p>
+        <strong>「甘口」と「バニラ」は別です。</strong>
+        バニラは香りの表現として感じられることがあり、糖分量や舌で感じる甘味そのものを意味しません。
+        甘さを選びたいときは sweet スコア、香りは各銘柄の公式ノートと編集メモを分けて確認してください。
+      </p>
+    ) : null}
+  </aside>
   <WhiskyList {whiskies} headingLevel={2} />
   <DiscoveryNav current={`/flavor/${flavor}/`} />
   <SourceNote />

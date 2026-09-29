@@ -11,31 +11,38 @@ const { whisky } = Astro.props;
 const w = whisky.data;
 const cpp = costPerPoint(whisky);
 
-// 蒸留所ページが実在するときだけリンクする（データの綴り違いで404を作らない）
 const distilleries = await getCollection('distilleries');
 const distilleryHref =
   w.distillerySlug && distilleries.some((d) => d.id === w.distillerySlug)
     ? `/distillery/${w.distillerySlug}/`
     : undefined;
 
-/** src: 公式表記か、編集部の推定か */
+const priceConditions = [
+  w.priceCapacityMl ? `${w.priceCapacityMl}ml` : undefined,
+  w.priceTax,
+].filter(Boolean).join('・');
+const priceValue = w.priceYen
+  ? `${priceLabel(w.priceYen)}${priceConditions ? `（${priceConditions}）` : ''}${w.priceAsOf ? `・${w.priceAsOf}確認` : ''}`
+  : '—';
+const priceRowLabel = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '参考価格';
+
+/** src: 公式表記か、市場実測か、編集部推定か */
 const rows: { label: string; value: string; href?: string; src: 'official' | 'editorial' | 'market' }[] = [
-  {
-    label: '蒸留所',
-    value: w.distillery,
-    href: distilleryHref,
-    src: 'official',
-  },
+  { label: '蒸留所', value: w.distillery, href: distilleryHref, src: 'official' },
   { label: '国・地域', value: `${COUNTRY_LABELS[w.country]}／${REGION_LABELS[w.region]}`, src: 'official' },
   { label: 'タイプ', value: TYPE_LABELS[w.type], src: 'official' },
   { label: '熟成年数', value: ageLabel(w.age), src: 'official' },
   { label: 'アルコール度数', value: `${w.abv}%`, src: 'official' },
   { label: '樽', value: w.cask.join('・') || '—', src: 'official' },
   {
-    label: '参考価格',
-    value: w.priceYen ? `${priceLabel(w.priceYen)}（${w.priceAsOf}時点）` : '—',
+    label: priceRowLabel,
+    value: priceValue,
+    href: w.priceSourceUrl,
     src: w.priceSource,
   },
+  ...(w.officialSourceUrl
+    ? [{ label: '公式商品情報', value: 'メーカー・公式ページ', href: w.officialSourceUrl, src: 'official' as const }]
+    : []),
   { label: '入手しやすさ', value: AVAILABILITY_LABELS[w.availability], src: 'editorial' },
   { label: '編集部評価', value: `${w.rating} / 100`, src: 'editorial' },
   {
@@ -70,7 +77,7 @@ const SRC_TITLE = {
       <tr>
         <th scope="row">{row.label}</th>
         <td>
-          {row.href ? <a href={row.href}>{row.value}</a> : row.value}
+          {row.href ? <a href={row.href} rel="nofollow">{row.value}</a> : row.value}
           <abbr class={`src-mark src-${row.src}`} title={SRC_TITLE[row.src]}>{SRC_MARK[row.src]}</abbr>
         </td>
       </tr>

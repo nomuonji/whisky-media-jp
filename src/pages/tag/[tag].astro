@@ -4,6 +4,15 @@ import PostList from '../../components/blog/PostList.astro';
 import { getPublishedPosts, byTag, collectTags } from '../../utils/posts';
 import { tagUrl } from '../../utils/url';
 
+const FLAVOR_TAG_TARGETS: Record<string, { label: string; href: string }> = {
+  'スモーキー': { label: 'ピーティ・スモーキーの銘柄一覧', href: '/flavor/peaty/' },
+  'ピーティ': { label: 'ピーティ・スモーキーの銘柄一覧', href: '/flavor/peaty/' },
+  '甘口': { label: '甘口の銘柄一覧', href: '/flavor/sweet/' },
+  'フルーティ': { label: 'フルーティな銘柄一覧', href: '/flavor/fruity/' },
+  'クセが少ない': { label: 'クセが少ない銘柄一覧', href: '/flavor/mild/' },
+  'コクが強い': { label: 'コクが強い銘柄一覧', href: '/flavor/rich/' },
+};
+
 export async function getStaticPaths() {
   const posts = await getPublishedPosts();
 
@@ -15,17 +24,29 @@ export async function getStaticPaths() {
 
 const { tag } = Astro.params;
 const { posts } = Astro.props;
+const flavorTarget = FLAVOR_TAG_TARGETS[tag!];
 ---
 
 <ListLayout
   title={`#${tag} の記事一覧`}
-  description={`#${tag} タグのウイスキー記事一覧。Whiskybaseデータをもとにしたレビュー・比較・ガイド。`}
+  description={`#${tag} タグの記事一覧。サイト内の記事探索用ページです。`}
   heading="タグ"
   headingAccent={`#${tag}`}
+  lead="このページは記事をタグで探すためのサイト内ナビゲーションです。独自の検索向け解説がないタグ一覧は noindex とし、記事そのものを検索入口にします。"
+  noindex={true}
   breadcrumbs={[
     { label: 'ホーム', href: '/' },
     { label: `#${tag}`, href: tagUrl(tag!) },
   ]}
 >
+  {flavorTarget ? (
+    <aside class="source-note is-compact">
+      <p>
+        <strong>味わいから銘柄を探す場合：</strong>
+        <a href={flavorTarget.href}>{flavorTarget.label}</a>
+        を正式な一覧として使っています。このタグページとは検索意図を分離しています。
+      </p>
+    </aside>
+  ) : null}
   <PostList {posts} />
 </ListLayout>

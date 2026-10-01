@@ -46,6 +46,34 @@ const def = FLAVOR_FILTERS[flavor!];
       </p>
     ) : null}
   </aside>
+  {flavor === 'sweet' ? (
+    <section class="source-note" aria-labelledby="vanilla-answer-heading">
+      <h2 id="vanilla-answer-heading">バニラの香りを公式ノートが挙げる例</h2>
+      <p>
+        「ウイスキー バニラ」で探すときは、糖分量ではなくメーカーが公表しているテイスティングノートの香り表現を見ます。
+        下の2本は掲載データにあり、甘口一覧の抽出条件（編集部の sweet スコア 4/5以上）も満たします。
+        公式の香り表現と、当サイトの編集メモ・ sweet スコアは別物です。感じ方には個人差があり、糖分量の測定値ではありません。
+      </p>
+      <ul>
+        <li>
+          <a href="/whisky/makers-mark/">メーカーズマーク</a>
+          の公式ノートは、香りに sweet oak, vanilla, bright fruit and wheat、味わいに oak, vanilla and fruity essences と記しています
+          （<a href="https://www.makersmark.com/bourbons/makers-mark" rel="nofollow">Maker's Mark 公式</a>）。
+          編集部の sweet スコアは5/5で、編集メモの「バニラと蜂蜜」はこの公式文言とは別の評価です。
+        </li>
+        <li>
+          <a href="/whisky/buffalo-trace/">バッファロートレース</a>
+          の公式ノートは complex aroma of vanilla, mint and molasses とし、プロファイルにも VANILLA を挙げています
+          （<a href="https://www.buffalotracedistillery.com/our-brands/buffalo-trace/buffalo-trace-bourbon" rel="nofollow">Buffalo Trace Distillery 公式</a>）。
+          編集部の sweet スコアは4/5で、編集メモの「バニラとオレンジピール」は公式ノートの写しではありません。
+        </li>
+      </ul>
+      <p>
+        使い方は、バニラ香の手がかりとして公式ノートを読み、甘さの強さは sweet スコアと実飲で別々に判断することです。
+        ここに挙げた表現は全員が同じように感じる保証ではありません。
+      </p>
+    </section>
+  ) : null}
   <WhiskyList {whiskies} headingLevel={2} />
   <DiscoveryNav current={`/flavor/${flavor}/`} />
   <SourceNote />

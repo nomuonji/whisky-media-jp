@@ -126,6 +126,22 @@ const breadcrumbs = [
       <SourceNote priceAsOf={sourcedPrice ? w.priceAsOf : undefined} priceSource={sourcedPrice ? w.priceSource : undefined} priceBasis={w.priceBasis} />
     </section>
 
+    {w.verifiedGuide ? (
+      <section class="whisky-section">
+        <h2>{w.verifiedGuide.heading}</h2>
+        {w.verifiedGuide.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+        <p class="text-secondary text-sm">
+          参照:
+          {w.verifiedGuide.sources.map((source, index) => (
+            <>
+              {index > 0 ? ' / ' : ' '}
+              <a href={source.url} rel="nofollow">{source.label}</a>
+            </>
+          ))}
+        </p>
+      </section>
+    ) : null}
+
     <AffiliateSection ids={w.affiliateId ? [w.affiliateId] : []} productName={w.name} />
 
     {relatedCatalog.length > 0 ? (

@@ -7,14 +7,17 @@
   "region": "islay",
   "type": "single-malt",
   "age": 10,
-  "abv": 40.0,
-  "cask": [
-    "アメリカンオーク"
-  ],
-  "priceYen": 4500,
-  "priceAsOf": "2026-09",
-  "priceSource": "editorial",
+  "abv": 43,
+  "cask": [],
+  "priceYen": 7410,
+  "priceAsOf": "2026-10-03",
+  "priceSource": "official",
+  "priceBasis": "希望小売価格",
+  "priceCapacityMl": 750,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://products.suntory.co.jp/d/5010019640253/",
   "availability": "common",
+  "officialSourceUrl": "https://products.suntory.co.jp/d/5010019640253/",
   "rating": 86,
   "flavor": {
     "peat": 5,
@@ -26,7 +29,7 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "強烈なピート香で知られる。好き嫌いが最も分かれる1本。編集部の試飲（ストレート・ロック、2026年9月確認）では、海藻・ヨード香の後に麦の甘さが残る。8軸評価は編集部推定。価格は実勢4,000〜5,500円帯の目安で、店舗・時期で変動する。",
+  "notes": "サントリー公式は、ラフロイグ10年をアイラ島のピートをきかせた麦芽から生まれ、海辺の貯蔵庫で熟成されたシングルモルトとしている。",
   "recommendedFor": [
     "ストレート",
     "ロック"

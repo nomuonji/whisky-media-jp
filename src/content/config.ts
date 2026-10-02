@@ -104,6 +104,16 @@ const whiskyCollection = defineCollection({
     recommendedFor: z.array(z.string()).default([]),
     affiliateId: z.string().optional(),
 
+    /** 一次情報を使った検索意図向けの短い補足。自由作文ではなくsourcesを必須にする */
+    verifiedGuide: z.object({
+      heading: z.string(),
+      paragraphs: z.array(z.string()).min(1),
+      sources: z.array(z.object({
+        label: z.string(),
+        url: z.string().url(),
+      })).min(1),
+    }).optional(),
+
     /** 実際にWhiskybaseで確認できたときだけ埋める。推測で書かない */
     whiskybase: z.object({
       score: z.number(),

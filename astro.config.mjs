@@ -8,6 +8,7 @@ const contentPolicy = JSON.parse(
   readFileSync(new URL('./src/data/content-policy.json', import.meta.url), 'utf8')
 );
 const NOINDEX_ARTICLES = new Set(contentPolicy.noindexArticles);
+const NOINDEX_CATEGORIES = new Set(contentPolicy.noindexCategories || []);
 const INDEX_READY_WHISKIES = new Set(
   readdirSync(whiskyDir)
     .filter((name) => name.endsWith('.json'))
@@ -29,6 +30,11 @@ function shouldIncludeInSitemap(page) {
     pathname.startsWith('/tag/') ||
     pathname.startsWith('/distillery/')
   ) {
+    return false;
+  }
+
+  const categoryMatch = pathname.match(/^\/category\/([^/]+)\/?$/);
+  if (categoryMatch && NOINDEX_CATEGORIES.has(decodeURIComponent(categoryMatch[1]))) {
     return false;
   }
 

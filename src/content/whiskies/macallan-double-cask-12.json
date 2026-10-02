@@ -19,7 +19,7 @@
   "priceCapacityMl": 700,
   "priceTax": "税別",
   "priceSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
-  "officialSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
+  "officialSourceUrl": "https://www.suntory.co.jp/whisky/macallan/product/doublecask/doublecask12yo/",
   "availability": "limited",
   "rating": 87,
   "flavor": {
@@ -32,7 +32,7 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "公式商品情報では、ヨーロピアンオークとアメリカンオークのシェリー樽原酒を組み合わせた12年熟成。公式のテイスティング表現にはバニラ、柑橘、蜂蜜を連想する要素が含まれる。味の8軸と87点は編集部評価。",
+  "notes": "ダブルカスクとは、この商品では二本の樽そのものではなく、サントリー公式（2026-10-03確認）が説明する、シェリー酒で風味づけしたヨーロピアンオーク樽とアメリカンオーク樽で仕上げた原酒の組み合わせです。ザ・マッカラン公式のExceptional Single Caskは1樽あたりの本数を限った単一樽の製品として案内されており、複数種のシェリー樽原酒を組み合わせる本品とは区別されます。公式のテイスティング表現にはファッジ、柑橘、柔らかなスパイスが含まれます。味の8軸と87点は編集部評価です。",
   "recommendedFor": [
     "ストレート",
     "ロック"

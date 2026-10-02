@@ -12,6 +12,7 @@ import { categoryLabel } from '../data/categories';
 import { postUrl, categoryUrl } from '../utils/url';
 import { ja } from '../i18n/ja';
 import { getWhiskies, mentionedWhiskies, sortWhiskies } from '../utils/whisky';
+import { isLegacyPost } from '../utils/posts';
 
 interface Props {
   post: CollectionEntry<'blog'>;
@@ -32,6 +33,7 @@ const mentioned = sortWhiskies(
 );
 
 const description = seo?.description || excerpt || title;
+const legacy = isLegacyPost(post);
 
 const breadcrumbs = [
   { label: 'ホーム', href: '/' },
@@ -49,6 +51,7 @@ const breadcrumbs = [
   modifiedTime={updated ?? date}
   {post}
   {breadcrumbs}
+  noindex={legacy}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -59,25 +62,36 @@ const breadcrumbs = [
       {excerpt ? <p class="post-lead">{excerpt}</p> : null}
     </header>
 
-    {radar_chart ? (
+    {legacy ? (
+      <aside class="source-note">
+        <p>
+          <strong>旧方針の記事です。</strong>
+          この記事は過去の編集評価・味スコア・参考価格を含むため検索公開から外しています。
+          URLは履歴として維持していますが、現在の仕様比較では <a href="/whiskies/">銘柄データベース</a> と
+          <a href="/compare/">比較ツール</a> を基準にしてください。
+        </p>
+      </aside>
+    ) : null}
+
+    {!legacy && radar_chart ? (
       <RadarChart labels={radar_chart.labels} datasets={radar_chart.datasets} title={ja.chart.radarTitle} />
     ) : null}
 
-    {compare && compare.length > 0 ? <ComparisonTable ids={compare} /> : null}
+    {!legacy && compare && compare.length > 0 ? <ComparisonTable ids={compare} /> : null}
 
     <div class="post-content">
       <slot />
     </div>
 
-    {mentioned.length > 0 ? (
+    {!legacy && mentioned.length > 0 ? (
       <section class="whisky-section">
         <h2>この記事で紹介した銘柄</h2>
-        <p class="text-secondary text-sm">各銘柄のデータ・味の8軸・似ている銘柄はリンク先で見られます。</p>
+        <p class="text-secondary text-sm">各銘柄の仕様と出典状態はリンク先で確認できます。</p>
         <WhiskyList whiskies={mentioned} />
       </section>
     ) : null}
 
-    <AffiliateSection ids={affiliate_ids} inline={affiliate} />
+    {!legacy ? <AffiliateSection ids={affiliate_ids} inline={affiliate} /> : null}
   </article>
 
   <RelatedPosts current={post} posts={allPosts} />

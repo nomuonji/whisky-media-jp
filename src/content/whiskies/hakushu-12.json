@@ -7,14 +7,17 @@
   "region": "japan",
   "type": "single-malt",
   "age": 12,
-  "abv": 43.0,
-  "cask": [
-    "アメリカンオーク"
-  ],
-  "priceYen": 14800,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "abv": 43,
+  "cask": [],
+  "priceYen": 16000,
+  "priceAsOf": "2026-10-03",
+  "priceSource": "official",
+  "priceBasis": "希望小売価格",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://www.suntory.co.jp/whisky/products/0000000038/0000000100.html",
   "availability": "limited",
+  "officialSourceUrl": "https://www.suntory.co.jp/whisky/products/0000000038/0000000100.html",
   "rating": 86,
   "flavor": {
     "peat": 1,
@@ -26,7 +29,7 @@
     "complex": 3,
     "body": 2
   },
-  "notes": "青りんごとミントを思わせる爽やかさ。ごく軽いスモークが後ろに隠れている。",
+  "notes": "サントリー公式は、白州12年を酒齢12年以上のモルト原酒を吟味したシングルモルトとし、甘く柔らかいスモーキーさ、新緑の香り、爽快な果実香を挙げている。",
   "recommendedFor": [
     "ハイボール",
     "水割り"

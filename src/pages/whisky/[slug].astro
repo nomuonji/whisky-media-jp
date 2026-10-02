@@ -21,7 +21,7 @@ export async function getStaticPaths() {
     const relatedCatalog = whiskies
       .filter((other) =>
         other.id !== whisky.id &&
-        (other.data.region === whisky.data.region || other.data.type === whisky.data.type)
+        other.data.region === whisky.data.region && other.data.type === whisky.data.type
       )
       .sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'))
       .slice(0, 4);

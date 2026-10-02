@@ -29,7 +29,7 @@ const {
 const allWhiskies = await getWhiskies();
 const mentioned = sortWhiskies(
   mentionedWhiskies(post.body, title, allWhiskies, post.data.whiskies),
-  'rating'
+  'name'
 );
 
 const description = seo?.description || excerpt || title;

@@ -4,6 +4,10 @@ import sitemap from '@astrojs/sitemap';
 import { readdirSync, readFileSync } from 'node:fs';
 
 const whiskyDir = new URL('./src/content/whiskies/', import.meta.url);
+const contentPolicy = JSON.parse(
+  readFileSync(new URL('./src/data/content-policy.json', import.meta.url), 'utf8')
+);
+const NOINDEX_ARTICLES = new Set(contentPolicy.noindexArticles);
 const INDEX_READY_WHISKIES = new Set(
   readdirSync(whiskyDir)
     .filter((name) => name.endsWith('.json'))
@@ -25,6 +29,11 @@ function shouldIncludeInSitemap(page) {
     pathname.startsWith('/tag/') ||
     pathname.startsWith('/distillery/')
   ) {
+    return false;
+  }
+
+  const articleMatch = pathname.match(/^\/([^/]+)\/?$/);
+  if (articleMatch && NOINDEX_ARTICLES.has(decodeURIComponent(articleMatch[1]))) {
     return false;
   }
 

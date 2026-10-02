@@ -2,46 +2,53 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/layout/Breadcrumb.astro';
 import BottleMark from '../../components/whisky/BottleMark.astro';
-import FlavorBars from '../../components/whisky/FlavorBars.astro';
 import SpecTable from '../../components/whisky/SpecTable.astro';
 import SourceNote from '../../components/whisky/SourceNote.astro';
-import RadarChart from '../../components/whisky/RadarChart.astro';
-import ScoreDistribution from '../../components/whisky/ScoreDistribution.astro';
 import WhiskyCard from '../../components/whisky/WhiskyCard.astro';
 import PostCard from '../../components/blog/PostCard.astro';
 import AffiliateSection from '../../components/affiliate/AffiliateSection.astro';
-import { REGION_LABELS, REGION_DESCRIPTIONS, TYPE_LABELS } from '../../types/taxonomy';
-import { getWhiskies, similarWhiskies, toRadarData, ageLabel, priceLabel, costPerPoint } from '../../utils/whisky';
+import { REGION_LABELS, TYPE_LABELS } from '../../types/taxonomy';
+import { getWhiskies, ageLabel } from '../../utils/whisky';
 import { getPublishedPosts } from '../../utils/posts';
 import { getWhiskyPhoto } from '../../utils/photos';
+import { isIndexReadyWhisky, hasSourcedPrice, sourceStatusLabel } from '../../utils/trust';
 
 export async function getStaticPaths() {
   const whiskies = await getWhiskies();
   const posts = await getPublishedPosts();
 
-  return whiskies.map((whisky) => ({
-    params: { slug: whisky.id },
-    props: {
-      whisky,
-      allWhiskies: whiskies,
-      similar: similarWhiskies(whisky, whiskies, 4),
-      relatedPosts: posts.filter((p) =>
-        `${p.data.title}${p.data.excerpt ?? ''}${p.body}`.includes(whisky.data.name)
-      ).slice(0, 3),
-    },
-  }));
+  return whiskies.map((whisky) => {
+    const relatedCatalog = whiskies
+      .filter((other) =>
+        other.id !== whisky.id &&
+        (other.data.region === whisky.data.region || other.data.type === whisky.data.type)
+      )
+      .sort((a, b) => a.data.name.localeCompare(b.data.name, 'ja'))
+      .slice(0, 4);
+
+    return {
+      params: { slug: whisky.id },
+      props: {
+        whisky,
+        relatedCatalog,
+        relatedPosts: posts.filter((p) =>
+          `${p.data.title}${p.data.excerpt ?? ''}${p.body}`.includes(whisky.data.name)
+        ).slice(0, 3),
+      },
+    };
+  });
 }
 
-const { whisky, allWhiskies, similar, relatedPosts } = Astro.props;
+const { whisky, relatedCatalog, relatedPosts } = Astro.props;
 const w = whisky.data;
-const cpp = costPerPoint(whisky);
-const radar = toRadarData([whisky]);
 const photo = getWhiskyPhoto(whisky.id);
-const priceHeading = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '参考価格';
+const indexReady = isIndexReadyWhisky(whisky);
+const sourcedPrice = hasSourcedPrice(whisky);
+const priceHeading = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '確認済み価格';
 
 const description =
-  `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）のデータ。` +
-  `味の8軸レーダー、${priceHeading}${priceLabel(w.priceYen)}、似ている銘柄を掲載。`;
+  `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）の仕様データ。` +
+  `${indexReady ? '確認済みソースへのリンク付き。' : 'カタログ登録情報として掲載し、出典整備中。'}`;
 
 const ogImage = `/ogp/whisky-${whisky.id}.png`;
 
@@ -52,7 +59,7 @@ const breadcrumbs = [
 ];
 ---
 
-<BaseLayout title={w.name} {description} {ogImage} {breadcrumbs}>
+<BaseLayout title={w.name} {description} {ogImage} {breadcrumbs} noindex={!indexReady}>
   <Breadcrumb items={breadcrumbs} />
 
   <article class={`whisky-detail region-${w.region}`}>
@@ -74,7 +81,7 @@ const breadcrumbs = [
         </figure>
       ) : (
         <div class="whisky-hero-mark">
-          <BottleMark region={w.region} rating={w.rating} size={80} />
+          <BottleMark region={w.region} rating={0} size={80} />
         </div>
       )}
 
@@ -87,60 +94,46 @@ const breadcrumbs = [
         </p>
         <h1>{w.name}</h1>
         <p class="whisky-hero-en">{w.nameEn}</p>
-        <p class="whisky-hero-notes">{w.notes}</p>
+        <p class="whisky-hero-notes">
+          <strong>{sourceStatusLabel(whisky)}。</strong>
+          {indexReady
+            ? '基本仕様の参照元を下の表から確認できます。'
+            : 'このレコードはデータベース探索用に保持しています。一次情報の確認後に検索公開します。'}
+        </p>
       </div>
 
       <dl class="whisky-hero-figures">
         <div>
-          <dt>編集部評価</dt>
-          <dd><strong>{w.rating}</strong><span class="unit">/100</span></dd>
+          <dt>アルコール度数</dt>
+          <dd><strong>{w.abv}</strong><span class="unit">%</span></dd>
         </div>
         <div>
-          <dt>{priceHeading}</dt>
-          <dd><strong>{priceLabel(w.priceYen)}</strong></dd>
+          <dt>熟成年数</dt>
+          <dd><strong>{ageLabel(w.age)}</strong></dd>
         </div>
-        {cpp ? (
+        {sourcedPrice ? (
           <div>
-            <dt>1点あたり</dt>
-            <dd><strong>{cpp.toLocaleString('ja-JP')}</strong><span class="unit">円</span></dd>
+            <dt>{priceHeading}</dt>
+            <dd><strong>{w.priceYen?.toLocaleString('ja-JP')}円</strong></dd>
           </div>
         ) : null}
       </dl>
     </header>
 
     <section class="whisky-section">
-      <h2>味の傾向</h2>
-      <div class="flavor-layout">
-        <RadarChart labels={radar.labels} datasets={radar.datasets} title={undefined} />
-        <FlavorBars flavor={w.flavor} />
-      </div>
-      <p class="text-secondary text-sm">
-        {REGION_LABELS[w.region]}の特徴：{REGION_DESCRIPTIONS[w.region]}
-      </p>
-    </section>
-
-    <section class="whisky-section">
-      <h2>この評価は上位何%？</h2>
-      <p class="text-secondary text-sm">
-        掲載中{allWhiskies.length}銘柄の編集部評価の分布。右肩の線が累積割合です。
-      </p>
-      <ScoreDistribution whiskies={allWhiskies} markerRating={w.rating} markerLabel={w.name} />
-    </section>
-
-    <section class="whisky-section">
       <h2>基本データ</h2>
       <SpecTable {whisky} />
-      <SourceNote priceAsOf={w.priceAsOf} priceSource={w.priceSource} priceBasis={w.priceBasis} />
+      <SourceNote priceAsOf={sourcedPrice ? w.priceAsOf : undefined} priceSource={sourcedPrice ? w.priceSource : undefined} priceBasis={w.priceBasis} />
     </section>
 
     <AffiliateSection ids={w.affiliateId ? [w.affiliateId] : []} productName={w.name} />
 
-    {similar.length > 0 ? (
+    {relatedCatalog.length > 0 ? (
       <section class="whisky-section">
-        <h2>{w.name}が好きならこれ</h2>
-        <p class="text-secondary text-sm">味の8軸が近く、価格帯も離れていない銘柄を並べています。</p>
+        <h2>同じ地域・タイプから探す</h2>
+        <p class="text-secondary text-sm">好みの推定ではなく、地域または製品タイプが共通する登録銘柄です。</p>
         <div class="whisky-list">
-          {similar.map((s) => <WhiskyCard whisky={s} />)}
+          {relatedCatalog.map((item) => <WhiskyCard whisky={item} />)}
         </div>
       </section>
     ) : null}

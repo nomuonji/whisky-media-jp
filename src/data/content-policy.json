@@ -5,5 +5,10 @@
     "2026-08-06-smoky-whisky-guide",
     "2026-08-06-world-whisky",
     "2026-08-06-yamazaki-vs-hakushu"
+  ],
+  "noindexCategories": [
+    "japanese",
+    "scotch",
+    "world"
   ]
 }

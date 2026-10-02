@@ -2,8 +2,8 @@
 export const ja = {
   site: {
     name: 'Whisky Data JP',
-    tagline: 'データで読むウイスキー',
-    description: 'Whiskybase 20万本のデータを日本語で整理・可視化',
+    tagline: '出典付きデータで比べるウイスキー',
+    description: '銘柄仕様と確認済みソースを日本語で整理する比較データベース',
   },
   nav: {
     home: 'トップ',

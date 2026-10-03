@@ -20,7 +20,6 @@
   "priceSourceUrl": "https://products.suntory.co.jp/d/4901777283893/",
   "availability": "common",
   "officialSourceUrl": "https://www.jimbeam.com/bourbons/jim-beam",
-  "officialCheckedAt": "2026-10-03",
   "rating": 76,
   "flavor": {
     "peat": 0,
@@ -42,7 +41,7 @@
     "paragraphs": [
       "日本のサントリー公式商品情報（2026-10-03確認）では、標準品の名称は「ジムビーム」で、700ml・アルコール分数぀%・希望小売価格1,690円（税別）とされている。同ページのラインナップにブラック、ライ、ハニー、ダブルオークなどが別商品として並ぶが、「ホワイト」という別SKUはない。店頭や検索のWhite Label／白ラベルは、この標準品を指す通称として扱う。",
       "ブランド公式のJim Beam Original（2026-10-03確認）はKentucky straight bourbonで、4年熟成、新しく焦がしたオーク樽での熟成と公式テイスティングノート（オークとバニラ、キャラメルとバニラ）を記している。同ページは製品とパッケージが市場により異なると明記しているため、4年と公式ノートはブランド公式のOriginalに帰属させ、日本向けボトルの年数表示までは断定しない。",
-      "ジムビーム ブラックとジムビーム ライは標準品とは別製品である。標準品の希望小売価格は税別・700mlの公式価格で、店頭の実売価格ではない。世界売上の優劣や編集部の味の断定はこのページの一次情報には含めない。"
+      "ジムビーム ブラックとジムビーム ライは、サントリーの同ラインナップ上で標準品とは別商品である。標準品の希望小売価格は税別・700mlの公式価格で、店頭の実売価格ではない。世界売上の優劣や編集部の味の断定はこのページの一次情報には含めない。"
     ],
     "sources": [
       {
@@ -54,12 +53,12 @@
         "url": "https://www.jimbeam.com/bourbons/jim-beam"
       },
       {
-        "label": "Jim Beam Black（ブランド公式ラインナップ）",
-        "url": "https://www.jimbeam.com/en-us/bourbons/jim-beam-black"
+        "label": "サントリー商品情報 ジムビーム ブラック 700ml瓶",
+        "url": "https://products.suntory.co.jp/d/080686007784/"
       },
       {
-        "label": "Jim Beam Rye（ブランド公式ラインナップ）",
-        "url": "https://www.jimbeam.com/en-us/bourbons/jim-beam-rye"
+        "label": "サントリー商品情報 ジムビーム ライ 700ml瓶",
+        "url": "https://products.suntory.co.jp/d/080686010494/"
       }
     ]
   }

@@ -1,15 +1,18 @@
 ---
 import { getCollection } from 'astro:content';
-import { REGION_LABELS, COUNTRY_LABELS, TYPE_LABELS, AVAILABILITY_LABELS } from '../../types/taxonomy';
-import { ageLabel, priceLabel, costPerPoint, type Whisky } from '../../utils/whisky';
+import { REGION_LABELS, COUNTRY_LABELS, TYPE_LABELS } from '../../types/taxonomy';
+import { ageLabel, priceLabel, type Whisky } from '../../utils/whisky';
+import { hasSourcedPrice } from '../../utils/trust';
 
 interface Props {
   whisky: Whisky;
 }
 
+type SourceKind = 'official' | 'market' | 'catalog';
+
 const { whisky } = Astro.props;
 const w = whisky.data;
-const cpp = costPerPoint(whisky);
+const coreSource: SourceKind = w.officialSourceUrl ? 'official' : 'catalog';
 
 const distilleries = await getCollection('distilleries');
 const distilleryHref =
@@ -24,34 +27,25 @@ const priceConditions = [
 const priceValue = w.priceYen
   ? `${priceLabel(w.priceYen)}${priceConditions ? `（${priceConditions}）` : ''}${w.priceAsOf ? `・${w.priceAsOf}確認` : ''}`
   : '—';
-const priceRowLabel = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '参考価格';
+const priceRowLabel = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '確認済み価格';
 
-/** src: 公式表記か、市場実測か、編集部推定か */
-const rows: { label: string; value: string; href?: string; src: 'official' | 'editorial' | 'market' }[] = [
-  { label: '蒸留所', value: w.distillery, href: distilleryHref, src: 'official' },
-  { label: '国・地域', value: `${COUNTRY_LABELS[w.country]}／${REGION_LABELS[w.region]}`, src: 'official' },
-  { label: 'タイプ', value: TYPE_LABELS[w.type], src: 'official' },
-  { label: '熟成年数', value: ageLabel(w.age), src: 'official' },
-  { label: 'アルコール度数', value: `${w.abv}%`, src: 'official' },
-  { label: '樽', value: w.cask.join('・') || '—', src: 'official' },
-  {
-    label: priceRowLabel,
-    value: priceValue,
-    href: w.priceSourceUrl,
-    src: w.priceSource,
-  },
+const rows: { label: string; value: string; href?: string; src: SourceKind }[] = [
+  { label: '蒸留所', value: w.distillery, href: distilleryHref, src: coreSource },
+  { label: '国・地域', value: `${COUNTRY_LABELS[w.country]}／${REGION_LABELS[w.region]}`, src: coreSource },
+  { label: 'タイプ', value: TYPE_LABELS[w.type], src: coreSource },
+  { label: '熟成年数', value: ageLabel(w.age), src: coreSource },
+  { label: 'アルコール度数', value: `${w.abv}%`, src: coreSource },
+  { label: '樽', value: w.cask.join('・') || '—', src: coreSource },
+  ...(hasSourcedPrice(whisky)
+    ? [{
+        label: priceRowLabel,
+        value: priceValue,
+        href: w.priceSourceUrl,
+        src: w.priceSource === 'official' ? 'official' as const : 'market' as const,
+      }]
+    : []),
   ...(w.officialSourceUrl
     ? [{ label: '公式商品情報', value: 'メーカー・公式ページ', href: w.officialSourceUrl, src: 'official' as const }]
-    : []),
-  { label: '入手しやすさ', value: AVAILABILITY_LABELS[w.availability], src: 'editorial' },
-  { label: '編集部評価', value: `${w.rating} / 100`, src: 'editorial' },
-  {
-    label: '1点あたり価格',
-    value: cpp ? `${cpp.toLocaleString('ja-JP')}円` : '—',
-    src: 'editorial',
-  },
-  ...(w.recommendedFor.length
-    ? [{ label: 'おすすめの飲み方', value: w.recommendedFor.join('・'), src: 'editorial' as const }]
     : []),
   ...(w.whiskybase
     ? [{
@@ -62,11 +56,11 @@ const rows: { label: string; value: string; href?: string; src: 'official' | 'ed
     : []),
 ];
 
-const SRC_MARK = { official: '公', market: '市', editorial: '推' };
-const SRC_TITLE = {
-  official: '公式表記',
-  market: '市場価格の実測',
-  editorial: '編集部推定',
+const SRC_MARK: Record<SourceKind, string> = { official: '公', market: '外', catalog: '登' };
+const SRC_TITLE: Record<SourceKind, string> = {
+  official: 'メーカー・公的機関などの一次情報を確認',
+  market: '出典と確認日時を持つ外部データ',
+  catalog: '出典整備前のカタログ登録値',
 };
 ---
 
@@ -77,7 +71,7 @@ const SRC_TITLE = {
       <tr>
         <th scope="row">{row.label}</th>
         <td>
-          {row.href ? <a href={row.href} rel="nofollow">{row.value}</a> : row.value}
+          {row.href ? <a href={row.href} rel={row.href.startsWith('http') ? 'nofollow' : undefined}>{row.value}</a> : row.value}
           <abbr class={`src-mark src-${row.src}`} title={SRC_TITLE[row.src]}>{SRC_MARK[row.src]}</abbr>
         </td>
       </tr>

@@ -2,68 +2,98 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/layout/Hero.astro';
 import WhiskyList from '../components/whisky/WhiskyList.astro';
-import PriceScatter from '../components/whisky/PriceScatter.astro';
 import PostCard from '../components/blog/PostCard.astro';
 import SourceNote from '../components/whisky/SourceNote.astro';
 import { DISCOVERY_LINKS } from '../data/navigation';
-import { getWhiskies, sortWhiskies, costPerPoint } from '../utils/whisky';
+import { getWhiskies, sortWhiskies } from '../utils/whisky';
+import { isIndexReadyWhisky } from '../utils/trust';
 import { getPublishedPosts } from '../utils/posts';
 import { ja } from '../i18n/ja';
 
 const whiskies = await getWhiskies();
+const sourceReady = sortWhiskies(whiskies.filter(isIndexReadyWhisky), 'name');
 const posts = await getPublishedPosts();
-
-const cospaTop = sortWhiskies(whiskies.filter((w) => costPerPoint(w) !== null), 'cospa').slice(0, 5);
-const ratingTop = sortWhiskies(whiskies, 'rating').slice(0, 5);
 const latestPosts = posts.slice(0, 3);
 ---
 
-<BaseLayout title="ウイスキーデータで銘柄を選ぶ｜価格・評価・味を数値比較" description="Whisky Data JPはWhiskybase 20万本のデータを日本語で整理したウイスキーデータサイト。レーダーチャートで味を比較し、価格推移とコスパで選べます。" width="wide">
+<BaseLayout
+  title="ウイスキー銘柄データベース｜仕様・出典を比較"
+  description={`Whisky Data JPはウイスキー${whiskies.length}銘柄の地域・タイプ・熟成年数・度数・樽などを日本語で整理する比較データベース。確認済みの公式・外部ソースを明示します。`}
+  width="wide"
+>
   <Hero
     title={ja.site.tagline}
-    description={`「まろやか」「深みがある」ではなく、味の8軸・価格・コスパの数値で選ぶ。現在${whiskies.length}銘柄を掲載。`}
+    description={`ウイスキー${whiskies.length}銘柄を、地域・タイプ・熟成年数・度数・樽などの仕様で横断比較。個別ページは出典確認が済んだものから検索公開しています。`}
   />
 
   <nav class="discovery" aria-labelledby="discovery-heading">
-    <h2 id="discovery-heading">どう選びますか？</h2>
+    <h2 id="discovery-heading">何を調べますか？</h2>
     <ul class="discovery-links">
       {DISCOVERY_LINKS.map((link) => (
         <li><a href={link.href}>{link.label}</a></li>
       ))}
     </ul>
     <p class="discovery-more">
-      <a href="/whiskies/">条件を組み合わせて探す（{whiskies.length}銘柄）→</a>
-      <a href="/compare/">2〜4本を選んで比較する →</a>
+      <a href="/whiskies/">全{whiskies.length}銘柄を絞り込む →</a>
+      <a href="/compare/">2〜4本の仕様を横並びで比較 →</a>
     </p>
   </nav>
 
   <section class="home-section">
-    <h2>価格と評価の関係</h2>
+    <h2>データベースの公開状況</h2>
+    <div class="data-status-grid">
+      <div class="data-status-card">
+        <strong>{whiskies.length}</strong>
+        <span>登録銘柄</span>
+      </div>
+      <div class="data-status-card">
+        <strong>{sourceReady.length}</strong>
+        <span>出典確認済みの個別銘柄</span>
+      </div>
+      <div class="data-status-card">
+        <strong>85</strong>
+        <span>登録蒸留所</span>
+      </div>
+    </div>
     <p class="text-secondary text-sm">
-      掲載中の{whiskies.length}銘柄を、参考価格（横）と編集部評価（縦）で並べた図です。
-      左上にあるほど「安いのに評価が高い」ことになります。
+      登録数と検索公開数は同じではありません。一次情報または確認済み外部データを紐づけた銘柄から
+      個別ページを検索公開し、未確認レコードはデータベース内の比較・探索用として保持します。
     </p>
-    <PriceScatter {whiskies} />
   </section>
 
-  <section class="home-section">
-    <h2>コスパで選ぶ TOP5</h2>
-    <p class="text-secondary text-sm">
-      1点あたりの価格（参考価格 ÷ 編集部評価）が安い順。数字が小さいほど「点数のわりに安い」。
-    </p>
-    <WhiskyList whiskies={cospaTop} ranked={true} showCospa={true} />
-    <p class="home-more"><a href="/ranking/cospa/">コスパランキングをすべて見る →</a></p>
-  </section>
+  {sourceReady.length > 0 ? (
+    <section class="home-section">
+      <h2>出典確認済みの銘柄</h2>
+      <p class="text-secondary text-sm">
+        メーカー等の一次情報、または確認日時を持つ外部データがレコードに紐づいている銘柄です。
+        順位ではなく名前順で掲載しています。
+      </p>
+      <WhiskyList whiskies={sourceReady.slice(0, 6)} />
+      <p class="home-more"><a href="/whiskies/">全銘柄データベースを見る →</a></p>
+    </section>
+  ) : null}
 
   <section class="home-section">
-    <h2>評価で選ぶ TOP5</h2>
-    <WhiskyList whiskies={ratingTop} ranked={true} />
-    <p class="home-more"><a href="/ranking/rating/">評価ランキングをすべて見る →</a></p>
+    <h2>このサイトで比較するもの</h2>
+    <div class="data-principles">
+      <article>
+        <h3>製品仕様</h3>
+        <p>地域、タイプ、熟成年数、アルコール度数、樽など、銘柄を識別するための項目を整理します。</p>
+      </article>
+      <article>
+        <h3>出典</h3>
+        <p>メーカー・公的機関などの一次情報を優先し、外部データを使う場合は確認日時をレコードに残します。</p>
+      </article>
+      <article>
+        <h3>比較</h3>
+        <p>独自点数の勝敗ではなく、2〜4本の仕様差を同じ表で確認できる比較ツールを中心にします。</p>
+      </article>
+    </div>
   </section>
 
   {latestPosts.length > 0 ? (
     <section class="home-section">
-      <h2>新着記事</h2>
+      <h2>解説記事</h2>
       <div class="post-list">
         {latestPosts.map((post) => <PostCard {post} headingLevel={3} />)}
       </div>

@@ -1,23 +1,23 @@
 ---
+import type { CollectionEntry } from 'astro:content';
 import BottleMark from './BottleMark.astro';
-import FlavorBars from './FlavorBars.astro';
 import { REGION_LABELS, TYPE_LABELS } from '../../types/taxonomy';
-import { whiskyUrl, ageLabel, priceLabel, costPerPoint, type Whisky } from '../../utils/whisky';
+import { whiskyUrl, ageLabel, priceLabel, type Whisky } from '../../utils/whisky';
 import { getWhiskyPhoto } from '../../utils/photos';
+import { hasSourcedPrice, sourceStatusLabel } from '../../utils/trust';
 
 interface Props {
   whisky: Whisky;
   headingLevel?: 2 | 3;
-  /** ランキング等で順位を出す */
   rank?: number;
   showCospa?: boolean;
 }
 
-const { whisky, headingLevel = 3, rank, showCospa = false } = Astro.props;
+const { whisky, headingLevel = 3, rank } = Astro.props;
 const w = whisky.data;
 const Heading = `h${headingLevel}` as 'h2' | 'h3';
-const cpp = costPerPoint(whisky);
 const photo = getWhiskyPhoto(whisky.id);
+const sourcedPrice = hasSourcedPrice(whisky);
 ---
 
 <article class={`whisky-card region-${w.region}`}>
@@ -35,7 +35,7 @@ const photo = getWhiskyPhoto(whisky.id);
         height="auto"
       />
     ) : (
-      <BottleMark region={w.region} rating={w.rating} />
+      <BottleMark region={w.region} rating={0} />
     )}
   </div>
 
@@ -50,16 +50,12 @@ const photo = getWhiskyPhoto(whisky.id);
       <a href={whiskyUrl(whisky.id)}>{w.name}</a>
     </Heading>
 
-    <p class="whisky-card-notes">{w.notes}</p>
-
-    <FlavorBars flavor={w.flavor} variant="compact" />
+    <p class="whisky-card-notes">
+      {w.distillery} · {w.abv}% · <span class={`source-status ${w.officialSourceUrl || w.whiskybase ? 'is-ready' : ''}`}>{sourceStatusLabel(whisky)}</span>
+    </p>
   </div>
 
   <div class="whisky-card-figures">
-    <span class="whisky-rating" title="編集部評価（100点満点）">
-      <strong>{w.rating}</strong><span class="unit">点</span>
-    </span>
-    <span class="whisky-price">{priceLabel(w.priceYen)}</span>
-    {showCospa && cpp ? <span class="whisky-cospa">1点あたり {cpp.toLocaleString('ja-JP')}円</span> : null}
+    {sourcedPrice ? <span class="whisky-price">{priceLabel(w.priceYen)}</span> : <span class="whisky-price">価格未検証</span>}
   </div>
 </article>

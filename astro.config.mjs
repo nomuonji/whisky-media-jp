@@ -1,14 +1,61 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { readdirSync, readFileSync } from 'node:fs';
+
+const whiskyDir = new URL('./src/content/whiskies/', import.meta.url);
+const contentPolicy = JSON.parse(
+  readFileSync(new URL('./src/data/content-policy.json', import.meta.url), 'utf8')
+);
+const NOINDEX_ARTICLES = new Set(contentPolicy.noindexArticles);
+const NOINDEX_CATEGORIES = new Set(contentPolicy.noindexCategories || []);
+const INDEX_READY_WHISKIES = new Set(
+  readdirSync(whiskyDir)
+    .filter((name) => name.endsWith('.json'))
+    .filter((name) => {
+      const data = JSON.parse(readFileSync(new URL(name, whiskyDir), 'utf8'));
+      return Boolean(data.officialSourceUrl || data.whiskybase?.checkedAt);
+    })
+    .map((name) => name.replace(/\.json$/, ''))
+);
+
+function shouldIncludeInSitemap(page) {
+  const pathname = new URL(page).pathname;
+
+  if (
+    pathname.startsWith('/search') ||
+    pathname.startsWith('/ranking/') ||
+    pathname.startsWith('/flavor/') ||
+    pathname.startsWith('/budget/') ||
+    pathname.startsWith('/tag/') ||
+    pathname.startsWith('/distillery/')
+  ) {
+    return false;
+  }
+
+  const categoryMatch = pathname.match(/^\/category\/([^/]+)\/?$/);
+  if (categoryMatch && NOINDEX_CATEGORIES.has(decodeURIComponent(categoryMatch[1]))) {
+    return false;
+  }
+
+  const articleMatch = pathname.match(/^\/([^/]+)\/?$/);
+  if (articleMatch && NOINDEX_ARTICLES.has(decodeURIComponent(articleMatch[1]))) {
+    return false;
+  }
+
+  const whiskyMatch = pathname.match(/^\/whisky\/([^/]+)\/?$/);
+  if (whiskyMatch) {
+    return INDEX_READY_WHISKIES.has(decodeURIComponent(whiskyMatch[1]));
+  }
+
+  return true;
+}
 
 export default defineConfig({
-  // 公開URL: whisky-jp.antonbase.com（src/data/site.ts / 09-sns-bot/src/config.mjs も同様）。
   site: 'https://whisky-jp.antonbase.com',
   integrations: [
     sitemap({
-      // 検索結果ページは索引させない（noindexを付けているページと揃える）
-      filter: (page) => !page.includes('/search'),
+      filter: shouldIncludeInSitemap,
     }),
   ],
   markdown: {

@@ -7,16 +7,21 @@
   "region": "japan",
   "type": "single-malt",
   "age": 12,
-  "abv": 43.0,
+  "abv": 43,
   "cask": [
-    "アメリカンオーク",
-    "シェリー",
+    "ホワイトオーク",
+    "スパニッシュオーク",
     "ミズナラ"
   ],
-  "priceYen": 16800,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "priceYen": 16000,
+  "priceAsOf": "2026-10-03",
+  "priceSource": "official",
+  "priceBasis": "希望小売価格",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://www.suntory.co.jp/whisky/products/0000000038/0000000099.html",
   "availability": "limited",
+  "officialSourceUrl": "https://www.suntory.co.jp/whisky/yamazaki/product/",
   "rating": 88,
   "flavor": {
     "peat": 2,
@@ -28,7 +33,7 @@
     "complex": 4,
     "body": 3
   },
-  "notes": "ミズナラ樽由来の白檀のような香りが特徴。熟した果実と蜂蜜の甘みが層になって続く。",
+  "notes": "サントリー公式は山崎12年について、ホワイトオーク樽熟成原酒由来の甘いバニラ香と熟した果実香、スパニッシュオーク樽原酒とミズナラ樽原酒を挙げている。",
   "recommendedFor": [
     "ストレート",
     "ロック"

@@ -11,15 +11,15 @@ const { priceAsOf, priceSource, priceBasis, compact = false } = Astro.props;
 
 <aside class={`source-note${compact ? ' is-compact' : ''}`}>
   <p>
-    <strong>データの扱いについて。</strong>
-    <abbr class="src-mark src-official" title="公式表記">公</abbr>はメーカー・公的機関などの公式表記、
-    <abbr class="src-mark src-market" title="市場価格の実測">市</abbr>は市場で確認した値、
-    <abbr class="src-mark src-editorial" title="編集部推定">推</abbr>は編集部の推定・評価です。
-    味の8軸と編集部評価は公式の成分値やメーカー評価ではありません。
+    <strong>データの出典区分。</strong>
+    <abbr class="src-mark src-official" title="メーカー・公的機関などの一次情報">公</abbr>はレコードに公式ソースを保存して確認した情報、
+    <abbr class="src-mark src-market" title="確認日時を持つ外部・市場データ">外</abbr>は出典と確認日時を持つ外部データ、
+    <abbr class="src-mark src-catalog" title="出典整備前のカタログ登録値">登</abbr>は出典整備前のカタログ登録値です。
+    「登」は公式確認済みという意味ではなく、個別ページは原則として検索公開しません。
     {priceSource === 'official' ? (
-      <> 価格は公式の{priceBasis ?? '価格'}{priceAsOf ? `（${priceAsOf}確認）` : ''}で、店舗の実売価格とは異なる場合があります。</>
-    ) : (
-      <> 参考価格{priceAsOf ? `（${priceAsOf}時点）` : ''}は変動します。購入時は販売ページで確認してください。</>
-    )}
+      <> 価格は公式の{priceBasis ?? '価格'}{priceAsOf ? `（${priceAsOf}確認）` : ''}です。</>
+    ) : priceSource === 'market' ? (
+      <> 市場価格{priceAsOf ? `（${priceAsOf}確認）` : ''}は変動するため購入時に再確認してください。</>
+    ) : null}
   </p>
 </aside>

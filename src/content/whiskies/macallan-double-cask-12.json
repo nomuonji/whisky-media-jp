@@ -7,19 +7,19 @@
   "region": "speyside",
   "type": "single-malt",
   "age": 12,
-  "abv": 40.0,
+  "abv": 40,
   "cask": [
     "ヨーロピアンオーク・シェリー樽",
     "アメリカンオーク・シェリー樽"
   ],
   "priceYen": 9900,
-  "priceAsOf": "2026-09-28",
+  "priceAsOf": "2026-10-03",
   "priceSource": "official",
   "priceBasis": "希望小売価格",
   "priceCapacityMl": 700,
   "priceTax": "税別",
-  "priceSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
-  "officialSourceUrl": "https://products.suntory.co.jp/d/5010314302863/r",
+  "priceSourceUrl": "https://www.suntory.co.jp/whisky/products/0000000039/0000000103.html",
+  "officialSourceUrl": "https://www.themacallan.com/en/single-malt-scotch-whisky/double-cask-12-years-old",
   "availability": "limited",
   "rating": 87,
   "flavor": {
@@ -36,5 +36,22 @@
   "recommendedFor": [
     "ストレート",
     "ロック"
-  ]
+  ],
+  "verifiedGuide": {
+    "heading": "「ダブルカスク」とは？ シングルカスクとの違い",
+    "paragraphs": [
+      "The Macallan公式はDouble Cask 12 Years Oldを、シェリーでシーズニングしたアメリカンオーク樽とヨーロピアンオーク樽を組み合わせたシングルモルトと説明しています。ここでの「Double」は2本の樽だけを使うという意味ではなく、2つのオーク由来の樽原酒を組み合わせる製品設計を指します。",
+      "一方、single cask（single barrel）は一般に、1つの樽からのウイスキーを瓶詰めする表現です。したがってDouble CaskとSingle Caskは対になる分類ではなく、「複数の樽原酒をどう組み合わせるか」と「単一樽から瓶詰めするか」という別の説明軸です。"
+    ],
+    "sources": [
+      {
+        "label": "The Macallan — Double Cask 12 Years Old",
+        "url": "https://www.themacallan.com/en/single-malt-scotch-whisky/double-cask-12-years-old"
+      },
+      {
+        "label": "Whisky.com — Whisky Glossary: single cask",
+        "url": "https://www.whisky.com/whisky-glossary.html"
+      }
+    ]
+  }
 }

@@ -19,7 +19,7 @@ const { region } = Astro.params;
 const { whiskies } = Astro.props;
 const label = REGION_LABELS[region as Region];
 const description = REGION_DESCRIPTIONS[region as Region];
-const sorted = sortWhiskies(whiskies, 'rating');
+const sorted = sortWhiskies(whiskies, 'name');
 ---
 
 <ListLayout

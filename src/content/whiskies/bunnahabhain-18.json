@@ -9,13 +9,10 @@
   "age": 18,
   "abv": 46.3,
   "cask": [
-    "シェリー",
-    "バーボン"
+    "オロロソシェリー"
   ],
-  "priceYen": 17000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
   "availability": "rare",
+  "officialSourceUrl": "https://bunnahabhain.com/en-us/products/18-year-old/",
   "rating": 89,
   "flavor": {
     "peat": 0,
@@ -27,8 +24,22 @@
     "complex": 5,
     "body": 4
   },
-  "notes": "アイラとは思えないノンピートの深いモルト。シェリーの甘さと海塩が繊細。",
+  "notes": "蒸溜所公式の18 Year Oldページ（2026-10-05確認）は、18年、ABV 46.3%、Core Range、Oloroso、Sherried / Spiced / Unpeatedと公式テイスティングノートを掲載する。日本向けの一次価格は未確認。",
   "recommendedFor": [
     "ストレート"
-  ]
+  ],
+  "verifiedGuide": {
+    "heading": "公式で確認できる18年の仕様",
+    "paragraphs": [
+      "蒸溜所公式のBunnahabhain 18 Year Oldページ（2026-10-05確認）は、製品名をBunnahabhain 18 Year Whiskyとし、18年熟成、ABV 46.3%、Core Range、Oloroso、Sherried / Spiced / Unpeatedと表示している。公式テイスティングノートは、香りをドライフルーツ、ハチミツのようなナッツ、トフィーとわずかなスパイス、味わいをシェリー感のあるナッツ、ドライフルーツ、オーク、トフィーと海岸熟成由来のわずかな塩味、余韻をドライフルーツとスパイス・塩のヒントとしている。",
+      "同じ公式ページは、米国向けの通常価格として$152を表示する。これは日本の希望小売価格でも店頭価格でもない。日本向けの公式価格・容量は、今回確認した一次資料では同定できなかったため、価格は掲載しない。以前の17,000円は出典のない編集値なので比較表には使わない。",
+      "樽は公式ページのOloroso表示に限定する。以前の「シェリー・バーボン」という組み合わせは、この公式ページでは支持されないため採用しない。ノンチルフィルターや無着色は、同ページのブランド紹介ではBunnahabhainのスピリット特性として書かれているが、18年ボトル単体の仕様欄にはないため、この製品の確定仕様にはしない。アイラの他蒸溜所と異なりノンピートで知られる、という説明は公式のUnpeated Islay紹介に帰属させる。"
+    ],
+    "sources": [
+      {
+        "label": "Bunnahabhain 18 Year Old（蒸溜所公式、2026-10-05確認）",
+        "url": "https://bunnahabhain.com/en-us/products/18-year-old/"
+      }
+    ]
+  }
 }

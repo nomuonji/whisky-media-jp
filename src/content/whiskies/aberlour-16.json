@@ -1,21 +1,21 @@
 {
-  "name": "アベラワー16年",
-  "nameEn": "Aberlour 16 Year Old",
+  "name": "アベラワー16年 ダブルカスク マチュアード",
+  "nameEn": "Aberlour 16 Year Old Double Cask Matured",
   "distillery": "アベラワー蒸溜所",
   "distillerySlug": "aberlour",
   "country": "scotland",
   "region": "speyside",
   "type": "single-malt",
   "age": 16,
-  "abv": 43,
+  "abv": 40,
   "cask": [
-    "シェリー",
-    "バーボン"
+    "オリーロソ・シェリー（スパニッシュオーク）"
   ],
   "priceYen": 9500,
   "priceAsOf": "2026-08",
   "priceSource": "editorial",
   "availability": "limited",
+  "officialSourceUrl": "https://www.aberlour.com/en/our-whisky/aberlour-16-year-old-70cl-engraved/",
   "rating": 86,
   "flavor": {
     "peat": 0,
@@ -27,8 +27,26 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "シェリー樽主体の濃厚なアベラワー。プルーンとチョコレートの深い甘み。",
+  "notes": "2026-10-05にAberlour公式の16 Year Old Double Cask Maturedを確認。国際向け公式表記は40%・70clで、最も強い影響はスパニッシュオークのオリーロソ・シェリーバット。旧カタログの43%と編集部価格は公式仕様としては採用しない。日本向けSKUの度数・容量・価格は、今回の確認ではペルノ・リカール・ジャパン等の一次資料で同定できなかったため不明のまま。味の8軸と86点は編集部評価。",
   "recommendedFor": [
     "ストレート"
-  ]
+  ],
+  "verifiedGuide": {
+    "heading": "公式の16年と、日本向け仕様が未確認である点",
+    "paragraphs": [
+      "Aberlour公式の16 Year Old Double Cask Maturedは、2026-10-05時点で40%・70cl、最も強い影響はスパニッシュオークのオリーロソ・シェリーバットと読める。テイスティングノートはフローラルで甘いレーズン、スパイシーなナッツ感、プラムとオークを挙げている。このページの度数・容量・樽の主表記はこの公式商品ページに合わせ、旧カタログの43%は公式値として残さない。",
+      "Pernod Ricardのブランド説明は、アベラワーがオリーロソ・シェリー樽とアメリカンオーク樽で熟成して合わせるダブルカスクを特徴とする、という蒸留所レベルの説明である。16年の個別商品ページはアメリカンオークやバーボン樽を明示していないため、このレコードの樽欄には公式商品ページで読めるシェリー側だけを置き、バーボン樽熟成は個別仕様としては未確認にする。",
+      "日本向け正規品の度数・容量・希望小売価格は、今回ペルノ・リカール・ジャパン等の一次資料では同定できなかった。小売掲載には40%と43%の両方があり、どちらも一次資料ではない。したがって日本市場のSKU差は不明のままとし、表示中の9,500円は出典のない編集部メモであって公式価格でも市場実測でもない。"
+    ],
+    "sources": [
+      {
+        "label": "Aberlour — 16 Year Old Double Cask Matured",
+        "url": "https://www.aberlour.com/en/our-whisky/aberlour-16-year-old-70cl-engraved/"
+      },
+      {
+        "label": "Pernod Ricard — Aberlour",
+        "url": "https://www.pernod-ricard.com/en/brands/aberlour"
+      }
+    ]
+  }
 }

@@ -13,6 +13,30 @@ const usedRegions = REGIONS.filter((r) => whiskies.some((w) => w.data.region ===
 const usedTypes = WHISKY_TYPES.filter((t) => whiskies.some((w) => w.data.type === t));
 const sourceReadyCount = whiskies.filter(isIndexReadyWhisky).length;
 
+const regionSet = new Set<string>(REGIONS);
+const typeSet = new Set<string>(WHISKY_TYPES);
+const initialRegions = Astro.url.searchParams.getAll('region').filter((value) => regionSet.has(value));
+const initialTypes = Astro.url.searchParams.getAll('type').filter((value) => typeSet.has(value));
+const initialSourceReady = Astro.url.searchParams.getAll('source').includes('ready');
+const sortParam = Astro.url.searchParams.get('sort');
+const initialSort = sortParam === 'age' || sortParam === 'abv' ? sortParam : 'name';
+const hasInitialFilter = initialRegions.length > 0 || initialTypes.length > 0 || initialSourceReady || initialSort !== 'name';
+
+const matchesInitial = (whisky: (typeof whiskies)[number]) => {
+  const matchesRegion = initialRegions.length === 0 || initialRegions.includes(whisky.data.region);
+  const matchesType = initialTypes.length === 0 || initialTypes.includes(whisky.data.type);
+  const matchesSource = !initialSourceReady || isIndexReadyWhisky(whisky);
+  return matchesRegion && matchesType && matchesSource;
+};
+
+const initialVisible = whiskies.filter(matchesInitial);
+const initialCount = initialVisible.length;
+const filterSummary = [
+  initialRegions.length ? `地域: ${initialRegions.map((region) => REGION_LABELS[region as (typeof REGIONS)[number]]).join('・')}` : '',
+  initialTypes.length ? `タイプ: ${initialTypes.map((type) => TYPE_LABELS[type as (typeof WHISKY_TYPES)[number]]).join('・')}` : '',
+  initialSourceReady ? '出典確認済みのみ' : '',
+].filter(Boolean).join(' / ');
+
 const breadcrumbs = [
   { label: 'ホーム', href: '/' },
   { label: '銘柄データベース', href: '/whiskies/' },
@@ -41,13 +65,21 @@ const breadcrumbs = [
     </p>
   </aside>
 
+  {hasInitialFilter && (
+    <p class="filter-share" id="filter-share">
+      リンクの条件: {filterSummary || '並び替えのみ'}。JavaScript無効時も同じ条件で一覧を絞っています。
+      出典確認済みは一次情報または確認日時のある外部データがある銘柄だけです。未確認銘柄はおすすめとして扱いません。
+      <a href="/compare/">仕様比較ツールへ進む</a>
+    </p>
+  )}
+
   <form class="filter-panel" id="filter-panel">
     <fieldset>
       <legend>地域</legend>
       <div class="filter-chips">
         {usedRegions.map((r) => (
           <label class="filter-chip">
-            <input type="checkbox" name="region" value={r} />
+            <input type="checkbox" name="region" value={r} checked={initialRegions.includes(r)} />
             <span>{REGION_LABELS[r]}</span>
           </label>
         ))}
@@ -59,7 +91,7 @@ const breadcrumbs = [
       <div class="filter-chips">
         {usedTypes.map((t) => (
           <label class="filter-chip">
-            <input type="checkbox" name="type" value={t} />
+            <input type="checkbox" name="type" value={t} checked={initialTypes.includes(t)} />
             <span>{TYPE_LABELS[t]}</span>
           </label>
         ))}
@@ -70,7 +102,7 @@ const breadcrumbs = [
       <legend>出典状態</legend>
       <div class="filter-chips">
         <label class="filter-chip">
-          <input type="checkbox" name="source" value="ready" />
+          <input type="checkbox" name="source" value="ready" checked={initialSourceReady} />
           <span>出典確認済みのみ</span>
         </label>
       </div>
@@ -80,20 +112,22 @@ const breadcrumbs = [
       <label class="filter-sort">
         並び替え
         <select name="sort" id="sort-select">
-          <option value="name">名前順</option>
-          <option value="age">熟成年数が長い順</option>
-          <option value="abv">度数が高い順</option>
+          <option value="name" selected={initialSort === 'name'}>名前順</option>
+          <option value="age" selected={initialSort === 'age'}>熟成年数が長い順</option>
+          <option value="abv" selected={initialSort === 'abv'}>度数が高い順</option>
         </select>
       </label>
       <button type="reset" class="btn btn-secondary btn-sm">条件をリセット</button>
+      <a class="btn btn-secondary btn-sm" href="/compare/">比較ツールへ</a>
     </div>
   </form>
 
-  <p class="filter-count" id="filter-count" aria-live="polite">{whiskies.length}銘柄</p>
+  <p class="filter-count" id="filter-count" aria-live="polite">{initialCount}銘柄</p>
 
-  <p class="filter-empty" id="filter-empty" hidden>
-    条件に合う銘柄がありません。
+  <p class="filter-empty" id="filter-empty" hidden={initialCount > 0}>
+    条件に合う銘柄がありません。出典確認済みに限定している場合、未検証レコードは候補から外しています。
     <button type="button" class="btn btn-secondary btn-sm" id="filter-empty-reset">条件をリセット</button>
+    <a href="/compare/">比較ツールを開く</a>
   </p>
 
   <div class="whisky-list" id="whisky-list">
@@ -106,6 +140,7 @@ const breadcrumbs = [
         data-age={whisky.data.age ?? 0}
         data-abv={whisky.data.abv}
         data-name={whisky.data.name}
+        hidden={!matchesInitial(whisky)}
       >
         <WhiskyCard {whisky} />
       </div>
@@ -122,12 +157,25 @@ const breadcrumbs = [
   const count = document.getElementById('filter-count');
   const empty = document.getElementById('filter-empty');
   const emptyReset = document.getElementById('filter-empty-reset');
+  const share = document.getElementById('filter-share');
 
   if (panel && list && count && empty && emptyReset) {
     const items = Array.from(list.querySelectorAll<HTMLElement>('.whisky-filter-item'));
 
     const checkedValues = (name: string): string[] =>
       Array.from(panel.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((el) => el.value);
+
+    function syncUrl(regions: string[], types: string[], sourceReadyOnly: boolean, sort: string): void {
+      const params = new URLSearchParams();
+      regions.forEach((region) => params.append('region', region));
+      types.forEach((type) => params.append('type', type));
+      if (sourceReadyOnly) params.append('source', 'ready');
+      if (sort !== 'name') params.set('sort', sort);
+      const next = params.toString();
+      const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
+      window.history.replaceState(null, '', url);
+      if (share) share.hidden = !next;
+    }
 
     function render(): void {
       const regions = checkedValues('region');
@@ -153,6 +201,7 @@ const breadcrumbs = [
 
       count!.textContent = `${visible.length}銘柄`;
       empty!.hidden = visible.length > 0;
+      syncUrl(regions, types, sourceReadyOnly, sort);
     }
 
     panel.addEventListener('change', render);

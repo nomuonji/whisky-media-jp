@@ -1,0 +1,73 @@
+name: Pages production deploy
+
+# Cloudflare Pages skips Git pushes whose message is prefixed with
+# [CF-Pages-Skip] or [skip ci]. seo/* commits must keep that prefix, so master
+# merges were not published. This workflow decides from changed paths and, when
+# the change is publishable, uploads the built site with Wrangler. 09-sns-bot
+# state-only commits stay skipped. workflow_dispatch force=true is the explicit
+# publish trigger.
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "true deploys even if the commit only changes sns-bot state"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-production
+  cancel-in-progress: false
+
+jobs:
+  decide-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Decide from changed paths
+        id: decision
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          FORCE: ${{ github.event.inputs.force }}
+          BEFORE_SHA: ${{ github.event.before }}
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: node scripts/pages_deploy_ci.mjs
+
+      - name: Skip sns-bot state only
+        if: "${{ steps.decision.outputs.action != 'deploy' }}"
+        run: 'echo "Skipping production deploy: ${{ steps.decision.outputs.reason }}"'
+
+      - name: Install, test decision, and build
+        if: "${{ steps.decision.outputs.action == 'deploy' }}"
+        run: |
+          npm ci
+          node scripts/pages_deploy_decision.test.mjs
+          npm run build
+
+      - name: Deploy production with Wrangler
+        if: "${{ steps.decision.outputs.action == 'deploy' }}"
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          set -euo pipefail
+          if [ -z "${CLOUDFLARE_API_TOKEN}" ] || [ -z "${CLOUDFLARE_ACCOUNT_ID}" ]; then
+            echo "CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID are required for path-based production deploy."
+            exit 1
+          fi
+          npx --yes wrangler@3 pages deploy dist --project-name whisky-media-jp --branch master --commit-hash "$GITHUB_SHA"

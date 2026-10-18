@@ -61,12 +61,20 @@ const breadcrumbs = [
       return index;
     }
 
-    // 全角英数を半角にして空白を落とす（「ｱｲﾗ」「山崎 12年」を吸収する）
+    // 全角英数を半角にして空白を落とす（フィールド照合用。「ｱｲﾗ」「山崎12年」を吸収）
     function normalize(value: string): string {
       return value
         .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
         .replace(/[\s　]/g, '')
         .toLowerCase();
+    }
+
+    // クエリをトークン化：全角英数を半角→小文字にした後、空白（全半角・連続）で分割。空白削除より先に行う。
+    function tokenize(query: string): string[] {
+      const pre = query
+        .replace(/[Ａ-Ｚａ-ｚ０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0))
+        .toLowerCase();
+      return pre.split(/[\s　]+/).filter(Boolean);
     }
 
     function score(item: Item, terms: string[]): number {
@@ -108,8 +116,8 @@ const breadcrumbs = [
     }
 
     async function search(query: string): Promise<void> {
-      const trimmed = normalize(query);
-      if (!trimmed) {
+      const terms = tokenize(query);
+      if (terms.length === 0) {
         results!.innerHTML = '';
         status!.textContent = 'キーワードを入力すると銘柄・蒸留所・記事をまとめて検索します。';
         return;
@@ -127,7 +135,6 @@ const breadcrumbs = [
           '検索できませんでした。通信状況を確認して、ページを再読み込みしてください。';
         return;
       }
-      const terms = normalize(query).split(/\s+/).filter(Boolean);
       const matches = items
         .map((item) => ({ item, s: score(item, terms) }))
         .filter(({ s }) => s > 0)

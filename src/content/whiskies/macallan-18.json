@@ -9,12 +9,9 @@
   "age": 18,
   "abv": 43,
   "cask": [
-    "シェリー"
+    "ヘレス産シェリー酒でシーズニングしたヨーロピアンオーク樽（主に使用）"
   ],
-  "priceYen": 48000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
-  "availability": "rare",
+  "availability": "limited",
   "rating": 92,
   "flavor": {
     "peat": 0,
@@ -26,8 +23,31 @@
     "complex": 5,
     "body": 4
   },
-  "notes": "ファーストフィルシェリー樽18年。干し果実とオーク、スパイスが幾重にも重なる完成度。",
+  "notes": "メーカー公式2026年版（2026-10-19確認）：18年以上熟成し、主にヘレス産シェリー酒でシーズニングしたヨーロピアンオーク樽を使用。公式の香味説明はジンジャー、デーツ、ダークチョコレート。日本向け43%・700mlはサントリー公式で確認。国内の現行価格は一次資料で確認できず掲載しない。92点と味の8軸は出典未記録の編集部推定で、メーカー公式評価や実飲レビューではない。",
   "recommendedFor": [
     "ストレート"
-  ]
+  ],
+  "officialSourceUrl": "https://www.themacallan.com/en/single-malt-scotch-whisky/sherry-oak-18-years-old-2026-release",
+  "verifiedGuide": {
+    "heading": "シェリーオーク18年（2026年版）の熟成・樽とダブルカスク18年との違い",
+    "paragraphs": [
+      "メーカー公式Sherry Oak 18 Years Old 2026 Release（2026-10-19確認）は、最低18年間熟成し、スペイン・ヘレス産のシェリー酒でシーズニングしたヨーロピアンオーク樽を「主に」使用すると説明する。全量がファーストフィル樽という説明は確認できない。メーカーが示す香味はジンジャー、デーツ、ダークチョコレートであり、編集部の実飲記録ではない。",
+      "同じ2026年版のDouble Cask 18 Years Oldは、シェリー酒でシーズニングしたアメリカンオーク樽とヨーロピアンオーク樽の組み合わせを特徴とする。Sherry Oakはヨーロピアンオーク樽主体、Double Caskは2種類のオーク材のバランスを打ち出す別シリーズで、どちらも18年以上熟成。商品名が似ていても樽の設計とメーカーの香味説明が異なる。",
+      "サントリーの日本向け公式製品ページ（2026-10-19確認）にはシェリーオーク18年のアルコール度数43%・容量700mlと記載されている。ただし同ページは2026年版ボトルの個別仕様を保証するものではないため、購入時はリリース年・現物ラベルを確認する。国内の現行希望小売価格・実勢価格は一次資料で確認できず、以前の未検証の編集部推定価格は削除した。92点と味の8軸は根拠未記録の編集部推定で、メーカー公式値や実飲レビューではない。"
+    ],
+    "sources": [
+      {
+        "label": "The Macallan — Sherry Oak 18 Years Old, 2026 Release（メーカー公式、2026-10-19確認）",
+        "url": "https://www.themacallan.com/en/single-malt-scotch-whisky/sherry-oak-18-years-old-2026-release"
+      },
+      {
+        "label": "The Macallan — Double Cask 18 Years Old, 2026 Release（メーカー公式、2026-10-19確認）",
+        "url": "https://www.themacallan.com/en/single-malt-scotch-whisky/double-cask-18-years-old-2026-release"
+      },
+      {
+        "label": "サントリー — ザ・マッカラン シェリーオーク18年（日本向け公式、2026-10-19確認）",
+        "url": "https://www.suntory.co.jp/whisky/macallan/product/sherryoak/sherryoak18yo/"
+      }
+    ]
+  }
 }

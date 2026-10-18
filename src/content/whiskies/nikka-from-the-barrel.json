@@ -7,11 +7,8 @@
   "type": "blended",
   "abv": 51.4,
   "cask": [
-    "各種"
+    "各種（ブレンド後マリッジ）"
   ],
-  "priceYen": 3300,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
   "availability": "common",
   "rating": 86,
   "flavor": {
@@ -24,10 +21,33 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "樽出し原酒に近い高濃度ブレンデッド。コスパの高さで海外でも評価が高い。",
+  "notes": "メーカー公式（2026-10-19確認）：アルコール分净51.4%、容量500ml。ニッカの2蒸留所のモルト原酒とカフェグレーンを中心に数十種類以上のモルト・グレーン原酒をブレンド後、樽で数か月間マリッジ。厳選した輸入原酒を一部使用。country=japanはブランド・流通文脈であり、全原酒の製造国を保証しない。JSLMAの「Japanese whisky」表示基準に該当するとの断定はしない。86点と8軸味は出典のない編集部推定。旧記載の海外評価・コスパ・編集部価格3300円は一次資料なしのため事実扱いしない。",
   "recommendedFor": [
     "ロック",
     "水割り"
   ],
-  "affiliateId": "nikka-from-the-barrel"
+  "affiliateId": "nikka-from-the-barrel",
+  "officialSourceUrl": "https://nikka.com/brands/fromthebarrel/",
+  "verifiedGuide": {
+    "heading": "輸入原酒一部使用・マリッジ製法と51.4度の公式確認",
+    "paragraphs": [
+      "ニッカ公式日本語ページ（2026-10-19確認）は、フロム・ザ・バレルをアルコール分净51.4%、容量500ml、分類ブレンデッドウイスキーと記載。熟成した多種多様な原酒を緻密にブレンドし、もう一度樽に詰めて数ヶ月間再貯蔵する「マリッジ」製法で調和を取る。ニッカ社が所有する2つの蒸留所のモルト原酒、カフェグレーンを中心にした数十種類以上のモルト原酒とグレーン原酒を使用し、厳選した輸入原酒を一部使用していると明記する。",
+      "公式英語ページも、ニッカの日本国内2蒸留所のモルトとシグネチャーのカフェグレーンを主体とした100種類以上のモルト・グレーンのブレンドと説明する。全原酒が日本産であることは公式に保証されておらず、輸入原酒の使用が明示されているため、JSLMAのJapanese whisky表示基準に完全に適合する純国産原酒のみの製品と断定しない。countryフィールドのjapanは製品のブランド・市場文脈を示すもので、個々の原酒の製造国を表すものではない。",
+      "原酒の具体的な割合や輸入元の蒸留所名は公式に開示されていないため推測しない。旧notesにあった海外での評価やコスパの高さ、priceYen=3300（priceSource=editorial）は一次資料で確認できないため掲載せず、rating86とflavorの8軸は編集部の推定値であり公式の評価や実飲結果ではない。テイスティングノートの公式表現は豊かな樽の香り、バニラやチョコレートの甘さ、華やかなオレンジピール、穀物の香ばしさ、とろみのある甘い口当たり、オークの渋みとしっかりしたコク、ウッディーでビターな余韻など。"
+    ],
+    "sources": [
+      {
+        "label": "ニッカ公式 — フロム・ザ・バレル（日本語、2026-10-19確認）",
+        "url": "https://nikka.com/brands/fromthebarrel/"
+      },
+      {
+        "label": "Nikka official — From The Barrel (English, 2026-10-19 confirmed)",
+        "url": "https://www.nikka.com/en/brands/fromthebarrel/"
+      },
+      {
+        "label": "JSLMA Standards for Labeling Japanese Whisky (via Nikka)",
+        "url": "https://www.nikka.com/eng/img/topics/pdf/Standards_for_Labeling_Japanese_whisky.pdf"
+      }
+    ]
+  }
 }

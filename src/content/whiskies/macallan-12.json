@@ -7,13 +7,10 @@
   "region": "speyside",
   "type": "single-malt",
   "age": 12,
-  "abv": 40.0,
+  "abv": 40,
   "cask": [
-    "シェリー"
+    "シェリー酒でシーズニングしたヨーロピアンオーク樽（主に使用）"
   ],
-  "priceYen": 11000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
   "availability": "limited",
   "rating": 88,
   "flavor": {
@@ -26,8 +23,31 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "シェリー樽100%熟成。ドライフルーツとチョコレートの濃厚な甘さ。",
+  "notes": "メーカー公式（2026-10-19確認）：12年以上熟成し、主にシェリー酒でシーズニングしたヨーロピアンオーク樽を使用。公式の香味説明はドライフルーツ、ジンジャー、オークスパイス、レーズン、シナモンなど。日本向け40%・700mlはサントリー公式商品ページで確認。国内通常品の現行価格は未確認のため掲載しない。88点と味の8軸は出典のない編集部推定で、メーカー公式の評価や実飲レビューではない。",
   "recommendedFor": [
     "ストレート"
-  ]
+  ],
+  "officialSourceUrl": "https://www.themacallan.com/en/single-malt-scotch-whisky/sherry-oak-12-years-old",
+  "verifiedGuide": {
+    "heading": "シェリーオーク12年の樽・度数とダブルカスク12年の違い",
+    "paragraphs": [
+      "The Macallan公式商品ページ（2026-10-19確認）は、12年以上の熟成と、主にシェリー酒でシーズニングしたヨーロピアンオーク樽を使用すると説明する。「主に」は全樽100%が同一種類という意味ではない。公式の香味表現はドライフルーツ、ジンジャー、オークスパイス、レーズン、サルタナ、シナモンなどで、編集部が実際に試飲した結果ではない。",
+      "同ブランドのDouble Caskシリーズは、シェリー酒でシーズニングしたアメリカンオーク樽とヨーロピアンオーク樽を組み合わせる設計。Sherry Oakはヨーロピアンオーク樽が主体で、Double Caskは2種類のオーク材の組み合わせを打ち出す別シリーズであり、名称だけで同一製品と判断しない。",
+      "サントリー日本語公式の商品ページ（2026-10-19確認）はシェリーオーク12年を40%・700mlと記載。販売国・時期で仕様が異なる可能性があるため購入時は現物ラベルを確認する。国内通常品の現行希望小売価格・実勢価格は一次資料で確認できないため、以前の編集部推定11,000円は表示しない。88点と8軸味スコアは根拠未記録の編集部推定であり、公式値・実飲評価ではない。"
+    ],
+    "sources": [
+      {
+        "label": "The Macallan — Sherry Oak 12 Years Old（メーカー公式、2026-10-19確認）",
+        "url": "https://www.themacallan.com/en/single-malt-scotch-whisky/sherry-oak-12-years-old"
+      },
+      {
+        "label": "The Macallan — Double Cask Collection（メーカー公式、2026-10-19確認）",
+        "url": "https://www.themacallan.com/en/single-malt-scotch-whisky/double-cask"
+      },
+      {
+        "label": "サントリー — ザ・マッカラン シェリーオーク12年（日本語公式、2026-10-19確認）",
+        "url": "https://www.suntory.co.jp/whisky/macallan/product/sherryoak/sherryoak12yo/"
+      }
+    ]
+  }
 }

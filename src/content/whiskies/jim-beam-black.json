@@ -6,15 +6,20 @@
   "country": "usa",
   "region": "kentucky",
   "type": "bourbon",
-  "age": 8,
-  "abv": 43,
+  "age": 7,
+  "abv": 45,
   "cask": [
     "新樽"
   ],
-  "priceYen": 2500,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "priceYen": 3080,
+  "priceAsOf": "2026-10-19",
+  "priceSource": "official",
+  "priceBasis": "希望小売価格。700ml。実売価格ではない",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://products.suntory.co.jp/d/080686007784/",
   "availability": "common",
+  "officialSourceUrl": "https://www.jimbeam.com/ja-jp/bourbons/jim-beam-black",
   "rating": 82,
   "flavor": {
     "peat": 0,
@@ -26,9 +31,31 @@
     "complex": 3,
     "body": 3
   },
-  "notes": "8年以上熟成のスモールバッチ。バニラとオーク、滑らかな飲み口。",
+  "notes": "国内サントリー公式商品情報（2026-10-19確認）では7年以上熟成・700ml・45%。味の8軸と評価点は編集部推定であり公式確認済みではない。",
   "recommendedFor": [
     "ロック",
     "ハイボール"
-  ]
+  ],
+  "verifiedGuide": {
+    "heading": "ブラックとホワイトの国内公式仕様差",
+    "paragraphs": [
+      "日本のサントリー公式商品情報（2026-10-19確認）では、ジムビーム ブラック700mlは7年以上熟成、アルコール分45%、希望小売価格3,080円（税別）とされている。ブランド日本語公式も7年熟成・90プルーフ（45%）を案内している。",
+      "一方、標準品のジムビーム（ホワイトラベルの通称）はサントリー公式で700ml・40%・希望小売価格1,690円（税別）である。購入時はボトルの年数表示・度数・容量・価格を実物で確認すること。米国市場の仕様を国内品の根拠にしない。",
+      "味の評価点と8軸スコアは編集部推定であり、公式の一次情報ではない。店頭実売価格は希望小売価格と異なる場合がある。"
+    ],
+    "sources": [
+      {
+        "label": "サントリー商品情報 ジムビーム ブラック 700ml瓶（2026-10-19確認）",
+        "url": "https://products.suntory.co.jp/d/080686007784/"
+      },
+      {
+        "label": "Jim Beam Black（ブランド日本語公式、2026-10-19確認）",
+        "url": "https://www.jimbeam.com/ja-jp/bourbons/jim-beam-black"
+      },
+      {
+        "label": "サントリー商品情報 ジムビーム 700ml瓶（標準品、2026-10-19確認）",
+        "url": "https://products.suntory.co.jp/d/4901777283893/"
+      }
+    ]
+  }
 }

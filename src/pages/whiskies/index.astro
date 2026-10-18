@@ -65,13 +65,11 @@ const breadcrumbs = [
     </p>
   </aside>
 
-  {hasInitialFilter && (
-    <p class="filter-share" id="filter-share">
-      リンクの条件: {filterSummary || '並び替えのみ'}。JavaScript無効時も同じ条件で一覧を絞っています。
-      出典確認済みは一次情報または確認日時のある外部データがある銘柄だけです。未確認銘柄はおすすめとして扱いません。
-      <a href="/compare/">仕様比較ツールへ進む</a>
-    </p>
-  )}
+  <p class="filter-share" id="filter-share" hidden={!hasInitialFilter}>
+    リンクの条件: {filterSummary || '並び替えのみ'}。共有された絞り込み条件はJavaScript有効時に復元されます。静的表示では全件を示します。
+    出典確認済みは一次情報または確認日時のある外部データがある銘柄だけです。未確認銘柄はおすすめとして扱いません。
+    <a href="/compare/">仕様比較ツールへ進む</a>
+  </p>
 
   <form class="filter-panel" id="filter-panel">
     <fieldset>
@@ -165,6 +163,44 @@ const breadcrumbs = [
     const checkedValues = (name: string): string[] =>
       Array.from(panel.querySelectorAll<HTMLInputElement>(`input[name="${name}"]:checked`)).map((el) => el.value);
 
+    function hydrateFromUrl(): void {
+      const params = new URLSearchParams(window.location.search);
+      const regionInputs = Array.from(panel!.querySelectorAll<HTMLInputElement>('input[name="region"]'));
+      const typeInputs = Array.from(panel!.querySelectorAll<HTMLInputElement>('input[name="type"]'));
+      const sourceInput = panel!.querySelector<HTMLInputElement>('input[name="source"][value="ready"]');
+      const sortSelect = panel!.querySelector('#sort-select') as HTMLSelectElement | null;
+
+      const allowedRegions = new Set(regionInputs.map((el) => el.value));
+      const allowedTypes = new Set(typeInputs.map((el) => el.value));
+
+      regionInputs.forEach((el) => {
+        el.checked = params.getAll('region').includes(el.value) && allowedRegions.has(el.value);
+      });
+      typeInputs.forEach((el) => {
+        el.checked = params.getAll('type').includes(el.value) && allowedTypes.has(el.value);
+      });
+      if (sourceInput) {
+        sourceInput.checked = params.getAll('source').includes('ready');
+      }
+      if (sortSelect) {
+        const sort = params.get('sort');
+        if (sort === 'age' || sort === 'abv' || sort === 'name') {
+          sortSelect.value = sort;
+        }
+      }
+    }
+
+    function updateShare(regions: string[], types: string[], sourceReadyOnly: boolean, sort: string): void {
+      if (!share) return;
+      const parts = [];
+      if (regions.length) parts.push(`地域: ${regions.join('・')}`);
+      if (types.length) parts.push(`タイプ: ${types.join('・')}`);
+      if (sourceReadyOnly) parts.push('出典確認済みのみ');
+      if (sort !== 'name') parts.push(`並び替え: ${sort}`);
+      const summary = parts.join(' / ') || '並び替えのみ';
+      share.innerHTML = `リンクの条件: ${summary}。共有された絞り込み条件はJavaScript有効時に復元されます。静的表示では全件を示します。出典確認済みは一次情報または確認日時のある外部データがある銘柄だけです。未確認銘柄はおすすめとして扱いません。 <a href="/compare/">仕様比較ツールへ進む</a>`;
+    }
+
     function syncUrl(regions: string[], types: string[], sourceReadyOnly: boolean, sort: string): void {
       const params = new URLSearchParams();
       regions.forEach((region) => params.append('region', region));
@@ -175,6 +211,7 @@ const breadcrumbs = [
       const url = next ? `${window.location.pathname}?${next}` : window.location.pathname;
       window.history.replaceState(null, '', url);
       if (share) share.hidden = !next;
+      updateShare(regions, types, sourceReadyOnly, sort);
     }
 
     function render(): void {
@@ -204,6 +241,7 @@ const breadcrumbs = [
       syncUrl(regions, types, sourceReadyOnly, sort);
     }
 
+    hydrateFromUrl();
     panel.addEventListener('change', render);
     panel.addEventListener('reset', () => window.setTimeout(render, 0));
     emptyReset.addEventListener('click', () => {

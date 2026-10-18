@@ -1,7 +1,6 @@
 ---
 import ListLayout from '../../layouts/ListLayout.astro';
 import WhiskyList from '../../components/whisky/WhiskyList.astro';
-import ScoreDistribution from '../../components/whisky/ScoreDistribution.astro';
 import SourceNote from '../../components/whisky/SourceNote.astro';
 import DiscoveryNav from '../../components/whisky/DiscoveryNav.astro';
 import { RANKINGS } from '../../data/discovery';
@@ -23,28 +22,36 @@ export async function getStaticPaths() {
 const { kind } = Astro.params;
 const { whiskies, all } = Astro.props;
 const def = RANKINGS[kind!];
+const isEmpty = whiskies.length === 0;
 ---
 
 <ListLayout
   noindex={true}
-  title={`${def.label}ランキング TOP${whiskies.length}`}
-  description={`ウイスキーの${def.label}ランキング。${def.lead}`}
-  heading="ランキング"
+  title={`${def.label}（内部探索）`}
+  description={`ウイスキーの${def.label}。${def.lead} 順位や未検証評価に基づくおすすめは行いません。`}
+  heading="内部探索"
   headingAccent={def.label}
   lead={def.lead}
   breadcrumbs={[
     { label: 'ホーム', href: '/' },
-    { label: `${def.label}ランキング`, href: `/ranking/${kind}/` },
+    { label: def.label, href: `/ranking/${kind}/` },
   ]}
 >
-  <section class="whisky-section">
-    <h2>評価の分布（全{all.length}銘柄）</h2>
-    <p class="text-secondary text-sm">
-      このランキングの評価が、掲載全体の中でどの位置にあるかが分かります。
-    </p>
-    <ScoreDistribution whiskies={all} />
-  </section>
-  <WhiskyList {whiskies} headingLevel={2} ranked={true} showCospa={def.showCospa} />
+  {isEmpty ? (
+    <section class="whisky-section">
+      <p class="text-secondary">{def.emptyMessage || '該当する銘柄がありません。'}</p>
+      <p><a href="/compare/">仕様比較ツールへ</a></p>
+    </section>
+  ) : (
+    <>
+      <section class="whisky-section">
+        <p class="text-secondary text-sm">
+          以下は出典確認済みの参考価格や条件に基づく選択です。順位ではありません。詳細な仕様比較は <a href="/compare/">比較ツール</a> をご利用ください。価格は変動します。
+        </p>
+      </section>
+      <WhiskyList {whiskies} headingLevel={2} ranked={false} showCospa={false} />
+    </>
+  )}
   <DiscoveryNav current={`/ranking/${kind}/`} />
   <SourceNote />
 </ListLayout>

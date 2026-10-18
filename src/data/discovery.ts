@@ -1,5 +1,6 @@
 import type { Whisky } from '../utils/whisky';
 import type { SortKey } from '../utils/whisky';
+import { sourcedPrice } from '../utils/trust';
 
 /**
  * 「味で選ぶ」の入口。
@@ -52,45 +53,53 @@ export const FLAVOR_FILTERS: Record<string, FlavorFilter> = {
   },
 };
 
-/** ランキングの定義。`/ranking/[kind]` が生成される */
+/** 内部探索用の選択。未検証価格・編集点数による順位は廃止。一次情報価格のみ使用。 */
 export interface RankingDef {
   label: string;
   lead: string;
   filter: (w: Whisky) => boolean;
   sort: SortKey;
   showCospa: boolean;
+  emptyMessage: string;
 }
 
 export const RANKINGS: Record<string, RankingDef> = {
   cospa: {
-    label: 'コスパ',
-    lead: '1点あたりの価格（参考価格 ÷ 編集部評価）が安い順。数字が小さいほど「点数のわりに安い」ことになります。',
-    filter: (w) => Boolean(w.data.priceYen),
-    sort: 'cospa',
-    showCospa: true,
+    label: '参考価格のある銘柄',
+    lead: '一次情報で確認できる参考価格を持つ銘柄の選択です。順位やコスパ評価は行いません。価格は変動し、購入時の確認が必要です。',
+    filter: (w) => sourcedPrice(w) !== null,
+    sort: 'name',
+    showCospa: false,
+    emptyMessage: '価格の一次根拠がまだない銘柄のみです。',
   },
   rating: {
-    label: '評価',
-    lead: '編集部評価の高い順。価格は考慮していません。',
-    filter: () => true,
-    sort: 'rating',
+    label: 'カタログ選択',
+    lead: '編集部評価に基づく順位は廃止しました。出典確認済みの銘柄を名前順で表示します。詳細比較は /compare/ をご利用ください。',
+    filter: (w) => true,
+    sort: 'name',
     showCospa: false,
+    emptyMessage: '',
   },
   beginner: {
-    label: '初心者向け',
-    lead: 'ピートが弱く、5,000円以下で手に入り、入手しやすい銘柄。最初の1本を選ぶための順位です。',
-    filter: (w) =>
-      w.data.flavor.peat <= 2 &&
-      Boolean(w.data.priceYen && w.data.priceYen <= 5000) &&
-      w.data.availability === 'common',
-    sort: 'rating',
-    showCospa: true,
+    label: '入手しやすい価格帯',
+    lead: '一次情報で確認できる参考価格が5,000円以下で、入手しやすいとされる銘柄の選択です。順位や「初心者向け」評価は行いません。価格は変動します。',
+    filter: (w) => {
+      const p = sourcedPrice(w);
+      return p !== null && p <= 5000 && w.data.availability === 'common';
+    },
+    sort: 'name',
+    showCospa: false,
+    emptyMessage: '価格の一次根拠がまだないか、条件に合う銘柄がありません。',
   },
   premium: {
-    label: '一段上',
-    lead: '10,000円以上の銘柄を評価順に。贈り物や記念日の1本を選ぶために。',
-    filter: (w) => Boolean(w.data.priceYen && w.data.priceYen >= 10000),
-    sort: 'rating',
+    label: '高めの価格帯',
+    lead: '一次情報で確認できる参考価格が10,000円以上の銘柄の選択です。順位は行いません。価格は変動します。',
+    filter: (w) => {
+      const p = sourcedPrice(w);
+      return p !== null && p >= 10000;
+    },
+    sort: 'name',
     showCospa: false,
+    emptyMessage: '価格の一次根拠がまだないか、条件に合う銘柄がありません。',
   },
 };

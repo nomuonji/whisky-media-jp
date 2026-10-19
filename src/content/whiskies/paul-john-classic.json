@@ -1,18 +1,18 @@
 {
-  "name": "ポールジョン クラシックセレクト",
-  "nameEn": "Paul John Classic Select",
+  "name": "ポール・ジョン クラシック（Classic Select Cask）",
+  "nameEn": "Paul John Classic Select Cask",
   "distillery": "ポールジョン蒸溜所",
   "distillerySlug": "paul-john",
   "country": "india",
   "region": "india",
   "type": "single-malt",
-  "abv": 42.8,
+  "abv": 55.2,
   "cask": [
-    "バーボン"
+    "バーボン樽（国分グループ国内商品説明）"
   ],
-  "priceYen": 5000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "priceYen": 13500,
+  "priceAsOf": "2026-10-19",
+  "priceSource": "official",
   "availability": "limited",
   "rating": 83,
   "flavor": {
@@ -25,9 +25,33 @@
     "complex": 3,
     "body": 4
   },
-  "notes": "ゴア州のモルト。バニラとバナナ、クリーミーな甘さがソフト。",
+  "notes": "メーカー公式のClassic Select Caskはアルコール度数55.2%、カスクストレングス・ノンチルフィルタード。果実、麦芽、蜂蜜、バーボンやトーストした蜂の巣を思わせる香味はメーカーの説明で、当サイトの実飲記録ではない。国分グループの国内商品説明にはバーボン樽7年熟成とあるが、メーカー公式ページでは年数と単一樽種を確認できない。83点と味8軸は出典未記録の編集部推定であり、公式評価ではない。",
   "recommendedFor": [
     "ストレート",
     "ロック"
-  ]
+  ],
+  "priceBasis": "国分グループ参考売価（700ml・税別、実売価格ではない）",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceSourceUrl": "https://www.kokubu.co.jp/products/101/7760222.html",
+  "officialSourceUrl": "https://www.pauljohnwhisky.com/classic.php",
+  "verifiedGuide": {
+    "heading": "ポール・ジョン クラシック：55.2%の仕様・国内参考価格・他製品との違い",
+    "paragraphs": [
+      "【製品と度数】メーカーの正式な製品名は「Classic Select Cask Indian Single Malt Whisky」。55.2% ABVのカスクストレングス、ノンチルフィルタードのインド産シングルモルト。旧データの42.8%は誤り。国分グループの国内商品名は「ポール・ジョン クラシック」で、700ml・JAN 8904014800798と案内している。",
+      "【国内参考価格】国分グループの商品ページに掲載された参考売価は700mlで13,500円（税別）。2026年10月19日確認時点の公式掲載値であり、店頭・通販の実売価格や税込の支払額ではない。購入時は販売店の表示を確認する。従来の5,000円は根拠のない編集部推定のため訂正した。",
+      "【樽と香味の出典】メーカーは選別した樽のプロファイルで熟成すると説明し、香りに果実・麦芽・蜂蜜、味わいにバーボン・蜂蜜・トーストしたハニカムなどを挙げる。一方、国分グループの国内商品説明は「バーボン樽にて7年の熟成」と記載。後者は国内輸入元の記載であり、メーカーの商品ページでは熟成年数と樽構成の限定を確認できない。香味表現はいずれも公式説明で、当サイトの実飲評価ではない。",
+      "【別製品・評価との区別】Classic Select CaskはメーカーがBrilliance、Edited、Bold、Peated Select Caskなどと別に掲載する銘柄。国内販売時のラベル・容量・度数を確認して選ぶ。既存の83点評価と味8軸は出典のない編集部推定で、メーカーの採点・ユーザーレビュー・実飲検証を意味しない。"
+    ],
+    "sources": [
+      {
+        "label": "Paul John メーカー公式 — Classic Select Cask（2026-10-19確認）",
+        "url": "https://www.pauljohnwhisky.com/classic.php"
+      },
+      {
+        "label": "国分グループ本社 — ポール・ジョン クラシック（2026-10-19確認）",
+        "url": "https://www.kokubu.co.jp/products/101/7760222.html"
+      }
+    ]
+  }
 }

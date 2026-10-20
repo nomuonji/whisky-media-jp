@@ -6,14 +6,11 @@
   "region": "japan",
   "type": "blended",
   "abv": 40.0,
-  "cask": [
-    "バーボン",
-    "シェリー"
-  ],
-  "priceYen": 2500,
-  "priceAsOf": "2026-09",
-  "priceSource": "editorial",
-  "availability": "common",
+  "cask": [],
+  "priceYen": null,
+  "priceAsOf": null,
+  "priceSource": null,
+  "availability": "limited",
   "rating": 79,
   "flavor": {
     "peat": 0,
@@ -25,9 +22,29 @@
     "complex": 2,
     "body": 2
   },
-  "notes": "グレーンとモルトの軽快なブレンド。毎日飲める定番NASとして親しまれる。編集部の試飲（ハイボール・ロック、2026年9月確認）では、柑橘とバニラの軽い甘さが中心。8軸評価は編集部推定。価格は実勢2,000〜3,000円帯の目安で、店舗・時期で変動する。",
+  "notes": "メーカー公式の製品情報に基づく。40% ABV、700ml（米国向け750ml）、モルトとグレーンのブレンド。ジャパニーズウイスキーの表示基準（日本洋酒酒造組合）の全てを満たさないと公式に明示。日本公式商品一覧に掲載がなく、国内一般流通・価格は確認できない。編集部の実飲記録や国内実売価格は未確認のため除去。8軸スコアは編集部推定であり公式事実ではない。",
   "recommendedFor": [
     "ハイボール",
     "ロック"
-  ]
+  ],
+  "officialSourceUrl": "https://nikka.com/en/brands/nikkadays/",
+  "verifiedGuide": {
+    "heading": "ニッカ デイズ：メーカー公式仕様と表示基準",
+    "paragraphs": [
+      "【メーカー公式の製品情報】ニッカ デイズ（Nikka Days）はニッカウヰスキーのブレンデッドウイスキー。メーカー公式英語ページ（2026-10-21確認）は40% ABV、700ml（米国市場では750ml）、モルトとグレーンのブレンドであることを記載。香味については公式がfloral aromas、silky mouthfeel、fruity flavorsと表現するが、これはメーカーの製品説明であり当サイトの実飲評価ではない。",
+      "【ジャパニーズウイスキーの表示基準】公式ページは「This product does not meet all the criteria of “Japanese whisky“ defined by the Japan Spirits & Liqueur Makers Association.」と明示。ジャパニーズウイスキーの表示基準を全て満たさない。",
+      "【国内流通】日本公式商品一覧（https://www.nikka.com/brands/）にNikka Daysは掲載されていないため、国内定番販売の根拠とならない。価格や在庫は確認できず、新しい価格は創作しない。availabilityはlimitedとして扱う。",
+      "【編集値の扱い】従来の2,500円、樽種（バーボン・シェリー）、編集部試飲ノートは出典未確認のため除去。ratingとflavor 8軸は編集部推定であり、公式事実やメーカー評価として扱わない。"
+    ],
+    "sources": [
+      {
+        "label": "Nikka公式 — Nikka Days（英語製品ページ、2026-10-21確認）",
+        "url": "https://nikka.com/en/brands/nikkadays/"
+      },
+      {
+        "label": "ニッカ日本語商品一覧（2026-10-21確認）",
+        "url": "https://www.nikka.com/brands/"
+      }
+    ]
+  }
 }

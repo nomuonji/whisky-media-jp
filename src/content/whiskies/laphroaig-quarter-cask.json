@@ -8,11 +8,9 @@
   "type": "single-malt",
   "abv": 48.0,
   "cask": [
-    "アメリカンオーク"
+    "ex-Bourbon barrels",
+    "American oak quarter casks"
   ],
-  "priceYen": 5500,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
   "availability": "common",
   "rating": 87,
   "flavor": {
@@ -25,9 +23,28 @@
     "complex": 4,
     "body": 4
   },
-  "notes": "小樽で熟成させ樽との接触を増やした濃厚な仕上がり。",
+  "notes": "メーカー公式: 二段熟成（ex-Bourbon barrelsとAmerican oak quarter casks）により深いピートと意外な甘さを強調。小樽による木材接触の増加。",
   "recommendedFor": [
     "ストレート",
     "ロック"
-  ]
+  ],
+  "officialSourceUrl": "https://www.laphroaig.com/en-gb/whiskies/laphroaig-quarter-cask-single-malt-scotch-whisky",
+  "verifiedGuide": {
+    "heading": "ラフロイグ10年との差と公式仕様",
+    "paragraphs": [
+      "ラフロイグ公式によると、Quarter Caskはex-Bourbon barrelsで初めて熟成した後、American oakのquarter casks（小樽）で二段熟成される。小樽により木材との接触面が増え、深いピートに加えて意外な甘さ（ココナッツ、バナナ、バニラなど）が強調される。",
+      "一方、国内サントリー公式のラフロイグ10年は750ml、43%、税別希望小売7,410円と明記されているが、これは異なる製品/容量の仕様であり、Quarter Caskの日本正規仕様に転記してはならない。Quarter Caskの国内メーカー希望小売・正規流通・実売価格は一次情報で未確認である。過去の編集部価格5,500円は公式価格ではなく、表示しない。",
+      "選択の目安：樽の差（標準熟成 vs 小樽二段熟成）とフレーバーの強調度を比較し、価格は公式仕様と未確認を区別して判断する。"
+    ],
+    "sources": [
+      {
+        "label": "Laphroaig official Quarter Cask",
+        "url": "https://www.laphroaig.com/en-gb/whiskies/laphroaig-quarter-cask-single-malt-scotch-whisky"
+      },
+      {
+        "label": "Suntory Japan Laphroaig 10 official",
+        "url": "https://products.suntory.co.jp/d/5010019640253/"
+      }
+    ]
+  }
 }

@@ -1,19 +1,16 @@
 {
-  "name": "ラフロイグ10年 カスクストレングス",
-  "nameEn": "Laphroaig 10 Year Old Cask Strength",
+  "name": "ラフロイグ10年 カスクストレングス Batch 17",
+  "nameEn": "Laphroaig 10 Year Old Cask Strength Batch 17",
   "distillery": "ラフロイグ蒸溜所",
   "distillerySlug": "laphroaig",
   "country": "scotland",
   "region": "islay",
   "type": "single-malt",
   "age": 10,
-  "abv": 58.6,
+  "abv": 58.3,
   "cask": [
     "バーボン"
   ],
-  "priceYen": 9000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
   "availability": "limited",
   "rating": 89,
   "flavor": {
@@ -26,9 +23,32 @@
     "complex": 4,
     "body": 5
   },
-  "notes": "カスクストレングスの迫力。薬品のようなピート、海藻、バニラが激しく交差。",
+  "notes": "メーカー公式: Batch 17は声明度数 58.3% のカスクストレングス。稀釈なしで瓶詰め。共通の固定度数は存在しない。",
   "recommendedFor": [
     "ストレート",
     "ロック"
-  ]
+  ],
+  "officialSourceUrl": "https://www.laphroaig.com/en-gb/whiskies/10-year-old-cask-strength-batch-17",
+  "verifiedGuide": {
+    "heading": "バッチ別度数の公式仕様と選び方",
+    "paragraphs": [
+      "ラフロイグ公式によると、10年カスクストレングスはバッチごとに固有の度数を持つ。Batch 15は56.5%、Batch 16は58.5%、Batch 17は58.3%であり、共通の固定度数（58.6%など）は存在しない。購入時はボトルのBatch番号を確認すること。",
+      "本ページの対象は現行の代表であるBatch 17（公式ABV 58.3%）であり、genericな『ラフロイグ10年 カスクストレングス』ではない。将来のBatch 18以降は自動更新しない。",
+      "日本国内の希望小売価格・販売在庫・試飲評価は公式ページで未確認。過去の編集部9,000円は公式価格ではなく、表示しない。"
+    ],
+    "sources": [
+      {
+        "label": "Laphroaig official Batch 15",
+        "url": "https://www.laphroaig.com/en-gb/whiskies/10-yo-cask-strength-batch-15"
+      },
+      {
+        "label": "Laphroaig official Batch 16",
+        "url": "https://www.laphroaig.com/en-gb/whiskies/10-year-old-cask-strength-batch-16"
+      },
+      {
+        "label": "Laphroaig official Batch 17",
+        "url": "https://www.laphroaig.com/en-gb/whiskies/10-year-old-cask-strength-batch-17"
+      }
+    ]
+  }
 }

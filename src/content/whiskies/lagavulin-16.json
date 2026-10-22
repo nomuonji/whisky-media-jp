@@ -7,15 +7,10 @@
   "region": "islay",
   "type": "single-malt",
   "age": 16,
-  "abv": 43.0,
+  "abv": 43,
   "cask": [
-    "シェリー",
-    "アメリカンオーク"
+    "オーク樽"
   ],
-  "priceYen": 9000,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
-  "availability": "limited",
   "rating": 90,
   "flavor": {
     "peat": 5,
@@ -27,8 +22,29 @@
     "complex": 5,
     "body": 5
   },
-  "notes": "16年の熟成でピートが丸くなり、甘みと一体化する。アイラの完成形。",
+  "notes": "メーカー公式の香味説明では、強いピートスモーク、ヨード・海藻、深い甘み、塩気を伴う長い余韻が特徴。90点と味8軸は当サイトの編集部指標であり、メーカーの公式評価や実飲測定値ではありません。",
   "recommendedFor": [
     "ストレート"
-  ]
+  ],
+  "officialSourceUrl": "https://www.malts.com/en-nl/products/lagavulin-16-year-old-single-malt-scotch-whisky-70cl",
+  "verifiedGuide": {
+    "heading": "ラガヴーリン16年の公式仕様と、価格・評価を比べる際の注意（2026年10月確認）",
+    "paragraphs": [
+      "ラガヴーリン16年はスコットランド・アイラ島のシングルモルトです。メーカー公式の商品説明は16年以上の熟成・700mlを示し、公式台湾向け製品ページにはアルコール度数43%と記載されています。台湾向けの販売条件を日本国内の価格・在庫に転用していません。",
+      "メーカー公式の香味説明は、香りにピートスモーク、ヨード、海藻、深い甘み、口中に乾いた煙と塩気・木のニュアンス、余韻に塩と海藻を伴う長いフィニッシュです。『アイラの完成形』といった普遍的な優劣の断定ではなく、スモーキーで潮気のある味を選ぶための参考にしてください。",
+      "メーカー公式ではオーク樽で16年以上熟成すると説明されています。ただし、この製品に使われるシェリー樽・アメリカンオーク樽の具体的な内訳は参照した公式商品ページから確認できないため、従来の樽2種の断定は削除しました。",
+      "従来の国内価格9,000円には検証可能な販売条件・一次根拠がなかったため削除しました。国内の実売価格と店舗在庫は未検証です。比較画面の『やや品薄』は旧編集部の暫定分類を残したもので、メーカー公式の国内在庫情報でも実測値でもありません。購入時は店舗ごとに確認してください。既存の90点と味8軸は当サイトの編集部指標で、メーカー公式のスコア・測定値ではありません。"
+    ],
+    "sources": [
+      {
+        "label": "Malts公式：Lagavulin 16年（熟成・容量・香味）",
+        "url": "https://www.malts.com/en-nl/products/lagavulin-16-year-old-single-malt-scotch-whisky-70cl"
+      },
+      {
+        "label": "Malts公式・台湾向け：Lagavulin 16年（43%・700ml）",
+        "url": "https://www.malts.com/zh-tw/products/lagavulin-16-year-old-single-malt-scotch-whisky-70cl"
+      }
+    ]
+  },
+  "availability": "limited"
 }

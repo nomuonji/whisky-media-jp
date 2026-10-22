@@ -6,12 +6,10 @@
   "country": "usa",
   "region": "kentucky",
   "type": "bourbon",
-  "abv": 40.0,
+  "abv": 40,
   "cask": [
     "新樽"
   ],
-  "priceYen": 2600,
-  "priceAsOf": "2026-08",
   "priceSource": "editorial",
   "availability": "common",
   "rating": 81,
@@ -25,9 +23,33 @@
     "complex": 3,
     "body": 3
   },
-  "notes": "10種類のレシピをブレンド。軽やかでフルーティなバーボン。",
+  "notes": "キリン公式によると、香りの異なる10種類の原酒をブレンドした標準品。花や果実を思わせる華やかな香りとまろやかな味わいが特徴。既存の81点・味8軸は出典付き実飲評価ではなく、メーカー公認の比較指標として使用しない。",
   "recommendedFor": [
     "ロック",
     "ハイボール"
-  ]
+  ],
+  "officialSourceUrl": "https://www.kirin.co.jp/alcohol/whisky_brandy/fourroses/products/fourroses.html",
+  "verifiedGuide": {
+    "heading": "フォアローゼズ標準品・スモールバッチ・シングルバレルの違い（2026年10月確認）",
+    "paragraphs": [
+      "フォアローゼズ バーボン（イエローラベル）は、香りと個性が異なる10種類の原酒をブレンドした標準品です。キリン公式の表示は熟成5年以上・アルコール40%。「10種類」は原酒の種類であり、10年熟成という意味ではありません。",
+      "スモールバッチは別製品で、4種類の原酒を選びブレンドし、熟成6年以上。標準品の10種類とは異なります。公式ページのアルコール度数表記は44%以上45%未満なので、国内向け製品を一律45%と断定しません。",
+      "シングルバレルも別製品で、1種類の原酒を一樽ずつボトリングした熟成7年以上・アルコール50%の銘柄です。標準品と比較する際はラベル名を確認してください。",
+      "旧レコードの価格2,600円にはメーカー希望小売価格や実売価格の検証可能な根拠がなかったため、価格数値を削除しました。購入時は対象SKUの容量・税込/税別・店頭価格を個別に確認してください。既存の81点と味8軸は出典付き実飲測定値でもメーカー公式評価でもなく、購入比較の根拠にしません。"
+    ],
+    "sources": [
+      {
+        "label": "キリン公式：フォアローゼズ バーボン（標準品）",
+        "url": "https://www.kirin.co.jp/alcohol/whisky_brandy/fourroses/products/fourroses.html"
+      },
+      {
+        "label": "キリン公式：フォアローゼズ スモールバッチ",
+        "url": "https://www.kirin.co.jp/alcohol/whisky_brandy/fourroses/products/smallbatch.html"
+      },
+      {
+        "label": "キリン公式：フォアローゼズ シングルバレル",
+        "url": "https://www.kirin.co.jp/alcohol/whisky_brandy/fourroses/products/singlebarrel.html"
+      }
+    ]
+  }
 }

@@ -4,15 +4,9 @@
   "distillery": "ニッカウヰスキー",
   "country": "japan",
   "region": "japan",
-  "type": "single-malt",
+  "type": "grain",
   "abv": 45,
-  "cask": [
-    "アメリカンオーク",
-    "シェリー"
-  ],
-  "priceYen": 5500,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "cask": [],
   "availability": "common",
   "rating": 83,
   "flavor": {
@@ -25,10 +19,29 @@
     "complex": 3,
     "body": 3
   },
-  "notes": "連続式蒸留機カフェスチルで造るモルト。バナナやメロンのようなトロピカルな果実味。",
+  "notes": "カフェスチル（連続式蒸留機）で造るグレーンウイスキー。バナナやメロンのようなトロピカルな果実味。編集部の風味印象であり、公式評価とは別物。",
   "recommendedFor": [
     "ストレート",
     "ロック",
     "ハイボール"
-  ]
+  ],
+  "officialSourceUrl": "https://www.nikka.com/en/brands/coffey-grain-malt/",
+  "verifiedGuide": {
+    "heading": "公式仕様と分類の理由",
+    "paragraphs": [
+      "ニッカ公式によると、カフェモルトは100% 大麦麦芽（malted barley）を原料とし、カフェスチル（連続式蒸留機）で蒸留される。45% ABV、700ml（米国向け750ml）。",
+      "ポットスチルではなく連続式蒸留のため、法的にモルトウイスキーではなくグレーンウイスキーと分類される。カフェグレーンとは原料が異なる（グレーンはトウモロコシ主体）。",
+      "日本洋酒酒造組合のジャパニーズウイスキー表示基準を満たさない（過去の輸入原酒使用による）。country=japanは全原酒の日本産保証ではない。"
+    ],
+    "sources": [
+      {
+        "label": "Nikka official Coffey Grain & Malt",
+        "url": "https://www.nikka.com/en/brands/coffey-grain-malt/"
+      },
+      {
+        "label": "Nikka brands taxonomy (Grain Whisky section)",
+        "url": "https://www.nikka.com/en/brands/"
+      }
+    ]
+  }
 }

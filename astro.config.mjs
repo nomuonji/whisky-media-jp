@@ -2,6 +2,10 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 import { readdirSync, readFileSync } from 'node:fs';
+import { contentLastmod, projectRoot, withLastmod } from './sitemap-lastmod.mjs';
+
+// Real content dates for sitemap <lastmod> (never build time).
+const sitemapLastmod = contentLastmod(['src/content'], { root: projectRoot(import.meta.url) });
 
 const whiskyDir = new URL('./src/content/whiskies/', import.meta.url);
 const contentPolicy = JSON.parse(
@@ -55,6 +59,7 @@ export default defineConfig({
   site: 'https://whisky-jp.antonbase.com',
   integrations: [
     sitemap({
+      serialize: withLastmod(sitemapLastmod),
       filter: shouldIncludeInSitemap,
     }),
   ],

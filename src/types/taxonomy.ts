@@ -1,4 +1,4 @@
-// === 国 ===
+// === 産地（生産国・地域。ウイスキー業界の慣例的な区分） ===
 export const COUNTRIES = ['scotland', 'japan', 'usa', 'ireland', 'taiwan', 'india', 'australia'] as const;
 export type Country = (typeof COUNTRIES)[number];
 

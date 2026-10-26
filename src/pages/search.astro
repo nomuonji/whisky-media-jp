@@ -91,24 +91,39 @@ const breadcrumbs = [
       return total;
     }
 
-    function escapeHtml(value: string): string {
-      const div = document.createElement('div');
-      div.textContent = value;
-      return div.innerHTML;
-    }
-
+    // 検索結果はDOMで組む。HTML文字列に href を埋めると、
+    // テンプレート式がHTMLの属性値としてそのまま配信される。
     function render(matches: Item[], query: string): void {
-      results!.innerHTML = matches
-        .map(
-          (item) => `
-            <li class="search-item kind-${item.kind}">
-              <span class="search-kind">${escapeHtml(item.kindLabel)}</span>
-              <a class="search-title" href="${item.url}">${escapeHtml(item.title)}</a>
-              <span class="search-meta">${escapeHtml(item.meta)}</span>
-              ${item.excerpt ? `<p class="search-excerpt">${escapeHtml(item.excerpt)}</p>` : ''}
-            </li>`
-        )
-        .join('');
+      results!.replaceChildren(
+        ...matches.map((item) => {
+          const li = document.createElement('li');
+          li.className = `search-item kind-${item.kind}`;
+
+          const kind = document.createElement('span');
+          kind.className = 'search-kind';
+          kind.textContent = item.kindLabel;
+
+          const link = document.createElement('a');
+          link.className = 'search-title';
+          link.href = item.url;
+          link.textContent = item.title;
+
+          const meta = document.createElement('span');
+          meta.className = 'search-meta';
+          meta.textContent = item.meta;
+
+          li.append(kind, link, meta);
+
+          if (item.excerpt) {
+            const excerpt = document.createElement('p');
+            excerpt.className = 'search-excerpt';
+            excerpt.textContent = item.excerpt;
+            li.append(excerpt);
+          }
+
+          return li;
+        })
+      );
 
       status!.textContent = matches.length
         ? `${matches.length}件が見つかりました`

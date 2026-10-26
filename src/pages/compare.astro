@@ -3,13 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Breadcrumb from '../components/layout/Breadcrumb.astro';
 import SourceNote from '../components/whisky/SourceNote.astro';
 import { REGION_LABELS, TYPE_LABELS } from '../types/taxonomy';
-import { getWhiskies, sortWhiskies, ageLabel } from '../utils/whisky';
+import { getWhiskies, sortWhiskies, ageLabel, whiskyUrl } from '../utils/whisky';
 import { sourcedPrice, sourceStatusLabel } from '../utils/trust';
 
 const whiskies = sortWhiskies(await getWhiskies(), 'name');
 
+// URLはサーバー側で、他のすべての銘柄リンクと同じ whiskyUrl() から作る。
+// クライアント側で文字列を組み立てると、URLの綴りが2箇所に増えるため。
 const dataset = whiskies.map((w) => ({
   id: w.id,
+  url: whiskyUrl(w.id),
   name: w.data.name,
   distillery: w.data.distillery,
   regionLabel: REGION_LABELS[w.data.region],
@@ -72,6 +75,7 @@ const breadcrumbs = [
 <script>
   interface Row {
     id: string;
+    url: string;
     name: string;
     distillery: string;
     regionLabel: string;
@@ -130,16 +134,41 @@ const breadcrumbs = [
         { label: '出典状態', cell: (w) => w.sourceStatus },
       ];
 
-      table!.innerHTML =
-        `<thead><tr><th scope="col">項目</th>${rows
-          .map((w) => `<th scope="col"><a href="/whisky/${encodeURIComponent(w.id)}/">${escapeHtml(w.name)}</a></th>`)
-          .join('')}</tr></thead><tbody>${defs
-          .map((d) =>
-            `<tr><th scope="row">${d.label}</th>${rows
-              .map((w) => `<td>${escapeHtml(d.cell(w))}</td>`)
-              .join('')}</tr>`
-          )
-          .join('')}</tbody>`;
+      // 見出しの銘柄名は、HTML文字列ではなくDOMで組み立てる。
+      // 文字列の中に href を書くと、テンプレート式がHTMLの属性値としてそのまま露出する。
+      const thead = document.createElement('thead');
+      const headRow = document.createElement('tr');
+      const corner = document.createElement('th');
+      corner.scope = 'col';
+      corner.textContent = '項目';
+      headRow.append(corner);
+      for (const w of rows) {
+        const th = document.createElement('th');
+        th.scope = 'col';
+        const link = document.createElement('a');
+        link.href = w.url;
+        link.textContent = w.name;
+        th.append(link);
+        headRow.append(th);
+      }
+      thead.append(headRow);
+
+      const tbody = document.createElement('tbody');
+      for (const d of defs) {
+        const tr = document.createElement('tr');
+        const label = document.createElement('th');
+        label.scope = 'row';
+        label.textContent = d.label;
+        tr.append(label);
+        for (const w of rows) {
+          const td = document.createElement('td');
+          td.textContent = d.cell(w);
+          tr.append(td);
+        }
+        tbody.append(tr);
+      }
+
+      table!.replaceChildren(thead, tbody);
     }
 
     function render(): void {

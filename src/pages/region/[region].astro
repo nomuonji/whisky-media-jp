@@ -2,32 +2,59 @@
 import ListLayout from '../../layouts/ListLayout.astro';
 import WhiskyList from '../../components/whisky/WhiskyList.astro';
 import SourceNote from '../../components/whisky/SourceNote.astro';
-import { REGION_LABELS, REGION_DESCRIPTIONS, type Region } from '../../types/taxonomy';
+import { REGION_LABELS, REGION_DESCRIPTIONS, TYPE_LABELS, type Region } from '../../types/taxonomy';
 import { getWhiskies, sortWhiskies } from '../../utils/whisky';
+import { hasSourcedPrice, isIndexReadyWhisky } from '../../utils/trust';
 
 export async function getStaticPaths() {
   const whiskies = await getWhiskies();
   const regions = [...new Set(whiskies.map((w) => w.data.region))];
+  const totals = regions.map((region) => ({
+    region,
+    count: whiskies.filter((w) => w.data.region === region).length,
+  }));
 
   return regions.map((region) => ({
     params: { region },
-    props: { whiskies: whiskies.filter((w) => w.data.region === region) },
+    props: {
+      whiskies: whiskies.filter((w) => w.data.region === region),
+      totals,
+    },
   }));
 }
 
 const { region } = Astro.params;
-const { whiskies } = Astro.props;
+const { whiskies, totals } = Astro.props;
 const label = REGION_LABELS[region as Region];
-const description = REGION_DESCRIPTIONS[region as Region];
+const regionNotes = REGION_DESCRIPTIONS[region as Region];
 const sorted = sortWhiskies(whiskies, 'name');
+
+// Facts that the listing above already shows, counted so the summary sentence and the
+// meta description say the same thing the page does.
+const distilleries = [...new Set(whiskies.map((w) => w.data.distillery))];
+const distillerySample = distilleries.slice(0, 4).join('、');
+const distilleryRest = distilleries.length > 4 ? `、ほか${distilleries.length - 4}件` : '';
+const typeLabels = [...new Set(whiskies.map((w) => TYPE_LABELS[w.data.type]))];
+const sourceReady = whiskies.filter(isIndexReadyWhisky).length;
+const priced = whiskies.filter(hasSourcedPrice).length;
+
+const otherRegions = totals
+  .filter((t) => t.region !== region)
+  .sort((a, b) => b.count - a.count)
+  .map((t) => ({ region: t.region, label: REGION_LABELS[t.region as Region], count: t.count }));
+
+const description =
+  `${label}のウイスキー${whiskies.length}銘柄を一覧で掲載。${regionNotes}。` +
+  `掲載する蒸留所は${distilleries.length}件、タイプは${typeLabels.join('・')}。` +
+  `出典を確認済みの銘柄は${sourceReady}件、価格の出典を確認済みの銘柄は${priced}件です。`;
 ---
 
 <ListLayout
   title={`${label}のウイスキー${whiskies.length}銘柄`}
-  description={`${label}のウイスキー一覧。${description}`}
+  {description}
   heading="地域"
   headingAccent={label}
-  lead={description}
+  lead={regionNotes}
   breadcrumbs={[
     { label: 'ホーム', href: '/' },
     { label: '銘柄一覧', href: '/whiskies/' },
@@ -36,4 +63,44 @@ const sorted = sortWhiskies(whiskies, 'name');
 >
   <WhiskyList whiskies={sorted} headingLevel={2} />
   <SourceNote />
+
+  <section class="home-section">
+    <h2>{label}の掲載状況</h2>
+    <p>
+      この地域の登録銘柄は{whiskies.length}銘柄、蒸留所は{distilleries.length}件（{distillerySample}{distilleryRest}）。タイプは{typeLabels.join('・')}です。出典を確認済みの銘柄は{sourceReady}件、
+      価格の出典を確認済みの銘柄は{priced}件で、残りは出典整備前のカタログ登録値です。
+    </p>
+
+    <h3>ほかの地域から探す</h3>
+    <ul class="region-links">
+      {otherRegions.map((other) => (
+        <li>
+          <a href={`/region/${other.region}/`}>{other.label}</a>
+          <span class="text-secondary text-sm">{other.count}銘柄</span>
+        </li>
+      ))}
+    </ul>
+
+    <p class="text-secondary text-sm">
+      地域をまたいだ全銘柄は<a href="/whiskies/">銘柄一覧</a>、最大4本の横並びは
+      <a href="/compare/">仕様比較</a>で確認できます。
+    </p>
+  </section>
 </ListLayout>
+
+<style>
+  .region-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-sm) var(--space-md);
+  }
+
+  .region-links li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+  }
+</style>

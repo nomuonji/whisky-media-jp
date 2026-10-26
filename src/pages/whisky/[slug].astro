@@ -46,9 +46,29 @@ const indexReady = isIndexReadyWhisky(whisky);
 const sourcedPrice = hasSourcedPrice(whisky);
 const priceHeading = w.priceSource === 'official' && w.priceBasis ? w.priceBasis : '確認済み価格';
 
-const description =
-  `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）の仕様データ。` +
-  `${indexReady ? '確認済みソースへのリンク付き。' : 'カタログ登録情報として掲載し、出典整備中。'}`;
+const priceConditions = [
+  w.priceCapacityMl ? `${w.priceCapacityMl}ml` : undefined,
+  w.priceTax,
+].filter(Boolean).join('・');
+
+// 本文（仕様表・ヒーロー）に出ている値だけで組み立てる。価格は出典が確認できた場合のみ触れる。
+const descHead = `${w.name}（${w.distillery}・${REGION_LABELS[w.region]}／${TYPE_LABELS[w.type]}・${ageLabel(w.age)}・${w.abv}%）。`;
+const descCask = w.cask.length > 0 ? `樽は${w.cask.join('・')}。` : '樽は未登録です。';
+const descPrice =
+  sourcedPrice && w.priceYen
+    ? `${priceHeading}は${w.priceYen.toLocaleString('ja-JP')}円${priceConditions ? `（${priceConditions}）` : ''}。`
+    : '価格は出典を確認できるまで表示していません。';
+const descSource = indexReady
+  ? '基本仕様は、仕様表に並べた公式商品情報のリンクから確認できます。'
+  : 'カタログ登録情報として掲載し、出典整備中です。';
+
+// 135字を上限に、樽 → 価格の順で入るものだけ残す（見出しと出典の一文は必ず出す）。
+const picked: string[] = [];
+for (const sentence of [descCask, descPrice]) {
+  const candidate = `${descHead}${[...picked, sentence].join('')}${descSource}`;
+  if ([...candidate].length <= 135) picked.push(sentence);
+}
+const description = `${descHead}${picked.join('')}${descSource}`;
 
 const ogImage = `/ogp/whisky-${whisky.id}.png`;
 

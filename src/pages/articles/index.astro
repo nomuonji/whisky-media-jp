@@ -1,20 +1,40 @@
 ---
 import ListLayout from '../../layouts/ListLayout.astro';
 import PostList from '../../components/blog/PostList.astro';
-import { getPublishedPosts } from '../../utils/posts';
+import PostCard from '../../components/blog/PostCard.astro';
+import { getAllPublishedPosts, getPublishedPosts, isLegacyPost } from '../../utils/posts';
 import { articlesUrl } from '../../utils/url';
 import { totalPages } from '../../utils/pagination';
+import { getWhiskies } from '../../utils/whisky';
+import { getDistilleries } from '../../utils/distillery';
+import { REGION_LABELS, type Region } from '../../types/taxonomy';
 
 const posts = await getPublishedPosts();
+const legacyPosts = (await getAllPublishedPosts()).filter(isLegacyPost);
 const hasNext = totalPages(posts.length) > 1;
+
+const whiskies = await getWhiskies();
+const distilleries = await getDistilleries();
+const regionTotals = [...new Set(whiskies.map((w) => w.data.region))]
+  .map((region) => ({
+    region,
+    label: REGION_LABELS[region as Region],
+    count: whiskies.filter((w) => w.data.region === region).length,
+  }))
+  .sort((a, b) => b.count - a.count);
+
+const description =
+  `ウイスキーの規格・種類・出典を確認しながら読む解説記事の一覧です。現行方針で書いた記事${posts.length}件と、` +
+  `旧方針で書いた記事${legacyPosts.length}件のアーカイブを掲載。銘柄${whiskies.length}件のデータベースと` +
+  `仕様比較ツールへの導線もまとめています。`;
 ---
 
 <ListLayout
   title="記事一覧"
-  description="ウイスキーの規格・種類・出典を確認しながら読む、現行方針の解説記事一覧です。"
+  {description}
   heading="記事"
   headingAccent="一覧"
-  lead="一次情報や確認可能な資料を基準にした現行方針の記事だけを掲載しています。"
+  lead="一次情報や確認可能な資料を基準にした現行方針の記事を並べています。旧方針で書いた記事は、アーカイブとして下段に分けて掲載しています。"
   breadcrumbs={[
     { label: 'ホーム', href: '/' },
     { label: '記事一覧', href: '/articles/' },
@@ -22,4 +42,56 @@ const hasNext = totalPages(posts.length) > 1;
   nextUrl={hasNext ? articlesUrl(2) : undefined}
 >
   <PostList {posts} page={1} hrefFor={articlesUrl} />
+
+  <section class="home-section">
+    <h2>記事から先に進む</h2>
+    <p>
+      掲載中の記事は{posts.length}件です。記事で扱った仕様の確認は
+      <a href="/whiskies/">銘柄一覧（{whiskies.length}銘柄）</a>、複数銘柄の横並びは
+      <a href="/compare/">仕様比較</a>、蒸留所の基本情報は
+      <a href="/distilleries/">蒸留所一覧（{distilleries.length}件）</a>で行えます。
+    </p>
+
+    <h3>地域から銘柄を探す</h3>
+    <ul class="region-links">
+      {regionTotals.map((entry) => (
+        <li>
+          <a href={`/region/${entry.region}/`}>{entry.label}</a>
+          <span class="text-secondary text-sm">{entry.count}銘柄</span>
+        </li>
+      ))}
+    </ul>
+
+    {
+      legacyPosts.length > 0 && (
+        <>
+          <h3>旧方針の記事（アーカイブ）</h3>
+          <p class="text-secondary text-sm">
+            現行の公開方針に合わせる前に書いた記事です。URLを維持したアーカイブとして掲載しており、
+            個別ページは検索インデックスの対象にしていません。
+          </p>
+          <div class="post-list">
+            {legacyPosts.map((post) => <PostCard {post} headingLevel={3} />)}
+          </div>
+        </>
+      )
+    }
+  </section>
 </ListLayout>
+
+<style>
+  .region-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-xs) var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin-block: var(--space-sm) var(--space-md);
+  }
+
+  .region-links li {
+    display: inline-flex;
+    align-items: baseline;
+    gap: var(--space-2xs);
+  }
+</style>

@@ -4,6 +4,9 @@ import PostList from '../../components/blog/PostList.astro';
 import { categoryLabel, categoryDescription } from '../../data/categories';
 import { getAllPublishedPosts, getPublishedPosts, byCategory } from '../../utils/posts';
 import { categoryUrl } from '../../utils/url';
+import policy from '../../data/content-policy.json';
+
+const NOINDEX_CATEGORIES = new Set(policy.noindexCategories || []);
 
 export async function getStaticPaths() {
   const [allPosts, activePosts] = await Promise.all([
@@ -19,36 +22,47 @@ export async function getStaticPaths() {
       props: {
         posts: active.length > 0 ? active : byCategory(allPosts, cat),
         archiveOnly: active.length === 0,
+        totalInCategory: byCategory(allPosts, cat).length,
       },
     };
   });
 }
 
 const { cat } = Astro.params;
-const { posts, archiveOnly } = Astro.props;
+const { posts, archiveOnly, totalInCategory } = Astro.props;
 
 const label = categoryLabel(cat!);
-const description = categoryDescription(cat!);
+const categoryNotes = categoryDescription(cat!);
+// 一覧として中身を持てないカテゴリは、ページ側とsitemap側で同じ判定を使う。
+const noindexByPolicy = NOINDEX_CATEGORIES.has(cat!);
+const noindex = archiveOnly || noindexByPolicy;
+
+const description = archiveOnly
+  ? `${label}カテゴリは現行方針の記事がないため、旧方針で書いた記事${totalInCategory}件をURL維持のアーカイブとして掲載しています。` +
+    `現行方針の記事は記事一覧で公開中で、銘柄の仕様は銘柄一覧と比較ツールから確認できます。`
+  : `${label}カテゴリのウイスキー記事一覧。${categoryNotes}。掲載記事は${totalInCategory}件で、` +
+    `記事から銘柄一覧・仕様比較・蒸留所一覧へ進めます。`;
 ---
 
 <ListLayout
   title={`${label}の記事一覧`}
-  description={archiveOnly ? `${label}カテゴリの旧記事アーカイブ。` : `${label}カテゴリのウイスキー記事一覧。${description}`}
+  {description}
   heading="カテゴリ"
   headingAccent={label}
-  lead={archiveOnly ? 'このカテゴリは旧評価方針の記事のみのため、URLを維持したアーカイブとして表示しています。' : description}
-  noindex={archiveOnly}
+  lead={archiveOnly ? 'このカテゴリは旧評価方針の記事のみのため、URLを維持したアーカイブとして表示しています。' : categoryNotes}
+  {noindex}
   breadcrumbs={[
     { label: 'ホーム', href: '/' },
     { label, href: categoryUrl(cat!) },
   ]}
 >
-  {archiveOnly ? (
+  {archiveOnly || noindexByPolicy ? (
     <aside class="source-note is-compact">
       <p>
-        <strong>旧記事アーカイブ。</strong>
+        <strong>{archiveOnly ? '旧記事アーカイブ。' : 'カテゴリ一覧の扱い。'}</strong>
         現在の検索公開方針では、出典付きの <a href="/whiskies/">銘柄データベース</a> と
-        <a href="/compare/">仕様比較</a> を優先しています。
+        <a href="/compare/">仕様比較</a> を優先しています。このカテゴリの記事は
+        <a href="/articles/">記事一覧</a> からも読めます。
       </p>
     </aside>
   ) : null}

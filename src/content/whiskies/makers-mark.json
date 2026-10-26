@@ -10,9 +10,14 @@
   "cask": [
     "新樽"
   ],
-  "priceYen": 2800,
-  "priceAsOf": "2026-08",
-  "priceSource": "editorial",
+  "priceYen": 3400,
+  "priceAsOf": "2026-10-22",
+  "priceSource": "official",
+  "priceSourceUrl": "https://www.suntory.co.jp/whisky/makersmark/lineup/",
+  "priceCapacityMl": 700,
+  "priceTax": "税別",
+  "priceBasis": "希望小売価格・実売価格ではない",
+  "officialSourceUrl": "https://www.suntory.co.jp/whisky/makersmark/lineup/",
   "availability": "common",
   "rating": 83,
   "flavor": {
@@ -25,10 +30,27 @@
     "complex": 3,
     "body": 3
   },
-  "notes": "小麦を使ったソフトなバーボン。バニラと蜂蜜の甘さが強い。",
+  "notes": "小麦を使ったソフトなバーボン。バニラと蜂蜜の甘さが強い。ライ麦の代わりに冬小麦を使用（サントリー公式）。",
   "recommendedFor": [
     "ロック",
     "ハイボール"
   ],
-  "affiliateId": "makers-mark"
+  "affiliateId": "makers-mark",
+  "verifiedGuide": {
+    "heading": "公式情報に基づく製品仕様",
+    "paragraphs": [
+      "サントリー公式ラインナップ（2026-10-22確認）によると、国内通常品は700ml・45%・希望小売価格3,400円（税別）で、ライ麦の代わりに冬小麦を使用しています。",
+      "メーカーズマーク46は別SKU（希望小売価格5,800円税別・47%）です。現行のrating83とflavorは編集部未検証値であり、メーカー公認評価ではありません。熟成年数は公式未確認のため推測しません。"
+    ],
+    "sources": [
+      {
+        "label": "サントリー公式 メーカーズマーク商品一覧",
+        "url": "https://www.suntory.co.jp/whisky/makersmark/lineup/"
+      },
+      {
+        "label": "サントリー商品情報",
+        "url": "https://products.suntory.co.jp/d/085246500576/"
+      }
+    ]
+  }
 }

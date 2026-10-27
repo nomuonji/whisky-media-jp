@@ -1,11 +1,12 @@
 /* ============================================
-   Site Header
+   Site Header — 樽材の帯。1行に収め、スマホではナビだけ横スクロール
    ============================================ */
 
 .site-header {
-  background: var(--color-surface);
-  border-bottom: 3px solid var(--color-brand);
-  padding: var(--space-lg) 0;
+  --oak: #2A1D13;
+  background: var(--oak);
+  color: #EFE4CF;
+  border-bottom: 2px solid var(--color-brand);
   position: sticky;
   top: 0;
   z-index: var(--z-header);
@@ -13,53 +14,115 @@
 
 .site-header .container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
+  gap: var(--space-lg);
+  min-height: 60px;
 }
 
 .site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  flex-shrink: 0;
   font-family: var(--font-display);
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
-  color: var(--color-text);
+  color: #F6EEDD;
   text-decoration: none;
+  letter-spacing: 0.01em;
 }
 
 .site-title:hover {
   text-decoration: none;
 }
 
-.site-title .accent {
+.site-title .accent,
+.site-title-mark {
   color: var(--color-brand);
 }
 
 .site-nav {
   display: flex;
-  gap: var(--space-md);
-  flex-wrap: wrap;
+  gap: var(--space-lg);
+  margin-inline-start: auto;
 }
 
 .site-nav a {
-  color: var(--color-text-secondary);
+  color: #CDBE9F;
   font-size: var(--text-sm);
   text-decoration: none;
-  padding: var(--space-2xs) 0;
+  white-space: nowrap;
+  padding-block: 1.1rem;
   border-bottom: 2px solid transparent;
-  transition: border-color var(--transition-fast);
+  margin-bottom: -2px;
+  transition: color var(--transition-fast), border-color var(--transition-fast);
 }
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--color-text);
+  color: #FFF8EA;
   border-color: var(--color-brand);
   text-decoration: none;
 }
 
-@media (max-width: 600px) {
+.site-search-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  flex-shrink: 0;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(212, 160, 48, 0.55);
+  border-radius: var(--radius-pill);
+  color: #F6EEDD;
+  font-size: var(--text-sm);
+  text-decoration: none;
+}
+
+.site-search-link:hover {
+  background: rgba(212, 160, 48, 0.16);
+  text-decoration: none;
+}
+
+.site-header a:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 3px;
+}
+
+/* スマホ：タイトルと検索を1行目、ナビは2行目で横スクロール（折り返さない） */
+@media (max-width: 760px) {
   .site-header .container {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0 var(--space-md);
+    padding-top: var(--space-xs);
+  }
+
+  .site-search-link {
+    margin-inline-start: auto;
+  }
+
+  .site-search-link span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .site-nav {
+    order: 3;
+    flex-basis: 100%;
+    margin-inline: calc(var(--space-lg) * -1);
+    padding-inline: var(--space-lg);
+    overflow-x: auto;
+    scrollbar-width: none;
+    gap: var(--space-lg);
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-nav a {
+    padding-block: 0.6rem 0.7rem;
   }
 }

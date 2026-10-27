@@ -10,7 +10,7 @@ const [firstWord, ...restWords] = SITE.name.split(' ');
 ---
 
 <header class="site-header">
-  <Container>
+  <Container width="wide">
     <a href="/" class="site-title" aria-label={`${SITE.name} トップページ`}>
       <Icon name="glass" size={22} class="site-title-mark" />
       <span class="accent">{firstWord}</span>{restWords.length ? ` ${restWords.join(' ')}` : ''}

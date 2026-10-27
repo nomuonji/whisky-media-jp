@@ -47,3 +47,8 @@ button {
     scroll-behavior: auto !important;
   }
 }
+
+/* hidden 属性はどの display 指定よりも優先する（空状態の表示漏れ対策） */
+[hidden] {
+  display: none !important;
+}

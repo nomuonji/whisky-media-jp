@@ -25,8 +25,14 @@
 
 .site-footer nav {
   display: flex;
-  gap: var(--space-md);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-xs) var(--space-lg);
   margin-top: var(--space-xs);
+}
+
+.site-footer nav a {
+  white-space: nowrap;
 }
 
 .site-footer .footer-note {
